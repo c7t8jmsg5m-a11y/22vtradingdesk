@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>22V Research — Trading Desk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Source+Sans+3:wght@300;400;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FAF7F2;
+    --ink: #1A1A1A;
+    --ink-light: #3D3D3D;
+    --gray-400: #999999;
+    --gray-200: #D4D4D4;
+    --brand-orange: #E4762D;
+    --brand-gray: #969696;
+    --red: #C0392B;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Source Sans 3', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container {
+    text-align: center;
+    padding: 40px 24px;
+    max-width: 520px;
+  }
+  .logo-text {
+    font-family: 'Oswald', sans-serif;
+    font-size: 64px;
+    font-weight: 700;
+    color: var(--brand-orange);
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+  .logo-sub {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+    color: var(--brand-gray);
+    margin-top: 4px;
+  }
+  .tagline {
+    font-size: 14px;
+    color: var(--gray-400);
+    margin-top: 24px;
+    letter-spacing: 0.5px;
+  }
+  .links {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .link-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    background: white;
+    border: 1px solid var(--gray-200);
+    border-radius: 4px;
+    text-decoration: none;
+    color: var(--ink);
+    transition: all 0.15s ease;
+  }
+  .link-card:hover {
+    border-color: var(--brand-orange);
+    box-shadow: 0 2px 8px rgba(228, 118, 45, 0.12);
+    transform: translateY(-1px);
+  }
+  .link-card-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .link-icon {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    color: white;
+    background: var(--brand-orange);
+    padding: 6px 8px;
+    border-radius: 3px;
+    letter-spacing: 0.5px;
+  }
+  .link-icon.coming { background: var(--gray-400); }
+  .link-title {
+    font-weight: 600;
+    font-size: 15px;
+  }
+  .link-desc {
+    font-size: 12px;
+    color: var(--gray-400);
+    margin-top: 1px;
+  }
+  .link-arrow {
+    color: var(--gray-400);
+    font-size: 18px;
+    transition: transform 0.15s ease;
+  }
+  .link-card:hover .link-arrow {
+    transform: translateX(3px);
+    color: var(--brand-orange);
+  }
+  .link-card.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  .footer {
+    margin-top: 48px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gray-400);
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo-text">22V</div>
+    <div class="logo-sub">Research</div>
+    <div class="tagline">Institutional Trading Intelligence</div>
+
+    <div class="links">
+      <a href="/midday" class="link-card">
+        <div class="link-card-left">
+          <span class="link-icon">LIVE</span>
+          <div>
+            <div class="link-title">Midday Trading Recap</div>
+            <div class="link-desc">Intraday market intelligence — updated daily ~12:45 ET</div>
+          </div>
+        </div>
+        <span class="link-arrow">→</span>
+      </a>
+
+      <a href="/overnight" class="link-card disabled">
+        <div class="link-card-left">
+          <span class="link-icon coming">SOON</span>
+          <div>
+            <div class="link-title">Overnight Briefing</div>
+            <div class="link-desc">Pre-market global markets briefing — daily 7:45 AM ET</div>
+          </div>
+        </div>
+        <span class="link-arrow">→</span>
+      </a>
+
+      <a href="/turbulence" class="link-card disabled">
+        <div class="link-card-left">
+          <span class="link-icon coming">SOON</span>
+          <div>
+            <div class="link-title">Turbulence Monitor</div>
+            <div class="link-desc">Cross-asset stress detection — Mahalanobis distance model</div>
+          </div>
+        </div>
+        <span class="link-arrow">→</span>
+      </a>
+    </div>
+
+    <div class="footer">Confidential — For Institutional Use Only</div>
+  </div>
+</body>
+</html>

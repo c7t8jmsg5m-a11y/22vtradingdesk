@@ -8,20 +8,27 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: #0a0e17; }
+  body { background: #0a0e17; color: #e2e8f0; font-family: 'DM Sans', sans-serif; }
+  #loading { display: flex; align-items: center; justify-content: center; min-height: 100vh; font-size: 14px; color: #64748b; letter-spacing: 2px; text-transform: uppercase; }
 </style>
 </head>
 <body>
-<div id="root"></div>
+<div id="root"><div id="loading">Loading Maguire Leverage Monitor...</div></div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/recharts/2.8.0/Recharts.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.6/babel.min.js"></script>
+<!-- React 18 -->
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 
-<script type="text/babel">
-const { useState } = React;
-const { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, AreaChart, Area, ReferenceLine, LineChart, Line, CartesianGrid } = Recharts;
+<!-- Recharts (UMD) -->
+<script src="https://unpkg.com/recharts@2.12.7/umd/Recharts.js"></script>
+
+<!-- Babel for JSX -->
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel" data-type="module">
+try {
+  const { useState } = React;
+  const { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, AreaChart, Area, ReferenceLine, LineChart, Line, CartesianGrid } = Recharts;
 
 
 
@@ -450,7 +457,12 @@ function MaguireLeverageMonitor() {
 }
 
 
-ReactDOM.createRoot(document.getElementById('root')).render(<MaguireLeverageMonitor />);
+  const root = ReactDOM.createRoot(document.getElementById('root'));
+  root.render(<MaguireLeverageMonitor />);
+} catch(e) {
+  document.getElementById('root').innerHTML = '<div style="padding:40px;color:#ef4444;">Error: ' + e.message + '</div>';
+  console.error(e);
+}
 </script>
 </body>
 </html>

@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maguire Leverage Monitor — 22V Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0a0e17; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/recharts/2.8.0/Recharts.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.6/babel.min.js"></script>
+
+<script type="text/babel">
+const { useState } = React;
+const { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, AreaChart, Area, ReferenceLine, LineChart, Line, CartesianGrid } = Recharts;
+
+
+
+
+const COLORS = {
+  bg: "#0a0e17", card: "#111827", border: "#1e293b",
+  red: "#ef4444", amber: "#f59e0b", green: "#22c55e", blue: "#3b82f6",
+  text: "#e2e8f0", muted: "#64748b", dim: "#334155",
+  accent: "#f97316"
+};
+
+const marginHistory = [
+  {m:"Jan 25",v:930},{m:"Feb",v:948},{m:"Mar",v:965},{m:"Apr",v:990},
+  {m:"May",v:1020},{m:"Jun",v:1055},{m:"Jul",v:1085},{m:"Aug",v:1106},
+  {m:"Sep",v:1130},{m:"Oct",v:1160},{m:"Nov",v:1200},{m:"Dec",v:1226}
+];
+const hfHistory = [
+  {q:"Q1 24",gs:258,jpm:265},{q:"Q2 24",gs:262,jpm:270},{q:"Q3 24",gs:268,jpm:278},
+  {q:"Q4 24",gs:273,jpm:284},{q:"Q1 25",gs:275,jpm:288},{q:"Q2 25",gs:278,jpm:290},
+  {q:"Q3 25",gs:280,jpm:294},{q:"Q4 25",gs:285,jpm:298}
+];
+const gapHistory = [
+  {m:"Jul 25",gap:18},{m:"Aug",gap:20},{m:"Sep",gap:22},{m:"Oct",gap:25},
+  {m:"Nov",gap:28},{m:"Dec",gap:30},{m:"Jan 26",gap:33},{m:"Feb",gap:21.4}
+];
+const turbChart = [
+  {d:"Dec",v:8},{d:"Jan 6",v:6},{d:"Jan 13",v:5},{d:"Jan 20",v:7},{d:"Jan 27",v:12},
+  {d:"Jan 30",v:83},{d:"Feb 3",v:22},{d:"Feb 7",v:10},{d:"Feb 10",v:5},
+  {d:"Feb 13",v:15},{d:"Feb 17",v:8},{d:"Feb 20",v:13}
+];
+
+const Card = ({children,glow}) => (
+  <div style={{background:COLORS.card,border:`1px solid ${glow||COLORS.border}`,
+    borderRadius:10,padding:"18px 20px",marginBottom:12}}>
+    {children}
+  </div>
+);
+
+const Pill = ({color,children}) => (
+  <span style={{display:"inline-block",background:color+"18",color,border:`1px solid ${color}44`,
+    borderRadius:20,padding:"3px 12px",fontSize:11,fontWeight:700,letterSpacing:0.5}}>
+    {children}
+  </span>
+);
+
+const Meter = ({value,max=10,color}) => (
+  <div style={{display:"flex",gap:3,alignItems:"center"}}>
+    {Array.from({length:max},(_, i)=>(
+      <div key={i} style={{width:10,height:16,borderRadius:2,
+        background:i<value?color:COLORS.dim,
+        transition:"background 0.3s"}}/>
+    ))}
+    <span style={{marginLeft:8,fontSize:14,fontWeight:800,color,fontFamily:"'JetBrains Mono',monospace"}}>{value}/{max}</span>
+  </div>
+);
+
+const LayerRow = ({name,score,max,color,detail}) => (
+  <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",
+    padding:"12px 0",borderBottom:`1px solid ${COLORS.border}`}}>
+    <div style={{flex:1}}>
+      <div style={{fontSize:13,fontWeight:700,color:COLORS.text}}>{name}</div>
+      <div style={{fontSize:11,color:COLORS.muted,marginTop:2}}>{detail}</div>
+    </div>
+    <div style={{display:"flex",gap:3}}>
+      {Array.from({length:max},(_, i)=>(
+        <div key={i} style={{width:22,height:8,borderRadius:2,
+          background:i<score?color:COLORS.dim}}/>
+      ))}
+    </div>
+  </div>
+);
+
+const Stat = ({label,value,sub,warn}) => (
+  <div style={{flex:1,minWidth:130}}>
+    <div style={{fontSize:10,color:COLORS.muted,textTransform:"uppercase",letterSpacing:1,marginBottom:4}}>{label}</div>
+    <div style={{fontSize:20,fontWeight:800,color:warn?COLORS.red:COLORS.text,fontFamily:"'JetBrains Mono',monospace"}}>{value}</div>
+    {sub && <div style={{fontSize:10,color:warn?COLORS.amber:COLORS.muted,marginTop:2}}>{sub}</div>}
+  </div>
+);
+
+const tabs = ["Composite","L1 Levels","L2 Momentum","L3 Financing","L4 Crowding","L5 Vol","L6 Calendar","Cascade"];
+
+function MaguireLeverageMonitor() {
+  const [active, setActive] = useState(0);
+
+  return (
+    <div style={{background:COLORS.bg,color:COLORS.text,fontFamily:"'DM Sans','Segoe UI',sans-serif",
+      minHeight:"100vh",padding:"24px 20px",maxWidth:820,margin:"0 auto"}}>
+      
+      {/* Header */}
+      <div style={{marginBottom:24}}>
+        <div style={{display:"flex",alignItems:"baseline",gap:12,marginBottom:4}}>
+          <span style={{fontSize:11,fontWeight:800,letterSpacing:3,color:COLORS.accent,textTransform:"uppercase"}}>Maguire Leverage Monitor</span>
+          <span style={{fontSize:10,color:COLORS.muted}}>22V Trading Desk</span>
+        </div>
+        <div style={{display:"flex",alignItems:"center",gap:16,marginTop:12}}>
+          <div style={{fontSize:48,fontWeight:900,color:COLORS.amber,fontFamily:"'JetBrains Mono',monospace",lineHeight:1}}>6<span style={{fontSize:24,color:COLORS.muted}}>/10</span></div>
+          <div>
+            <Pill color={COLORS.amber}>ELEVATED — FRAGILE EQUILIBRIUM</Pill>
+            <div style={{fontSize:11,color:COLORS.muted,marginTop:6}}>Feb 22, 2026 • Market data: Feb 20 close</div>
+          </div>
+        </div>
+        <Meter value={6} color={COLORS.amber}/>
+      </div>
+
+      {/* Tabs */}
+      <div style={{display:"flex",gap:4,marginBottom:16,overflowX:"auto",paddingBottom:4}}>
+        {tabs.map((t,i)=>(
+          <button key={i} onClick={()=>setActive(i)} style={{
+            background:active===i?COLORS.accent+"22":"transparent",
+            border:`1px solid ${active===i?COLORS.accent:COLORS.border}`,
+            color:active===i?COLORS.accent:COLORS.muted,
+            borderRadius:6,padding:"6px 12px",fontSize:11,fontWeight:active===i?700:500,
+            cursor:"pointer",whiteSpace:"nowrap",transition:"all 0.2s"
+          }}>{t}</button>
+        ))}
+      </div>
+
+      {/* ═══ COMPOSITE ═══ */}
+      {active===0 && (
+        <>
+          <Card>
+            <div style={{fontSize:14,fontWeight:700,marginBottom:14,color:COLORS.accent}}>Layer Breakdown</div>
+            <LayerRow name="L1: Leverage Levels" score={2} max={2} color={COLORS.red} detail="Margin $1.23T record • HF gross 285-298% ATH"/>
+            <LayerRow name="L2: Momentum" score={2} max={2} color={COLORS.red} detail="8 consecutive records • +36.3% YoY (2.4× market)"/>
+            <LayerRow name="L3: Financing" score={0} max={2} color={COLORS.green} detail="NFCI -0.57 (loose) • HY OAS 286bp (tight)"/>
+            <LayerRow name="L4: Crowding" score={1} max={1} color={COLORS.amber} detail="Mag7 19% HF exposure • Semis 5yr highs"/>
+            <LayerRow name="L5: Vol Regime" score={0} max={2} color={COLORS.green} detail="VIX 19.09 • Gamma long • P/C 0.90"/>
+            <LayerRow name="L6: Calendar" score={1} max={1} color={COLORS.amber} detail="Warsh hearings • China summit Apr • Powell May"/>
+          </Card>
+          <Card glow={COLORS.amber+"44"}>
+            <div style={{fontSize:13,fontWeight:700,color:COLORS.amber,marginBottom:8}}>⚡ Key Tension</div>
+            <div style={{fontSize:12,color:COLORS.text,lineHeight:1.7}}>
+              The structural fuel is fully loaded — margin debt at records growing 2.4× faster than equities, HF gross at all-time highs, crowding in semis/Mag7. <strong style={{color:COLORS.green}}>The brakes are mostly working:</strong> financing deeply loose, credit tight, dealers long gamma. <strong style={{color:COLORS.amber}}>But VVIX at 115.5 (red zone) signals the options market is pricing tail risk even as VIX sits at 19.</strong> Watch for L3 to flip — HY spread widening, NFCI above -0.30, or prime broker margin hikes.
+            </div>
+          </Card>
+          <Card>
+            <div style={{fontSize:14,fontWeight:700,marginBottom:14}}>Real-Time Readings</div>
+            <div style={{display:"flex",flexWrap:"wrap",gap:20}}>
+              <Stat label="S&P 500" value="6,910" sub="+0.24% vs 50MA"/>
+              <Stat label="VIX" value="19.09" sub="Below 20 threshold"/>
+              <Stat label="VVIX" value="115.5" sub="RED ZONE (>110)" warn/>
+              <Stat label="HY OAS" value="288bp" sub="Tight — no stress"/>
+              <Stat label="NFCI" value="-0.57" sub="Deeply loose"/>
+              <Stat label="SOFR" value="3.67%" sub="Fed 3.50-3.75%"/>
+              <Stat label="Put/Call" value="0.90" sub="SPX: 1.28 (hedged)"/>
+              <Stat label="DXY" value="97.73" sub="Dollar index"/>
+            </div>
+          </Card>
+        </>
+      )}
+
+      {/* ═══ L1 LEVELS ═══ */}
+      {active===1 && (
+        <>
+          <Card>
+            <div style={{fontSize:14,fontWeight:700,marginBottom:4}}>FINRA Margin Debt</div>
+            <div style={{fontSize:11,color:COLORS.muted,marginBottom:14}}>$1,226B — 7th consecutive monthly record (Dec 2025)</div>
+            <ResponsiveContainer width="100%" height={200}>
+              <AreaChart data={marginHistory}>
+                <defs><linearGradient id="mfill" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor={COLORS.red} stopOpacity={0.3}/>
+                  <stop offset="95%" stopColor={COLORS.red} stopOpacity={0}/>
+                </linearGradient></defs>
+                <CartesianGrid strokeDasharray="3 3" stroke={COLORS.border}/>
+                <XAxis dataKey="m" tick={{fontSize:10,fill:COLORS.muted}} axisLine={false}/>
+                <YAxis tick={{fontSize:10,fill:COLORS.muted}} axisLine={false} domain={[900,1300]} tickFormatter={v=>`$${v}B`}/>
+                <Tooltip contentStyle={{background:COLORS.card,border:`1px solid ${COLORS.border}`,borderRadius:6,fontSize:11}} formatter={v=>[`$${v}B`,"Margin Debt"]}/>
+                <Area type="monotone" dataKey="v" stroke={COLORS.red} fill="url(#mfill)" strokeWidth={2}/>
+                <ReferenceLine y={937} stroke={COLORS.amber} strokeDasharray="5 5" label={{value:"Jan 2021 peak",fontSize:9,fill:COLORS.amber}}/>
+              </AreaChart>
+            </ResponsiveContainer>
+          </Card>
+          <Card>
+            <div style={{fontSize:14,fontWeight:700,marginBottom:4}}>Hedge Fund Gross Leverage</div>
+            <div style={{fontSize:11,color:COLORS.muted,marginBottom:14}}>GS: 285% (ATH) • JPM: 298% (5yr high) • Quant: 645% • Multi-strat: 444%</div>
+            <ResponsiveContainer width="100%" height={200}>
+              <BarChart data={hfHistory} barGap={2}>
+                <CartesianGrid strokeDasharray="3 3" stroke={COLORS.border}/>
+                <XAxis dataKey="q" tick={{fontSize:10,fill:COLORS.muted}} axisLine={false}/>
+                <YAxis tick={{fontSize:10,fill:COLORS.muted}} axisLine={false} domain={[240,310]}/>
+                <Tooltip contentStyle={{background:COLORS.card,border:`1px solid ${COLORS.border}`,borderRadius:6,fontSize:11}}/>
+                <Bar dataKey="gs" name="Goldman" fill={COLORS.amber} radius={[3,3,0,0]}/>
+                <Bar dataKey="jpm" name="JPMorgan" fill={COLORS.red} radius={[3,3,0,0]}/>
+              </BarChart>
+            </ResponsiveContainer>
+            <div style={{fontSize:10,color:COLORS.muted,marginTop:8}}>
+              MS notes: current levels exceeded only 1% of the time in last 15 years
+            </div>
+          </Card>
+          <Card>
+            <div style={{fontSize:14,fontWeight:700,marginBottom:10}}>Normalization Divergence</div>
+            <div style={{display:"flex",gap:20,flexWrap:"wrap"}}>
+              <Stat label="Margin/GDP" value="4.14%" sub="Exceeds Oct 2021 record (3.97%)" warn/>
+              <Stat label="Margin/MktCap" value="~1.94%" sub="Moderate (mkt cap also at records)"/>
+              <Stat label="Margin/M2" value="5.64" sub="Jan 2026, vs 6.35 record"/>
+              <Stat label="Margin YoY" value="+36.3%" sub="SPX YoY: +14.9% → 2.4× gap" warn/>
+            </div>
+            <div style={{marginTop:12,padding:10,background:COLORS.red+"12",borderRadius:6,borderLeft:`3px solid ${COLORS.red}`,fontSize:11,color:COLORS.text,lineHeight:1.6}}>
+              ⚠ Margin/MktCap looks moderate because the market itself is oversized relative to GDP (Buffett Indicator). Margin/GDP tells the truer story — leverage relative to the actual economy is at historic extremes.
+            </div>
+          </Card>
+        </>
+      )}
+
+      {/* ═══ L2 MOMENTUM ═══ */}
+      {active===2 && (
+        <>
+          <Card>
+            <div style={{fontSize:14,fontWeight:700,marginBottom:4}}>Leverage Gap (Margin YoY − SPX YoY)</div>
+            <div style={{fontSize:11,color:COLORS.muted,marginBottom:14}}>Current: +21.4pp — leverage outpacing market</div>
+            <ResponsiveContainer width="100%" height={180}>
+              <BarChart data={gapHistory}>
+                <CartesianGrid strokeDasharray="3 3" stroke={COLORS.border}/>
+                <XAxis dataKey="m" tick={{fontSize:10,fill:COLORS.muted}} axisLine={false}/>
+                <YAxis tick={{fontSize:10,fill:COLORS.muted}} axisLine={false} tickFormatter={v=>`+${v}pp`}/>
+                <Tooltip contentStyle={{background:COLORS.card,border:`1px solid ${COLORS.border}`,borderRadius:6,fontSize:11}} formatter={v=>[`+${v}pp`,"Gap"]}/>
+                <Bar dataKey="gap" radius={[3,3,0,0]}>
+                  {gapHistory.map((e,i)=><Cell key={i} fill={e.gap>25?COLORS.red:e.gap>15?COLORS.amber:COLORS.green}/>)}
+                </Bar>
+                <ReferenceLine y={25} stroke={COLORS.red} strokeDasharray="4 4"/>
+                <ReferenceLine y={15} stroke={COLORS.amber} strokeDasharray="4 4"/>
+              </BarChart>
+            </ResponsiveContainer>
+          </Card>
+          <Card>
+            <div style={{fontSize:14,fontWeight:700,marginBottom:10}}>Momentum Signals</div>
+            <div style={{display:"flex",gap:20,flexWrap:"wrap"}}>
+              <Stat label="Consecutive Record Months" value="8" sub="May 2025 → Dec 2025" warn/>
+              <Stat label="GS Gross ΔYoY" value="+12.4pp" sub="285% (end-2025) vs 273% (end-2024)" warn/>
+              <Stat label="Margin/GDP Trend" value="↑ Accelerating" sub="4.14% — above 2021 cycle peak" warn/>
+            </div>
+          </Card>
+        </>
+      )}
+
+      {/* ═══ L3 FINANCING ═══ */}
+      {active===3 && (
+        <>
+          <Card glow={COLORS.green+"44"}>
+            <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:12}}>
+              <div style={{width:10,height:10,borderRadius:5,background:COLORS.green}}/>
+              <span style={{fontSize:14,fontWeight:700}}>Financing Conditions: LOOSE</span>
+            </div>
+            <div style={{fontSize:12,color:COLORS.text,lineHeight:1.7,marginBottom:16}}>
+              This is the layer keeping the score at 6 instead of 8. All financing indicators are deeply loose — the system can sustain current leverage because borrowing is cheap and available. The cascade doesn't start until this layer flips.
+            </div>
+            <div style={{display:"flex",gap:20,flexWrap:"wrap"}}>
+              <Stat label="Chicago Fed NFCI" value="-0.57" sub="Well below 0 = loose"/>
+              <Stat label="NFCI Risk" value="-0.30" sub="Loose"/>
+              <Stat label="NFCI Credit" value="-0.17" sub="Loose"/>
+              <Stat label="NFCI Leverage" value="-0.10" sub="Loose"/>
+            </div>
+          </Card>
+          <Card>
+            <div style={{fontSize:14,fontWeight:700,marginBottom:10}}>Credit Markets</div>
+            <div style={{display:"flex",gap:20,flexWrap:"wrap"}}>
+              <Stat label="HY OAS Spread" value="288bp" sub="Historically tight, tick wider from 286"/>
+              <Stat label="HYG Price" value="$81.00" sub="Near 52wk high ($81.36)"/>
+              <Stat label="SOFR" value="3.67%" sub="Fed holds 3.50-3.75%"/>
+              <Stat label="Prime Revenue" value="Record" sub="Banks competing for HF balances"/>
+            </div>
+            <div style={{marginTop:14,padding:10,background:COLORS.green+"12",borderRadius:6,borderLeft:`3px solid ${COLORS.green}`,fontSize:11}}>
+              📊 TRIP WIRES: HY OAS above 350bp • NFCI above -0.30 • HYG below $80.00 • SOFR above 4.00%
+            </div>
+          </Card>
+        </>
+      )}
+
+      {/* ═══ L4 CROWDING ═══ */}
+      {active===4 && (
+        <>
+          <Card>
+            <div style={{fontSize:14,fontWeight:700,marginBottom:14}}>Hedge Fund Positioning Concentration</div>
+            {[
+              {name:"Mag 7 Net Exposure",pct:19,peak:21,note:"vs 21% peak mid-2024",color:COLORS.amber},
+              {name:"Semis Net Exposure",pct:85,peak:100,note:"5-year high",color:COLORS.red},
+              {name:"Software Net Exposure",pct:15,peak:100,note:"5-year LOW (post Jan 30 selloff)",color:COLORS.green},
+              {name:"EM ex-China Allocation",pct:90,peak:100,note:"Record highs",color:COLORS.red},
+              {name:"Health Care / Biotech",pct:60,peak:100,note:"Rotating in aggressively (GS)",color:COLORS.amber},
+            ].map((item,i)=>(
+              <div key={i} style={{marginBottom:12}}>
+                <div style={{display:"flex",justifyContent:"space-between",fontSize:11,marginBottom:4}}>
+                  <span style={{color:COLORS.text,fontWeight:600}}>{item.name}</span>
+                  <span style={{color:COLORS.muted}}>{item.note}</span>
+                </div>
+                <div style={{height:8,background:COLORS.dim,borderRadius:4,overflow:"hidden"}}>
+                  <div style={{height:"100%",width:`${item.pct}%`,background:item.color,borderRadius:4,transition:"width 0.5s"}}/>
+                </div>
+              </div>
+            ))}
+          </Card>
+          <Card glow={COLORS.amber+"44"}>
+            <div style={{fontSize:13,fontWeight:700,color:COLORS.amber,marginBottom:8}}>Crowded Exit Risk: AMZN Bear Market</div>
+            <div style={{fontSize:12,color:COLORS.text,lineHeight:1.7}}>
+              Amazon — the #1 crowded HF position — is now 20%+ off its November high, entering bear market territory. Ackman, Druckenmiller, and Klarman all added in Q4. Hyperscaler capex fears ($200B 2026 guide vs $147B expected) triggered the selloff. This is L4 in action: when everyone owns the same name and the thesis cracks, the exit door is too narrow.
+            </div>
+          </Card>
+        </>
+      )}
+
+      {/* ═══ L5 VOL ═══ */}
+      {active===5 && (
+        <>
+          <Card>
+            <div style={{fontSize:14,fontWeight:700,marginBottom:4}}>Volatility Regime</div>
+            <div style={{fontSize:11,color:COLORS.muted,marginBottom:14}}>Mixed — VIX below 20 but VVIX back in red zone (&gt;110)</div>
+            <div style={{display:"flex",gap:20,flexWrap:"wrap",marginBottom:16}}>
+              <Stat label="VIX" value="19.09" sub="Just below 20 threshold"/>
+              <Stat label="VVIX" value="115.5" sub="RED ZONE — up from 107" warn/>
+              <Stat label="Term Structure" value="Flat→Contango" sub="Orderly, not backwardated"/>
+              <Stat label="Dealer Gamma" value="LONG" sub="Dampening moves"/>
+            </div>
+            <div style={{display:"flex",gap:20,flexWrap:"wrap"}}>
+              <Stat label="Equity P/C" value="0.65" sub="Neutral"/>
+              <Stat label="Total P/C" value="0.90" sub="Slightly defensive"/>
+              <Stat label="SPX P/C" value="1.28" sub="Active hedging"/>
+              <Stat label="Realized Vol" value="~14.5%" sub="Below implied"/>
+            </div>
+          </Card>
+          <Card>
+            <div style={{fontSize:14,fontWeight:700,marginBottom:4}}>Turbulence History (Immune System)</div>
+            <div style={{fontSize:11,color:COLORS.muted,marginBottom:14}}>Jan 30 spike (83.3) absorbed — system healing</div>
+            <ResponsiveContainer width="100%" height={160}>
+              <AreaChart data={turbChart}>
+                <defs><linearGradient id="tfill" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor={COLORS.blue} stopOpacity={0.3}/>
+                  <stop offset="95%" stopColor={COLORS.blue} stopOpacity={0}/>
+                </linearGradient></defs>
+                <CartesianGrid strokeDasharray="3 3" stroke={COLORS.border}/>
+                <XAxis dataKey="d" tick={{fontSize:9,fill:COLORS.muted}} axisLine={false}/>
+                <YAxis tick={{fontSize:10,fill:COLORS.muted}} axisLine={false}/>
+                <Tooltip contentStyle={{background:COLORS.card,border:`1px solid ${COLORS.border}`,borderRadius:6,fontSize:11}}/>
+                <Area type="monotone" dataKey="v" stroke={COLORS.blue} fill="url(#tfill)" strokeWidth={2}/>
+                <ReferenceLine y={27.6} stroke={COLORS.red} strokeDasharray="4 4" label={{value:"95th",fontSize:9,fill:COLORS.red}}/>
+              </AreaChart>
+            </ResponsiveContainer>
+          </Card>
+        </>
+      )}
+
+      {/* ═══ L6 CALENDAR ═══ */}
+      {active===6 && (
+        <>
+          <Card>
+            <div style={{fontSize:14,fontWeight:700,marginBottom:14}}>Event Cluster: Feb–May 2026</div>
+            {[
+              {date:"Late Feb",event:"Warsh confirmation hearings",risk:"HIGH",color:COLORS.red,detail:"Fed regime uncertainty — hawkish expectations creating rate anxiety"},
+              {date:"Feb 21",event:"Monthly OpEx (passed)",risk:"LOW",color:COLORS.green,detail:"Expiry complete — gamma roll-off already absorbed"},
+              {date:"Feb-Mar",event:"Tariff uncertainty",risk:"MED",color:COLORS.amber,detail:"SCOTUS rejected Trump tariffs — but executive action still possible"},
+              {date:"April",event:"US-China summit (Beijing)",risk:"HIGH",color:COLORS.red,detail:"Trade truce straining — semi/green energy jockeying"},
+              {date:"May 2026",event:"Powell term ends",risk:"HIGH",color:COLORS.red,detail:"Fed leadership transition to Warsh — QT policy shift expected"},
+              {date:"Q1 Reports",event:"Earnings season winding",risk:"LOW",color:COLORS.green,detail:"Mostly complete — NVDA forward guidance main residual catalyst"},
+            ].map((e,i)=>(
+              <div key={i} style={{display:"flex",alignItems:"flex-start",gap:12,padding:"10px 0",
+                borderBottom:i<5?`1px solid ${COLORS.border}`:"none"}}>
+                <div style={{minWidth:70,fontSize:11,fontWeight:700,color:COLORS.muted}}>{e.date}</div>
+                <div style={{flex:1}}>
+                  <div style={{display:"flex",alignItems:"center",gap:8}}>
+                    <span style={{fontSize:12,fontWeight:700,color:COLORS.text}}>{e.event}</span>
+                    <Pill color={e.color}>{e.risk}</Pill>
+                  </div>
+                  <div style={{fontSize:11,color:COLORS.muted,marginTop:3}}>{e.detail}</div>
+                </div>
+              </div>
+            ))}
+          </Card>
+        </>
+      )}
+
+      {/* ═══ CASCADE ═══ */}
+      {active===7 && (
+        <>
+          <Card glow={COLORS.amber+"44"}>
+            <div style={{fontSize:14,fontWeight:700,marginBottom:14,color:COLORS.amber}}>Cascade Vulnerability Chain</div>
+            <div style={{display:"flex",flexDirection:"column",gap:6}}>
+              {["Margin calls","Forced selling","Gamma hedging amplification","Leveraged ETF rebalancing",
+                "Credit spread widening","Prime broker margin hikes","Second wave forced selling"].map((step,i)=>(
+                <div key={i} style={{display:"flex",alignItems:"center",gap:10}}>
+                  <div style={{width:24,height:24,borderRadius:12,background:i<2?COLORS.amber+"22":COLORS.dim,
+                    display:"flex",alignItems:"center",justifyContent:"center",fontSize:11,fontWeight:700,
+                    color:i<2?COLORS.amber:COLORS.muted,border:`1px solid ${i<2?COLORS.amber+"44":COLORS.border}`}}>
+                    {i+1}
+                  </div>
+                  <span style={{fontSize:12,color:i<2?COLORS.text:COLORS.muted,fontWeight:i<2?600:400}}>{step}</span>
+                  {i<6 && <span style={{color:COLORS.dim,fontSize:16}}>→</span>}
+                </div>
+              ))}
+            </div>
+            <div style={{marginTop:16,padding:12,background:COLORS.card,borderRadius:6,border:`1px solid ${COLORS.border}`}}>
+              <div style={{display:"flex",justifyContent:"space-between",marginBottom:8}}>
+                <span style={{fontSize:11,fontWeight:700,color:COLORS.muted}}>ACTIVATION PROBABILITY</span>
+                <Pill color={COLORS.amber}>LOW–MODERATE</Pill>
+              </div>
+              <div style={{fontSize:12,color:COLORS.text,lineHeight:1.7}}>
+                Steps 1-2 are pre-loaded (leverage at records). The chain activates when L3 financing conditions flip — HY spread widening + NFCI tightening + prime broker margin hikes. Currently all three are loose, keeping the cascade dormant.
+              </div>
+            </div>
+          </Card>
+          <Card>
+            <div style={{fontSize:14,fontWeight:700,marginBottom:14}}>Recommended Actions</div>
+            {["Reduce single-name concentration (esp. semis/Mag 7)",
+              "Tighten stops — leverage means unwinds will be faster than normal",
+              "Add tail hedges while VIX near 19 (cheap protection window)",
+              "Monitor HYG weekly — break below $80.50 is early warning",
+              "Watch NFCI — move above -0.30 escalates score to 7-8",
+              "If L3 flips: immediately shift to defensive posture"
+            ].map((a,i)=>(
+              <div key={i} style={{display:"flex",alignItems:"flex-start",gap:10,marginBottom:10}}>
+                <span style={{color:COLORS.accent,fontSize:14,lineHeight:1}}>→</span>
+                <span style={{fontSize:12,color:COLORS.text,lineHeight:1.5}}>{a}</span>
+              </div>
+            ))}
+          </Card>
+        </>
+      )}
+
+      {/* Footer */}
+      <div style={{marginTop:20,paddingTop:12,borderTop:`1px solid ${COLORS.border}`,
+        fontSize:9,color:COLORS.dim,lineHeight:1.8}}>
+        Sources: FINRA (Dec 2025), GS/JPM/MS Prime (end-2025), Chicago Fed NFCI (Feb 13), CBOE (Feb 20), ICE BofA HY (Feb 19), FRED, web search.
+        Not investment advice. Maguire Leverage Monitor — 22V Trading Desk.
+      </div>
+    </div>
+  );
+}
+
+
+ReactDOM.createRoot(document.getElementById('root')).render(<MaguireLeverageMonitor />);
+</script>
+</body>
+</html>

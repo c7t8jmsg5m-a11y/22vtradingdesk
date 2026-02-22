@@ -7,1262 +7,184 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: #0a0e17; color: #e2e8f0; font-family: 'DM Sans', sans-serif; }
+:root{--bg:#0a0e17;--card:#111827;--border:#1e293b;--red:#ef4444;--amber:#f59e0b;--green:#22c55e;--blue:#3b82f6;--text:#e2e8f0;--muted:#64748b;--dim:#334155;--accent:#f97316}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:820px;margin:0 auto;padding:24px 20px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px 20px;margin-bottom:12px}
+.glow-a{border-color:rgba(245,158,11,.27)}.glow-g{border-color:rgba(34,197,94,.27)}
+.mono{font-family:'JetBrains Mono',monospace}
+.pill{display:inline-block;border-radius:20px;padding:3px 12px;font-size:11px;font-weight:700;letter-spacing:.5px}
+.p-a{background:rgba(245,158,11,.09);color:var(--amber);border:1px solid rgba(245,158,11,.27)}
+.p-r{background:rgba(239,68,68,.09);color:var(--red);border:1px solid rgba(239,68,68,.27)}
+.p-g{background:rgba(34,197,94,.09);color:var(--green);border:1px solid rgba(34,197,94,.27)}
+.tabs{display:flex;gap:4px;margin-bottom:16px;overflow-x:auto;padding-bottom:4px}
+.tab{background:0;border:1px solid var(--border);color:var(--muted);border-radius:6px;padding:6px 12px;font-size:11px;font-weight:500;cursor:pointer;white-space:nowrap;font-family:inherit;transition:all .2s}
+.tab:hover{border-color:var(--accent);color:var(--accent)}
+.tab.on{background:rgba(249,115,22,.13);border-color:var(--accent);color:var(--accent);font-weight:700}
+.pnl{display:none}.pnl.on{display:block}
+.meter{display:flex;gap:3px;align-items:center;margin-top:10px}
+.m-s{width:10px;height:16px;border-radius:2px;background:var(--dim)}.m-s.on{background:var(--amber)}
+.stats{display:flex;flex-wrap:wrap;gap:20px}
+.st{flex:1;min-width:130px}.st-l{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.st-v{font-size:20px;font-weight:800;font-family:'JetBrains Mono',monospace}.st-v.w{color:var(--red)}
+.st-s{font-size:10px;color:var(--muted);margin-top:2px}.st-s.w{color:var(--amber)}
+.lr{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border)}
+.lr:last-child{border-bottom:0}
+.ln{font-size:13px;font-weight:700}.ld{font-size:11px;color:var(--muted);margin-top:2px}
+.dots{display:flex;gap:3px}.dot{width:22px;height:8px;border-radius:2px;background:var(--dim)}
+.bch{display:flex;align-items:flex-end;gap:4px;height:180px;padding:10px 0;border-bottom:1px solid var(--border)}
+.bg{display:flex;flex-direction:column;align-items:center;flex:1;gap:2px;justify-content:flex-end;height:100%}
+.bg .bs{display:flex;gap:2px;align-items:flex-end;width:100%}
+.b{border-radius:3px 3px 0 0;min-width:8px;flex:1;position:relative;transition:opacity .15s}.b:hover{opacity:.8}
+.bl{font-size:9px;color:var(--muted);margin-top:4px;text-align:center}
+.bt{display:none;position:absolute;bottom:100%;left:50%;transform:translateX(-50%);background:var(--card);border:1px solid var(--border);border-radius:4px;padding:4px 8px;font-size:10px;white-space:nowrap;z-index:10}
+.b:hover .bt{display:block}
+.pt{height:8px;background:var(--dim);border-radius:4px;overflow:hidden}.pf{height:100%;border-radius:4px;transition:width .5s}
+.er{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid var(--border)}.er:last-child{border-bottom:0}
+.ed{min-width:70px;font-size:11px;font-weight:700;color:var(--muted)}.et{font-size:12px;font-weight:700}.ee{font-size:11px;color:var(--muted);margin-top:3px}
+.cs{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.cn{width:24px;height:24px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;border:1px solid var(--border);color:var(--muted)}
+.cn.h{background:rgba(245,158,11,.13);color:var(--amber);border-color:rgba(245,158,11,.27)}
+.ct{font-size:12px}.ct.h{font-weight:600}.ca{color:var(--dim);font-size:14px;margin-left:4px}
+.al{margin-top:12px;padding:10px;border-radius:6px;font-size:11px;line-height:1.6}
+.al-r{background:rgba(239,68,68,.07);border-left:3px solid var(--red)}
+.al-g{background:rgba(34,197,94,.07);border-left:3px solid var(--green)}
+.rc{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px}
+.ra{color:var(--accent);font-size:14px;line-height:1}.rt{font-size:12px;line-height:1.5}
+.foot{margin-top:20px;padding-top:12px;border-top:1px solid var(--border);font-size:9px;color:var(--dim);line-height:1.8}
+@media(max-width:600px){.stats{gap:12px}.st{min-width:110px}.st-v{font-size:16px}}
 </style>
 </head>
 <body>
-<div id="root"></div>
-
-<script crossorigin src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
-<script crossorigin src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
-<script crossorigin src="https://unpkg.com/react-is@18.2.0/umd/react-is.production.min.js"></script>
-<script crossorigin src="https://unpkg.com/prop-types@15.8.1/prop-types.min.js"></script>
-<script crossorigin src="https://unpkg.com/recharts@2.1.16/umd/Recharts.min.js"></script>
-
+<div class="wrap">
+<div style="margin-bottom:24px">
+  <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:4px">
+    <span style="font-size:11px;font-weight:800;letter-spacing:3px;color:var(--accent);text-transform:uppercase">Maguire Leverage Monitor</span>
+    <span style="font-size:10px;color:var(--muted)">22V Trading Desk</span>
+  </div>
+  <div style="display:flex;align-items:center;gap:16px;margin-top:12px">
+    <div class="mono" style="font-size:48px;font-weight:900;color:var(--amber);line-height:1">6<span style="font-size:24px;color:var(--muted)">/10</span></div>
+    <div><span class="pill p-a">ELEVATED — FRAGILE EQUILIBRIUM</span><div style="font-size:11px;color:var(--muted);margin-top:6px">Feb 22, 2026 • Market data: Feb 20 close</div></div>
+  </div>
+  <div class="meter"><div class="m-s on"></div><div class="m-s on"></div><div class="m-s on"></div><div class="m-s on"></div><div class="m-s on"></div><div class="m-s on"></div><div class="m-s"></div><div class="m-s"></div><div class="m-s"></div><div class="m-s"></div><span class="mono" style="margin-left:8px;font-size:14px;font-weight:800;color:var(--amber)">6/10</span></div>
+</div>
+<div class="tabs" id="tabs"></div>
+<div class="pnl on" id="p0">
+  <div class="card"><div style="font-size:14px;font-weight:700;margin-bottom:14px;color:var(--accent)">Layer Breakdown</div>
+    <div class="lr"><div style="flex:1"><div class="ln">L1: Leverage Levels</div><div class="ld">Margin $1.23T record • HF gross 285-298% ATH</div></div><div class="dots"><div class="dot" style="background:var(--red)"></div><div class="dot" style="background:var(--red)"></div></div></div>
+    <div class="lr"><div style="flex:1"><div class="ln">L2: Momentum</div><div class="ld">8 consecutive records • +36.3% YoY (2.4× market)</div></div><div class="dots"><div class="dot" style="background:var(--red)"></div><div class="dot" style="background:var(--red)"></div></div></div>
+    <div class="lr"><div style="flex:1"><div class="ln">L3: Financing</div><div class="ld">NFCI -0.57 (loose) • HY OAS 288bp (tight)</div></div><div class="dots"><div class="dot" style="background:var(--green)"></div><div class="dot" style="background:var(--green)"></div></div></div>
+    <div class="lr"><div style="flex:1"><div class="ln">L4: Crowding</div><div class="ld">Mag7 19% HF exposure • Semis 5yr highs</div></div><div class="dots"><div class="dot" style="background:var(--amber)"></div></div></div>
+    <div class="lr"><div style="flex:1"><div class="ln">L5: Vol Regime</div><div class="ld">VIX 19.09 • Gamma long • P/C 0.90</div></div><div class="dots"><div class="dot" style="background:var(--green)"></div><div class="dot" style="background:var(--green)"></div></div></div>
+    <div class="lr"><div style="flex:1"><div class="ln">L6: Calendar</div><div class="ld">Warsh hearings • China summit Apr • Powell May</div></div><div class="dots"><div class="dot" style="background:var(--amber)"></div></div></div>
+  </div>
+  <div class="card glow-a"><div style="font-size:13px;font-weight:700;color:var(--amber);margin-bottom:8px">⚡ Key Tension</div><div style="font-size:12px;line-height:1.7">The structural fuel is fully loaded — margin debt at records growing 2.4× faster than equities, HF gross at all-time highs, crowding in semis/Mag7. <strong style="color:var(--green)">The brakes are mostly working:</strong> financing deeply loose, credit tight, dealers long gamma. <strong style="color:var(--amber)">But VVIX at 115.5 (red zone) signals the options market is pricing tail risk even as VIX sits at 19.</strong> Watch for L3 to flip — HY spread widening, NFCI above -0.30, or prime broker margin hikes.</div></div>
+  <div class="card"><div style="font-size:14px;font-weight:700;margin-bottom:14px">Real-Time Readings</div>
+    <div class="stats">
+      <div class="st"><div class="st-l">S&P 500</div><div class="st-v">6,910</div><div class="st-s">+0.24% vs 50MA</div></div>
+      <div class="st"><div class="st-l">VIX</div><div class="st-v">19.09</div><div class="st-s">Below 20 threshold</div></div>
+      <div class="st"><div class="st-l">VVIX</div><div class="st-v w">115.5</div><div class="st-s w">RED ZONE (&gt;110)</div></div>
+      <div class="st"><div class="st-l">HY OAS</div><div class="st-v">288bp</div><div class="st-s">Tight — no stress</div></div>
+      <div class="st"><div class="st-l">NFCI</div><div class="st-v">-0.57</div><div class="st-s">Deeply loose</div></div>
+      <div class="st"><div class="st-l">SOFR</div><div class="st-v">3.67%</div><div class="st-s">Fed 3.50-3.75%</div></div>
+      <div class="st"><div class="st-l">Put/Call</div><div class="st-v">0.90</div><div class="st-s">SPX: 1.28 (hedged)</div></div>
+      <div class="st"><div class="st-l">DXY</div><div class="st-v">97.73</div><div class="st-s">Dollar index</div></div>
+    </div>
+  </div>
+</div>
+<div class="pnl" id="p1">
+  <div class="card"><div style="font-size:14px;font-weight:700;margin-bottom:4px">FINRA Margin Debt</div><div style="font-size:11px;color:var(--muted);margin-bottom:14px">$1,226B — 7th consecutive monthly record (Dec 2025)</div>
+    <svg viewBox="0 0 600 210" style="width:100%;height:210px"><defs><linearGradient id="mg" x1="0" y1="0" x2="0" y2="1"><stop offset="5%" stop-color="#ef4444" stop-opacity=".3"/><stop offset="95%" stop-color="#ef4444" stop-opacity="0"/></linearGradient></defs>
+      <line x1="40" y1="10" x2="40" y2="180" stroke="#1e293b" stroke-width=".5"/><line x1="40" y1="180" x2="590" y2="180" stroke="#1e293b" stroke-width=".5"/>
+      <text x="35" y="15" fill="#64748b" font-size="9" text-anchor="end" font-family="JetBrains Mono">$1300B</text><text x="35" y="98" fill="#64748b" font-size="9" text-anchor="end" font-family="JetBrains Mono">$1100B</text><text x="35" y="183" fill="#64748b" font-size="9" text-anchor="end" font-family="JetBrains Mono">$900B</text>
+      <line x1="40" y1="157" x2="590" y2="157" stroke="#f59e0b" stroke-dasharray="5 5" stroke-width="1"/><text x="50" y="153" fill="#f59e0b" font-size="8">Jan 2021 peak ($937B)</text>
+      <polygon points="86,168 136,160 186,150 236,140 286,127 336,113 386,100 436,91 486,81 536,68 586,55 586,180 86,180" fill="url(#mg)"/>
+      <polyline points="86,168 136,160 186,150 236,140 286,127 336,113 386,100 436,91 486,81 536,68 586,55" fill="none" stroke="#ef4444" stroke-width="2.5"/>
+      <circle cx="86" cy="168" r="3" fill="#ef4444"/><circle cx="136" cy="160" r="3" fill="#ef4444"/><circle cx="186" cy="150" r="3" fill="#ef4444"/><circle cx="236" cy="140" r="3" fill="#ef4444"/><circle cx="286" cy="127" r="3" fill="#ef4444"/><circle cx="336" cy="113" r="3" fill="#ef4444"/><circle cx="386" cy="100" r="3" fill="#ef4444"/><circle cx="436" cy="91" r="3" fill="#ef4444"/><circle cx="486" cy="81" r="3" fill="#ef4444"/><circle cx="536" cy="68" r="3" fill="#ef4444"/><circle cx="586" cy="55" r="3" fill="#ef4444"/>
+      <text x="86" y="195" fill="#64748b" font-size="8" text-anchor="middle">Jan</text><text x="186" y="195" fill="#64748b" font-size="8" text-anchor="middle">Mar</text><text x="286" y="195" fill="#64748b" font-size="8" text-anchor="middle">May</text><text x="386" y="195" fill="#64748b" font-size="8" text-anchor="middle">Jul</text><text x="486" y="195" fill="#64748b" font-size="8" text-anchor="middle">Sep</text><text x="586" y="195" fill="#64748b" font-size="8" text-anchor="middle">Dec</text>
+    </svg>
+  </div>
+  <div class="card"><div style="font-size:14px;font-weight:700;margin-bottom:4px">Hedge Fund Gross Leverage</div><div style="font-size:11px;color:var(--muted);margin-bottom:14px">GS: 285% (ATH) • JPM: 298% (5yr high) • Quant: 645% • Multi-strat: 444%</div><div class="bch" id="hfc"></div><div style="font-size:10px;color:var(--muted);margin-top:8px">MS notes: current levels exceeded only 1% of the time in last 15 years</div></div>
+  <div class="card"><div style="font-size:14px;font-weight:700;margin-bottom:10px">Normalization Divergence</div>
+    <div class="stats"><div class="st"><div class="st-l">Margin/GDP</div><div class="st-v w">4.14%</div><div class="st-s w">Exceeds Oct 2021 record (3.97%)</div></div><div class="st"><div class="st-l">Margin/MktCap</div><div class="st-v">~1.94%</div><div class="st-s">Moderate (mkt cap also at records)</div></div><div class="st"><div class="st-l">Margin/M2</div><div class="st-v">5.64</div><div class="st-s">Jan 2026, vs 6.35 record</div></div><div class="st"><div class="st-l">Margin YoY</div><div class="st-v w">+36.3%</div><div class="st-s w">SPX YoY: +14.9% → 2.4× gap</div></div></div>
+    <div class="al al-r">⚠ Margin/MktCap looks moderate because the market itself is oversized relative to GDP (Buffett Indicator). Margin/GDP tells the truer story — leverage relative to the actual economy is at historic extremes.</div>
+  </div>
+</div>
+<div class="pnl" id="p2">
+  <div class="card"><div style="font-size:14px;font-weight:700;margin-bottom:4px">Leverage Gap (Margin YoY − SPX YoY)</div><div style="font-size:11px;color:var(--muted);margin-bottom:14px">Current: +21.4pp — leverage outpacing market</div><div class="bch" id="gc"></div></div>
+  <div class="card"><div style="font-size:14px;font-weight:700;margin-bottom:10px">Momentum Signals</div>
+    <div class="stats"><div class="st"><div class="st-l">Consecutive Record Months</div><div class="st-v w">8</div><div class="st-s w">May 2025 → Dec 2025</div></div><div class="st"><div class="st-l">GS Gross ΔYoY</div><div class="st-v w">+12.4pp</div><div class="st-s w">285% (end-2025) vs 273% (end-2024)</div></div><div class="st"><div class="st-l">Margin/GDP Trend</div><div class="st-v w">↑ Accel</div><div class="st-s w">4.14% — above 2021 cycle peak</div></div></div>
+  </div>
+</div>
+<div class="pnl" id="p3">
+  <div class="card glow-g"><div style="display:flex;align-items:center;gap:8px;margin-bottom:12px"><div style="width:10px;height:10px;border-radius:5px;background:var(--green)"></div><span style="font-size:14px;font-weight:700">Financing Conditions: LOOSE</span></div>
+    <div style="font-size:12px;line-height:1.7;margin-bottom:16px">This is the layer keeping the score at 6 instead of 8. All financing indicators are deeply loose — the system can sustain current leverage because borrowing is cheap and available. The cascade doesn't start until this layer flips.</div>
+    <div class="stats"><div class="st"><div class="st-l">Chicago Fed NFCI</div><div class="st-v">-0.57</div><div class="st-s">Well below 0 = loose</div></div><div class="st"><div class="st-l">NFCI Risk</div><div class="st-v">-0.30</div><div class="st-s">Loose</div></div><div class="st"><div class="st-l">NFCI Credit</div><div class="st-v">-0.17</div><div class="st-s">Loose</div></div><div class="st"><div class="st-l">NFCI Leverage</div><div class="st-v">-0.10</div><div class="st-s">Loose</div></div></div>
+  </div>
+  <div class="card"><div style="font-size:14px;font-weight:700;margin-bottom:10px">Credit Markets</div>
+    <div class="stats"><div class="st"><div class="st-l">HY OAS Spread</div><div class="st-v">288bp</div><div class="st-s">Historically tight</div></div><div class="st"><div class="st-l">HYG Price</div><div class="st-v">$81.00</div><div class="st-s">Near 52wk high ($81.36)</div></div><div class="st"><div class="st-l">SOFR</div><div class="st-v">3.67%</div><div class="st-s">Fed holds 3.50-3.75%</div></div><div class="st"><div class="st-l">Prime Revenue</div><div class="st-v">Record</div><div class="st-s">Banks competing for HF balances</div></div></div>
+    <div class="al al-g">📊 TRIP WIRES: HY OAS above 350bp • NFCI above -0.30 • HYG below $80.00 • SOFR above 4.00%</div>
+  </div>
+</div>
+<div class="pnl" id="p4">
+  <div class="card"><div style="font-size:14px;font-weight:700;margin-bottom:14px">Hedge Fund Positioning Concentration</div><div id="cb"></div></div>
+  <div class="card glow-a"><div style="font-size:13px;font-weight:700;color:var(--amber);margin-bottom:8px">Crowded Exit Risk: AMZN Bear Market</div><div style="font-size:12px;line-height:1.7">Amazon — the #1 crowded HF position — is now 20%+ off its November high, entering bear market territory. Ackman, Druckenmiller, and Klarman all added in Q4. Hyperscaler capex fears ($200B 2026 guide vs $147B expected) triggered the selloff. This is L4 in action: when everyone owns the same name and the thesis cracks, the exit door is too narrow.</div></div>
+</div>
+<div class="pnl" id="p5">
+  <div class="card"><div style="font-size:14px;font-weight:700;margin-bottom:4px">Volatility Regime</div><div style="font-size:11px;color:var(--muted);margin-bottom:14px">Mixed — VIX below 20 but VVIX back in red zone (&gt;110)</div>
+    <div class="stats" style="margin-bottom:16px"><div class="st"><div class="st-l">VIX</div><div class="st-v">19.09</div><div class="st-s">Just below 20 threshold</div></div><div class="st"><div class="st-l">VVIX</div><div class="st-v w">115.5</div><div class="st-s w">RED ZONE — up from 107</div></div><div class="st"><div class="st-l">Term Structure</div><div class="st-v">Flat→C</div><div class="st-s">Orderly, not backwardated</div></div><div class="st"><div class="st-l">Dealer Gamma</div><div class="st-v">LONG</div><div class="st-s">Dampening moves</div></div></div>
+    <div class="stats"><div class="st"><div class="st-l">Equity P/C</div><div class="st-v">0.65</div><div class="st-s">Neutral</div></div><div class="st"><div class="st-l">Total P/C</div><div class="st-v">0.90</div><div class="st-s">Slightly defensive</div></div><div class="st"><div class="st-l">SPX P/C</div><div class="st-v">1.28</div><div class="st-s">Active hedging</div></div><div class="st"><div class="st-l">Realized Vol</div><div class="st-v">~14.5%</div><div class="st-s">Below implied</div></div></div>
+  </div>
+  <div class="card"><div style="font-size:14px;font-weight:700;margin-bottom:4px">Turbulence History (Immune System)</div><div style="font-size:11px;color:var(--muted);margin-bottom:14px">Jan 30 spike (83.3) absorbed — system healing</div>
+    <svg viewBox="0 0 600 170" style="width:100%;height:160px"><defs><linearGradient id="tg" x1="0" y1="0" x2="0" y2="1"><stop offset="5%" stop-color="#3b82f6" stop-opacity=".3"/><stop offset="95%" stop-color="#3b82f6" stop-opacity="0"/></linearGradient></defs>
+      <line x1="30" y1="140" x2="590" y2="140" stroke="#1e293b" stroke-width=".5"/>
+      <line x1="30" y1="92" x2="590" y2="92" stroke="#ef4444" stroke-dasharray="4 4" stroke-width="1"/><text x="595" y="95" fill="#ef4444" font-size="8" font-family="JetBrains Mono">95th</text>
+      <polygon points="76,126 122,130 168,133 214,128 260,121 306,5 352,102 398,124 444,133 490,116 536,127 582,119 582,140 76,140" fill="url(#tg)"/>
+      <polyline points="76,126 122,130 168,133 214,128 260,121 306,5 352,102 398,124 444,133 490,116 536,127 582,119" fill="none" stroke="#3b82f6" stroke-width="2"/>
+      <text x="76" y="155" fill="#64748b" font-size="7" text-anchor="middle">Dec</text><text x="168" y="155" fill="#64748b" font-size="7" text-anchor="middle">Jan 13</text><text x="260" y="155" fill="#64748b" font-size="7" text-anchor="middle">Jan 27</text><text x="306" y="155" fill="#64748b" font-size="7" text-anchor="middle">Jan 30</text><text x="398" y="155" fill="#64748b" font-size="7" text-anchor="middle">Feb 7</text><text x="490" y="155" fill="#64748b" font-size="7" text-anchor="middle">Feb 13</text><text x="582" y="155" fill="#64748b" font-size="7" text-anchor="middle">Feb 20</text>
+    </svg>
+  </div>
+</div>
+<div class="pnl" id="p6">
+  <div class="card"><div style="font-size:14px;font-weight:700;margin-bottom:14px">Event Cluster: Feb–May 2026</div>
+    <div class="er"><div class="ed">Late Feb</div><div><div style="display:flex;align-items:center;gap:8px"><span class="et">Warsh confirmation hearings</span><span class="pill p-r">HIGH</span></div><div class="ee">Fed regime uncertainty — hawkish expectations creating rate anxiety</div></div></div>
+    <div class="er"><div class="ed">Feb 21</div><div><div style="display:flex;align-items:center;gap:8px"><span class="et">Monthly OpEx (passed)</span><span class="pill p-g">LOW</span></div><div class="ee">Expiry complete — gamma roll-off already absorbed</div></div></div>
+    <div class="er"><div class="ed">Feb-Mar</div><div><div style="display:flex;align-items:center;gap:8px"><span class="et">Tariff uncertainty</span><span class="pill p-a">MED</span></div><div class="ee">SCOTUS rejected Trump tariffs — but executive action still possible</div></div></div>
+    <div class="er"><div class="ed">April</div><div><div style="display:flex;align-items:center;gap:8px"><span class="et">US-China summit (Beijing)</span><span class="pill p-r">HIGH</span></div><div class="ee">Trade truce straining — semi/green energy jockeying</div></div></div>
+    <div class="er"><div class="ed">May 2026</div><div><div style="display:flex;align-items:center;gap:8px"><span class="et">Powell term ends</span><span class="pill p-r">HIGH</span></div><div class="ee">Fed leadership transition to Warsh — QT policy shift expected</div></div></div>
+    <div class="er"><div class="ed">Q1 Reports</div><div><div style="display:flex;align-items:center;gap:8px"><span class="et">Earnings season winding</span><span class="pill p-g">LOW</span></div><div class="ee">Mostly complete — NVDA forward guidance main residual catalyst</div></div></div>
+  </div>
+</div>
+<div class="pnl" id="p7">
+  <div class="card glow-a"><div style="font-size:14px;font-weight:700;margin-bottom:14px;color:var(--amber)">Cascade Vulnerability Chain</div>
+    <div class="cs"><div class="cn h">1</div><span class="ct h">Margin calls</span><span class="ca">→</span></div>
+    <div class="cs"><div class="cn h">2</div><span class="ct h">Forced selling</span><span class="ca">→</span></div>
+    <div class="cs"><div class="cn">3</div><span class="ct">Gamma hedging amplification</span><span class="ca">→</span></div>
+    <div class="cs"><div class="cn">4</div><span class="ct">Leveraged ETF rebalancing</span><span class="ca">→</span></div>
+    <div class="cs"><div class="cn">5</div><span class="ct">Credit spread widening</span><span class="ca">→</span></div>
+    <div class="cs"><div class="cn">6</div><span class="ct">Prime broker margin hikes</span><span class="ca">→</span></div>
+    <div class="cs"><div class="cn">7</div><span class="ct">Second wave forced selling</span></div>
+    <div style="margin-top:16px;padding:12px;background:var(--card);border-radius:6px;border:1px solid var(--border)"><div style="display:flex;justify-content:space-between;margin-bottom:8px"><span style="font-size:11px;font-weight:700;color:var(--muted)">ACTIVATION PROBABILITY</span><span class="pill p-a">LOW–MODERATE</span></div><div style="font-size:12px;line-height:1.7">Steps 1-2 are pre-loaded (leverage at records). The chain activates when L3 financing conditions flip — HY spread widening + NFCI tightening + prime broker margin hikes. Currently all three are loose, keeping the cascade dormant.</div></div>
+  </div>
+  <div class="card"><div style="font-size:14px;font-weight:700;margin-bottom:14px">Recommended Actions</div>
+    <div class="rc"><span class="ra">→</span><span class="rt">Reduce single-name concentration (esp. semis/Mag 7)</span></div>
+    <div class="rc"><span class="ra">→</span><span class="rt">Tighten stops — leverage means unwinds will be faster than normal</span></div>
+    <div class="rc"><span class="ra">→</span><span class="rt">Add tail hedges while VIX near 19 (cheap protection window)</span></div>
+    <div class="rc"><span class="ra">→</span><span class="rt">Monitor HYG weekly — break below $80.50 is early warning</span></div>
+    <div class="rc"><span class="ra">→</span><span class="rt">Watch NFCI — move above -0.30 escalates score to 7-8</span></div>
+    <div class="rc"><span class="ra">→</span><span class="rt">If L3 flips: immediately shift to defensive posture</span></div>
+  </div>
+</div>
+<div class="foot">Sources: FINRA (Dec 2025), GS/JPM/MS Prime (end-2025), Chicago Fed NFCI (Feb 13), CBOE (Feb 20), ICE BofA HY (Feb 19), FRED, web search. Not investment advice. Maguire Leverage Monitor — 22V Trading Desk.</div>
+</div>
 <script>
-(function() {
-  const { useState } = React;
-  const { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, AreaChart, Area, ReferenceLine, LineChart, Line, CartesianGrid } = Recharts;
-
-
-
-const COLORS = {
-  bg: "#0a0e17",
-  card: "#111827",
-  border: "#1e293b",
-  red: "#ef4444",
-  amber: "#f59e0b",
-  green: "#22c55e",
-  blue: "#3b82f6",
-  text: "#e2e8f0",
-  muted: "#64748b",
-  dim: "#334155",
-  accent: "#f97316"
-};
-const marginHistory = [{
-  m: "Jan 25",
-  v: 930
-}, {
-  m: "Feb",
-  v: 948
-}, {
-  m: "Mar",
-  v: 965
-}, {
-  m: "Apr",
-  v: 990
-}, {
-  m: "May",
-  v: 1020
-}, {
-  m: "Jun",
-  v: 1055
-}, {
-  m: "Jul",
-  v: 1085
-}, {
-  m: "Aug",
-  v: 1106
-}, {
-  m: "Sep",
-  v: 1130
-}, {
-  m: "Oct",
-  v: 1160
-}, {
-  m: "Nov",
-  v: 1200
-}, {
-  m: "Dec",
-  v: 1226
-}];
-const hfHistory = [{
-  q: "Q1 24",
-  gs: 258,
-  jpm: 265
-}, {
-  q: "Q2 24",
-  gs: 262,
-  jpm: 270
-}, {
-  q: "Q3 24",
-  gs: 268,
-  jpm: 278
-}, {
-  q: "Q4 24",
-  gs: 273,
-  jpm: 284
-}, {
-  q: "Q1 25",
-  gs: 275,
-  jpm: 288
-}, {
-  q: "Q2 25",
-  gs: 278,
-  jpm: 290
-}, {
-  q: "Q3 25",
-  gs: 280,
-  jpm: 294
-}, {
-  q: "Q4 25",
-  gs: 285,
-  jpm: 298
-}];
-const gapHistory = [{
-  m: "Jul 25",
-  gap: 18
-}, {
-  m: "Aug",
-  gap: 20
-}, {
-  m: "Sep",
-  gap: 22
-}, {
-  m: "Oct",
-  gap: 25
-}, {
-  m: "Nov",
-  gap: 28
-}, {
-  m: "Dec",
-  gap: 30
-}, {
-  m: "Jan 26",
-  gap: 33
-}, {
-  m: "Feb",
-  gap: 21.4
-}];
-const turbChart = [{
-  d: "Dec",
-  v: 8
-}, {
-  d: "Jan 6",
-  v: 6
-}, {
-  d: "Jan 13",
-  v: 5
-}, {
-  d: "Jan 20",
-  v: 7
-}, {
-  d: "Jan 27",
-  v: 12
-}, {
-  d: "Jan 30",
-  v: 83
-}, {
-  d: "Feb 3",
-  v: 22
-}, {
-  d: "Feb 7",
-  v: 10
-}, {
-  d: "Feb 10",
-  v: 5
-}, {
-  d: "Feb 13",
-  v: 15
-}, {
-  d: "Feb 17",
-  v: 8
-}, {
-  d: "Feb 20",
-  v: 13
-}];
-const Card = ({
-  children,
-  glow
-}) => /*#__PURE__*/React.createElement("div", {
-  style: {
-    background: COLORS.card,
-    border: `1px solid ${glow || COLORS.border}`,
-    borderRadius: 10,
-    padding: "18px 20px",
-    marginBottom: 12
-  }
-}, children);
-const Pill = ({
-  color,
-  children
-}) => /*#__PURE__*/React.createElement("span", {
-  style: {
-    display: "inline-block",
-    background: color + "18",
-    color,
-    border: `1px solid ${color}44`,
-    borderRadius: 20,
-    padding: "3px 12px",
-    fontSize: 11,
-    fontWeight: 700,
-    letterSpacing: 0.5
-  }
-}, children);
-const Meter = ({
-  value,
-  max = 10,
-  color
-}) => /*#__PURE__*/React.createElement("div", {
-  style: {
-    display: "flex",
-    gap: 3,
-    alignItems: "center"
-  }
-}, Array.from({
-  length: max
-}, (_, i) => /*#__PURE__*/React.createElement("div", {
-  key: i,
-  style: {
-    width: 10,
-    height: 16,
-    borderRadius: 2,
-    background: i < value ? color : COLORS.dim,
-    transition: "background 0.3s"
-  }
-})), /*#__PURE__*/React.createElement("span", {
-  style: {
-    marginLeft: 8,
-    fontSize: 14,
-    fontWeight: 800,
-    color,
-    fontFamily: "'JetBrains Mono',monospace"
-  }
-}, value, "/", max));
-const LayerRow = ({
-  name,
-  score,
-  max,
-  color,
-  detail
-}) => /*#__PURE__*/React.createElement("div", {
-  style: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    padding: "12px 0",
-    borderBottom: `1px solid ${COLORS.border}`
-  }
-}, /*#__PURE__*/React.createElement("div", {
-  style: {
-    flex: 1
-  }
-}, /*#__PURE__*/React.createElement("div", {
-  style: {
-    fontSize: 13,
-    fontWeight: 700,
-    color: COLORS.text
-  }
-}, name), /*#__PURE__*/React.createElement("div", {
-  style: {
-    fontSize: 11,
-    color: COLORS.muted,
-    marginTop: 2
-  }
-}, detail)), /*#__PURE__*/React.createElement("div", {
-  style: {
-    display: "flex",
-    gap: 3
-  }
-}, Array.from({
-  length: max
-}, (_, i) => /*#__PURE__*/React.createElement("div", {
-  key: i,
-  style: {
-    width: 22,
-    height: 8,
-    borderRadius: 2,
-    background: i < score ? color : COLORS.dim
-  }
-}))));
-const Stat = ({
-  label,
-  value,
-  sub,
-  warn
-}) => /*#__PURE__*/React.createElement("div", {
-  style: {
-    flex: 1,
-    minWidth: 130
-  }
-}, /*#__PURE__*/React.createElement("div", {
-  style: {
-    fontSize: 10,
-    color: COLORS.muted,
-    textTransform: "uppercase",
-    letterSpacing: 1,
-    marginBottom: 4
-  }
-}, label), /*#__PURE__*/React.createElement("div", {
-  style: {
-    fontSize: 20,
-    fontWeight: 800,
-    color: warn ? COLORS.red : COLORS.text,
-    fontFamily: "'JetBrains Mono',monospace"
-  }
-}, value), sub && /*#__PURE__*/React.createElement("div", {
-  style: {
-    fontSize: 10,
-    color: warn ? COLORS.amber : COLORS.muted,
-    marginTop: 2
-  }
-}, sub));
-const tabs = ["Composite", "L1 Levels", "L2 Momentum", "L3 Financing", "L4 Crowding", "L5 Vol", "L6 Calendar", "Cascade"];
-function MaguireLeverageMonitor() {
-  const [active, setActive] = useState(0);
-  return /*#__PURE__*/React.createElement("div", {
-    style: {
-      background: COLORS.bg,
-      color: COLORS.text,
-      fontFamily: "'DM Sans','Segoe UI',sans-serif",
-      minHeight: "100vh",
-      padding: "24px 20px",
-      maxWidth: 820,
-      margin: "0 auto"
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      marginBottom: 24
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: "flex",
-      alignItems: "baseline",
-      gap: 12,
-      marginBottom: 4
-    }
-  }, /*#__PURE__*/React.createElement("span", {
-    style: {
-      fontSize: 11,
-      fontWeight: 800,
-      letterSpacing: 3,
-      color: COLORS.accent,
-      textTransform: "uppercase"
-    }
-  }, "Maguire Leverage Monitor"), /*#__PURE__*/React.createElement("span", {
-    style: {
-      fontSize: 10,
-      color: COLORS.muted
-    }
-  }, "22V Trading Desk")), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: "flex",
-      alignItems: "center",
-      gap: 16,
-      marginTop: 12
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 48,
-      fontWeight: 900,
-      color: COLORS.amber,
-      fontFamily: "'JetBrains Mono',monospace",
-      lineHeight: 1
-    }
-  }, "6", /*#__PURE__*/React.createElement("span", {
-    style: {
-      fontSize: 24,
-      color: COLORS.muted
-    }
-  }, "/10")), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Pill, {
-    color: COLORS.amber
-  }, "ELEVATED \u2014 FRAGILE EQUILIBRIUM"), /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 11,
-      color: COLORS.muted,
-      marginTop: 6
-    }
-  }, "Feb 22, 2026 \u2022 Market data: Feb 20 close"))), /*#__PURE__*/React.createElement(Meter, {
-    value: 6,
-    color: COLORS.amber
-  })), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: "flex",
-      gap: 4,
-      marginBottom: 16,
-      overflowX: "auto",
-      paddingBottom: 4
-    }
-  }, tabs.map((t, i) => /*#__PURE__*/React.createElement("button", {
-    key: i,
-    onClick: () => setActive(i),
-    style: {
-      background: active === i ? COLORS.accent + "22" : "transparent",
-      border: `1px solid ${active === i ? COLORS.accent : COLORS.border}`,
-      color: active === i ? COLORS.accent : COLORS.muted,
-      borderRadius: 6,
-      padding: "6px 12px",
-      fontSize: 11,
-      fontWeight: active === i ? 700 : 500,
-      cursor: "pointer",
-      whiteSpace: "nowrap",
-      transition: "all 0.2s"
-    }
-  }, t))), active === 0 && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Card, null, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 14,
-      fontWeight: 700,
-      marginBottom: 14,
-      color: COLORS.accent
-    }
-  }, "Layer Breakdown"), /*#__PURE__*/React.createElement(LayerRow, {
-    name: "L1: Leverage Levels",
-    score: 2,
-    max: 2,
-    color: COLORS.red,
-    detail: "Margin $1.23T record \u2022 HF gross 285-298% ATH"
-  }), /*#__PURE__*/React.createElement(LayerRow, {
-    name: "L2: Momentum",
-    score: 2,
-    max: 2,
-    color: COLORS.red,
-    detail: "8 consecutive records \u2022 +36.3% YoY (2.4\xD7 market)"
-  }), /*#__PURE__*/React.createElement(LayerRow, {
-    name: "L3: Financing",
-    score: 0,
-    max: 2,
-    color: COLORS.green,
-    detail: "NFCI -0.57 (loose) \u2022 HY OAS 286bp (tight)"
-  }), /*#__PURE__*/React.createElement(LayerRow, {
-    name: "L4: Crowding",
-    score: 1,
-    max: 1,
-    color: COLORS.amber,
-    detail: "Mag7 19% HF exposure \u2022 Semis 5yr highs"
-  }), /*#__PURE__*/React.createElement(LayerRow, {
-    name: "L5: Vol Regime",
-    score: 0,
-    max: 2,
-    color: COLORS.green,
-    detail: "VIX 19.09 \u2022 Gamma long \u2022 P/C 0.90"
-  }), /*#__PURE__*/React.createElement(LayerRow, {
-    name: "L6: Calendar",
-    score: 1,
-    max: 1,
-    color: COLORS.amber,
-    detail: "Warsh hearings \u2022 China summit Apr \u2022 Powell May"
-  })), /*#__PURE__*/React.createElement(Card, {
-    glow: COLORS.amber + "44"
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 13,
-      fontWeight: 700,
-      color: COLORS.amber,
-      marginBottom: 8
-    }
-  }, "\u26A1 Key Tension"), /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 12,
-      color: COLORS.text,
-      lineHeight: 1.7
-    }
-  }, "The structural fuel is fully loaded \u2014 margin debt at records growing 2.4\xD7 faster than equities, HF gross at all-time highs, crowding in semis/Mag7. ", /*#__PURE__*/React.createElement("strong", {
-    style: {
-      color: COLORS.green
-    }
-  }, "The brakes are mostly working:"), " financing deeply loose, credit tight, dealers long gamma. ", /*#__PURE__*/React.createElement("strong", {
-    style: {
-      color: COLORS.amber
-    }
-  }, "But VVIX at 115.5 (red zone) signals the options market is pricing tail risk even as VIX sits at 19."), " Watch for L3 to flip \u2014 HY spread widening, NFCI above -0.30, or prime broker margin hikes.")), /*#__PURE__*/React.createElement(Card, null, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 14,
-      fontWeight: 700,
-      marginBottom: 14
-    }
-  }, "Real-Time Readings"), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: "flex",
-      flexWrap: "wrap",
-      gap: 20
-    }
-  }, /*#__PURE__*/React.createElement(Stat, {
-    label: "S&P 500",
-    value: "6,910",
-    sub: "+0.24% vs 50MA"
-  }), /*#__PURE__*/React.createElement(Stat, {
-    label: "VIX",
-    value: "19.09",
-    sub: "Below 20 threshold"
-  }), /*#__PURE__*/React.createElement(Stat, {
-    label: "VVIX",
-    value: "115.5",
-    sub: "RED ZONE (>110)",
-    warn: true
-  }), /*#__PURE__*/React.createElement(Stat, {
-    label: "HY OAS",
-    value: "288bp",
-    sub: "Tight \u2014 no stress"
-  }), /*#__PURE__*/React.createElement(Stat, {
-    label: "NFCI",
-    value: "-0.57",
-    sub: "Deeply loose"
-  }), /*#__PURE__*/React.createElement(Stat, {
-    label: "SOFR",
-    value: "3.67%",
-    sub: "Fed 3.50-3.75%"
-  }), /*#__PURE__*/React.createElement(Stat, {
-    label: "Put/Call",
-    value: "0.90",
-    sub: "SPX: 1.28 (hedged)"
-  }), /*#__PURE__*/React.createElement(Stat, {
-    label: "DXY",
-    value: "97.73",
-    sub: "Dollar index"
-  })))), active === 1 && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Card, null, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 14,
-      fontWeight: 700,
-      marginBottom: 4
-    }
-  }, "FINRA Margin Debt"), /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 11,
-      color: COLORS.muted,
-      marginBottom: 14
-    }
-  }, "$1,226B \u2014 7th consecutive monthly record (Dec 2025)"), /*#__PURE__*/React.createElement(ResponsiveContainer, {
-    width: "100%",
-    height: 200
-  }, /*#__PURE__*/React.createElement(AreaChart, {
-    data: marginHistory
-  }, /*#__PURE__*/React.createElement("defs", null, /*#__PURE__*/React.createElement("linearGradient", {
-    id: "mfill",
-    x1: "0",
-    y1: "0",
-    x2: "0",
-    y2: "1"
-  }, /*#__PURE__*/React.createElement("stop", {
-    offset: "5%",
-    stopColor: COLORS.red,
-    stopOpacity: 0.3
-  }), /*#__PURE__*/React.createElement("stop", {
-    offset: "95%",
-    stopColor: COLORS.red,
-    stopOpacity: 0
-  }))), /*#__PURE__*/React.createElement(CartesianGrid, {
-    strokeDasharray: "3 3",
-    stroke: COLORS.border
-  }), /*#__PURE__*/React.createElement(XAxis, {
-    dataKey: "m",
-    tick: {
-      fontSize: 10,
-      fill: COLORS.muted
-    },
-    axisLine: false
-  }), /*#__PURE__*/React.createElement(YAxis, {
-    tick: {
-      fontSize: 10,
-      fill: COLORS.muted
-    },
-    axisLine: false,
-    domain: [900, 1300],
-    tickFormatter: v => `$${v}B`
-  }), /*#__PURE__*/React.createElement(Tooltip, {
-    contentStyle: {
-      background: COLORS.card,
-      border: `1px solid ${COLORS.border}`,
-      borderRadius: 6,
-      fontSize: 11
-    },
-    formatter: v => [`$${v}B`, "Margin Debt"]
-  }), /*#__PURE__*/React.createElement(Area, {
-    type: "monotone",
-    dataKey: "v",
-    stroke: COLORS.red,
-    fill: "url(#mfill)",
-    strokeWidth: 2
-  }), /*#__PURE__*/React.createElement(ReferenceLine, {
-    y: 937,
-    stroke: COLORS.amber,
-    strokeDasharray: "5 5",
-    label: {
-      value: "Jan 2021 peak",
-      fontSize: 9,
-      fill: COLORS.amber
-    }
-  })))), /*#__PURE__*/React.createElement(Card, null, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 14,
-      fontWeight: 700,
-      marginBottom: 4
-    }
-  }, "Hedge Fund Gross Leverage"), /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 11,
-      color: COLORS.muted,
-      marginBottom: 14
-    }
-  }, "GS: 285% (ATH) \u2022 JPM: 298% (5yr high) \u2022 Quant: 645% \u2022 Multi-strat: 444%"), /*#__PURE__*/React.createElement(ResponsiveContainer, {
-    width: "100%",
-    height: 200
-  }, /*#__PURE__*/React.createElement(BarChart, {
-    data: hfHistory,
-    barGap: 2
-  }, /*#__PURE__*/React.createElement(CartesianGrid, {
-    strokeDasharray: "3 3",
-    stroke: COLORS.border
-  }), /*#__PURE__*/React.createElement(XAxis, {
-    dataKey: "q",
-    tick: {
-      fontSize: 10,
-      fill: COLORS.muted
-    },
-    axisLine: false
-  }), /*#__PURE__*/React.createElement(YAxis, {
-    tick: {
-      fontSize: 10,
-      fill: COLORS.muted
-    },
-    axisLine: false,
-    domain: [240, 310]
-  }), /*#__PURE__*/React.createElement(Tooltip, {
-    contentStyle: {
-      background: COLORS.card,
-      border: `1px solid ${COLORS.border}`,
-      borderRadius: 6,
-      fontSize: 11
-    }
-  }), /*#__PURE__*/React.createElement(Bar, {
-    dataKey: "gs",
-    name: "Goldman",
-    fill: COLORS.amber,
-    radius: [3, 3, 0, 0]
-  }), /*#__PURE__*/React.createElement(Bar, {
-    dataKey: "jpm",
-    name: "JPMorgan",
-    fill: COLORS.red,
-    radius: [3, 3, 0, 0]
-  }))), /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 10,
-      color: COLORS.muted,
-      marginTop: 8
-    }
-  }, "MS notes: current levels exceeded only 1% of the time in last 15 years")), /*#__PURE__*/React.createElement(Card, null, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 14,
-      fontWeight: 700,
-      marginBottom: 10
-    }
-  }, "Normalization Divergence"), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: "flex",
-      gap: 20,
-      flexWrap: "wrap"
-    }
-  }, /*#__PURE__*/React.createElement(Stat, {
-    label: "Margin/GDP",
-    value: "4.14%",
-    sub: "Exceeds Oct 2021 record (3.97%)",
-    warn: true
-  }), /*#__PURE__*/React.createElement(Stat, {
-    label: "Margin/MktCap",
-    value: "~1.94%",
-    sub: "Moderate (mkt cap also at records)"
-  }), /*#__PURE__*/React.createElement(Stat, {
-    label: "Margin/M2",
-    value: "5.64",
-    sub: "Jan 2026, vs 6.35 record"
-  }), /*#__PURE__*/React.createElement(Stat, {
-    label: "Margin YoY",
-    value: "+36.3%",
-    sub: "SPX YoY: +14.9% \u2192 2.4\xD7 gap",
-    warn: true
-  })), /*#__PURE__*/React.createElement("div", {
-    style: {
-      marginTop: 12,
-      padding: 10,
-      background: COLORS.red + "12",
-      borderRadius: 6,
-      borderLeft: `3px solid ${COLORS.red}`,
-      fontSize: 11,
-      color: COLORS.text,
-      lineHeight: 1.6
-    }
-  }, "\u26A0 Margin/MktCap looks moderate because the market itself is oversized relative to GDP (Buffett Indicator). Margin/GDP tells the truer story \u2014 leverage relative to the actual economy is at historic extremes."))), active === 2 && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Card, null, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 14,
-      fontWeight: 700,
-      marginBottom: 4
-    }
-  }, "Leverage Gap (Margin YoY \u2212 SPX YoY)"), /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 11,
-      color: COLORS.muted,
-      marginBottom: 14
-    }
-  }, "Current: +21.4pp \u2014 leverage outpacing market"), /*#__PURE__*/React.createElement(ResponsiveContainer, {
-    width: "100%",
-    height: 180
-  }, /*#__PURE__*/React.createElement(BarChart, {
-    data: gapHistory
-  }, /*#__PURE__*/React.createElement(CartesianGrid, {
-    strokeDasharray: "3 3",
-    stroke: COLORS.border
-  }), /*#__PURE__*/React.createElement(XAxis, {
-    dataKey: "m",
-    tick: {
-      fontSize: 10,
-      fill: COLORS.muted
-    },
-    axisLine: false
-  }), /*#__PURE__*/React.createElement(YAxis, {
-    tick: {
-      fontSize: 10,
-      fill: COLORS.muted
-    },
-    axisLine: false,
-    tickFormatter: v => `+${v}pp`
-  }), /*#__PURE__*/React.createElement(Tooltip, {
-    contentStyle: {
-      background: COLORS.card,
-      border: `1px solid ${COLORS.border}`,
-      borderRadius: 6,
-      fontSize: 11
-    },
-    formatter: v => [`+${v}pp`, "Gap"]
-  }), /*#__PURE__*/React.createElement(Bar, {
-    dataKey: "gap",
-    radius: [3, 3, 0, 0]
-  }, gapHistory.map((e, i) => /*#__PURE__*/React.createElement(Cell, {
-    key: i,
-    fill: e.gap > 25 ? COLORS.red : e.gap > 15 ? COLORS.amber : COLORS.green
-  }))), /*#__PURE__*/React.createElement(ReferenceLine, {
-    y: 25,
-    stroke: COLORS.red,
-    strokeDasharray: "4 4"
-  }), /*#__PURE__*/React.createElement(ReferenceLine, {
-    y: 15,
-    stroke: COLORS.amber,
-    strokeDasharray: "4 4"
-  })))), /*#__PURE__*/React.createElement(Card, null, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 14,
-      fontWeight: 700,
-      marginBottom: 10
-    }
-  }, "Momentum Signals"), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: "flex",
-      gap: 20,
-      flexWrap: "wrap"
-    }
-  }, /*#__PURE__*/React.createElement(Stat, {
-    label: "Consecutive Record Months",
-    value: "8",
-    sub: "May 2025 \u2192 Dec 2025",
-    warn: true
-  }), /*#__PURE__*/React.createElement(Stat, {
-    label: "GS Gross \u0394YoY",
-    value: "+12.4pp",
-    sub: "285% (end-2025) vs 273% (end-2024)",
-    warn: true
-  }), /*#__PURE__*/React.createElement(Stat, {
-    label: "Margin/GDP Trend",
-    value: "\u2191 Accelerating",
-    sub: "4.14% \u2014 above 2021 cycle peak",
-    warn: true
-  })))), active === 3 && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Card, {
-    glow: COLORS.green + "44"
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: "flex",
-      alignItems: "center",
-      gap: 8,
-      marginBottom: 12
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      width: 10,
-      height: 10,
-      borderRadius: 5,
-      background: COLORS.green
-    }
-  }), /*#__PURE__*/React.createElement("span", {
-    style: {
-      fontSize: 14,
-      fontWeight: 700
-    }
-  }, "Financing Conditions: LOOSE")), /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 12,
-      color: COLORS.text,
-      lineHeight: 1.7,
-      marginBottom: 16
-    }
-  }, "This is the layer keeping the score at 6 instead of 8. All financing indicators are deeply loose \u2014 the system can sustain current leverage because borrowing is cheap and available. The cascade doesn't start until this layer flips."), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: "flex",
-      gap: 20,
-      flexWrap: "wrap"
-    }
-  }, /*#__PURE__*/React.createElement(Stat, {
-    label: "Chicago Fed NFCI",
-    value: "-0.57",
-    sub: "Well below 0 = loose"
-  }), /*#__PURE__*/React.createElement(Stat, {
-    label: "NFCI Risk",
-    value: "-0.30",
-    sub: "Loose"
-  }), /*#__PURE__*/React.createElement(Stat, {
-    label: "NFCI Credit",
-    value: "-0.17",
-    sub: "Loose"
-  }), /*#__PURE__*/React.createElement(Stat, {
-    label: "NFCI Leverage",
-    value: "-0.10",
-    sub: "Loose"
-  }))), /*#__PURE__*/React.createElement(Card, null, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 14,
-      fontWeight: 700,
-      marginBottom: 10
-    }
-  }, "Credit Markets"), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: "flex",
-      gap: 20,
-      flexWrap: "wrap"
-    }
-  }, /*#__PURE__*/React.createElement(Stat, {
-    label: "HY OAS Spread",
-    value: "288bp",
-    sub: "Historically tight, tick wider from 286"
-  }), /*#__PURE__*/React.createElement(Stat, {
-    label: "HYG Price",
-    value: "$81.00",
-    sub: "Near 52wk high ($81.36)"
-  }), /*#__PURE__*/React.createElement(Stat, {
-    label: "SOFR",
-    value: "3.67%",
-    sub: "Fed holds 3.50-3.75%"
-  }), /*#__PURE__*/React.createElement(Stat, {
-    label: "Prime Revenue",
-    value: "Record",
-    sub: "Banks competing for HF balances"
-  })), /*#__PURE__*/React.createElement("div", {
-    style: {
-      marginTop: 14,
-      padding: 10,
-      background: COLORS.green + "12",
-      borderRadius: 6,
-      borderLeft: `3px solid ${COLORS.green}`,
-      fontSize: 11
-    }
-  }, "\uD83D\uDCCA TRIP WIRES: HY OAS above 350bp \u2022 NFCI above -0.30 \u2022 HYG below $80.00 \u2022 SOFR above 4.00%"))), active === 4 && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Card, null, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 14,
-      fontWeight: 700,
-      marginBottom: 14
-    }
-  }, "Hedge Fund Positioning Concentration"), [{
-    name: "Mag 7 Net Exposure",
-    pct: 19,
-    peak: 21,
-    note: "vs 21% peak mid-2024",
-    color: COLORS.amber
-  }, {
-    name: "Semis Net Exposure",
-    pct: 85,
-    peak: 100,
-    note: "5-year high",
-    color: COLORS.red
-  }, {
-    name: "Software Net Exposure",
-    pct: 15,
-    peak: 100,
-    note: "5-year LOW (post Jan 30 selloff)",
-    color: COLORS.green
-  }, {
-    name: "EM ex-China Allocation",
-    pct: 90,
-    peak: 100,
-    note: "Record highs",
-    color: COLORS.red
-  }, {
-    name: "Health Care / Biotech",
-    pct: 60,
-    peak: 100,
-    note: "Rotating in aggressively (GS)",
-    color: COLORS.amber
-  }].map((item, i) => /*#__PURE__*/React.createElement("div", {
-    key: i,
-    style: {
-      marginBottom: 12
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: "flex",
-      justifyContent: "space-between",
-      fontSize: 11,
-      marginBottom: 4
-    }
-  }, /*#__PURE__*/React.createElement("span", {
-    style: {
-      color: COLORS.text,
-      fontWeight: 600
-    }
-  }, item.name), /*#__PURE__*/React.createElement("span", {
-    style: {
-      color: COLORS.muted
-    }
-  }, item.note)), /*#__PURE__*/React.createElement("div", {
-    style: {
-      height: 8,
-      background: COLORS.dim,
-      borderRadius: 4,
-      overflow: "hidden"
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      height: "100%",
-      width: `${item.pct}%`,
-      background: item.color,
-      borderRadius: 4,
-      transition: "width 0.5s"
-    }
-  }))))), /*#__PURE__*/React.createElement(Card, {
-    glow: COLORS.amber + "44"
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 13,
-      fontWeight: 700,
-      color: COLORS.amber,
-      marginBottom: 8
-    }
-  }, "Crowded Exit Risk: AMZN Bear Market"), /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 12,
-      color: COLORS.text,
-      lineHeight: 1.7
-    }
-  }, "Amazon \u2014 the #1 crowded HF position \u2014 is now 20%+ off its November high, entering bear market territory. Ackman, Druckenmiller, and Klarman all added in Q4. Hyperscaler capex fears ($200B 2026 guide vs $147B expected) triggered the selloff. This is L4 in action: when everyone owns the same name and the thesis cracks, the exit door is too narrow."))), active === 5 && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Card, null, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 14,
-      fontWeight: 700,
-      marginBottom: 4
-    }
-  }, "Volatility Regime"), /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 11,
-      color: COLORS.muted,
-      marginBottom: 14
-    }
-  }, "Mixed \u2014 VIX below 20 but VVIX back in red zone (>110)"), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: "flex",
-      gap: 20,
-      flexWrap: "wrap",
-      marginBottom: 16
-    }
-  }, /*#__PURE__*/React.createElement(Stat, {
-    label: "VIX",
-    value: "19.09",
-    sub: "Just below 20 threshold"
-  }), /*#__PURE__*/React.createElement(Stat, {
-    label: "VVIX",
-    value: "115.5",
-    sub: "RED ZONE \u2014 up from 107",
-    warn: true
-  }), /*#__PURE__*/React.createElement(Stat, {
-    label: "Term Structure",
-    value: "Flat\u2192Contango",
-    sub: "Orderly, not backwardated"
-  }), /*#__PURE__*/React.createElement(Stat, {
-    label: "Dealer Gamma",
-    value: "LONG",
-    sub: "Dampening moves"
-  })), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: "flex",
-      gap: 20,
-      flexWrap: "wrap"
-    }
-  }, /*#__PURE__*/React.createElement(Stat, {
-    label: "Equity P/C",
-    value: "0.65",
-    sub: "Neutral"
-  }), /*#__PURE__*/React.createElement(Stat, {
-    label: "Total P/C",
-    value: "0.90",
-    sub: "Slightly defensive"
-  }), /*#__PURE__*/React.createElement(Stat, {
-    label: "SPX P/C",
-    value: "1.28",
-    sub: "Active hedging"
-  }), /*#__PURE__*/React.createElement(Stat, {
-    label: "Realized Vol",
-    value: "~14.5%",
-    sub: "Below implied"
-  }))), /*#__PURE__*/React.createElement(Card, null, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 14,
-      fontWeight: 700,
-      marginBottom: 4
-    }
-  }, "Turbulence History (Immune System)"), /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 11,
-      color: COLORS.muted,
-      marginBottom: 14
-    }
-  }, "Jan 30 spike (83.3) absorbed \u2014 system healing"), /*#__PURE__*/React.createElement(ResponsiveContainer, {
-    width: "100%",
-    height: 160
-  }, /*#__PURE__*/React.createElement(AreaChart, {
-    data: turbChart
-  }, /*#__PURE__*/React.createElement("defs", null, /*#__PURE__*/React.createElement("linearGradient", {
-    id: "tfill",
-    x1: "0",
-    y1: "0",
-    x2: "0",
-    y2: "1"
-  }, /*#__PURE__*/React.createElement("stop", {
-    offset: "5%",
-    stopColor: COLORS.blue,
-    stopOpacity: 0.3
-  }), /*#__PURE__*/React.createElement("stop", {
-    offset: "95%",
-    stopColor: COLORS.blue,
-    stopOpacity: 0
-  }))), /*#__PURE__*/React.createElement(CartesianGrid, {
-    strokeDasharray: "3 3",
-    stroke: COLORS.border
-  }), /*#__PURE__*/React.createElement(XAxis, {
-    dataKey: "d",
-    tick: {
-      fontSize: 9,
-      fill: COLORS.muted
-    },
-    axisLine: false
-  }), /*#__PURE__*/React.createElement(YAxis, {
-    tick: {
-      fontSize: 10,
-      fill: COLORS.muted
-    },
-    axisLine: false
-  }), /*#__PURE__*/React.createElement(Tooltip, {
-    contentStyle: {
-      background: COLORS.card,
-      border: `1px solid ${COLORS.border}`,
-      borderRadius: 6,
-      fontSize: 11
-    }
-  }), /*#__PURE__*/React.createElement(Area, {
-    type: "monotone",
-    dataKey: "v",
-    stroke: COLORS.blue,
-    fill: "url(#tfill)",
-    strokeWidth: 2
-  }), /*#__PURE__*/React.createElement(ReferenceLine, {
-    y: 27.6,
-    stroke: COLORS.red,
-    strokeDasharray: "4 4",
-    label: {
-      value: "95th",
-      fontSize: 9,
-      fill: COLORS.red
-    }
-  }))))), active === 6 && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Card, null, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 14,
-      fontWeight: 700,
-      marginBottom: 14
-    }
-  }, "Event Cluster: Feb\u2013May 2026"), [{
-    date: "Late Feb",
-    event: "Warsh confirmation hearings",
-    risk: "HIGH",
-    color: COLORS.red,
-    detail: "Fed regime uncertainty — hawkish expectations creating rate anxiety"
-  }, {
-    date: "Feb 21",
-    event: "Monthly OpEx (passed)",
-    risk: "LOW",
-    color: COLORS.green,
-    detail: "Expiry complete — gamma roll-off already absorbed"
-  }, {
-    date: "Feb-Mar",
-    event: "Tariff uncertainty",
-    risk: "MED",
-    color: COLORS.amber,
-    detail: "SCOTUS rejected Trump tariffs — but executive action still possible"
-  }, {
-    date: "April",
-    event: "US-China summit (Beijing)",
-    risk: "HIGH",
-    color: COLORS.red,
-    detail: "Trade truce straining — semi/green energy jockeying"
-  }, {
-    date: "May 2026",
-    event: "Powell term ends",
-    risk: "HIGH",
-    color: COLORS.red,
-    detail: "Fed leadership transition to Warsh — QT policy shift expected"
-  }, {
-    date: "Q1 Reports",
-    event: "Earnings season winding",
-    risk: "LOW",
-    color: COLORS.green,
-    detail: "Mostly complete — NVDA forward guidance main residual catalyst"
-  }].map((e, i) => /*#__PURE__*/React.createElement("div", {
-    key: i,
-    style: {
-      display: "flex",
-      alignItems: "flex-start",
-      gap: 12,
-      padding: "10px 0",
-      borderBottom: i < 5 ? `1px solid ${COLORS.border}` : "none"
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      minWidth: 70,
-      fontSize: 11,
-      fontWeight: 700,
-      color: COLORS.muted
-    }
-  }, e.date), /*#__PURE__*/React.createElement("div", {
-    style: {
-      flex: 1
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: "flex",
-      alignItems: "center",
-      gap: 8
-    }
-  }, /*#__PURE__*/React.createElement("span", {
-    style: {
-      fontSize: 12,
-      fontWeight: 700,
-      color: COLORS.text
-    }
-  }, e.event), /*#__PURE__*/React.createElement(Pill, {
-    color: e.color
-  }, e.risk)), /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 11,
-      color: COLORS.muted,
-      marginTop: 3
-    }
-  }, e.detail)))))), active === 7 && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Card, {
-    glow: COLORS.amber + "44"
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 14,
-      fontWeight: 700,
-      marginBottom: 14,
-      color: COLORS.amber
-    }
-  }, "Cascade Vulnerability Chain"), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: "flex",
-      flexDirection: "column",
-      gap: 6
-    }
-  }, ["Margin calls", "Forced selling", "Gamma hedging amplification", "Leveraged ETF rebalancing", "Credit spread widening", "Prime broker margin hikes", "Second wave forced selling"].map((step, i) => /*#__PURE__*/React.createElement("div", {
-    key: i,
-    style: {
-      display: "flex",
-      alignItems: "center",
-      gap: 10
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      width: 24,
-      height: 24,
-      borderRadius: 12,
-      background: i < 2 ? COLORS.amber + "22" : COLORS.dim,
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      fontSize: 11,
-      fontWeight: 700,
-      color: i < 2 ? COLORS.amber : COLORS.muted,
-      border: `1px solid ${i < 2 ? COLORS.amber + "44" : COLORS.border}`
-    }
-  }, i + 1), /*#__PURE__*/React.createElement("span", {
-    style: {
-      fontSize: 12,
-      color: i < 2 ? COLORS.text : COLORS.muted,
-      fontWeight: i < 2 ? 600 : 400
-    }
-  }, step), i < 6 && /*#__PURE__*/React.createElement("span", {
-    style: {
-      color: COLORS.dim,
-      fontSize: 16
-    }
-  }, "\u2192")))), /*#__PURE__*/React.createElement("div", {
-    style: {
-      marginTop: 16,
-      padding: 12,
-      background: COLORS.card,
-      borderRadius: 6,
-      border: `1px solid ${COLORS.border}`
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: "flex",
-      justifyContent: "space-between",
-      marginBottom: 8
-    }
-  }, /*#__PURE__*/React.createElement("span", {
-    style: {
-      fontSize: 11,
-      fontWeight: 700,
-      color: COLORS.muted
-    }
-  }, "ACTIVATION PROBABILITY"), /*#__PURE__*/React.createElement(Pill, {
-    color: COLORS.amber
-  }, "LOW\u2013MODERATE")), /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 12,
-      color: COLORS.text,
-      lineHeight: 1.7
-    }
-  }, "Steps 1-2 are pre-loaded (leverage at records). The chain activates when L3 financing conditions flip \u2014 HY spread widening + NFCI tightening + prime broker margin hikes. Currently all three are loose, keeping the cascade dormant."))), /*#__PURE__*/React.createElement(Card, null, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 14,
-      fontWeight: 700,
-      marginBottom: 14
-    }
-  }, "Recommended Actions"), ["Reduce single-name concentration (esp. semis/Mag 7)", "Tighten stops — leverage means unwinds will be faster than normal", "Add tail hedges while VIX near 19 (cheap protection window)", "Monitor HYG weekly — break below $80.50 is early warning", "Watch NFCI — move above -0.30 escalates score to 7-8", "If L3 flips: immediately shift to defensive posture"].map((a, i) => /*#__PURE__*/React.createElement("div", {
-    key: i,
-    style: {
-      display: "flex",
-      alignItems: "flex-start",
-      gap: 10,
-      marginBottom: 10
-    }
-  }, /*#__PURE__*/React.createElement("span", {
-    style: {
-      color: COLORS.accent,
-      fontSize: 14,
-      lineHeight: 1
-    }
-  }, "\u2192"), /*#__PURE__*/React.createElement("span", {
-    style: {
-      fontSize: 12,
-      color: COLORS.text,
-      lineHeight: 1.5
-    }
-  }, a))))), /*#__PURE__*/React.createElement("div", {
-    style: {
-      marginTop: 20,
-      paddingTop: 12,
-      borderTop: `1px solid ${COLORS.border}`,
-      fontSize: 9,
-      color: COLORS.dim,
-      lineHeight: 1.8
-    }
-  }, "Sources: FINRA (Dec 2025), GS/JPM/MS Prime (end-2025), Chicago Fed NFCI (Feb 13), CBOE (Feb 20), ICE BofA HY (Feb 19), FRED, web search. Not investment advice. Maguire Leverage Monitor \u2014 22V Trading Desk."));
-}
-
-
-  ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(MaguireLeverageMonitor));
-})();
+var T=["Composite","L1 Levels","L2 Momentum","L3 Financing","L4 Crowding","L5 Vol","L6 Calendar","Cascade"];
+var tb=document.getElementById("tabs");
+T.forEach(function(t,i){var b=document.createElement("button");b.className="tab"+(i===0?" on":"");b.textContent=t;b.onclick=function(){document.querySelectorAll(".pnl").forEach(function(p){p.classList.remove("on")});document.querySelectorAll(".tab").forEach(function(x){x.classList.remove("on")});document.getElementById("p"+i).classList.add("on");b.classList.add("on")};tb.appendChild(b)});
+(function(){var d=[{q:"Q1 24",gs:258,jpm:265},{q:"Q2 24",gs:262,jpm:270},{q:"Q3 24",gs:268,jpm:278},{q:"Q4 24",gs:273,jpm:284},{q:"Q1 25",gs:275,jpm:288},{q:"Q2 25",gs:278,jpm:290},{q:"Q3 25",gs:280,jpm:294},{q:"Q4 25",gs:285,jpm:298}],mn=240,mx=310,r=mx-mn,c=document.getElementById("hfc");if(!c)return;var h="";d.forEach(function(x){var g=((x.gs-mn)/r)*100,j=((x.jpm-mn)/r)*100;h+='<div class="bg"><div class="bs"><div class="b" style="height:'+g+'%;background:var(--amber)"><div class="bt">GS: '+x.gs+'%</div></div><div class="b" style="height:'+j+'%;background:var(--red)"><div class="bt">JPM: '+x.jpm+'%</div></div></div><div class="bl">'+x.q+"</div></div>"});c.innerHTML=h})();
+(function(){var d=[{m:"Jul 25",g:18},{m:"Aug",g:20},{m:"Sep",g:22},{m:"Oct",g:25},{m:"Nov",g:28},{m:"Dec",g:30},{m:"Jan 26",g:33},{m:"Feb",g:21.4}],c=document.getElementById("gc");if(!c)return;var h="";d.forEach(function(x){var p=(x.g/40)*100,k=x.g>25?"var(--red)":x.g>15?"var(--amber)":"var(--green)";h+='<div class="bg"><div class="bs"><div class="b" style="height:'+p+"%;background:"+k+'"><div class="bt">+'+x.g+"pp</div></div></div><div class=\"bl\">"+x.m+"</div></div>"});c.innerHTML=h})();
+(function(){var d=[{n:"Mag 7 Net Exposure",p:19,t:"vs 21% peak mid-2024",c:"var(--amber)"},{n:"Semis Net Exposure",p:85,t:"5-year high",c:"var(--red)"},{n:"Software Net Exposure",p:15,t:"5-year LOW (post Jan 30 selloff)",c:"var(--green)"},{n:"EM ex-China Allocation",p:90,t:"Record highs",c:"var(--red)"},{n:"Health Care / Biotech",p:60,t:"Rotating in aggressively (GS)",c:"var(--amber)"}],e=document.getElementById("cb");if(!e)return;var h="";d.forEach(function(x){h+='<div style="margin-bottom:12px"><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px"><span style="font-weight:600">'+x.n+'</span><span style="color:var(--muted)">'+x.t+'</span></div><div class="pt"><div class="pf" style="width:'+x.p+"%;background:"+x.c+'"></div></div></div>'});e.innerHTML=h})();
 </script>
 </body>
 </html>

@@ -15,20 +15,25 @@
 <body>
 <div id="root"><div id="loading">Loading Maguire Leverage Monitor...</div></div>
 
-<!-- React 18 -->
-<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<!-- React + deps in correct order -->
+<script crossorigin src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-is@18.2.0/umd/react-is.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/prop-types@15.8.1/prop-types.min.js"></script>
+<script crossorigin src="https://unpkg.com/recharts@2.1.16/umd/Recharts.min.js"></script>
+<script crossorigin src="https://unpkg.com/@babel/standalone@7.23.6/babel.min.js"></script>
 
-<!-- Recharts (UMD) -->
-<script src="https://unpkg.com/recharts@2.12.7/umd/Recharts.js"></script>
+<script>
+// Verify all deps loaded
+console.log("React:", typeof React !== 'undefined');
+console.log("ReactDOM:", typeof ReactDOM !== 'undefined');
+console.log("Recharts:", typeof Recharts !== 'undefined');
+console.log("Recharts keys:", typeof Recharts !== 'undefined' ? Object.keys(Recharts).slice(0,10) : 'N/A');
+</script>
 
-<!-- Babel for JSX -->
-<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-
-<script type="text/babel" data-type="module">
-try {
-  const { useState } = React;
-  const { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, AreaChart, Area, ReferenceLine, LineChart, Line, CartesianGrid } = Recharts;
+<script type="text/babel">
+const { useState } = React;
+const { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, AreaChart, Area, ReferenceLine, LineChart, Line, CartesianGrid } = Recharts;
 
 
 
@@ -457,12 +462,7 @@ function MaguireLeverageMonitor() {
 }
 
 
-  const root = ReactDOM.createRoot(document.getElementById('root'));
-  root.render(<MaguireLeverageMonitor />);
-} catch(e) {
-  document.getElementById('root').innerHTML = '<div style="padding:40px;color:#ef4444;">Error: ' + e.message + '</div>';
-  console.error(e);
-}
+ReactDOM.createRoot(document.getElementById('root')).render(<MaguireLeverageMonitor />);
 </script>
 </body>
 </html>

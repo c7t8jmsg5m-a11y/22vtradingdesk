@@ -1,0 +1,37 @@
+# Options Activity Monitor — Alert Thresholds
+# Edit these values to tune sensitivity
+
+pc_ratio:
+  equity:
+    extreme_fear: 0.90      # Contrarian buy zone
+    elevated: 0.75           # Hedging demand rising
+    complacent: 0.50         # Low hedging
+    extreme_greed: 0.40      # Contrarian sell zone
+
+gex:
+  deep_negative: -2.0        # Dealers heavily short gamma
+  flip_negative: 0.0         # Vol amplification regime
+  strong_positive: 5.0       # Vol suppression ceiling
+
+skew:
+  extreme: 155               # Severe tail risk hedging
+  elevated: 145              # Above average
+  low: 120                   # Complacent
+
+dix:
+  bullish: 0.47              # Dark pools buying
+  cautious: 0.42             # Below average
+  bearish: 0.38              # Dark pools selling
+
+zero_dte:
+  warning_pct: 50            # 0DTE as % of total
+  critical_pct: 60           # Structural fragility
+
+risk_reversal:
+  warning: -6.0              # Heavy put premium
+  critical: -8.0             # Extreme skew
+
+vix:
+  elevated: 20               # Above average fear
+  spike: 25                  # Stress event
+  extreme: 35                # Crisis level

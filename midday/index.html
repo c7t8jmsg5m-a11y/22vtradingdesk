@@ -3,356 +3,337 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>22V Research — Midday Trading Recap — Feb 23, 2026</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<title>22V Midday Trading Recap | February 24, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root {
   --brand-orange: #E4762D;
-  --cream: #FAF7F2;
-  --dark: #1A1A1A;
+  --cream-bg: #FAF7F2;
+  --dark-text: #1A1A1A;
+  --gray-text: #666666;
+  --red-accent: #C0392B;
+  --green-accent: #27AE60;
   --dark-bg: #2D2D2D;
-  --red: #C0392B;
-  --green: #27AE60;
-  --gray: #666666;
-  --light-gray: #F5F5F5;
   --warm-red: #8B0000;
+  --light-gray: #F5F5F5;
   --border-red: #C0392B;
 }
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: var(--cream); color: var(--dark); font-family: 'Source Sans 3', sans-serif; line-height: 1.5; }
-.container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--cream-bg); color:var(--dark-text); font-family:'Source Sans 3',sans-serif; line-height:1.5; }
+.container { max-width:900px; margin:0 auto; padding:20px 24px; }
 
-/* HEADER */
-.header-bar { background: var(--dark-bg); padding: 16px 0 10px; }
-.header-bar .container { display: flex; flex-direction: column; gap: 4px; }
-.header-brand { font-family: 'JetBrains Mono', monospace; color: var(--brand-orange); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; font-weight: 700; }
-.header-title { font-family: 'Playfair Display', serif; color: #fff; font-size: 22px; font-weight: 900; letter-spacing: 1px; }
-.header-meta { font-family: 'JetBrains Mono', monospace; color: #999; font-size: 10px; letter-spacing: 0.5px; display: flex; flex-wrap: wrap; gap: 20px; margin-top: 4px; }
+/* Header */
+.header-block { text-align:center; margin-bottom:6px; }
+.header-block .sub { font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--gray-text); letter-spacing:2px; text-transform:uppercase; }
+.header-block .brand { font-family:'Playfair Display',serif; font-size:28px; font-weight:900; color:var(--brand-orange); letter-spacing:1px; }
+.header-block .title { font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:3px; color:var(--dark-text); margin-top:2px; }
 
-/* HEADLINE */
-.headline-section { padding: 28px 0 8px; }
-.headline { font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 900; line-height: 1.15; color: var(--dark); }
-.lede { font-family: 'Source Sans 3', sans-serif; font-style: italic; font-size: 15px; color: var(--gray); line-height: 1.55; margin-top: 12px; }
-.lede b { color: var(--dark); font-style: normal; }
+/* Date bar */
+.date-bar { background:var(--dark-bg); color:#ccc; font-family:'JetBrains Mono',monospace; font-size:10px; padding:8px 16px; display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; border-radius:2px; }
+.date-bar .center { color:var(--brand-orange); }
 
-/* INDEX BAR */
-.index-bar { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; margin: 20px 0; }
-.index-card { background: #fff; border-radius: 6px; padding: 10px 8px; text-align: center; border: 1px solid #e8e4df; }
-.index-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--gray); letter-spacing: 1px; text-transform: uppercase; }
-.index-value { font-family: 'Source Sans 3', sans-serif; font-size: 20px; font-weight: 700; margin: 2px 0; }
-.index-change { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 500; }
-.red { color: var(--red); }
-.green { color: var(--green); }
+/* Headline */
+.headline { font-family:'Playfair Display',serif; font-size:26px; font-weight:900; color:var(--dark-text); line-height:1.2; margin-bottom:10px; }
+.lede { font-family:'Playfair Display',serif; font-style:italic; font-size:14px; color:var(--gray-text); line-height:1.6; margin-bottom:20px; border-left:3px solid var(--brand-orange); padding-left:12px; }
 
-/* SECTIONS */
-.section-header { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--brand-orange); font-weight: 700; margin: 24px 0 10px; padding-bottom: 4px; border-bottom: 2px solid var(--brand-orange); }
-.body-text { font-size: 14.5px; line-height: 1.65; margin-bottom: 12px; color: #333; }
-.body-text b { color: var(--dark); }
+/* Index snapshot */
+.index-bar { display:grid; grid-template-columns:repeat(6,1fr); gap:8px; margin-bottom:24px; }
+.index-card { background:white; border-radius:4px; padding:10px 8px; text-align:center; box-shadow:0 1px 3px rgba(0,0,0,0.08); }
+.index-card .label { font-family:'JetBrains Mono',monospace; font-size:9px; color:var(--gray-text); letter-spacing:1px; }
+.index-card .value { font-size:20px; font-weight:700; }
+.index-card .change { font-size:11px; font-weight:600; }
+.positive { color:var(--green-accent); }
+.negative { color:var(--red-accent); }
 
-/* CALLOUT BOX */
-.callout { background: #FFF8F6; border-left: 4px solid var(--border-red); padding: 14px 18px; margin: 16px 0; border-radius: 0 4px 4px 0; }
-.callout-title { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--warm-red); font-weight: 700; margin-bottom: 6px; }
-.callout-text { font-size: 13.5px; line-height: 1.55; color: #444; }
+/* Section headers */
+.section-header { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:3px; color:var(--brand-orange); border-bottom:1px solid #ddd; padding-bottom:4px; margin:24px 0 12px 0; }
 
-/* SECTOR TABLE */
-.sector-table { width: 100%; border-collapse: collapse; margin: 10px 0 20px; font-size: 13px; }
-.sector-table th { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gray); text-align: left; padding: 6px 8px; border-bottom: 1px solid #ccc; }
-.sector-table th:nth-child(2), .sector-table th:nth-child(3) { text-align: right; }
-.sector-table th:nth-child(4) { text-align: right; }
-.sector-table td { padding: 7px 8px; border-bottom: 1px solid #eee; }
-.sector-table td:nth-child(2) { text-align: right; font-family: 'JetBrains Mono', monospace; font-weight: 600; font-size: 12px; }
-.sector-table td:nth-child(3) { text-align: right; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--gray); }
-.sector-table td:nth-child(4) { text-align: right; font-size: 11.5px; color: var(--gray); }
-.sector-table tr:nth-child(even) { background: var(--light-gray); }
+/* Body text */
+.body-text { font-size:14px; line-height:1.65; margin-bottom:12px; color:var(--dark-text); }
+.body-text b { font-weight:700; }
 
-/* PULL QUOTE */
-.pull-quote { font-family: 'Playfair Display', serif; font-style: italic; font-size: 19px; color: var(--warm-red); padding: 16px 20px; margin: 20px 0; border-left: 4px solid var(--brand-orange); line-height: 1.4; }
+/* Callout box */
+.callout { background:#FFF8F6; border-left:4px solid var(--border-red); padding:12px 16px; margin:16px 0; border-radius:0 4px 4px 0; }
+.callout .callout-title { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:2px; color:var(--warm-red); margin-bottom:6px; font-weight:700; }
+.callout p { font-size:13px; line-height:1.6; }
 
-/* MOVERS TABLE */
-.movers-section { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
-.movers-box { background: #fff; border-radius: 6px; padding: 14px; border: 1px solid #e8e4df; }
-.movers-box-header { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; padding-bottom: 6px; margin-bottom: 8px; }
-.movers-box-header.winners { color: var(--green); border-bottom: 2px solid var(--green); }
-.movers-box-header.losers { color: var(--red); border-bottom: 2px solid var(--red); }
-.mover-row { display: flex; justify-content: space-between; align-items: baseline; padding: 3px 0; font-size: 12.5px; border-bottom: 1px solid #f2f0ed; }
-.mover-row:last-child { border-bottom: none; }
-.mover-ticker { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 12px; min-width: 48px; }
-.mover-catalyst { color: var(--gray); font-size: 11px; flex: 1; margin: 0 8px; }
-.mover-pct { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 12px; }
+/* Pull quote */
+.pull-quote { font-family:'Playfair Display',serif; font-style:italic; font-size:18px; color:var(--warm-red); padding:16px 20px; margin:20px 0; border-left:4px solid var(--brand-orange); line-height:1.4; }
 
-/* CROSS ASSET CARDS */
-.cross-asset-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 14px 0; }
-.ca-card { background: #fff; border-radius: 6px; padding: 10px; border: 1px solid #e8e4df; text-align: center; }
-.ca-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 1px; color: var(--gray); text-transform: uppercase; }
-.ca-value { font-size: 18px; font-weight: 700; margin: 2px 0; }
-.ca-change { font-family: 'JetBrains Mono', monospace; font-size: 10px; }
-.ca-note { font-size: 10px; color: var(--gray); margin-top: 2px; }
+/* Sector table */
+.sector-table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13px; }
+.sector-table th { font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:1px; color:var(--gray-text); text-align:left; padding:6px 8px; border-bottom:1px solid #ccc; }
+.sector-table th:nth-child(2), .sector-table th:nth-child(3) { text-align:right; }
+.sector-table th:nth-child(4) { text-align:right; }
+.sector-table td { padding:7px 8px; border-bottom:1px solid #eee; }
+.sector-table td:nth-child(2), .sector-table td:nth-child(3) { text-align:right; font-family:'JetBrains Mono',monospace; font-size:12px; }
+.sector-table td:nth-child(4) { text-align:right; font-size:12px; }
+.sector-table tr:nth-child(even) { background:var(--light-gray); }
 
-/* WATCHING CLOSE */
-.watch-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
-.watch-col h4 { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--brand-orange); margin-bottom: 6px; }
-.watch-col p { font-size: 12px; line-height: 1.5; color: #444; margin-bottom: 3px; }
+/* Winners/Losers */
+.wl-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:16px 0; }
+.wl-box { background:white; border-radius:4px; padding:12px; box-shadow:0 1px 3px rgba(0,0,0,0.08); }
+.wl-box.winners .wl-header { background:rgba(39,174,96,0.1); color:var(--green-accent); }
+.wl-box.losers .wl-header { background:rgba(192,57,43,0.1); color:var(--red-accent); }
+.wl-header { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:2px; padding:6px 8px; border-radius:2px; margin-bottom:8px; font-weight:700; }
+.wl-row { display:flex; justify-content:space-between; padding:3px 0; font-size:12px; border-bottom:1px solid #f0f0f0; }
+.wl-row .ticker { font-family:'JetBrains Mono',monospace; font-weight:600; min-width:50px; }
+.wl-row .catalyst { color:var(--gray-text); flex:1; padding:0 8px; font-size:11px; }
+.wl-row .pct { font-family:'JetBrains Mono',monospace; font-weight:600; min-width:60px; text-align:right; }
 
-/* BOTTOM LINE */
-.bottom-line { background: var(--dark-bg); color: #fff; padding: 20px 24px; border-radius: 6px; margin: 24px 0; }
-.bottom-line h3 { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--brand-orange); margin-bottom: 10px; }
-.bottom-line p { font-size: 14px; line-height: 1.6; color: #ddd; }
+/* Cross-asset cards */
+.cross-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin:12px 0; }
+.cross-card { background:white; border-radius:4px; padding:10px; text-align:center; box-shadow:0 1px 3px rgba(0,0,0,0.08); }
+.cross-card .clabel { font-family:'JetBrains Mono',monospace; font-size:9px; color:var(--gray-text); letter-spacing:1px; }
+.cross-card .cvalue { font-size:18px; font-weight:700; margin:4px 0; }
+.cross-card .cchange { font-size:11px; font-weight:600; }
+.cross-card .cnote { font-size:10px; color:var(--gray-text); margin-top:4px; }
 
-/* FOOTER */
-.footer { text-align: center; padding: 20px 0; font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 1.5px; color: var(--gray); border-top: 1px solid #ddd; margin-top: 10px; }
+/* Watching into close */
+.watch-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; }
+.watch-section h4 { font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:2px; color:var(--brand-orange); margin-bottom:6px; }
+.watch-section p, .watch-section li { font-size:12px; line-height:1.6; }
+.watch-section ul { list-style:none; padding:0; }
+.watch-section li:before { content:"→ "; color:var(--brand-orange); }
 
-/* SINGLE STOCK NARRATIVE */
-.stock-narrative { margin-bottom: 14px; }
-.stock-narrative-header { font-family: 'Source Sans 3', sans-serif; font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+/* Bottom line */
+.bottom-line { background:var(--dark-bg); color:white; padding:20px 24px; border-radius:4px; margin:24px 0; }
+.bottom-line h3 { font-family:'Playfair Display',serif; font-size:18px; color:var(--brand-orange); margin-bottom:10px; }
+.bottom-line p { font-size:14px; line-height:1.7; color:#ddd; }
 
-@media (max-width: 700px) {
-  .index-bar { grid-template-columns: repeat(3, 1fr); }
-  .movers-section { grid-template-columns: 1fr; }
-  .cross-asset-grid { grid-template-columns: repeat(2, 1fr); }
-  .watch-grid { grid-template-columns: 1fr; }
-  .headline { font-size: 24px; }
+/* Footer */
+.footer { text-align:center; font-family:'JetBrains Mono',monospace; font-size:9px; color:var(--gray-text); letter-spacing:2px; padding:16px 0; border-top:1px solid #ddd; margin-top:20px; }
+
+/* Leverage Monitor section */
+.leverage-section { background:white; border-radius:6px; padding:20px; margin:24px 0; box-shadow:0 2px 8px rgba(0,0,0,0.06); border-top:4px solid var(--brand-orange); }
+.leverage-section h2 { font-family:'Playfair Display',serif; font-size:20px; color:var(--dark-text); margin-bottom:4px; }
+.leverage-section .subtitle { font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--gray-text); letter-spacing:1px; margin-bottom:16px; }
+.score-display { text-align:center; margin:16px 0; }
+.score-number { font-family:'Playfair Display',serif; font-size:64px; font-weight:900; }
+.score-label { font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:2px; margin-top:4px; }
+.layer-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:16px 0; }
+.layer-card { background:var(--light-gray); border-radius:4px; padding:12px; border-left:4px solid #ccc; }
+.layer-card.green { border-left-color:var(--green-accent); }
+.layer-card.yellow { border-left-color:#F39C12; }
+.layer-card.red { border-left-color:var(--red-accent); }
+.layer-card .ltitle { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:1px; color:var(--gray-text); }
+.layer-card .lscore { font-size:20px; font-weight:700; margin:4px 0; }
+.layer-card .ldetail { font-size:12px; color:var(--gray-text); line-height:1.5; }
+
+.divergence-box { background:linear-gradient(135deg,#FFF3E0,#FFF8E1); border:1px solid #F39C12; border-radius:4px; padding:14px 16px; margin:16px 0; }
+.divergence-box .dtitle { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:2px; color:#E65100; margin-bottom:6px; font-weight:700; }
+.divergence-box p { font-size:13px; line-height:1.6; }
+
+@media (max-width:768px) {
+  .index-bar { grid-template-columns:repeat(3,1fr); }
+  .wl-grid { grid-template-columns:1fr; }
+  .cross-grid { grid-template-columns:repeat(2,1fr); }
+  .watch-grid { grid-template-columns:1fr; }
+  .layer-grid { grid-template-columns:1fr; }
+  .headline { font-size:22px; }
 }
 </style>
 </head>
 <body>
+<div class="container">
 
 <!-- HEADER -->
-<div class="header-bar">
-<div class="container">
-  <div class="header-brand">Institutional Trading Intelligence</div>
-  <div class="header-title">22V Research &nbsp;·&nbsp; Midday Trading Recap</div>
-  <div class="header-meta">
-    <span>MONDAY, FEBRUARY 23, 2026</span>
-    <span>12:45 PM ET &nbsp;•&nbsp; TRUMP 15% GLOBAL TARIFFS • SCOTUS RECIPROCAL TARIFF RULING</span>
-    <span>NVDA 2/26 &nbsp;•&nbsp; STATE OF THE UNION 2/24 &nbsp;•&nbsp; PPI 2/27</span>
-  </div>
-</div>
+<div class="header-block">
+  <div class="sub">INSTITUTIONAL TRADING INTELLIGENCE</div>
+  <div class="brand">22V Research</div>
+  <div class="title">MIDDAY TRADING RECAP</div>
 </div>
 
-<!-- HEADLINE & LEDE -->
-<div class="container">
-<div class="headline-section">
-  <h1 class="headline">Tariff Blast Hammers Risk; Alt Managers Crater as Private Credit Contagion Deepens, LLY Soars on Novo Flop</h1>
-  <p class="lede">
-    Markets open the week sharply lower after Trump's new 15% global tariff following Friday's SCOTUS reciprocal tariff ruling. <b>KKR</b> −9.2%, <b>BX</b> −7.8%, <b>ARES</b> −8.0% as alt managers extend their private-credit-driven rout. <b>CRWD</b> −9.5% and <b>DDOG</b> −9.6% pace software losses. On the other side, <b>LLY</b> +5.1% surges as Novo's CagriSema fails to match Zepbound in a head-to-head trial, <b>GLW</b> +5.0% continues its AI fiber rally, and <b>SNDK</b> +6.0% extends NAND momentum ahead of NVDA earnings Wednesday.
-  </p>
+<div class="date-bar">
+  <span>TUESDAY, FEBRUARY 24, 2026</span>
+  <span class="center">12:45 PM ET • STATE OF THE UNION TONIGHT • 10% GLOBAL TARIFF IN EFFECT</span>
+  <span>NVDA 2/25 • CONSUMER CONFIDENCE 91.2</span>
 </div>
 
-<!-- INDEX BAR -->
+<!-- HEADLINE -->
+<h1 class="headline">AMD-Meta Mega-Deal Sparks AI Hardware Rally; Tape Rebounds from Monday's Tariff Carnage as Managed Care Collapses</h1>
+
+<div class="lede">
+  <b>AMD</b> +8.9% after Meta commits to 6GW of Instinct GPUs in a deal valued at up to $100B over five years — the most significant challenge to Nvidia's dominance since the AI trade began. <b>KEYS</b> +23% on a blowout Q1 (revs +23% YoY, EPS $2.17 vs $2.00 est). <b>HD</b> +2.7% on an earnings beat ($2.72 adj vs $2.54 est). The other side: managed care is getting crushed — <b>UNH</b> −3.3%, <b>MOH</b> −5.6%, <b>HUM</b> −3.7% — on Medicaid renewal fears. Monday's 820-point Dow plunge on 15% global tariff fears is being partially reversed, but conviction is thin ahead of tonight's State of the Union and tomorrow's NVDA print.
+</div>
+
+<!-- INDEX SNAPSHOT -->
 <div class="index-bar">
   <div class="index-card">
-    <div class="index-label">S&P 500</div>
-    <div class="index-value red">6,836</div>
-    <div class="index-change red">−1.07%</div>
+    <div class="label">S&P 500</div>
+    <div class="value positive">6,891</div>
+    <div class="change positive">+0.77%</div>
   </div>
   <div class="index-card">
-    <div class="index-label">Nasdaq</div>
-    <div class="index-value red">22,620</div>
-    <div class="index-change red">−1.16%</div>
+    <div class="label">NASDAQ</div>
+    <div class="value positive">22,882</div>
+    <div class="change positive">+1.12%</div>
   </div>
   <div class="index-card">
-    <div class="index-label">Dow</div>
-    <div class="index-value red">48,847</div>
-    <div class="index-change red">−1.57%</div>
+    <div class="label">DOW</div>
+    <div class="value positive">49,204</div>
+    <div class="change positive">+0.82%</div>
   </div>
   <div class="index-card">
-    <div class="index-label">Russell</div>
-    <div class="index-value red">2,608</div>
-    <div class="index-change red">−2.11%</div>
+    <div class="label">RUSSELL 2K</div>
+    <div class="value positive">2,641</div>
+    <div class="change positive">+0.75%</div>
   </div>
   <div class="index-card">
-    <div class="index-label">VIX</div>
-    <div class="index-value red">21.28</div>
-    <div class="index-change red">+2.19 (+11.5%)</div>
+    <div class="label">VIX</div>
+    <div class="value negative">19.60</div>
+    <div class="change negative">-1.41</div>
   </div>
   <div class="index-card">
-    <div class="index-label">10Y</div>
-    <div class="index-value green">4.025</div>
-    <div class="index-change green">−6bp</div>
+    <div class="label">10Y YIELD</div>
+    <div class="value">4.031</div>
+    <div class="change">flat</div>
   </div>
 </div>
 
 <!-- MARKET OVERVIEW -->
-<div class="section-header">Market Overview</div>
-<p class="body-text">
-  <b>SPX</b> gapped lower at the open and sold through its 5-day MA of 6,872, trading down to 6,836 by midday with no meaningful bounce. The tape feels heavy — the index is fighting two-sided headwinds from tariff escalation and the private credit complex unwind. Friday's Supreme Court decision striking down Trump's reciprocal tariffs briefly sparked a relief bid, but the weekend announcement of a new 15% global tariff under IEEPA immediately replaced one policy risk with another. Europe warned the tariffs could jeopardize trade deals, adding geopolitical uncertainty to the mix.
-</p>
-<p class="body-text">
-  <b>NDX</b> is tracking in line with SPX, off 1.16%, but the damage is concentrated in high-multiple software — <b>CRWD</b> −9.5%, <b>DDOG</b> −9.6%, <b>WDAY</b> −8.3%, <b>INTU</b> −7.9%, <b>NOW</b> −4.3%, <b>ORCL</b> −6.0%. Enterprise software is now deep in correction territory on mounting AI-disruption fears; roughly 20% of private credit's loan book over the past decade has gone to software companies, and that cross-read is hitting both sectors simultaneously. <b>DJIA</b> lagging badly at −1.57%, dragged by <b>AXP</b> −8.1% on consumer spend fears and <b>JPM</b> −4.7% in the financial selloff. <b>RTY</b> worst in show at −2.11%, confirming the risk-off sweep is broadest in the most cyclical, most domestically exposed corner of the market.
-</p>
+<div class="section-header">MARKET OVERVIEW</div>
+
+<p class="body-text"><b>SPX</b> is up 53 handles to 6,891 at midday, reclaiming the 5-day moving average and holding convincingly above the 6,800 support that was tested in yesterday's rout. Breadth is solid at 317 advancers vs 186 decliners across the S&P 500 — a 1.7:1 ratio — though volume is running light at ~0.5x the 20-day average across megacaps. This is a covering bounce, not a conviction rally. The tape is being carried by two stories: the AMD-Meta 6GW GPU deal that legitimizes AMD as a true hyperscale AI supplier, and the Keysight blowout that signals AI capex is accelerating beyond semiconductors into test & measurement infrastructure.</p>
+
+<p class="body-text"><b>CCMP</b> is leading indices at +1.12%, powered by the AMD deal and broad software recovery after yesterday's AI disruption fears hammered names like <b>CRWD</b>, <b>MSFT</b>, and <b>PANW</b>. Those names are stabilizing today but not meaningfully bouncing — this is more "stop the bleeding" than "all clear." The <b>Dow</b> is +400 points on <b>HD</b>'s earnings beat and general blue-chip dip-buying. <b>RTY</b> is lagging at +0.75%, which is notable — small caps should be leading in a genuine risk-on session. Instead, the Russell is underperforming tech, signaling that tariff uncertainty is weighing more heavily on domestically-exposed names. The 10% blanket tariff took effect this morning, and while it came in below Trump's initial 15% threat, the ambiguity around escalation is keeping a bid under the VIX at 19.60 despite the pullback.</p>
 
 <!-- BREADTH CHECK -->
 <div class="callout">
-  <div class="callout-title">Breadth Check</div>
-  <div class="callout-text">
-    ~137 advancers vs ~366 decliners in the S&P 500 — a brutal 1:2.7 ratio. Declining volume swamping advancing volume across the board. Only Utilities holding green on the sector map. This is broad-based, institutional de-risking — not a sector rotation story. Alt managers seeing 2x+ avg vol on the selloff, confirming real-money selling.
-  </div>
+  <div class="callout-title">BREADTH CHECK</div>
+  <p>~317 advancers vs ~186 decliners — a 1.7:1 ratio. Volume running 0.3-0.5x the 20-day average across most sectors. This is a low-volume bounce in a headline-driven tape. Managed care is the notable pocket of real selling — <b>UNH</b>, <b>MOH</b>, <b>HUM</b>, <b>CNC</b>, <b>ELV</b> all down 3-6% on elevated relative volume. The A/D line is masking sector-level stress beneath the surface.</p>
 </div>
 
 <!-- VIX COMMENTARY -->
-<div class="section-header">VIX Commentary</div>
-<p class="body-text">
-  <b>VIX</b> ripped +11.5% to 21.28, the highest since December. YTD the VIX is +42% and the MTD reading of +22% tells the story: vol sellers are getting squeezed. The 2Y−10Y VIX term structure is inverted with the curve now at −18.37%, signaling acute near-term hedging demand. Gold at $5,209 confirms the flight to safety is real, not just a positioning artefact.
-</p>
+<p class="body-text"><b>VIX</b> pulled back to 19.60 from yesterday's 21.01 close, down 1.41 points on the session. That said, VIX is still +31.1% MTD and +12.4% WTD — the elevated base reflects genuine hedging demand, not complacency. The term structure remains in contango but barely — the front month is only 0.4 vol points below the second month, suggesting the market is pricing near-term event risk (State of the Union tonight, NVDA tomorrow) almost as high as structural uncertainty. Vol sellers are cautious here.</p>
 
 <!-- SECTOR TABLE -->
-<div class="section-header">Sector Performance</div>
+<div class="section-header">SECTOR PERFORMANCE</div>
+
 <table class="sector-table">
-  <tr><th>Sector</th><th>Avg</th><th>Adv/Dec</th><th>Notable</th></tr>
-  <tr><td>Utilities</td><td class="green">+0.13%</td><td>22 / 9</td><td>VST −3.0%, NEE +1.4%</td></tr>
-  <tr><td>Cons. Non-Cyclical</td><td class="red">−0.11%</td><td>54 / 51</td><td><b>PYPL +7.2%, LLY +5.1%</b></td></tr>
-  <tr><td>Energy</td><td class="red">−0.58%</td><td>7 / 16</td><td>TPL +3.6%, BKR +2.0%</td></tr>
-  <tr><td>Basic Materials</td><td class="red">−0.73%</td><td>6 / 12</td><td>IP −6.1%, ALB +4.1%</td></tr>
-  <tr><td>Industrials</td><td class="red">−1.64%</td><td>5 / 69</td><td>SW −6.6%, PKG −6.4%</td></tr>
-  <tr><td>Financials</td><td class="red">−2.29%</td><td>19 / 76</td><td><b>KKR −9.2%, BX −7.8%</b></td></tr>
-  <tr><td>Communications</td><td class="red">−2.42%</td><td>8 / 32</td><td><b>APP −9.1%, EXPE −8.3%</b></td></tr>
-  <tr><td>Cons. Cyclical</td><td class="red">−2.52%</td><td>7 / 49</td><td>MGM −7.6%, RL −6.7%</td></tr>
-  <tr><td>Technology</td><td class="red">−2.68%</td><td>9 / 52</td><td><b>DDOG −9.6%, CRWD −9.5%</b></td></tr>
+<tr><th>SECTOR</th><th>AVG</th><th>ADV/DEC</th><th>NOTABLE</th></tr>
+<tr><td>Technology</td><td class="positive">+1.50%</td><td>53/8</td><td>AMD +8.9%, FICO -5.9%</td></tr>
+<tr><td>Communications</td><td class="positive">+1.38%</td><td>32/8</td><td>FDS +6.6%, BKNG +4.4%</td></tr>
+<tr><td>Industrials</td><td class="positive">+1.22%</td><td>62/12</td><td>KEYS +23.2%, EXPD -7.4%</td></tr>
+<tr><td>Consumer Disc.</td><td class="positive">+1.17%</td><td>42/14</td><td>RCL +4.5%, HD +2.7%</td></tr>
+<tr><td>Materials</td><td class="positive">+0.86%</td><td>11/7</td><td>ALB +5.9%, STLD -1.9%</td></tr>
+<tr><td>Financials</td><td class="positive">+0.19%</td><td>43/52</td><td>KKR +3.7%, ERIE -2.4%</td></tr>
+<tr><td>Cons. Staples/HC</td><td class="positive">+0.13%</td><td>59/46</td><td>KDP +3.9%, MOH -5.6%</td></tr>
+<tr><td>Utilities</td><td style="color:var(--gray-text)">+0.02%</td><td>9/22</td><td>CEG +4.9%, D -1.3%</td></tr>
+<tr><td>Energy</td><td class="negative">-0.55%</td><td>6/17</td><td>TPL +2.7%, OKE -6.8%</td></tr>
 </table>
 
 <!-- PULL QUOTE -->
-<div class="pull-quote">
-  "Tariffs are the proximate cause but private credit contagion is the real story — alt managers trading like it's 2022, software in freefall, and only utes and pharma with a bid. Hide in quality and wait for NVDA Wednesday."
-</div>
+<div class="pull-quote">"Monday's tariff carnage meets Tuesday's AI euphoria — the tape is bouncing on AMD-Meta and HD, but the VIX still has a 19-handle and managed care is in freefall. Don't confuse a covering rally with an all-clear."</div>
 
 <!-- SECTOR NARRATIVES -->
-<div class="section-header">Sector Narratives</div>
-<p class="body-text">
-  <b>Financials</b> are the day's epicenter of pain. The alt manager complex is in full meltdown: <b>KKR</b> −9.2%, <b>BX</b> −7.8%, <b>ARES</b> −8.0%, <b>APO</b> −6.6% as the Blue Owl OBDC II redemption gate reverberates through the entire private credit ecosystem. <b>AXP</b> −8.1% dragging the Dow as analysts flag consumer spending fragility under tariff uncertainty. Banks broadly lower — <b>JPM</b> −4.7%, <b>C</b> −5.8%, <b>WFC</b> −5.1%, <b>BAC</b> −3.8%, <b>COF</b> −7.7%. The read-through is clear: higher-for-longer rates + tariff drag on leveraged buyout activity = structurally weaker fee income for years. Credit investors are repricing the entire chain.
-</p>
-<p class="body-text">
-  <b>Technology</b> is a two-story tape. Enterprise software is getting demolished — <b>CRWD</b> −9.5% on AI disruption fears (2x avg vol), <b>DDOG</b> −9.6%, <b>WDAY</b> −8.3%, <b>INTU</b> −7.9%, <b>CRM</b> −5.2%, <b>FICO</b> −5.6%, <b>ORCL</b> −6.0% — as the market prices in a world where AI agents displace enterprise SaaS seats. Meanwhile, AI infrastructure plays hold relatively firm: <b>NVDA</b> +0.6% ahead of Wednesday's earnings, <b>SNDK</b> +6.0% on continued NAND demand momentum, and <b>GLW</b> +5.0% extending its fiber-optic rally after the $6B Meta deal. The bifurcation within tech has never been starker.
-</p>
-<p class="body-text">
-  <b>Healthcare / Non-Cyclical</b> is the sole pocket of meaningful green. <b>LLY</b> +5.1% is the session's macro winner after Novo Nordisk's CagriSema failed to match Zepbound in the REDEFINE 4 head-to-head trial — the worst-case scenario for Novo and a validation of Lilly's dominance in GLP-1. <b>MRK</b> +1.0% on the Keytruda unit split, positioning for potential future spinoff optionality. <b>PYPL</b> +7.2% is the biggest S&P gainer on a dead-cat bounce from deeply oversold levels after the CEO transition and Q4 miss.
-</p>
+<div class="section-header">SECTOR NARRATIVES</div>
 
-<!-- TOP MOVERS -->
-<div class="movers-section">
-  <div class="movers-box">
-    <div class="movers-box-header winners">Top Winners</div>
-    <div class="mover-row"><span class="mover-ticker">PYPL</span><span class="mover-catalyst">Dead-cat bounce, oversold RSI 43, 1.5x vol</span><span class="mover-pct green">+7.2%</span></div>
-    <div class="mover-row"><span class="mover-ticker">SNDK</span><span class="mover-catalyst">NAND demand, AI infra momentum pre-NVDA</span><span class="mover-pct green">+6.0%</span></div>
-    <div class="mover-row"><span class="mover-ticker">LLY</span><span class="mover-catalyst">CagriSema flop validates Zepbound dominance</span><span class="mover-pct green">+5.1%</span></div>
-    <div class="mover-row"><span class="mover-ticker">GLW</span><span class="mover-catalyst">AI fiber rally, $6B Meta deal, UBS PT $160</span><span class="mover-pct green">+5.0%</span></div>
-    <div class="mover-row"><span class="mover-ticker">ALB</span><span class="mover-catalyst">Lithium rebound, tariff read-through</span><span class="mover-pct green">+4.1%</span></div>
-    <div class="mover-row"><span class="mover-ticker">TPL</span><span class="mover-catalyst">Permian royalties, RSI 88 overbought</span><span class="mover-pct green">+3.6%</span></div>
-    <div class="mover-row"><span class="mover-ticker">AKAM</span><span class="mover-catalyst">CDN demand, defensive tech bid</span><span class="mover-pct green">+3.1%</span></div>
+<p class="body-text"><b>Technology</b> is the clear leader at +1.50%, driven entirely by the AMD-Meta mega-deal. <b>AMD</b> +8.9% is the story of the day: Meta committed to deploying up to 6GW of AMD Instinct MI450 GPUs across a multi-year, multi-generation partnership valued at an estimated $60-100B. Meta also issued AMD a performance-based warrant for 160M shares, vesting on shipment milestones. This is the first time a hyperscaler has committed to AMD at NVDA-like scale, and it fundamentally changes the competitive landscape ahead of NVDA's print tomorrow. The broader semi complex is participating — <b>INTC</b> +4.9%, <b>AMAT</b> +1.6%, <b>TER</b> +4.1%. On the flip side, <b>FICO</b> -5.9% with RSI at 22.7 is deep in oversold territory after a multi-week slide, and <b>TXN</b> -3.8% is an outlier on the downside amid analog inventory concerns.</p>
+
+<p class="body-text"><b>Industrials</b> are +1.22%, powered by <b>KEYS</b> +23% on a monster Q1: revenue $1.60B vs $1.54B est (+23% YoY), EPS $2.17 vs $2.00 est. AI-related orders grew "significantly above" the company average, wireline surpassed wireless for the first time, and they raised FY26 guidance to 20%+ growth. Orders of $1.65B were up 30% YoY. This is the best read-through for AI infrastructure capex outside of the chip names themselves. <b>EXPD</b> -7.4% on the other end as freight logistics faces tariff-related uncertainty.</p>
+
+<p class="body-text"><b>Healthcare / Consumer Non-Cyclical</b> is the clear laggard within the index: managed care is under heavy pressure with <b>UNH</b> -3.3%, <b>MOH</b> -5.6%, <b>HUM</b> -3.7%, <b>CNC</b> -3.4%, <b>CVS</b> -3.4%, <b>ELV</b> -3.2%. This is a sector-wide Medicaid renewal and reimbursement rate fear, compounding the DOJ headline overhangs. This is real selling, not a sympathy dip — the breadth is uniformly negative across managed care names.</p>
+
+<!-- WINNERS / LOSERS -->
+<div class="wl-grid">
+  <div class="wl-box winners">
+    <div class="wl-header">TOP WINNERS</div>
+    <div class="wl-row"><span class="ticker">KEYS</span><span class="catalyst">Blowout Q1, AI orders surge, raised FY guide</span><span class="pct positive">+23.2%</span></div>
+    <div class="wl-row"><span class="ticker">AMD</span><span class="catalyst">6GW Meta GPU deal, 160M share warrant</span><span class="pct positive">+8.9%</span></div>
+    <div class="wl-row"><span class="ticker">FDS</span><span class="catalyst">Analytics demand, AI workflow integration</span><span class="pct positive">+6.6%</span></div>
+    <div class="wl-row"><span class="ticker">HSIC</span><span class="catalyst">Dental distribution momentum</span><span class="pct positive">+6.0%</span></div>
+    <div class="wl-row"><span class="ticker">ALB</span><span class="catalyst">Lithium price recovery, EV demand</span><span class="pct positive">+5.9%</span></div>
+    <div class="wl-row"><span class="ticker">CEG</span><span class="catalyst">Nuclear/AI power demand thesis</span><span class="pct positive">+4.9%</span></div>
+    <div class="wl-row"><span class="ticker">INTC</span><span class="catalyst">Sympathy AMD, foundry optimism</span><span class="pct positive">+4.9%</span></div>
   </div>
-  <div class="movers-box">
-    <div class="movers-box-header losers">Top Losers</div>
-    <div class="mover-row"><span class="mover-ticker">DDOG</span><span class="mover-catalyst">AI disruption fears, software contagion</span><span class="mover-pct red">−9.6%</span></div>
-    <div class="mover-row"><span class="mover-ticker">CRWD</span><span class="mover-catalyst">Software selloff, 2.1x vol, RSI 29</span><span class="mover-pct red">−9.5%</span></div>
-    <div class="mover-row"><span class="mover-ticker">KKR</span><span class="mover-catalyst">Alt mgr contagion, private credit fears</span><span class="mover-pct red">−9.2%</span></div>
-    <div class="mover-row"><span class="mover-ticker">APP</span><span class="mover-catalyst">Ad-tech selloff, growth multiple compression</span><span class="mover-pct red">−9.1%</span></div>
-    <div class="mover-row"><span class="mover-ticker">EXPE</span><span class="mover-catalyst">Travel demand fears, tariff consumer drag</span><span class="mover-pct red">−8.3%</span></div>
-    <div class="mover-row"><span class="mover-ticker">WDAY</span><span class="mover-catalyst">SaaS seat displacement thesis, RSI 17</span><span class="mover-pct red">−8.3%</span></div>
-    <div class="mover-row"><span class="mover-ticker">AXP</span><span class="mover-catalyst">Consumer spend fragility, Dow drag</span><span class="mover-pct red">−8.1%</span></div>
+  <div class="wl-box losers">
+    <div class="wl-header">TOP LOSERS</div>
+    <div class="wl-row"><span class="ticker">EXPD</span><span class="catalyst">Tariff logistics uncertainty</span><span class="pct negative">-7.4%</span></div>
+    <div class="wl-row"><span class="ticker">OKE</span><span class="catalyst">Midstream weakness, nat gas -31.7% MTD</span><span class="pct negative">-6.8%</span></div>
+    <div class="wl-row"><span class="ticker">FICO</span><span class="catalyst">Extended selloff, RSI 22.7</span><span class="pct negative">-5.9%</span></div>
+    <div class="wl-row"><span class="ticker">MOH</span><span class="catalyst">Medicaid renewal fears, MCO selloff</span><span class="pct negative">-5.6%</span></div>
+    <div class="wl-row"><span class="ticker">TXN</span><span class="catalyst">Analog inventory cycle concerns</span><span class="pct negative">-3.8%</span></div>
+    <div class="wl-row"><span class="ticker">HUM</span><span class="catalyst">Medicare Advantage pressure</span><span class="pct negative">-3.7%</span></div>
+    <div class="wl-row"><span class="ticker">UNH</span><span class="catalyst">DOJ probe overhang, MCO contagion</span><span class="pct negative">-3.3%</span></div>
   </div>
 </div>
 
-<!-- PAGE 2: SINGLE STOCK NARRATIVES -->
-<div class="section-header">Key Single-Stock Narratives</div>
+<!-- KEY SINGLE-STOCK NARRATIVES -->
+<div class="section-header">KEY SINGLE-STOCK NARRATIVES</div>
 
-<div class="stock-narrative">
-  <div class="stock-narrative-header">KKR −9.2% &nbsp;|&nbsp; BX −7.8% &nbsp;|&nbsp; ARES −8.0% &nbsp;|&nbsp; APO −6.6%</div>
-  <p class="body-text">
-    The alt manager complex is extending what's become a multi-week rout, now accelerated by the Blue Owl OBDC II redemption gate that spooked the entire private credit space last week. <b>KKR</b> is down nearly 16% YTD after Q4 profit declines and AI-exposure concerns. <b>BX</b> −7.8% despite being the most diversified of the group — the contagion is indiscriminate. The math is brutal: roughly 20% of private credit loans over the past decade went to software companies, and with AI now threatening that revenue base, the dual risk of credit quality deterioration + software disruption is repricing the entire sector. <b>APO</b> reportedly profited from short positions against First Brands' debt, but the sector overhang is overwhelming individual stories. Investors reassessing liquidity, valuation transparency, and systemic risk across the $1.8T private credit market.
-  </p>
-</div>
+<p class="body-text"><b>AMD +8.9%</b> — The headline deal of the year so far: Meta commits to purchasing up to 6GW of AMD Instinct MI450 GPUs in a multi-year, multi-generation partnership. Estimated deal value: $60-100B over five years. Meta also receives performance-based warrants for 160M AMD shares (~10% of the company), vesting as shipment milestones are achieved and tied to AMD stock price thresholds. First 1GW deployment begins 2H 2026 using custom MI450 chips on the Helios rack-scale architecture with 6th Gen EPYC "Venice" CPUs. AMD CFO Jean Hu called it "accretive to non-GAAP EPS" and a "significant step forward" for their financial model. This comes one week after Meta signed a separate multi-year deal with NVDA for millions of Blackwell/Rubin GPUs — Meta is clearly diversifying its compute stack. AMD vol running 1.3x average.</p>
 
-<div class="stock-narrative">
-  <div class="stock-narrative-header">LLY +5.1% — Novo CagriSema Trial Failure</div>
-  <p class="body-text">
-    <b>LLY</b> surging after Novo Nordisk's next-gen obesity drug CagriSema failed to demonstrate non-inferiority to Lilly's tirzepatide (Zepbound) in the REDEFINE 4 trial. CagriSema delivered 20.2% weight loss vs 23.6% for tirzepatide on the treatment-regimen estimand — a decisive miss. Novo's stock plunged 15%, wiping ~$100B in market cap. For Lilly, this validates Zepbound as the gold standard and solidifies its competitive moat heading into the orforglipron pill launch in Q2 2026. Morgan Stanley called it a "worst-case scenario" for Novo. Lilly now trades at $1,061 with guided 2026 revenue growth of 25%. The GLP-1 market has shifted from "rising tide lifts all boats" to "winner takes most."
-  </p>
-</div>
+<p class="body-text"><b>KEYS +23.2%</b> — Record Q1 results across the board. Revenue of $1.60B beat consensus by $60M (+23% YoY), driven by 27% growth in the Communications Solutions Group on AI data center and next-gen wireless demand. Non-GAAP EPS of $2.17 beat by $0.17. Orders surged to $1.65B (+30% YoY), and management raised the full-year growth outlook to "just above 20%." AI-related orders grew "significantly above" the company average, and they've doubled their AI customer count. Q2 guidance of $1.69-$1.71B in revs and $2.27-$2.33 EPS both well above consensus. Vol at 2.8x average — this is being aggressively bought. Read-through positive for the entire test & measurement / AI infrastructure supply chain.</p>
 
-<div class="stock-narrative">
-  <div class="stock-narrative-header">CRWD −9.5% &nbsp;|&nbsp; DDOG −9.6% &nbsp;|&nbsp; WDAY −8.3% — Software Implosion</div>
-  <p class="body-text">
-    Enterprise software is in free-fall as the market reprices the AI-disruption thesis. <b>CRWD</b> trading at 2.1x avg vol on the decline to RSI 29, approaching deeply oversold territory. <b>WDAY</b> now at RSI 17 — historically extreme. <b>INTU</b> RSI 18. The fear is that AI agents will displace traditional SaaS seat-based licensing, compressing multiples for the entire cohort. The cross-read from private credit — 20% of leveraged loan exposure to software — means the financial system is also a forced seller. <b>CRM</b> −5.2% ahead of its own earnings this week adds urgency to the de-risking. The question into the close: is this capitulation or just the beginning of a broader re-rating?
-  </p>
-</div>
+<p class="body-text"><b>HD +2.7%</b> — Solid Q4 beat: adj EPS $2.72 vs $2.54 est, revs $38.2B vs $38.14B est. Comps +0.4% (US +0.3%) — modest but positive after three consecutive misses. Raised quarterly dividend 1.3% to $2.33/share. FY26 guide is reasonable: total sales growth 2.5-4.5%, adj EPS flat to +4%. The housing market remains "frozen" per CFO McPhail, but the company is gaining market share. Tariff impact under evaluation — the 10% blanket tariff hitting today adds uncertainty to the imported goods portion of their assortment.</p>
 
-<div class="stock-narrative">
-  <div class="stock-narrative-header">GLW +5.0% — AI Fiber Momentum Continues</div>
-  <p class="body-text">
-    <b>GLW</b> extends its remarkable 2026 run (+50% YTD) after the $6B Meta fiber-optic deal and UBS's aggressive PT raise to $160. The "Scale Up" thesis — replacing copper inside server racks with fiber — is now consensus, with UBS estimating that market could be 2-3x larger than current Scale Out demand. Optical Communications grew 24% YoY in Q4 with enterprise sales jumping 58%. RSI at 78 signals overbought but momentum is undeniable as hyperscaler capex continues to accelerate. Corning has become the toll-booth of the AI infrastructure buildout.
-  </p>
-</div>
-
-<div class="stock-narrative">
-  <div class="stock-narrative-header">MRK +1.0% — Keytruda Unit Split</div>
-  <p class="body-text">
-    <b>MRK</b> announced it's splitting its Human Health division into a standalone oncology unit (housing Keytruda, $31.7B in 2025 sales) and a separate specialty/pharma/infectious disease unit. This restructuring is widely read as a precursor to a potential future spinoff, giving Merck "more optionality" ahead of Keytruda's 2028 U.S. patent cliff. Brian Foard from Sanofi hired to run the specialty unit. The market reaction is muted — shares up ~1% — but the strategic implications are significant. Merck has tripled its pipeline since 2021 and struck two ~$10B deals last year.
-  </p>
-</div>
-
-<!-- PRIVATE CREDIT CONTAGION CALLOUT -->
+<!-- MANAGED CARE CALLOUT -->
 <div class="callout">
-  <div class="callout-title">Private Credit Contagion Watch</div>
-  <div class="callout-text">
-    Blue Owl's OBDC II redemption gate — ending quarterly liquidity and shifting to periodic distributions — has become the catalyst for a broader repricing of the $1.8T private credit market. The concern is not one fund but the structural question: if rates stay higher for longer under tariff-driven inflation, and AI disrupts the 20% of leveraged loans exposed to software, who holds the risk? Alt managers down 12-18% YTD. Watch for: second-order fund gates, BDC NAV markdowns, and CLO tranching stress. This is the new macro fault line.
-  </div>
+  <div class="callout-title">MANAGED CARE SELLOFF — SECTOR-WIDE STRESS</div>
+  <p>The entire managed care complex is under pressure today: <b>UNH</b> -3.3%, <b>MOH</b> -5.6%, <b>HUM</b> -3.7%, <b>CNC</b> -3.4%, <b>CVS</b> -3.4%, <b>ELV</b> -3.2%, <b>HCA</b> -1.9%. This is Medicaid redetermination and reimbursement rate uncertainty compounding the DOJ investigations overhang. The breadth of the move — all names uniformly negative — suggests institutional de-risking of the entire sector rather than single-name catalysts. <b>HUM</b> at RSI 27.4 is approaching levels where contrarian buyers typically step in, but the fundamental backdrop is deteriorating. Watch for read-through to hospital names and PBMs.</p>
 </div>
 
 <!-- RATES / FX / COMMODITIES -->
-<div class="section-header">Rates / FX / Commodities</div>
-<div class="cross-asset-grid">
-  <div class="ca-card">
-    <div class="ca-label">2Y / 10Y</div>
-    <div class="ca-value">3.44 / 4.03</div>
-    <div class="ca-change red">10Y −6bp</div>
-    <div class="ca-note">Curve 58bp, flight to safety</div>
+<div class="section-header">RATES / FX / COMMODITIES</div>
+
+<div class="cross-grid">
+  <div class="cross-card">
+    <div class="clabel">2Y / 10Y</div>
+    <div class="cvalue">3.45 / 4.03</div>
+    <div class="cchange">flat</div>
+    <div class="cnote">Curve 58bp, steeper</div>
   </div>
-  <div class="ca-card">
-    <div class="ca-label">DXY</div>
-    <div class="ca-value">97.61</div>
-    <div class="ca-change red">−0.19%</div>
-    <div class="ca-note">Dollar weak on tariff chaos</div>
+  <div class="cross-card">
+    <div class="clabel">DXY</div>
+    <div class="cvalue">97.76</div>
+    <div class="cchange positive">+0.06%</div>
+    <div class="cnote">Tariff bid fading</div>
   </div>
-  <div class="ca-card">
-    <div class="ca-label">Gold</div>
-    <div class="ca-value">$5,209</div>
-    <div class="ca-change green">+1.98%</div>
-    <div class="ca-note">Near ATH, +20.6% YTD</div>
+  <div class="cross-card">
+    <div class="clabel">GOLD</div>
+    <div class="cvalue">$5,157</div>
+    <div class="cchange negative">-1.35%</div>
+    <div class="cnote">Off ATH, +19.4% YTD</div>
   </div>
-  <div class="ca-card">
-    <div class="ca-label">Nat Gas</div>
-    <div class="ca-value">$3.03</div>
-    <div class="ca-change red">−0.46%</div>
-    <div class="ca-note">MTD −30.3%, weather fade</div>
+  <div class="cross-card">
+    <div class="clabel">WTI CRUDE</div>
+    <div class="cvalue">$66.03</div>
+    <div class="cchange negative">-0.42%</div>
+    <div class="cnote">+15.7% MTD</div>
   </div>
 </div>
-<p class="body-text">
-  The rates move tells the macro story: 10Y yields dropping 6bp to 4.025% as duration catches a flight-to-safety bid, while the 2Y−10Y curve steepens modestly to 58bp. The 5Y is leading the rally, down 7bp — the belly of the curve is pricing in the growth scare more aggressively than the short end. <b>Gold</b> at $5,209 and surging +2.0% confirms the risk-off posture is real. <b>DXY</b> softer at 97.61 as tariff uncertainty paradoxically weighs on the dollar — the market reading is that unilateral tariffs isolate the U.S. rather than strengthen it. <b>Silver</b> +2.1% riding gold's coattails. <b>Crude</b> (HG1) at $575.75 is the outlier with copper down −1.4% on global growth fears — the doctor is not bullish.
-</p>
+
+<p class="body-text">The rates market is remarkably calm given the tariff backdrop — 10Y at 4.03% is essentially flat on the day as the bond market weighs the inflationary impact of 10% blanket tariffs against slowing growth signals. <b>Nat gas</b> is the standout commodity move at -31.7% MTD, weighing on midstream names like <b>OKE</b> -6.8% and <b>TRGP</b> -1.7%. <b>Gold</b> at $5,157 is pulling back from record highs above $5,200 hit yesterday, but the +19.4% YTD run and +22.6% MTD in <b>silver</b> reflect sustained demand for hard-asset hedges against policy uncertainty. The <b>dollar</b> is flat despite tariff implementation — a sign that markets were positioned for worse (15% vs the 10% that actually took effect). The 2s10s curve at 58bp is steepening modestly as the front end prices in the Fed's "wait and see" stance on tariff-driven inflation.</p>
 
 <!-- WATCHING INTO THE CLOSE -->
 <div class="callout">
-  <div class="callout-title">Watching Into The Close</div>
+  <div class="callout-title">WATCHING INTO THE CLOSE</div>
   <div class="watch-grid">
-    <div class="watch-col">
-      <h4>Key Levels</h4>
-      <p>SPX support 6,800 / 6,770 (Feb low)</p>
-      <p>SPX resistance 6,872 (5d MA)</p>
-      <p>NDX 22,400 support</p>
-      <p>RTY 2,580 pivot — below = risk-off accelerates</p>
+    <div class="watch-section">
+      <h4>KEY LEVELS</h4>
+      <ul>
+        <li>SPX support 6,800 (Monday low), resist 6,920 (Feb high)</li>
+        <li>NDX 22,500 support, 23,000 resistance</li>
+        <li>RTY 2,620 support — if this breaks, small caps signal risk-off</li>
+      </ul>
     </div>
-    <div class="watch-col">
-      <h4>Catalysts</h4>
-      <p>State of the Union — Tue evening</p>
-      <p>Consumer Confidence — Tue 10:00 AM</p>
-      <p>NVDA earnings — Wed after close</p>
-      <p>PPI — Fri 8:30 AM</p>
-      <p>CRM earnings — Tue after close</p>
+    <div class="watch-section">
+      <h4>CATALYSTS</h4>
+      <ul>
+        <li>State of the Union — tonight, tariff clarity critical</li>
+        <li>NVDA earnings — Wed after close</li>
+        <li>PPI — Wed 8:30 AM</li>
+        <li>SNOW, OKTA, FSLR after close today</li>
+      </ul>
     </div>
-    <div class="watch-col">
-      <h4>Setups</h4>
-      <p><b>Oversold:</b> WDAY RSI 17, INTU RSI 18, BX RSI 21, ADP RSI 21</p>
-      <p><b>Overbought:</b> TPL RSI 88, MSI RSI 80, GLW RSI 78</p>
-      <p><b>Private credit watch:</b> KKR, BX, ARES, APO</p>
+    <div class="watch-section">
+      <h4>SETUPS</h4>
+      <ul>
+        <li>Oversold: WDAY (RSI 18.8), INTU (19.2), FICO (22.7), ACN (24.5)</li>
+        <li>Overbought: TPL (88.0), GLW (80.4), FDX (80.7)</li>
+        <li>MCO watch: HUM RSI 27.4, UNH RSI 35.1</li>
+      </ul>
     </div>
   </div>
 </div>
@@ -360,9 +341,64 @@ body { background: var(--cream); color: var(--dark); font-family: 'Source Sans 3
 <!-- BOTTOM LINE -->
 <div class="bottom-line">
   <h3>Bottom Line</h3>
-  <p>
-    This is a tape under pressure from multiple directions — tariffs providing the macro headwind, private credit providing the systemic stress, and AI disruption providing the sector catalyst. The 1:2.7 breadth ratio with only Utilities green tells you this is indiscriminate selling, not rotation. The alt manager meltdown is the story that has legs — Blue Owl's redemption gate opened a Pandora's box that won't close until the market has full visibility on BDC liquidity and software loan exposure. NVDA Wednesday is the swing factor: a blowout could stabilize tech and give the tape a reason to bid, while anything less than perfection risks extending the correction into March. Stay defensive, own quality, and don't catch knives in software or alt managers until the forced selling exhausts itself. Let NVDA decide.
-  </p>
+  <p>The tape is bouncing on AMD-Meta and HD, but this is a covering rally in a headline-driven market — volume is thin and conviction is lower. The AMD 6GW deal is genuinely significant for the AI infrastructure trade and changes the competitive landscape ahead of NVDA's print tomorrow — this is the first time a hyperscaler has committed to AMD at Nvidia-like scale. But the managed care selloff, the tariff implementation (even at 10% vs 15% feared), and the packed catalyst calendar (SOTU tonight, NVDA tomorrow, PPI Wednesday) argue for staying nimble. The VIX at 19.60 with a 31% MTD gain tells you the market isn't buying this bounce with both hands. Trade the singles — AMD, KEYS, HD longs are working; MCO shorts are working — but don't overcommit to directional risk into the wall of events. Stay tactical, keep stops tight, and let NVDA decide the next leg.</p>
+</div>
+
+<!-- MAGUIRE LEVERAGE MONITOR -->
+<div class="leverage-section">
+  <h2>Maguire Leverage Monitor</h2>
+  <div class="subtitle">22V RESEARCH | UPDATED FEBRUARY 24, 2026</div>
+
+  <div class="score-display">
+    <div class="score-number" style="color:#F39C12;">6.5</div>
+    <div class="score-label" style="color:#F39C12;">ELEVATED — FRAGILE EQUILIBRIUM</div>
+  </div>
+
+  <p class="body-text" style="text-align:center;margin-bottom:16px;">Structural leverage at record highs. Options market screaming fear. Financing still loose — the missing trigger. Watch Layer 3 for confirmation.</p>
+
+  <div class="layer-grid">
+    <div class="layer-card red">
+      <div class="ltitle">LAYER 1: LEVERAGE LEVELS</div>
+      <div class="lscore negative">2.0 / 2</div>
+      <div class="ldetail">FINRA margin debt: $1.28T (Jan 2026), 9th consecutive record. YoY growth 36% vs SPX +20% = massive leverage gap. Margin debt / GDP at 4.06% — record high, well above 3.0% red zone. HF gross leverage: 285-298% of NAV (record). Multi-strat funds at 645% gross. All five channels flashing red or deep yellow.</div>
+    </div>
+    <div class="layer-card red">
+      <div class="ltitle">LAYER 2: RATE OF CHANGE</div>
+      <div class="lscore negative">2.0 / 2</div>
+      <div class="ldetail">Leverage gap: margin debt growing 36% YoY vs SPX +20% = +16% positive gap, above the red threshold of 15%. This is the widest leverage gap since late 2021. 9 consecutive months of record margin debt = extreme streak. Real margin debt growth of 505.5% since 1997 vs market growth of 331.8% — divergence widening.</div>
+    </div>
+    <div class="layer-card green">
+      <div class="ltitle">LAYER 3: FINANCING CONDITIONS</div>
+      <div class="lscore positive">0.5 / 2</div>
+      <div class="ldetail">HY OAS at 286bps (Feb 2026) — tight, below 300bps green threshold. GS FCI still relatively loose. SOFR stable near target. HYG tracking equities without divergence. This is the key layer to watch — if spreads start widening, the Minsky configuration activates. For now, financing is cheap and abundant.</div>
+    </div>
+    <div class="layer-card yellow">
+      <div class="ltitle">LAYER 4: POSITIONING CROWDING</div>
+      <div class="lscore" style="color:#F39C12;">1.0 / 1</div>
+      <div class="ldetail">Mag 7 = 19% of total US HF net exposure (GS, Jan 2026). Tech sector weight >35% for most HFs. The March 7-10 "multistrat-mageddon" factor vol event demonstrated the crowding risk is real — extreme factor volatility hit record levels.</div>
+    </div>
+    <div class="layer-card red">
+      <div class="ltitle">LAYER 5: VOL & OPTIONS REGIME</div>
+      <div class="lscore negative">2.5 / 3</div>
+      <div class="ldetail">
+        <b>5A — Vol Structure (1.0/1.5):</b> VIX at 19.60 today, was 21.01 yesterday — still near the 22 stress threshold. VIX 30d RoC: +30.6% (red, >25%). Term structure barely in contango.<br>
+        <b>5B — Options Sentiment (1.5/1.5):</b> Equity P/C 0.92 — EXTREME FEAR signal. 25-delta risk reversal at -11.15 — critical level (below -8 red zone). Put 25d vol 23.38 vs call 25d vol 12.23 = nearly 2:1 ratio. GEX unknown but dealer positioning likely short gamma given skew.
+      </div>
+    </div>
+    <div class="layer-card yellow">
+      <div class="ltitle">LAYER 6: LIQUIDITY CALENDAR</div>
+      <div class="lscore" style="color:#F39C12;">0.5 / 1</div>
+      <div class="ldetail">NVDA earnings Wed 2/25 (major vol event). State of the Union tonight (tariff clarity or escalation). Monthly OPEX next week (3/6). March quad witching 3/20. Tariff implementation today adding structural uncertainty. Multiple catalysts clustered in a 2-week window.</div>
+    </div>
+  </div>
+
+  <!-- DIVERGENCE FLAG -->
+  <div class="divergence-box">
+    <div class="dtitle">⚠ SENTIMENT VS STRUCTURE DIVERGENCE — OPTIONS LEADING</div>
+    <p>Layer 5 is scoring 2.5 points while Layer 3 (financing) is only at 0.5 — a classic "options leading / structure lagging" signal. The options market is pricing extreme fear (P/C 0.92, risk reversal -11.15) while credit spreads remain tight at 286bps. This divergence often resolves in one of two ways: (1) the options market is early and structural data catches up in 2-6 weeks as margin debt data confirms deterioration, or (2) fear is overdone and options sentiment normalizes. The March 7-10 "multistrat-mageddon" event validated that options can lead structure. Monitor for credit spread widening and HF VIP basket underperformance as confirmation signals. The 30.6% VIX rate of change from a 16.09 base one month ago is the fastest acceleration since August 2024.</p>
+  </div>
+
+  <p class="body-text"><b>Composite Assessment:</b> The Maguire Leverage Monitor reads 6.5/11 — <b>Elevated / Fragile Equilibrium</b>. Structural leverage (Layers 1-2) is at record highs with all five channels in the red zone. Options sentiment (Layer 5) is screaming. But the critical missing piece is Layer 3 — financing conditions remain loose. This is the pre-Minsky configuration: the fuel is in place but the match hasn't been lit. The tariff escalation risk (10% now, 15% threatened) is the most plausible catalyst for a financing tightening that would activate the cascade. <b>Portfolio guidance:</b> Reduce concentration in crowded longs (Mag 7 overweight), maintain tail hedges, tighten stops on high-beta positions. Don't get aggressively short into a market that still has loose financing, but don't chase this bounce either.</p>
 </div>
 
 <!-- FOOTER -->
@@ -370,6 +406,6 @@ body { background: var(--cream); color: var(--dark); font-family: 'Source Sans 3
   CONFIDENTIAL — FOR INSTITUTIONAL USE ONLY &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 22V RESEARCH TRADING DESK
 </div>
 
-</div><!-- end container -->
+</div>
 </body>
 </html>

@@ -32,6 +32,32 @@ LOG_DIR = Path(__file__).parent / "logs"
 DATA_DIR = Path(__file__).parent / "data"
 
 
+def push_to_github():
+    """Push latest data to GitHub so Claude can pull it on demand."""
+    import subprocess
+    repo_dir = Path(__file__).parent
+    
+    try:
+        subprocess.run(["git", "add", "data/latest.json", "data/alerts.json"],
+                       cwd=str(repo_dir), capture_output=True)
+        
+        result = subprocess.run(
+            ["git", "commit", "-m", f"Auto update {datetime.now().strftime('%Y-%m-%d %H:%M')}"],
+            cwd=str(repo_dir), capture_output=True, text=True
+        )
+        
+        if "nothing to commit" in result.stdout:
+            print("  [Git] No changes to push")
+            return
+        
+        subprocess.run(["git", "push", "origin", "options-monitor"],
+                       cwd=str(repo_dir), capture_output=True)
+        print("  ✓ Pushed to GitHub")
+        
+    except Exception as e:
+        print(f"  ✗ Git push failed: {e}")
+
+
 def run_collectors():
     """Run all data collectors with error isolation."""
     results = {}
@@ -116,6 +142,9 @@ def run_full_pipeline():
     log_file = LOG_DIR / f"run_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
     with open(log_file, "w") as f:
         json.dump(log_entry, f, indent=2)
+    
+    # Auto-push to GitHub
+    push_to_github()
 
 
 def test_status():

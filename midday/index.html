@@ -3,410 +3,618 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>22V Midday Trading Recap | February 24, 2026</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<title>22V Research — Midday Trading Recap | February 25, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-:root {
-  --brand-orange: #E4762D;
-  --cream-bg: #FAF7F2;
-  --dark-text: #1A1A1A;
-  --gray-text: #666666;
-  --red-accent: #C0392B;
-  --green-accent: #27AE60;
-  --dark-bg: #2D2D2D;
-  --warm-red: #8B0000;
-  --light-gray: #F5F5F5;
-  --border-red: #C0392B;
-}
-* { margin:0; padding:0; box-sizing:border-box; }
-body { background:var(--cream-bg); color:var(--dark-text); font-family:'Source Sans 3',sans-serif; line-height:1.5; }
-.container { max-width:900px; margin:0 auto; padding:20px 24px; }
+  :root {
+    --brand-orange: #E4762D;
+    --cream-bg: #FAF7F2;
+    --dark-text: #1A1A1A;
+    --gray-text: #666666;
+    --green: #27AE60;
+    --red: #C0392B;
+    --dark-bg: #2D2D2D;
+    --warm-red: #8B0000;
+    --light-gray: #F5F5F5;
+    --border-red: #C0392B;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: var(--cream-bg);
+    color: var(--dark-text);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 820px; margin: 0 auto; padding: 0 24px; }
 
-/* Header */
-.header-block { text-align:center; margin-bottom:6px; }
-.header-block .sub { font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--gray-text); letter-spacing:2px; text-transform:uppercase; }
-.header-block .brand { font-family:'Playfair Display',serif; font-size:28px; font-weight:900; color:var(--brand-orange); letter-spacing:1px; }
-.header-block .title { font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:3px; color:var(--dark-text); margin-top:2px; }
+  /* HEADER */
+  .header-bar {
+    background: var(--dark-bg);
+    padding: 18px 0 14px;
+    border-bottom: 3px solid var(--brand-orange);
+  }
+  .header-bar .container {
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .header-brand {
+    font-family: 'JetBrains Mono', monospace;
+    color: #999;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+  .header-brand strong {
+    color: var(--brand-orange);
+    font-size: 13px;
+    letter-spacing: 2px;
+  }
+  .header-type {
+    font-family: 'JetBrains Mono', monospace;
+    color: #bbb;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
 
-/* Date bar */
-.date-bar { background:var(--dark-bg); color:#ccc; font-family:'JetBrains Mono',monospace; font-size:10px; padding:8px 16px; display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; border-radius:2px; }
-.date-bar .center { color:var(--brand-orange); }
+  /* DATE BAR */
+  .date-bar {
+    background: #3D3D3D;
+    padding: 8px 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    color: #aaa;
+    letter-spacing: 1px;
+  }
+  .date-bar .container {
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .date-bar .catalyst { color: var(--brand-orange); }
 
-/* Headline */
-.headline { font-family:'Playfair Display',serif; font-size:26px; font-weight:900; color:var(--dark-text); line-height:1.2; margin-bottom:10px; }
-.lede { font-family:'Playfair Display',serif; font-style:italic; font-size:14px; color:var(--gray-text); line-height:1.6; margin-bottom:20px; border-left:3px solid var(--brand-orange); padding-left:12px; }
+  /* HEADLINE */
+  .headline-section { padding: 32px 0 8px; }
+  .headline {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 30px;
+    line-height: 1.2;
+    color: var(--dark-text);
+  }
+  .lede {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--gray-text);
+    margin-top: 12px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+  }
+  .lede strong { color: var(--dark-text); font-style: normal; }
 
-/* Index snapshot */
-.index-bar { display:grid; grid-template-columns:repeat(6,1fr); gap:8px; margin-bottom:24px; }
-.index-card { background:white; border-radius:4px; padding:10px 8px; text-align:center; box-shadow:0 1px 3px rgba(0,0,0,0.08); }
-.index-card .label { font-family:'JetBrains Mono',monospace; font-size:9px; color:var(--gray-text); letter-spacing:1px; }
-.index-card .value { font-size:20px; font-weight:700; }
-.index-card .change { font-size:11px; font-weight:600; }
-.positive { color:var(--green-accent); }
-.negative { color:var(--red-accent); }
+  /* INDEX SNAPSHOT */
+  .index-bar {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0;
+    margin: 20px 0;
+    background: white;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    overflow: hidden;
+  }
+  .index-card {
+    padding: 14px 10px;
+    text-align: center;
+    border-right: 1px solid #eee;
+  }
+  .index-card:last-child { border-right: none; }
+  .index-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: var(--gray-text);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .index-value {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.2;
+  }
+  .index-change {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    margin-top: 2px;
+  }
+  .pos { color: var(--green); }
+  .neg { color: var(--red); }
 
-/* Section headers */
-.section-header { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:3px; color:var(--brand-orange); border-bottom:1px solid #ddd; padding-bottom:4px; margin:24px 0 12px 0; }
+  /* SECTIONS */
+  .section { margin: 24px 0; }
+  .section-header {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: 3px;
+    color: var(--gray-text);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #ddd;
+  }
+  .section p {
+    font-size: 14px;
+    line-height: 1.65;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  .section p strong { color: var(--dark-text); }
 
-/* Body text */
-.body-text { font-size:14px; line-height:1.65; margin-bottom:12px; color:var(--dark-text); }
-.body-text b { font-weight:700; }
+  /* CALLOUT BOX */
+  .callout {
+    background: #FFF8F6;
+    border-left: 4px solid var(--border-red);
+    padding: 14px 18px;
+    margin: 18px 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .callout-header {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2.5px;
+    color: var(--warm-red);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+  .callout p {
+    font-size: 13px;
+    line-height: 1.55;
+    color: #444;
+    margin: 0;
+  }
 
-/* Callout box */
-.callout { background:#FFF8F6; border-left:4px solid var(--border-red); padding:12px 16px; margin:16px 0; border-radius:0 4px 4px 0; }
-.callout .callout-title { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:2px; color:var(--warm-red); margin-bottom:6px; font-weight:700; }
-.callout p { font-size:13px; line-height:1.6; }
+  /* PULL QUOTE */
+  .pull-quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--warm-red);
+    padding: 20px 0 20px 20px;
+    border-left: 3px solid var(--brand-orange);
+    margin: 24px 0;
+  }
 
-/* Pull quote */
-.pull-quote { font-family:'Playfair Display',serif; font-style:italic; font-size:18px; color:var(--warm-red); padding:16px 20px; margin:20px 0; border-left:4px solid var(--brand-orange); line-height:1.4; }
+  /* SECTOR TABLE */
+  .sector-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin: 12px 0;
+  }
+  .sector-table th {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gray-text);
+    text-align: left;
+    padding: 6px 8px;
+    border-bottom: 1px solid #ccc;
+  }
+  .sector-table th:nth-child(2),
+  .sector-table th:nth-child(3) { text-align: right; }
+  .sector-table th:nth-child(4) { text-align: right; }
+  .sector-table td {
+    padding: 7px 8px;
+    border-bottom: 1px solid #eee;
+    font-size: 13px;
+  }
+  .sector-table td:nth-child(2),
+  .sector-table td:nth-child(3) { text-align: right; font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+  .sector-table td:nth-child(4) { text-align: right; font-size: 12px; }
+  .sector-table tr:nth-child(even) { background: var(--light-gray); }
 
-/* Sector table */
-.sector-table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13px; }
-.sector-table th { font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:1px; color:var(--gray-text); text-align:left; padding:6px 8px; border-bottom:1px solid #ccc; }
-.sector-table th:nth-child(2), .sector-table th:nth-child(3) { text-align:right; }
-.sector-table th:nth-child(4) { text-align:right; }
-.sector-table td { padding:7px 8px; border-bottom:1px solid #eee; }
-.sector-table td:nth-child(2), .sector-table td:nth-child(3) { text-align:right; font-family:'JetBrains Mono',monospace; font-size:12px; }
-.sector-table td:nth-child(4) { text-align:right; font-size:12px; }
-.sector-table tr:nth-child(even) { background:var(--light-gray); }
+  /* WINNERS/LOSERS */
+  .wl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 18px 0; }
+  .wl-box {
+    background: white;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    overflow: hidden;
+  }
+  .wl-header {
+    padding: 8px 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .wl-header.winners { background: rgba(39,174,96,0.1); color: var(--green); }
+  .wl-header.losers { background: rgba(192,57,43,0.1); color: var(--red); }
+  .wl-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 14px;
+    font-size: 12px;
+    border-bottom: 1px solid #f0f0f0;
+    align-items: baseline;
+  }
+  .wl-row:last-child { border-bottom: none; }
+  .wl-ticker {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 11px;
+    min-width: 48px;
+  }
+  .wl-catalyst { color: var(--gray-text); font-size: 11px; flex: 1; padding: 0 8px; }
+  .wl-pct {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 11.5px;
+    min-width: 55px;
+    text-align: right;
+  }
 
-/* Winners/Losers */
-.wl-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:16px 0; }
-.wl-box { background:white; border-radius:4px; padding:12px; box-shadow:0 1px 3px rgba(0,0,0,0.08); }
-.wl-box.winners .wl-header { background:rgba(39,174,96,0.1); color:var(--green-accent); }
-.wl-box.losers .wl-header { background:rgba(192,57,43,0.1); color:var(--red-accent); }
-.wl-header { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:2px; padding:6px 8px; border-radius:2px; margin-bottom:8px; font-weight:700; }
-.wl-row { display:flex; justify-content:space-between; padding:3px 0; font-size:12px; border-bottom:1px solid #f0f0f0; }
-.wl-row .ticker { font-family:'JetBrains Mono',monospace; font-weight:600; min-width:50px; }
-.wl-row .catalyst { color:var(--gray-text); flex:1; padding:0 8px; font-size:11px; }
-.wl-row .pct { font-family:'JetBrains Mono',monospace; font-weight:600; min-width:60px; text-align:right; }
+  /* CROSS-ASSET CARDS */
+  .asset-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 14px 0; }
+  .asset-card {
+    background: white;
+    border-radius: 5px;
+    padding: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    text-align: center;
+  }
+  .asset-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8.5px;
+    letter-spacing: 1.5px;
+    color: var(--gray-text);
+    text-transform: uppercase;
+  }
+  .asset-value {
+    font-weight: 700;
+    font-size: 17px;
+    margin: 3px 0;
+  }
+  .asset-change {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+  }
+  .asset-note {
+    font-size: 10px;
+    color: var(--gray-text);
+    margin-top: 4px;
+    line-height: 1.3;
+  }
 
-/* Cross-asset cards */
-.cross-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin:12px 0; }
-.cross-card { background:white; border-radius:4px; padding:10px; text-align:center; box-shadow:0 1px 3px rgba(0,0,0,0.08); }
-.cross-card .clabel { font-family:'JetBrains Mono',monospace; font-size:9px; color:var(--gray-text); letter-spacing:1px; }
-.cross-card .cvalue { font-size:18px; font-weight:700; margin:4px 0; }
-.cross-card .cchange { font-size:11px; font-weight:600; }
-.cross-card .cnote { font-size:10px; color:var(--gray-text); margin-top:4px; }
+  /* CLOSE WATCH */
+  .close-watch {
+    background: white;
+    border: 1px solid #ddd;
+    border-left: 4px solid var(--dark-bg);
+    border-radius: 0 6px 6px 0;
+    padding: 18px 20px;
+    margin: 20px 0;
+  }
+  .close-watch h3 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2.5px;
+    color: var(--dark-text);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .close-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8.5px;
+    letter-spacing: 2px;
+    color: var(--brand-orange);
+    text-transform: uppercase;
+    margin: 10px 0 4px;
+    font-weight: 700;
+  }
+  .close-watch p { font-size: 12.5px; line-height: 1.6; color: #444; margin: 0 0 4px; }
 
-/* Watching into close */
-.watch-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; }
-.watch-section h4 { font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:2px; color:var(--brand-orange); margin-bottom:6px; }
-.watch-section p, .watch-section li { font-size:12px; line-height:1.6; }
-.watch-section ul { list-style:none; padding:0; }
-.watch-section li:before { content:"→ "; color:var(--brand-orange); }
+  /* BOTTOM LINE */
+  .bottom-line {
+    background: var(--dark-bg);
+    border-radius: 6px;
+    padding: 22px 24px;
+    margin: 24px 0;
+  }
+  .bottom-line h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--brand-orange);
+    margin-bottom: 10px;
+  }
+  .bottom-line p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #ccc;
+  }
+  .bottom-line strong { color: white; }
 
-/* Bottom line */
-.bottom-line { background:var(--dark-bg); color:white; padding:20px 24px; border-radius:4px; margin:24px 0; }
-.bottom-line h3 { font-family:'Playfair Display',serif; font-size:18px; color:var(--brand-orange); margin-bottom:10px; }
-.bottom-line p { font-size:14px; line-height:1.7; color:#ddd; }
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    padding: 20px 0 30px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 2px;
+    color: #999;
+    text-transform: uppercase;
+    border-top: 1px solid #ddd;
+    margin-top: 20px;
+  }
 
-/* Footer */
-.footer { text-align:center; font-family:'JetBrains Mono',monospace; font-size:9px; color:var(--gray-text); letter-spacing:2px; padding:16px 0; border-top:1px solid #ddd; margin-top:20px; }
+  /* NARRATIVE SECTION - single stock */
+  .stock-narrative {
+    margin-bottom: 14px;
+  }
+  .stock-narrative-header {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 13px;
+    margin-bottom: 4px;
+  }
 
-/* Leverage Monitor section */
-.leverage-section { background:white; border-radius:6px; padding:20px; margin:24px 0; box-shadow:0 2px 8px rgba(0,0,0,0.06); border-top:4px solid var(--brand-orange); }
-.leverage-section h2 { font-family:'Playfair Display',serif; font-size:20px; color:var(--dark-text); margin-bottom:4px; }
-.leverage-section .subtitle { font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--gray-text); letter-spacing:1px; margin-bottom:16px; }
-.score-display { text-align:center; margin:16px 0; }
-.score-number { font-family:'Playfair Display',serif; font-size:64px; font-weight:900; }
-.score-label { font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:2px; margin-top:4px; }
-.layer-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:16px 0; }
-.layer-card { background:var(--light-gray); border-radius:4px; padding:12px; border-left:4px solid #ccc; }
-.layer-card.green { border-left-color:var(--green-accent); }
-.layer-card.yellow { border-left-color:#F39C12; }
-.layer-card.red { border-left-color:var(--red-accent); }
-.layer-card .ltitle { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:1px; color:var(--gray-text); }
-.layer-card .lscore { font-size:20px; font-weight:700; margin:4px 0; }
-.layer-card .ldetail { font-size:12px; color:var(--gray-text); line-height:1.5; }
-
-.divergence-box { background:linear-gradient(135deg,#FFF3E0,#FFF8E1); border:1px solid #F39C12; border-radius:4px; padding:14px 16px; margin:16px 0; }
-.divergence-box .dtitle { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:2px; color:#E65100; margin-bottom:6px; font-weight:700; }
-.divergence-box p { font-size:13px; line-height:1.6; }
-
-@media (max-width:768px) {
-  .index-bar { grid-template-columns:repeat(3,1fr); }
-  .wl-grid { grid-template-columns:1fr; }
-  .cross-grid { grid-template-columns:repeat(2,1fr); }
-  .watch-grid { grid-template-columns:1fr; }
-  .layer-grid { grid-template-columns:1fr; }
-  .headline { font-size:22px; }
-}
+  @media (max-width: 700px) {
+    .index-bar { grid-template-columns: repeat(3, 1fr); }
+    .wl-grid { grid-template-columns: 1fr; }
+    .asset-grid { grid-template-columns: repeat(2, 1fr); }
+    .headline { font-size: 24px; }
+  }
 </style>
 </head>
 <body>
-<div class="container">
 
 <!-- HEADER -->
-<div class="header-block">
-  <div class="sub">INSTITUTIONAL TRADING INTELLIGENCE</div>
-  <div class="brand">22V Research</div>
-  <div class="title">MIDDAY TRADING RECAP</div>
+<div class="header-bar">
+  <div class="container">
+    <div>
+      <div class="header-brand">INSTITUTIONAL TRADING INTELLIGENCE</div>
+      <div class="header-brand" style="margin-top:3px;"><strong>22V Research</strong></div>
+    </div>
+    <div class="header-type">Midday Trading Recap</div>
+  </div>
 </div>
 
+<!-- DATE BAR -->
 <div class="date-bar">
-  <span>TUESDAY, FEBRUARY 24, 2026</span>
-  <span class="center">12:45 PM ET • STATE OF THE UNION TONIGHT • 10% GLOBAL TARIFF IN EFFECT</span>
-  <span>NVDA 2/25 • CONSUMER CONFIDENCE 91.2</span>
+  <div class="container">
+    <span>WEDNESDAY, FEBRUARY 25, 2026</span>
+    <span class="catalyst">12:50 PM ET &bull; NVDA EARNINGS AFTER CLOSE</span>
+    <span>CRM &bull; INTU &bull; DELL ALSO REPORTING</span>
+  </div>
 </div>
+
+<div class="container">
 
 <!-- HEADLINE -->
-<h1 class="headline">AMD-Meta Mega-Deal Sparks AI Hardware Rally; Tape Rebounds from Monday's Tariff Carnage as Managed Care Collapses</h1>
-
-<div class="lede">
-  <b>AMD</b> +8.9% after Meta commits to 6GW of Instinct GPUs in a deal valued at up to $100B over five years — the most significant challenge to Nvidia's dominance since the AI trade began. <b>KEYS</b> +23% on a blowout Q1 (revs +23% YoY, EPS $2.17 vs $2.00 est). <b>HD</b> +2.7% on an earnings beat ($2.72 adj vs $2.54 est). The other side: managed care is getting crushed — <b>UNH</b> −3.3%, <b>MOH</b> −5.6%, <b>HUM</b> −3.7% — on Medicaid renewal fears. Monday's 820-point Dow plunge on 15% global tariff fears is being partially reversed, but conviction is thin ahead of tonight's State of the Union and tomorrow's NVDA print.
+<div class="headline-section">
+  <h1 class="headline">AI FOMO Carries Tape Into NVDA; Earnings Carnage Lurks Under the Surface</h1>
+  <p class="lede">
+    The S&P sits at session highs ahead of the most anticipated print of Q4 season, with <strong>NVDA</strong> +2.3% providing air cover while <strong>AXON</strong> explodes +17% on a monster beat-and-raise. But earnings quality is bifurcated — <strong>FSLR</strong> −12.8% on a gutted 2026 guide, <strong>GDDY</strong> −17.5% on subscription miss, <strong>LOW</strong> −5.3% on cautious consumer outlook, and <strong>CSGP</strong> −10.1% post-miss keep losers outpacing winners 274 to 229 despite the green headline prints.
+  </p>
 </div>
 
 <!-- INDEX SNAPSHOT -->
 <div class="index-bar">
   <div class="index-card">
-    <div class="label">S&P 500</div>
-    <div class="value positive">6,891</div>
-    <div class="change positive">+0.77%</div>
+    <div class="index-label">S&P 500</div>
+    <div class="index-value pos">6,936</div>
+    <div class="index-change pos">+0.67%</div>
   </div>
   <div class="index-card">
-    <div class="label">NASDAQ</div>
-    <div class="value positive">22,882</div>
-    <div class="change positive">+1.12%</div>
+    <div class="index-label">NASDAQ</div>
+    <div class="index-value pos">23,106</div>
+    <div class="index-change pos">+1.06%</div>
   </div>
   <div class="index-card">
-    <div class="label">DOW</div>
-    <div class="value positive">49,204</div>
-    <div class="change positive">+0.82%</div>
+    <div class="index-label">DOW</div>
+    <div class="index-value pos">49,405</div>
+    <div class="index-change pos">+0.47%</div>
   </div>
   <div class="index-card">
-    <div class="label">RUSSELL 2K</div>
-    <div class="value positive">2,641</div>
-    <div class="change positive">+0.75%</div>
+    <div class="index-label">RUSSELL</div>
+    <div class="index-value pos">2,661</div>
+    <div class="index-change pos">+0.34%</div>
   </div>
   <div class="index-card">
-    <div class="label">VIX</div>
-    <div class="value negative">19.60</div>
-    <div class="change negative">-1.41</div>
+    <div class="index-label">VIX</div>
+    <div class="index-value neg">18.47</div>
+    <div class="index-change neg">−1.08</div>
   </div>
   <div class="index-card">
-    <div class="label">10Y YIELD</div>
-    <div class="value">4.031</div>
-    <div class="change">flat</div>
+    <div class="index-label">10Y</div>
+    <div class="index-value" style="color: var(--gray-text);">4.033</div>
+    <div class="index-change" style="color: var(--gray-text);">flat</div>
   </div>
 </div>
 
 <!-- MARKET OVERVIEW -->
-<div class="section-header">MARKET OVERVIEW</div>
-
-<p class="body-text"><b>SPX</b> is up 53 handles to 6,891 at midday, reclaiming the 5-day moving average and holding convincingly above the 6,800 support that was tested in yesterday's rout. Breadth is solid at 317 advancers vs 186 decliners across the S&P 500 — a 1.7:1 ratio — though volume is running light at ~0.5x the 20-day average across megacaps. This is a covering bounce, not a conviction rally. The tape is being carried by two stories: the AMD-Meta 6GW GPU deal that legitimizes AMD as a true hyperscale AI supplier, and the Keysight blowout that signals AI capex is accelerating beyond semiconductors into test & measurement infrastructure.</p>
-
-<p class="body-text"><b>CCMP</b> is leading indices at +1.12%, powered by the AMD deal and broad software recovery after yesterday's AI disruption fears hammered names like <b>CRWD</b>, <b>MSFT</b>, and <b>PANW</b>. Those names are stabilizing today but not meaningfully bouncing — this is more "stop the bleeding" than "all clear." The <b>Dow</b> is +400 points on <b>HD</b>'s earnings beat and general blue-chip dip-buying. <b>RTY</b> is lagging at +0.75%, which is notable — small caps should be leading in a genuine risk-on session. Instead, the Russell is underperforming tech, signaling that tariff uncertainty is weighing more heavily on domestically-exposed names. The 10% blanket tariff took effect this morning, and while it came in below Trump's initial 15% threat, the ambiguity around escalation is keeping a bid under the VIX at 19.60 despite the pullback.</p>
+<div class="section">
+  <div class="section-header">Market Overview</div>
+  <p><strong>SPX</strong> is trading +0.67% at 6,936, pushing back above the 6,917–6,925 range resistance that has capped the market for the past week. The move is tech-led and concentrated — <strong>NDX</strong> +1.06% doing the heavy lifting as semis and AI infrastructure names rip into the NVDA print. <strong>DJIA</strong> lags at +0.47%, weighed by <strong>HD</strong> −3.3% post-earnings and defensive drag from consumer staples. <strong>RTY</strong> +0.34% underperforming meaningfully, confirming this is a large-cap quality bid, not a broad risk-on tape.</p>
+  <p>The tape character is definitionally bifurcated. Megacap tech and AI proxies are dragging the indexes higher while the median stock is red. This is NVDA eve positioning, pure and simple — PMs who are underweight are scrambling to add exposure before the 4:15 print, and everyone else is hedging guidance risk in names that just reported. The State of the Union tailwind from Trump's confirmed 10% Section 122 tariff is fading as traders re-focus on the earnings micro. <strong>USTR Greer's</strong> signal that China tariffs won't escalate beyond the 35–50% band provided modest relief at the open.</p>
+</div>
 
 <!-- BREADTH CHECK -->
 <div class="callout">
-  <div class="callout-title">BREADTH CHECK</div>
-  <p>~317 advancers vs ~186 decliners — a 1.7:1 ratio. Volume running 0.3-0.5x the 20-day average across most sectors. This is a low-volume bounce in a headline-driven tape. Managed care is the notable pocket of real selling — <b>UNH</b>, <b>MOH</b>, <b>HUM</b>, <b>CNC</b>, <b>ELV</b> all down 3-6% on elevated relative volume. The A/D line is masking sector-level stress beneath the surface.</p>
+  <div class="callout-header">Breadth Check</div>
+  <p>~229 advancers vs ~274 decliners — a 1:1.2 ratio skewing negative despite +0.67% on SPX. Volume running slightly below 20-day average across most names. This is a narrow, megacap-driven advance masking weakness underneath. Financials and Tech carrying the water; Energy, Industrials, and Consumer Cyclicals broadly weak. Classic pre-event positioning tape — low conviction, concentrated leadership.</p>
 </div>
 
-<!-- VIX COMMENTARY -->
-<p class="body-text"><b>VIX</b> pulled back to 19.60 from yesterday's 21.01 close, down 1.41 points on the session. That said, VIX is still +31.1% MTD and +12.4% WTD — the elevated base reflects genuine hedging demand, not complacency. The term structure remains in contango but barely — the front month is only 0.4 vol points below the second month, suggesting the market is pricing near-term event risk (State of the Union tonight, NVDA tomorrow) almost as high as structural uncertainty. Vol sellers are cautious here.</p>
+<!-- VIX -->
+<div class="section">
+  <p><strong>VIX</strong> at 18.47, down 1.08 pts (−5.5%), as front-month vol gets sold into the NVDA print. Term structure remains in contango. The drop reflects hedges being rolled, not genuine de-risking. Expect VIX to recalibrate sharply post-4:15 regardless of direction — the implied move on NVDA is ~8% which translates to ~$350B in market cap swing. YTD VIX is +23.6%, well above historical complacency levels.</p>
+</div>
 
 <!-- SECTOR TABLE -->
-<div class="section-header">SECTOR PERFORMANCE</div>
-
-<table class="sector-table">
-<tr><th>SECTOR</th><th>AVG</th><th>ADV/DEC</th><th>NOTABLE</th></tr>
-<tr><td>Technology</td><td class="positive">+1.50%</td><td>53/8</td><td>AMD +8.9%, FICO -5.9%</td></tr>
-<tr><td>Communications</td><td class="positive">+1.38%</td><td>32/8</td><td>FDS +6.6%, BKNG +4.4%</td></tr>
-<tr><td>Industrials</td><td class="positive">+1.22%</td><td>62/12</td><td>KEYS +23.2%, EXPD -7.4%</td></tr>
-<tr><td>Consumer Disc.</td><td class="positive">+1.17%</td><td>42/14</td><td>RCL +4.5%, HD +2.7%</td></tr>
-<tr><td>Materials</td><td class="positive">+0.86%</td><td>11/7</td><td>ALB +5.9%, STLD -1.9%</td></tr>
-<tr><td>Financials</td><td class="positive">+0.19%</td><td>43/52</td><td>KKR +3.7%, ERIE -2.4%</td></tr>
-<tr><td>Cons. Staples/HC</td><td class="positive">+0.13%</td><td>59/46</td><td>KDP +3.9%, MOH -5.6%</td></tr>
-<tr><td>Utilities</td><td style="color:var(--gray-text)">+0.02%</td><td>9/22</td><td>CEG +4.9%, D -1.3%</td></tr>
-<tr><td>Energy</td><td class="negative">-0.55%</td><td>6/17</td><td>TPL +2.7%, OKE -6.8%</td></tr>
-</table>
+<div class="section">
+  <div class="section-header">Sector Performance</div>
+  <table class="sector-table">
+    <thead>
+      <tr><th>SECTOR</th><th>AVG</th><th>ADV/DEC</th><th>NOTABLE</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Technology</td><td class="pos">+1.52%</td><td>46/15</td><td class="pos">WDC +8.0%</td></tr>
+      <tr><td>Financials</td><td class="pos">+0.70%</td><td>60/35</td><td class="pos">COIN +13.2%</td></tr>
+      <tr><td>Communications</td><td class="pos">+0.34%</td><td>22/18</td><td class="neg">GDDY −17.5%</td></tr>
+      <tr><td>Utilities</td><td style="color: var(--gray-text);">flat</td><td>12/19</td><td class="pos">CEG +3.6%</td></tr>
+      <tr><td>Healthcare / Non-Cyc</td><td class="neg">−0.52%</td><td>41/64</td><td class="neg">BF/B −7.9%</td></tr>
+      <tr><td>Industrials</td><td class="neg">−0.81%</td><td>17/57</td><td class="pos">AXON +17.0%</td></tr>
+      <tr><td>Materials</td><td class="neg">−0.91%</td><td>8/10</td><td class="neg">MOS −5.7%</td></tr>
+      <tr><td>Consumer Cyclicals</td><td class="neg">−0.92%</td><td>19/37</td><td class="neg">LEN −5.8%</td></tr>
+      <tr><td>Energy</td><td class="neg">−1.84%</td><td>4/19</td><td class="neg">FSLR −12.8%</td></tr>
+    </tbody>
+  </table>
+</div>
 
 <!-- PULL QUOTE -->
-<div class="pull-quote">"Monday's tariff carnage meets Tuesday's AI euphoria — the tape is bouncing on AMD-Meta and HD, but the VIX still has a 19-handle and managed care is in freefall. Don't confuse a covering rally with an all-clear."</div>
+<div class="pull-quote">
+  "The entire market is a NVDA derivative today — semis dragging the tape higher while earnings damage accumulates underneath. After 4:15, the real price discovery begins."
+</div>
 
 <!-- SECTOR NARRATIVES -->
-<div class="section-header">SECTOR NARRATIVES</div>
+<div class="section">
+  <div class="section-header">Sector Narratives</div>
+  <p><strong>Technology</strong> is the unquestioned leader, averaging +1.52% with 46 of 61 names green. The bid is broad-based within the sector — <strong>NVDA</strong> +2.3%, <strong>MSFT</strong> +2.2%, <strong>ORCL</strong> +2.7%, <strong>CRM</strong> +2.2%, <strong>PLTR</strong> +4.7% all trading well as AI infrastructure spending narrative gets reinforced pre-print. Storage names ripping — <strong>WDC</strong> +8.0%, <strong>STX</strong> +6.3% — on memory demand optimism heading into the NVDA guide. Semis green across the board with <strong>AMAT</strong> +3.9%, <strong>KLAC</strong> +2.6%, <strong>LRCX</strong> +1.8%. The ugly pocket is enterprise software post-<strong>WDAY</strong> guidance miss — AI disruption fears hitting legacy SaaS, though <strong>INTU</strong> +3.1% and <strong>FISV</strong> +3.2% buck the trend.</p>
+  <p><strong>Energy</strong> is the clear laggard at −1.84% as crude weakness (CL −0.26%) combines with FSLR's gutted guide to hammer the complex. <strong>FSLR</strong> −12.8% on 2.1x avg vol is the headline — 2026 net sales guide of $4.9–5.2B massively below Street's $5.6B, and Q4 EPS of $4.84 missed estimates of $5.17. E&Ps broadly lower with <strong>FANG</strong> −3.2%, <strong>HAL</strong> −2.6%, <strong>DVN</strong> −1.8%, <strong>OXY</strong> −2.2%. Refiners getting hit too — <strong>PSX</strong> −2.5%, <strong>VLO</strong> −1.6%. Only <strong>EXE</strong> +2.4% and <strong>EQT</strong> +1.3% finding bids on the nat gas side.</p>
+  <p><strong>Consumer Cyclicals</strong> remain under pressure at −0.92% as housing names get demolished post-<strong>LOW</strong> guidance. <strong>LOW</strong> −5.3% guided 2026 comps flat-to-2% (below Street) with adjusted EPS of $12.25–12.75 vs $13.00 est. Read-through hitting homebuilders — <strong>LEN</strong> −5.8%, <strong>DHI</strong> −4.8%, <strong>PHM</strong> −4.5%, <strong>NVR</strong> −2.7%. <strong>BLDR</strong> −6.0% and <strong>HD</strong> −3.3% (reported earlier) confirming the housing softness narrative.</p>
+</div>
 
-<p class="body-text"><b>Technology</b> is the clear leader at +1.50%, driven entirely by the AMD-Meta mega-deal. <b>AMD</b> +8.9% is the story of the day: Meta committed to deploying up to 6GW of AMD Instinct MI450 GPUs across a multi-year, multi-generation partnership valued at an estimated $60-100B. Meta also issued AMD a performance-based warrant for 160M shares, vesting on shipment milestones. This is the first time a hyperscaler has committed to AMD at NVDA-like scale, and it fundamentally changes the competitive landscape ahead of NVDA's print tomorrow. The broader semi complex is participating — <b>INTC</b> +4.9%, <b>AMAT</b> +1.6%, <b>TER</b> +4.1%. On the flip side, <b>FICO</b> -5.9% with RSI at 22.7 is deep in oversold territory after a multi-week slide, and <b>TXN</b> -3.8% is an outlier on the downside amid analog inventory concerns.</p>
-
-<p class="body-text"><b>Industrials</b> are +1.22%, powered by <b>KEYS</b> +23% on a monster Q1: revenue $1.60B vs $1.54B est (+23% YoY), EPS $2.17 vs $2.00 est. AI-related orders grew "significantly above" the company average, wireline surpassed wireless for the first time, and they raised FY26 guidance to 20%+ growth. Orders of $1.65B were up 30% YoY. This is the best read-through for AI infrastructure capex outside of the chip names themselves. <b>EXPD</b> -7.4% on the other end as freight logistics faces tariff-related uncertainty.</p>
-
-<p class="body-text"><b>Healthcare / Consumer Non-Cyclical</b> is the clear laggard within the index: managed care is under heavy pressure with <b>UNH</b> -3.3%, <b>MOH</b> -5.6%, <b>HUM</b> -3.7%, <b>CNC</b> -3.4%, <b>CVS</b> -3.4%, <b>ELV</b> -3.2%. This is a sector-wide Medicaid renewal and reimbursement rate fear, compounding the DOJ headline overhangs. This is real selling, not a sympathy dip — the breadth is uniformly negative across managed care names.</p>
-
-<!-- WINNERS / LOSERS -->
+<!-- WINNERS/LOSERS -->
 <div class="wl-grid">
-  <div class="wl-box winners">
-    <div class="wl-header">TOP WINNERS</div>
-    <div class="wl-row"><span class="ticker">KEYS</span><span class="catalyst">Blowout Q1, AI orders surge, raised FY guide</span><span class="pct positive">+23.2%</span></div>
-    <div class="wl-row"><span class="ticker">AMD</span><span class="catalyst">6GW Meta GPU deal, 160M share warrant</span><span class="pct positive">+8.9%</span></div>
-    <div class="wl-row"><span class="ticker">FDS</span><span class="catalyst">Analytics demand, AI workflow integration</span><span class="pct positive">+6.6%</span></div>
-    <div class="wl-row"><span class="ticker">HSIC</span><span class="catalyst">Dental distribution momentum</span><span class="pct positive">+6.0%</span></div>
-    <div class="wl-row"><span class="ticker">ALB</span><span class="catalyst">Lithium price recovery, EV demand</span><span class="pct positive">+5.9%</span></div>
-    <div class="wl-row"><span class="ticker">CEG</span><span class="catalyst">Nuclear/AI power demand thesis</span><span class="pct positive">+4.9%</span></div>
-    <div class="wl-row"><span class="ticker">INTC</span><span class="catalyst">Sympathy AMD, foundry optimism</span><span class="pct positive">+4.9%</span></div>
+  <div class="wl-box">
+    <div class="wl-header winners">Top Winners</div>
+    <div class="wl-row"><span class="wl-ticker">AXON</span><span class="wl-catalyst">Monster Q4 beat, $6B '28 target</span><span class="wl-pct pos">+17.0%</span></div>
+    <div class="wl-row"><span class="wl-ticker">COIN</span><span class="wl-catalyst">Crypto rally, CRCL +14% read-thru</span><span class="wl-pct pos">+13.2%</span></div>
+    <div class="wl-row"><span class="wl-ticker">WDC</span><span class="wl-catalyst">Memory demand, NVDA tailwind</span><span class="wl-pct pos">+8.0%</span></div>
+    <div class="wl-row"><span class="wl-ticker">APP</span><span class="wl-catalyst">AI monetization momentum</span><span class="wl-pct pos">+7.4%</span></div>
+    <div class="wl-row"><span class="wl-ticker">STX</span><span class="wl-catalyst">Storage cycle, memory pricing</span><span class="wl-pct pos">+6.3%</span></div>
+    <div class="wl-row"><span class="wl-ticker">CIEN</span><span class="wl-catalyst">Optical networking, AI data ctr</span><span class="wl-pct pos">+5.9%</span></div>
+    <div class="wl-row"><span class="wl-ticker">GLW</span><span class="wl-catalyst">Fiber + optical play, AI infra</span><span class="wl-pct pos">+5.8%</span></div>
   </div>
-  <div class="wl-box losers">
-    <div class="wl-header">TOP LOSERS</div>
-    <div class="wl-row"><span class="ticker">EXPD</span><span class="catalyst">Tariff logistics uncertainty</span><span class="pct negative">-7.4%</span></div>
-    <div class="wl-row"><span class="ticker">OKE</span><span class="catalyst">Midstream weakness, nat gas -31.7% MTD</span><span class="pct negative">-6.8%</span></div>
-    <div class="wl-row"><span class="ticker">FICO</span><span class="catalyst">Extended selloff, RSI 22.7</span><span class="pct negative">-5.9%</span></div>
-    <div class="wl-row"><span class="ticker">MOH</span><span class="catalyst">Medicaid renewal fears, MCO selloff</span><span class="pct negative">-5.6%</span></div>
-    <div class="wl-row"><span class="ticker">TXN</span><span class="catalyst">Analog inventory cycle concerns</span><span class="pct negative">-3.8%</span></div>
-    <div class="wl-row"><span class="ticker">HUM</span><span class="catalyst">Medicare Advantage pressure</span><span class="pct negative">-3.7%</span></div>
-    <div class="wl-row"><span class="ticker">UNH</span><span class="catalyst">DOJ probe overhang, MCO contagion</span><span class="pct negative">-3.3%</span></div>
+  <div class="wl-box">
+    <div class="wl-header losers">Top Losers</div>
+    <div class="wl-row"><span class="wl-ticker">GDDY</span><span class="wl-catalyst">Sub rev miss, AI disruption fear</span><span class="wl-pct neg">−17.5%</span></div>
+    <div class="wl-row"><span class="wl-ticker">FSLR</span><span class="wl-catalyst">2026 guide cut, EPS miss</span><span class="wl-pct neg">−12.8%</span></div>
+    <div class="wl-row"><span class="wl-ticker">CSGP</span><span class="wl-catalyst">Q4 miss, CoStar Homes drag</span><span class="wl-pct neg">−10.1%</span></div>
+    <div class="wl-row"><span class="wl-ticker">BF/B</span><span class="wl-catalyst">Spirits demand weakness</span><span class="wl-pct neg">−7.9%</span></div>
+    <div class="wl-row"><span class="wl-ticker">BLDR</span><span class="wl-catalyst">Housing read-thru, LOW drag</span><span class="wl-pct neg">−6.0%</span></div>
+    <div class="wl-row"><span class="wl-ticker">LEN</span><span class="wl-catalyst">Builder sentiment, rate fear</span><span class="wl-pct neg">−5.8%</span></div>
+    <div class="wl-row"><span class="wl-ticker">LOW</span><span class="wl-catalyst">Guide miss, comps flat-to-2%</span><span class="wl-pct neg">−5.3%</span></div>
   </div>
 </div>
 
 <!-- KEY SINGLE-STOCK NARRATIVES -->
-<div class="section-header">KEY SINGLE-STOCK NARRATIVES</div>
+<div class="section">
+  <div class="section-header">Key Single-Stock Narratives</div>
 
-<p class="body-text"><b>AMD +8.9%</b> — The headline deal of the year so far: Meta commits to purchasing up to 6GW of AMD Instinct MI450 GPUs in a multi-year, multi-generation partnership. Estimated deal value: $60-100B over five years. Meta also receives performance-based warrants for 160M AMD shares (~10% of the company), vesting as shipment milestones are achieved and tied to AMD stock price thresholds. First 1GW deployment begins 2H 2026 using custom MI450 chips on the Helios rack-scale architecture with 6th Gen EPYC "Venice" CPUs. AMD CFO Jean Hu called it "accretive to non-GAAP EPS" and a "significant step forward" for their financial model. This comes one week after Meta signed a separate multi-year deal with NVDA for millions of Blackwell/Rubin GPUs — Meta is clearly diversifying its compute stack. AMD vol running 1.3x average.</p>
+  <div class="stock-narrative">
+    <div class="stock-narrative-header pos">AXON +17.0% — $517.80</div>
+    <p>The headline mover of the session. <strong>AXON</strong> reported Q4 EPS of $2.15 vs $1.60 est — a massive 34% beat — on revenue of $797M (+39% YoY) vs $755M est. Full-year bookings topped $7B (up >40% YoY), and the company raised 2026 guidance to 27–30% revenue growth with 25.5% adj EBITDA margins. The kicker: new 2028 targets of ~$6B revenue and 28% EBITDA margin. AI-powered law enforcement products driving the upside — AI Era Plan accounted for ~$750M of bookings. Stock trading on 2.1x avg vol, reclaiming a chunk of the 40% drawdown from its August 2025 highs. RSI at 58 — plenty of room to run technically.</p>
+  </div>
 
-<p class="body-text"><b>KEYS +23.2%</b> — Record Q1 results across the board. Revenue of $1.60B beat consensus by $60M (+23% YoY), driven by 27% growth in the Communications Solutions Group on AI data center and next-gen wireless demand. Non-GAAP EPS of $2.17 beat by $0.17. Orders surged to $1.65B (+30% YoY), and management raised the full-year growth outlook to "just above 20%." AI-related orders grew "significantly above" the company average, and they've doubled their AI customer count. Q2 guidance of $1.69-$1.71B in revs and $2.27-$2.33 EPS both well above consensus. Vol at 2.8x average — this is being aggressively bought. Read-through positive for the entire test & measurement / AI infrastructure supply chain.</p>
+  <div class="stock-narrative">
+    <div class="stock-narrative-header neg">FSLR −12.8% — $212.00</div>
+    <p><strong>FSLR</strong> is getting destroyed on a combination of Q4 EPS miss ($4.84 vs $5.17 est) and a 2026 net sales guide of $4.9–5.2B that came in dramatically below Street at $5.6B. Record module sales of 17.5 GW couldn't offset the forward outlook, which cited tariff headwinds ($155–175M gross impact), deliberate underutilization of Southeast Asia plants, and competitive pressures in renewables. Cash position strong at $2.4B but investors focused on the margin compression — gross margins guided to ~50% incl tax credits, down from elevated levels. Trading 2.1x avg vol with RSI at 38.</p>
+  </div>
 
-<p class="body-text"><b>HD +2.7%</b> — Solid Q4 beat: adj EPS $2.72 vs $2.54 est, revs $38.2B vs $38.14B est. Comps +0.4% (US +0.3%) — modest but positive after three consecutive misses. Raised quarterly dividend 1.3% to $2.33/share. FY26 guide is reasonable: total sales growth 2.5-4.5%, adj EPS flat to +4%. The housing market remains "frozen" per CFO McPhail, but the company is gaining market share. Tariff impact under evaluation — the 10% blanket tariff hitting today adds uncertainty to the imported goods portion of their assortment.</p>
+  <div class="stock-narrative">
+    <div class="stock-narrative-header neg">GDDY −17.5% — $76.14</div>
+    <p><strong>GDDY</strong> cratering on a subscription revenue guidance miss, adding to the growing narrative that AI automation tools are disrupting traditional internet services companies. Trading 2.3x avg vol with RSI collapsed to 25 — oversold but no buyers stepping in. The AI disruption theme is accelerating post-<strong>WDAY</strong>'s similar guidance disappointment last night.</p>
+  </div>
 
-<!-- MANAGED CARE CALLOUT -->
+  <div class="stock-narrative">
+    <div class="stock-narrative-header neg">LOW −5.3% — $263.79</div>
+    <p><strong>LOW</strong> guided 2026 comps flat-to-up-2%, with the midpoint below Street expectations, and adjusted EPS of $12.25–12.75 vs $13.00 consensus. The housing-adjacent complex is getting dragged — <strong>HD</strong> also missed on revenue earlier in the week, and the combined signal is that high mortgage rates and economic uncertainty are keeping consumers away from big-ticket home improvement spend. Read-through hammering homebuilders across the board.</p>
+  </div>
+
+  <div class="stock-narrative">
+    <div class="stock-narrative-header pos">NVDA +2.3% — $197.28</div>
+    <p>All eyes on the 4:15 print. <strong>NVDA</strong> bid into the report as Citi reiterated buy ("add to NVDA, valuation attractive") and Redburn maintained buy. Implied move is ~8%, which on a $4.8T market cap translates to ~$350B in value creation or destruction. Street looking for strong Blackwell demand commentary and Vera Rubin update. Shares have languished since October, down from highs, giving the setup a "buy the dip into earnings" feel. Trading on elevated vol at 105M shares vs 173M avg — surprisingly light, suggesting the big positioning moves happened earlier this week.</p>
+  </div>
+</div>
+
+<!-- AI DISRUPTION THEME -->
 <div class="callout">
-  <div class="callout-title">MANAGED CARE SELLOFF — SECTOR-WIDE STRESS</div>
-  <p>The entire managed care complex is under pressure today: <b>UNH</b> -3.3%, <b>MOH</b> -5.6%, <b>HUM</b> -3.7%, <b>CNC</b> -3.4%, <b>CVS</b> -3.4%, <b>ELV</b> -3.2%, <b>HCA</b> -1.9%. This is Medicaid redetermination and reimbursement rate uncertainty compounding the DOJ investigations overhang. The breadth of the move — all names uniformly negative — suggests institutional de-risking of the entire sector rather than single-name catalysts. <b>HUM</b> at RSI 27.4 is approaching levels where contrarian buyers typically step in, but the fundamental backdrop is deteriorating. Watch for read-through to hospital names and PBMs.</p>
+  <div class="callout-header">Thematic: AI Disruption Accelerating in Enterprise Software</div>
+  <p>Three names — <strong>WDAY</strong> −0.6% (down 8% after-hours yesterday), <strong>GDDY</strong> −17.5%, and <strong>CSGP</strong> −10.1% — are getting crushed on guidance that explicitly or implicitly flags AI as a competitive threat. This is the flip side of the NVDA/PLTR/CRM rally: every dollar flowing to AI infrastructure is a dollar that disrupts legacy business models. Watch enterprise SaaS multiples for further de-rating this week.</p>
 </div>
 
 <!-- RATES / FX / COMMODITIES -->
-<div class="section-header">RATES / FX / COMMODITIES</div>
-
-<div class="cross-grid">
-  <div class="cross-card">
-    <div class="clabel">2Y / 10Y</div>
-    <div class="cvalue">3.45 / 4.03</div>
-    <div class="cchange">flat</div>
-    <div class="cnote">Curve 58bp, steeper</div>
+<div class="section">
+  <div class="section-header">Rates / FX / Commodities</div>
+  <div class="asset-grid">
+    <div class="asset-card">
+      <div class="asset-label">2Y / 10Y</div>
+      <div class="asset-value">3.46 / 4.03</div>
+      <div class="asset-change" style="color: var(--gray-text);">10Y flat</div>
+      <div class="asset-note">Curve 57bp, steepening</div>
+    </div>
+    <div class="asset-card">
+      <div class="asset-label">DXY</div>
+      <div class="asset-value">97.64</div>
+      <div class="asset-change neg">−0.20%</div>
+      <div class="asset-note">Dollar softening</div>
+    </div>
+    <div class="asset-card">
+      <div class="asset-label">GOLD</div>
+      <div class="asset-value">$5,213</div>
+      <div class="asset-change pos">+1.34%</div>
+      <div class="asset-note">+20.7% YTD, ATH zone</div>
+    </div>
+    <div class="asset-card">
+      <div class="asset-label">WTI CRUDE</div>
+      <div class="asset-value">$65.46</div>
+      <div class="asset-change neg">−0.26%</div>
+      <div class="asset-note">Demand concerns</div>
+    </div>
   </div>
-  <div class="cross-card">
-    <div class="clabel">DXY</div>
-    <div class="cvalue">97.76</div>
-    <div class="cchange positive">+0.06%</div>
-    <div class="cnote">Tariff bid fading</div>
-  </div>
-  <div class="cross-card">
-    <div class="clabel">GOLD</div>
-    <div class="cvalue">$5,157</div>
-    <div class="cchange negative">-1.35%</div>
-    <div class="cnote">Off ATH, +19.4% YTD</div>
-  </div>
-  <div class="cross-card">
-    <div class="clabel">WTI CRUDE</div>
-    <div class="cvalue">$66.03</div>
-    <div class="cchange negative">-0.42%</div>
-    <div class="cnote">+15.7% MTD</div>
-  </div>
+  <p>Treasuries quiet ahead of NVDA — the 10Y sitting at 4.03% with no directional conviction. The 2s/10s curve at ~57bp remains in steepening mode, pricing a Fed that will eventually ease but not urgently. <strong>DXY</strong> slipping to 97.64, −0.2%, as the dollar gives back some of the tariff premium after Greer's China tariff ceiling signal. <strong>Gold</strong> pushing to fresh all-time high territory at $5,213 (+1.34% today, +20.7% YTD) — the structural bid from central banks and real-rate compression continues. <strong>Silver</strong> outpacing at +4.1%, +26.6% YTD. Crude drifting lower at $65.46 despite the Iran overhang — demand concerns dominating. <strong>Nat gas</strong> +2.6% on weather but still −31% MTD, −18.9% YTD.</p>
 </div>
 
-<p class="body-text">The rates market is remarkably calm given the tariff backdrop — 10Y at 4.03% is essentially flat on the day as the bond market weighs the inflationary impact of 10% blanket tariffs against slowing growth signals. <b>Nat gas</b> is the standout commodity move at -31.7% MTD, weighing on midstream names like <b>OKE</b> -6.8% and <b>TRGP</b> -1.7%. <b>Gold</b> at $5,157 is pulling back from record highs above $5,200 hit yesterday, but the +19.4% YTD run and +22.6% MTD in <b>silver</b> reflect sustained demand for hard-asset hedges against policy uncertainty. The <b>dollar</b> is flat despite tariff implementation — a sign that markets were positioned for worse (15% vs the 10% that actually took effect). The 2s10s curve at 58bp is steepening modestly as the front end prices in the Fed's "wait and see" stance on tariff-driven inflation.</p>
-
 <!-- WATCHING INTO THE CLOSE -->
-<div class="callout">
-  <div class="callout-title">WATCHING INTO THE CLOSE</div>
-  <div class="watch-grid">
-    <div class="watch-section">
-      <h4>KEY LEVELS</h4>
-      <ul>
-        <li>SPX support 6,800 (Monday low), resist 6,920 (Feb high)</li>
-        <li>NDX 22,500 support, 23,000 resistance</li>
-        <li>RTY 2,620 support — if this breaks, small caps signal risk-off</li>
-      </ul>
-    </div>
-    <div class="watch-section">
-      <h4>CATALYSTS</h4>
-      <ul>
-        <li>State of the Union — tonight, tariff clarity critical</li>
-        <li>NVDA earnings — Wed after close</li>
-        <li>PPI — Wed 8:30 AM</li>
-        <li>SNOW, OKTA, FSLR after close today</li>
-      </ul>
-    </div>
-    <div class="watch-section">
-      <h4>SETUPS</h4>
-      <ul>
-        <li>Oversold: WDAY (RSI 18.8), INTU (19.2), FICO (22.7), ACN (24.5)</li>
-        <li>Overbought: TPL (88.0), GLW (80.4), FDX (80.7)</li>
-        <li>MCO watch: HUM RSI 27.4, UNH RSI 35.1</li>
-      </ul>
-    </div>
-  </div>
+<div class="close-watch">
+  <h3>Watching Into the Close</h3>
+
+  <div class="close-sub">Key Levels</div>
+  <p><strong>SPX:</strong> 6,925 range resistance (testing now) → 6,947 / 7,000 upside targets &bull; 6,900 pivot → 6,845 support → 6,780 must-hold</p>
+  <p><strong>NDX:</strong> 23,200 resistance → 22,800 support</p>
+  <p><strong>RTY:</strong> 2,680 resistance; lagging = caution signal</p>
+
+  <div class="close-sub">Catalysts</div>
+  <p><strong>4:15 PM:</strong> NVDA earnings — THE event. ~$350B market cap implied swing.</p>
+  <p><strong>After close:</strong> CRM, INTU, DELL, SNOW, ZS, PSKY also reporting</p>
+  <p><strong>Thursday:</strong> GDP revision, weekly jobless claims, pending home sales</p>
+  <p><strong>Fed speakers:</strong> Barkin and others throughout today</p>
+
+  <div class="close-sub">Setups</div>
+  <p><strong>Oversold:</strong> WDAY RSI 19, GDDY RSI 25, CTSH RSI 21, ACN RSI 22 — potential bounce candidates if AI fears overshoot</p>
+  <p><strong>Housing watch:</strong> LEN RSI 38, BLDR RSI 34, LOW RSI 41 — monitor for capitulation</p>
+  <p><strong>Overbought:</strong> CIEN RSI 80, GLW RSI 83, KEYS RSI 88 — potential profit-taking targets</p>
 </div>
 
 <!-- BOTTOM LINE -->
 <div class="bottom-line">
   <h3>Bottom Line</h3>
-  <p>The tape is bouncing on AMD-Meta and HD, but this is a covering rally in a headline-driven market — volume is thin and conviction is lower. The AMD 6GW deal is genuinely significant for the AI infrastructure trade and changes the competitive landscape ahead of NVDA's print tomorrow — this is the first time a hyperscaler has committed to AMD at Nvidia-like scale. But the managed care selloff, the tariff implementation (even at 10% vs 15% feared), and the packed catalyst calendar (SOTU tonight, NVDA tomorrow, PPI Wednesday) argue for staying nimble. The VIX at 19.60 with a 31% MTD gain tells you the market isn't buying this bounce with both hands. Trade the singles — AMD, KEYS, HD longs are working; MCO shorts are working — but don't overcommit to directional risk into the wall of events. Stay tactical, keep stops tight, and let NVDA decide the next leg.</p>
+  <p>This is a <strong>one-stock market today</strong> — everything before 4:15 PM is positioning noise. The surface looks healthy with SPX pushing above range resistance at 6,925, but the internals tell a different story: decliners outnumber advancers, energy and housing are getting wrecked, and the AI disruption narrative is claiming enterprise software casualties. <strong>NVDA's print will set the tone for the next two weeks of trading.</strong> A beat-and-raise likely sends NDX through 23,500 and drags SPX toward 7,000; a miss or a whiff on Blackwell margins could trigger a violent unwind of the positioning built into today's tape. <strong>Don't initiate new risk ahead of the print. Trade the singles on the earnings reactions. Stay nimble — the real move starts after the bell.</strong></p>
 </div>
 
-<!-- MAGUIRE LEVERAGE MONITOR -->
-<div class="leverage-section">
-  <h2>Maguire Leverage Monitor</h2>
-  <div class="subtitle">22V RESEARCH | UPDATED FEBRUARY 24, 2026</div>
-
-  <div class="score-display">
-    <div class="score-number" style="color:#C0392B;">8.0</div>
-    <div class="score-label" style="color:#C0392B;">HIGH — ACTIVE DETERIORATION</div>
-  </div>
-
-  <p class="body-text" style="text-align:center;margin-bottom:16px;">Structural leverage at record highs. Options market screaming fear. Financing still loose — the missing trigger. Watch Layer 3 for confirmation.</p>
-
-  <div class="layer-grid">
-    <div class="layer-card red">
-      <div class="ltitle">LAYER 1: LEVERAGE LEVELS</div>
-      <div class="lscore negative">2.0 / 2</div>
-      <div class="ldetail">FINRA margin debt: $1.28T (Jan 2026), 9th consecutive record. YoY growth 36% vs SPX +20% = massive leverage gap. Margin debt / GDP at 4.06% — record high, well above 3.0% red zone. HF gross leverage: 285-298% of NAV (record). Multi-strat funds at 645% gross. All five channels flashing red or deep yellow.</div>
-    </div>
-    <div class="layer-card red">
-      <div class="ltitle">LAYER 2: RATE OF CHANGE</div>
-      <div class="lscore negative">2.0 / 2</div>
-      <div class="ldetail">Leverage gap: margin debt growing 36% YoY vs SPX +20% = +16% positive gap, above the red threshold of 15%. This is the widest leverage gap since late 2021. 9 consecutive months of record margin debt = extreme streak. Real margin debt growth of 505.5% since 1997 vs market growth of 331.8% — divergence widening.</div>
-    </div>
-    <div class="layer-card yellow">
-      <div class="ltitle">LAYER 3: FINANCING CONDITIONS</div>
-      <div class="lscore" style="color:#E67E22;">1.5 / 2</div>
-      <div class="ldetail">HY OAS at 280bps but <b>widening fast</b> — +3.7% today, +5.7% MTD. IG OAS +8.2% MTD accelerating even faster. NFCI at -0.568 — still technically loose but deteriorating. SOFR stable at 3.66%. MOVE index at 68.03 surging +5.85% today, +14.9% MTD — bond vol is spiking. <b>Direction has firmly flipped.</b> Credit is no longer stable-and-tight, it's widening-and-accelerating. The absolute level hasn't breached 300bps yet, but the rate of change is what matters at inflection points. IG widening faster than HY is a warning sign — investment grade typically leads.</div>
-    </div>
-    <div class="layer-card yellow">
-      <div class="ltitle">LAYER 4: POSITIONING CROWDING</div>
-      <div class="lscore" style="color:#F39C12;">1.0 / 1</div>
-      <div class="ldetail">Mag 7 = 19% of total US HF net exposure (GS, Jan 2026). Tech sector weight >35% for most HFs. The March 7-10 "multistrat-mageddon" factor vol event demonstrated the crowding risk is real — extreme factor volatility hit record levels.</div>
-    </div>
-    <div class="layer-card red">
-      <div class="ltitle">LAYER 5: VOL & OPTIONS REGIME</div>
-      <div class="lscore negative">2.0 / 2</div>
-      <div class="ldetail">
-        <b>5A — Vol Structure (1.0/1.0):</b> VIX at 19.60 today, was 21.01 yesterday — still near the 22 stress threshold. VIX 30d RoC: +30.6% (red, >25%). Term structure barely in contango. IV 15.96% vs HV 12.62% — implied running 26% above realized. IV Percentile 69th.<br>
-        <b>5B — Options Sentiment (1.0/1.0):</b> Equity P/C 0.92 — EXTREME FEAR signal. 25-delta risk reversal at -11.15 — critical level (below -8 red zone). Put 25d vol 23.38 vs call 25d vol 12.23 = nearly 2:1 ratio.<br>
-        <b>5C — Dealer Gamma (CRITICAL):</b> Barchart GEX shows gamma flip at <b>6,871.78</b> — SPX trading at 6,887.98, only <b>16 points above the flip line</b>. Dealers are technically net long gamma but barely. A 0.25% decline puts SPX below the flip into <b>negative gamma</b> where dealers amplify selloffs. Massive negative gamma cluster at 6,800-6,860. Put wall and call wall both pinned at 7,000 — the market sees a hard ceiling. This is the most precarious gamma positioning in weeks.
-      </div>
-    </div>
-    <div class="layer-card red">
-      <div class="ltitle">LAYER 6: LIQUIDITY CALENDAR</div>
-      <div class="lscore negative">1.0 / 1</div>
-      <div class="ldetail">Extreme event clustering: State of the Union tonight (tariff clarity or escalation), NVDA earnings Wed 2/25 (single largest vol event in the market), PPI Wed 8:30 AM, 10% blanket tariff took effect today with 15% still threatened, monthly OPEX 3/6, March quad witching 3/20. This is one of the densest catalyst windows in recent memory — any one of these could be the trigger, and they're stacked on top of each other.</div>
-    </div>
-  </div>
-
-  <!-- DIVERGENCE FLAG -->
-  <div class="divergence-box">
-    <div class="dtitle">⚠ CONVERGENCE ALERT — ALL TRANSMISSION CHANNELS ACTIVATING</div>
-    <p>In prior updates, we flagged an "options leading / structure lagging" divergence — Layer 5 screaming while Layer 3 was green. That gap is now <b>closed</b>. Credit: HY OAS widening +5.7% MTD, IG OAS +8.2% MTD, MOVE surging +14.9% MTD. Options: P/C 0.92, risk reversal -11.15, both maxed. And now the gamma microstructure confirms it — <b>Barchart GEX shows SPX just 16 points above the dealer gamma flip at 6,871.78</b>. Below that level, dealers shift from dampening moves to amplifying them. The put wall and call wall are both at 7,000 — a hard ceiling. This is the Minsky configuration: record leverage (L1-L2 maxed) + financing deteriorating (L3 flipping) + extreme crowding (L4) + dealers on the edge of short gamma (L5) + catalyst stacking (L6). Every transmission channel for a cascade is either active or one tick away from activating.</p>
-  </div>
-
-  <p class="body-text"><b>Composite Assessment:</b> The Maguire Leverage Monitor reads 8.0/10 — <b>High / Active Deterioration</b>. This is not a drill. L1 (2/2) and L2 (2/2) maxed — record margin debt, record HF gross leverage, widening leverage gap. L4 (1/1) crowding extreme with Mag 7 at 19% of HF net. L5 (2/2) options maxed — P/C 0.92, risk reversal -11.15, VIX 30d RoC +30.6%, and Barchart GEX shows dealers just 16 pts above the gamma flip at 6,871.78. L6 (1/1) densest catalyst window in months (SOTU tonight, NVDA Wed, tariff implementation today). And critically, L3 has moved to 1.5/2 — HY OAS widening +5.7% MTD, IG +8.2% MTD, MOVE surging +14.9% MTD. The financing layer is no longer green. We are in the Minsky overlap zone: record leverage + financing deterioration + maxed options fear + dealers on the gamma knife-edge + extreme catalyst clustering. <b>Gamma flip level 6,871.78 is the key number tonight.</b> Below there, dealers go short gamma and the amplification cascade activates. <b>Portfolio guidance:</b> Cut gross exposure, raise cash, add tail hedges. Reduce Mag 7 overweight. Do not chase this covering bounce.</p>
-</div>
+</div><!-- /container -->
 
 <!-- FOOTER -->
 <div class="footer">
-  CONFIDENTIAL — FOR INSTITUTIONAL USE ONLY &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 22V RESEARCH TRADING DESK
+  CONFIDENTIAL — FOR INSTITUTIONAL USE ONLY &nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp; 22V RESEARCH TRADING DESK
 </div>
 
-</div>
 </body>
 </html>

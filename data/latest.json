@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-02-23T19:40:35.346806",
+  "timestamp": "2026-02-24T21:39:55.682481",
   "source_tier": "free",
   "pc_ratio": {
-    "equity": 0.9176,
+    "equity": 1.1712,
     "index": null,
     "total": null,
     "equity_5d_ma": null,
@@ -19,11 +19,11 @@
     "history_5d": []
   },
   "skew": {
-    "cboe_skew": 141.43,
-    "put_25d_vol": 23.38,
-    "call_25d_vol": 12.23,
-    "risk_reversal": -11.15,
-    "atm_iv": 19.32,
+    "cboe_skew": 141.94,
+    "put_25d_vol": 22.28,
+    "call_25d_vol": 11.21,
+    "risk_reversal": -11.07,
+    "atm_iv": 17.26,
     "signal": "MODERATE",
     "history_monthly": [
       {
@@ -525,81 +525,81 @@
       {
         "date": "2026-02-23",
         "value": 141.43
+      },
+      {
+        "date": "2026-02-24",
+        "value": 141.94
       }
     ]
   },
   "volume": {
-    "total_calls": 1232993,
-    "total_puts": 1187002,
+    "total_calls": 919618,
+    "total_puts": 1167595,
     "zero_dte_calls": 0,
     "zero_dte_puts": 0,
     "zero_dte_call_pct": 0.0,
     "zero_dte_put_pct": 0.0,
-    "net_premium_calls_bn": 0.162,
-    "net_premium_puts_bn": 0.176,
+    "net_premium_calls_bn": 0.218,
+    "net_premium_puts_bn": 0.175,
     "top_call_strikes": [
       {
-        "strike": 685.0,
-        "volume": 126780,
-        "oi": 12887
-      },
-      {
-        "strike": 682.0,
-        "volume": 112460,
-        "oi": 5328
-      },
-      {
-        "strike": 683.0,
-        "volume": 100858,
-        "oi": 7488
+        "strike": 687.0,
+        "volume": 96083,
+        "oi": 14202
       },
       {
         "strike": 690.0,
-        "volume": 99181,
-        "oi": 18063
+        "volume": 86703,
+        "oi": 27192
       },
       {
-        "strike": 684.0,
-        "volume": 69955,
-        "oi": 7116
+        "strike": 688.0,
+        "volume": 82319,
+        "oi": 9552
+      },
+      {
+        "strike": 685.0,
+        "volume": 71283,
+        "oi": 17504
+      },
+      {
+        "strike": 686.0,
+        "volume": 69591,
+        "oi": 9318
       }
     ],
     "top_put_strikes": [
       {
+        "strike": 687.0,
+        "volume": 105406,
+        "oi": 7155
+      },
+      {
+        "strike": 685.0,
+        "volume": 102360,
+        "oi": 35714
+      },
+      {
+        "strike": 686.0,
+        "volume": 91557,
+        "oi": 7524
+      },
+      {
         "strike": 680.0,
-        "volume": 129720,
-        "oi": 61937
+        "volume": 76596,
+        "oi": 50829
       },
       {
-        "strike": 682.0,
-        "volume": 85657,
-        "oi": 10872
-      },
-      {
-        "strike": 681.0,
-        "volume": 74897,
-        "oi": 15983
-      },
-      {
-        "strike": 660.0,
-        "volume": 70117,
-        "oi": 85671
-      },
-      {
-        "strike": 683.0,
-        "volume": 64006,
-        "oi": 11707
+        "strike": 684.0,
+        "volume": 52524,
+        "oi": 8282
       }
     ]
   },
   "vix": {
-    "current": 21.01,
-    "change": 1.92,
+    "current": 19.55,
+    "change": -1.46,
     "history_30d": [
-      {
-        "date": "2026-01-23",
-        "value": 16.09
-      },
       {
         "date": "2026-01-26",
         "value": 16.15
@@ -679,6 +679,10 @@
       {
         "date": "2026-02-23",
         "value": 21.01
+      },
+      {
+        "date": "2026-02-24",
+        "value": 19.55
       }
     ]
   },
@@ -690,7 +694,7 @@
   "alerts": [
     {
       "type": "PC_EXTREME_FEAR",
-      "message": "Equity P/C at 0.92 \u2014 extreme fear, contrarian buy zone",
+      "message": "Equity P/C at 1.17 \u2014 extreme fear, contrarian buy zone",
       "severity": "critical"
     }
   ]

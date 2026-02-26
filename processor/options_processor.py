@@ -411,6 +411,7 @@ def process():
             "streak_months": finra.get("margin_debt", {}).get("streak_months"),
             "streak_label": finra.get("margin_debt", {}).get("streak_label"),
             "source": finra.get("margin_debt", {}).get("source") or "manual",
+            "history": finra.get("margin_debt", {}).get("history", []),
         },
 
         "debt_gdp_pct": finra.get("debt_gdp_pct"),

@@ -1,7 +1,12 @@
 [
   {
     "type": "PC_EXTREME_FEAR",
-    "message": "Equity P/C at 1.17 \u2014 extreme fear, contrarian buy zone",
+    "message": "Equity P/C at 1.19 \u2014 extreme fear, contrarian buy zone",
     "severity": "critical"
+  },
+  {
+    "type": "SKEW_ELEVATED",
+    "message": "CBOE SKEW at 146 \u2014 above average tail demand",
+    "severity": "warning"
   }
 ]

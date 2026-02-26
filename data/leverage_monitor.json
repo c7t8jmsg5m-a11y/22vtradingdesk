@@ -1,7 +1,7 @@
 {
-  "timestamp": "2026-02-25T20:53:22.850844",
+  "timestamp": "2026-02-25T21:04:46.325751",
   "composite_score": 6.5,
-  "composite_prev": 6.0,
+  "composite_prev": 6.5,
   "regime": "FRAGILE_EQUILIBRIUM",
   "regime_label": "Fragile Equilibrium",
   "layers": {
@@ -20,7 +20,40 @@
         "notes": "HF gross leverage from GS/JPM/MS prime brokerage reports.",
         "finra_margin_bn": 566.1,
         "finra_margin_date": "Q3 2025",
-        "finra_margin_streak": "2nd consecutive record"
+        "finra_margin_streak": "2nd consecutive record",
+        "margin_history": [
+          {
+            "date": "2024-01-01",
+            "value_bn": 433.8
+          },
+          {
+            "date": "2024-04-01",
+            "value_bn": 451.0
+          },
+          {
+            "date": "2024-07-01",
+            "value_bn": 451.5
+          },
+          {
+            "date": "2024-10-01",
+            "value_bn": 485.5
+          },
+          {
+            "date": "2025-01-01",
+            "value_bn": 476.9
+          },
+          {
+            "date": "2025-04-01",
+            "value_bn": 506.4
+          },
+          {
+            "date": "2025-07-01",
+            "value_bn": 566.1
+          }
+        ],
+        "margin_yoy_pct": 25.4,
+        "debt_gdp_pct": 1.8,
+        "spx_yoy_pct": 15.5
       }
     },
     "l2": {
@@ -234,5 +267,5 @@
     "key_tension": "protection buying vs loose financing",
     "bottom_line": "Structural leverage at records but financing actively easing"
   },
-  "options_data_timestamp": "2026-02-25T20:53:22.846805"
+  "options_data_timestamp": "2026-02-25T21:04:34.946606"
 }

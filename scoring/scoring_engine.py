@@ -88,6 +88,10 @@ def score_l1(latest, overrides):
         "finra_margin_bn": margin,
         "finra_margin_date": margin_date,
         "finra_margin_streak": margin_streak,
+        "margin_history": margin_data.get("history", []),
+        "margin_yoy_pct": margin_data.get("yoy_pct"),
+        "debt_gdp_pct": latest.get("debt_gdp_pct"),
+        "spx_yoy_pct": latest.get("spx_yoy_pct"),
     })
 
     return {

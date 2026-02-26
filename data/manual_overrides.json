@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-02-25T20:34:33.748946",
+  "last_updated": "2026-02-26T18:37:29.186002",
   "l1_leverage": {
     "updated": "2026-02-25",
     "hf_gross_gs": 285,
@@ -47,16 +47,18 @@
     "notes": "Druckenmiller pivoting to equal-weight (RSP)"
   },
   "gex_manual": {
-    "updated": "2026-02-25",
-    "source": "Barchart",
-    "flip_point": 6865.7,
+    "updated": "2026-02-26",
+    "source": "Barchart_intraday",
+    "flip_point": 6901.29,
     "call_wall": 7000.0,
     "put_wall": 7000.0,
-    "last_price": 6946.13,
-    "ivol": 14.33,
-    "hvol": 12.83,
-    "iv_rank": 11.52,
-    "iv_percentile": 54.0
+    "last_price": 6866.88,
+    "ivol": 16.17,
+    "hvol": 13.2,
+    "iv_rank": 17.29,
+    "iv_percentile": 70.0,
+    "spx_below_flip": true,
+    "gamma_regime": "NEGATIVE"
   },
   "l6_calendar_manual_additions": {
     "events": [

@@ -1,9 +1,9 @@
 {
-  "timestamp": "2026-02-25T21:25:21.160974",
-  "composite_score": 6.5,
+  "timestamp": "2026-02-26T18:37:29.186852",
+  "composite_score": 7.5,
   "composite_prev": 6.5,
-  "regime": "FRAGILE_EQUILIBRIUM",
-  "regime_label": "Fragile Equilibrium",
+  "regime": "ACTIVE_DETERIORATION",
+  "regime_label": "Active Deterioration",
   "layers": {
     "l1": {
       "score": 2,
@@ -197,26 +197,40 @@
       }
     },
     "l5a": {
-      "score": 0.0,
+      "score": 0.5,
       "max": 1,
       "label": "Vol Structure",
-      "details": "VIX 17.93",
+      "details": "VIX 19.97 intraday (below 22) | IV 16.17% > HV 13.20% (+0.5)",
       "data": {
-        "vix": 17.93,
-        "ivol": 14.33,
-        "hvol": 12.83,
-        "iv_rank": 11.52
+        "vix": 19.97,
+        "vix_prev_close": 17.93,
+        "vix_intraday_change_pct": 11.4,
+        "ivol": 16.17,
+        "hvol": 13.2,
+        "iv_rank": 17.29,
+        "iv_percentile": 70.0,
+        "vvix": 103.87,
+        "spx_50dma": 6880.78,
+        "spx_200dma": 6907.98,
+        "spx_below_50d": true,
+        "spx_below_200d": true
       }
     },
     "l5b": {
-      "score": 0.5,
+      "score": 1.0,
       "max": 1,
       "label": "Options Sentiment",
-      "details": "P/C 1.19 \u2014 elevated fear",
+      "details": "P/C 1.19 EXTREME FEAR + RR -8.01 (+0.5) | SPX 6,867 BELOW gamma flip 6,901 = NEG GAMMA (+0.5)",
       "data": {
         "equity_pc": 1.187,
-        "gex_level": "UNKNOWN",
-        "skew": 146.05
+        "risk_reversal": -8.01,
+        "cboe_skew": 146.05,
+        "gex_flip": 6901.29,
+        "spx_last": 6866.88,
+        "spx_below_flip": true,
+        "gamma_regime": "NEGATIVE",
+        "put_wall": 7000.0,
+        "call_wall": 7000.0
       }
     },
     "l6": {
@@ -296,22 +310,29 @@
   },
   "alerts": [],
   "cascade": {
-    "activation_probability": "MODERATE",
-    "steps_active": 2,
-    "blocked_at_step": 3,
-    "narrative": "Step 1 ACTIVE: Record leverage loaded | Step 2 ACTIVE: Momentum accelerating | Step 3 BLOCKED: Financing still loose (score 0/2) | Step 4 BLOCKED: Dealers long gamma, vol suppressed"
+    "activation_probability": "HIGH",
+    "steps_active": 3,
+    "blocked_at_step": 4,
+    "narrative": "Step 1 ACTIVE: Record leverage loaded | Step 2 ACTIVE: Momentum accelerating | Step 3 NEWLY ACTIVE: SPX below gamma flip, neg gamma amplification, VIX surging | Step 4 BLOCKED: Financing still loose (L3=0/2) \u2014 but spreads widening"
   },
   "real_time_pulse": {
-    "turbulence": "NORMAL",
-    "regime": "FRAGILE_EQ",
-    "synthesis": "TAPE DIVERGING",
-    "synthesis_note": "Calm surface - loaded"
+    "turbulence": "ELEVATED",
+    "turbulence_detail": "VIX 19.97 (up +11.4% intraday), SPX below BOTH 50d (6,881) and 200d (6,908) MA, negative gamma regime",
+    "regime": "STRESS_ONSET",
+    "regime_probs": {
+      "S1_calm": 15,
+      "S2_fragile": 30,
+      "S3_stress": 40,
+      "S4_deleveraging": 15
+    },
+    "synthesis": "TAPE CONFIRMING",
+    "synthesis_note": "Score crossed 7.0 threshold \u2014 structural leverage at records AND real-time stress now visible. SPX in negative gamma, below key MAs, VIX surging. Defensive positioning warranted."
   },
   "commentary": {
-    "headline_type": "SENTIMENT_STRUCTURE_DIVERGENCE",
-    "l3_direction": "loosening",
-    "key_tension": "protection buying vs loose financing",
-    "bottom_line": "Structural leverage at records but financing actively easing"
+    "headline_type": "REGIME_UPGRADE",
+    "l3_direction": "early tightening (HY OAS 297bp up from 265bp)",
+    "key_tension": "Structural leverage + options fear NOW CONFIRMED by tape action",
+    "bottom_line": "Composite upgraded 6.5 \u2192 7.5. SPX broke below gamma flip intraday \u2014 dealers now SHORT gamma and will AMPLIFY moves in both directions. Protection demand extreme (P/C 1.19, RR -8.01). The only firewall is financing (L3=0) \u2014 spreads widening but not yet in stress. FOMC + quad witch in 3 weeks."
   },
-  "options_data_timestamp": "2026-02-25T21:25:21.126560"
+  "options_data_timestamp": "2026-02-26T13:16:00"
 }

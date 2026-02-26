@@ -142,7 +142,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
       <div style="flex:1">
         <div class="ln">L3: Financing <span style="font-size:10px;color:var(--green);font-weight:800">0/2</span>
         </div>
-        <div class="ld">NFCI -0.563 — loose | HY OAS 3bp | SOFR 3.67%</div>
+        <div class="ld">NFCI -0.563 — loose (tightening) | HY OAS 297bp (wider) | SOFR 3.67%</div>
       </div>
       <div class="dots">
         <div class="dot" style="background:var(--dim)"></div>
@@ -242,8 +242,8 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
       </div>
       <div class="st">
         <div class="st-l">HY OAS</div>
-        <div class="st-v" style="color:var(--green)">3bp</div>
-        <div class="st-s">LOOSE</div>
+        <div class="st-v" style="color:var(--green)">297bp</div>
+        <div class="st-s">Wider from 295</div>
       </div>
       <div class="st">
         <div class="st-l">NFCI</div>
@@ -356,14 +356,35 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
       <span style="font-size:14px;font-weight:700">Financing: THE KEY LAYER &mdash; Actively Loosening</span>
     </div>
     <div style="font-size:12px;line-height:1.7;margin-bottom:16px">
-      NFCI -0.563 — loose | HY OAS 3bp | SOFR 3.67%
+      <strong style="color:var(--green)">Financing conditions are easing, not tightening.</strong>
+      NFCI moved from -0.510 &rarr; -0.563 (2026-02-20).
+      HY OAS widened from 295&rarr;297bp.
+      SOFR rose to 3.67%.
+      <strong style="color:var(--amber)">This is the key layer keeping the composite at 6 instead of 8-10. If HY &gt; 350bp or NFCI &gt; -0.30, score jumps to 8-10 (Active Deterioration &rarr; Cascade).</strong>
     </div>
     <div class="stats">
-      <div class="st"><div class="st-l">NFCI</div><div class="st-v" style="color:var(--green)">-0.563</div><div class="st-s">Loosening</div></div>
-      <div class="st"><div class="st-l">HY OAS</div><div class="st-v" style="color:var(--green)">3bp</div></div>
-      <div class="st"><div class="st-l">SOFR</div><div class="st-v">3.67%</div><div class="st-s">Stable</div></div>
+      <div class="st">
+        <div class="st-l">NFCI</div>
+        <div class="st-v" style="color:var(--green)">-0.563</div>
+        <div class="st-s">Loosening from -0.510</div>
+      </div>
+      <div class="st">
+        <div class="st-l">HY OAS</div>
+        <div class="st-v" style="color:var(--green)">297bp</div>
+        <div class="st-s">Wider from 295</div>
+      </div>
+      <div class="st">
+        <div class="st-l">GS FCI</div>
+        <div class="st-v" style="color:var(--green)">Loose</div>
+        <div class="st-s">Rate cuts + end of QT</div>
+      </div>
+      <div class="st">
+        <div class="st-l">SOFR</div>
+        <div class="st-v">3.67%</div>
+        <div class="st-s">Stable</div>
+      </div>
     </div>
-    <div class="al al-o" style="margin-top:12px">TRIP WIRES: HY OAS &gt; 350bp &bull; NFCI &gt; -0.30 &bull; SOFR &gt; 4.50%</div>
+    <div class="al al-o" style="margin-top:12px">TRIP WIRES: HY OAS &gt; 350bp &bull; NFCI &gt; -0.30 &bull; SOFR &gt; 4.50% &bull; PB margin hikes &bull; GS FCI &rarr; &ldquo;tightening&rdquo;</div>
   </div>
 </div>
 

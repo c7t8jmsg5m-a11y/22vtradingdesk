@@ -336,8 +336,8 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
       {%- if l3_data.hy_oas is not none %}
       <div class="st">
         <div class="st-l">HY OAS</div>
-        <div class="st-v" style="color:{% if l3_data.hy_oas > 350 %}var(--red){% else %}var(--green){% endif %}">{{ l3_data.hy_oas | round(0) | int }}bp</div>
-        <div class="st-s">{{ l3_data.signal | default('') }}</div>
+        <div class="st-v" style="color:{% if l3_data.hy_oas > 350 %}var(--red){% else %}var(--green){% endif %}">{{ l3_data.hy_oas }}bp</div>
+        <div class="st-s">{% if l3_data.hy_oas_prev is not none and l3_data.hy_oas < l3_data.hy_oas_prev %}Tighter from {{ l3_data.hy_oas_prev }}{% elif l3_data.hy_oas_prev is not none and l3_data.hy_oas > l3_data.hy_oas_prev %}Wider from {{ l3_data.hy_oas_prev }}{% else %}{{ l3_data.signal | default('') }}{% endif %}</div>
       </div>
       {%- endif %}
       {%- if l3_data.nfci is not none %}
@@ -514,26 +514,60 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
   {%- set l3_layer = layers.get('l3', {}) %}
   {%- set l3d = l3_layer.get('data', {}) %}
   {%- set l3_score = l3_layer.score | default(0) %}
-  <div class="card" style="border-left:3px solid {% if l3_score == 0 %}var(--green){% elif l3_score >= 2 %}var(--red){% else %}var(--amber){% endif %}">
+  {%- set l3_color = 'var(--green)' if l3_score == 0 else ('var(--red)' if l3_score >= 2 else 'var(--amber)') %}
+  <div class="card" style="border-left:3px solid {{ l3_color }}">
     <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
-      <div style="width:10px;height:10px;border-radius:5px;background:{% if l3_score == 0 %}var(--green){% elif l3_score >= 2 %}var(--red){% else %}var(--amber){% endif %}"></div>
+      <div style="width:10px;height:10px;border-radius:5px;background:{{ l3_color }}"></div>
       <span style="font-size:14px;font-weight:700">Financing: THE KEY LAYER &mdash; {% if l3_score == 0 %}Actively Loosening{% elif l3_score >= 2 %}Tightening{% else %}Mixed{% endif %}</span>
     </div>
     <div style="font-size:12px;line-height:1.7;margin-bottom:16px">
-      {{ l3_layer.details | default('Financing data unavailable.') }}
+      {%- if l3_score == 0 %}
+      <strong style="color:var(--green)">Financing conditions are easing, not tightening.</strong>
+      {%- elif l3_score >= 2 %}
+      <strong style="color:var(--red)">Financing conditions are tightening.</strong>
+      {%- else %}
+      <strong style="color:var(--amber)">Financing conditions are mixed.</strong>
+      {%- endif %}
+      {%- if l3d.nfci is not none %}
+      NFCI {% if l3d.nfci_3mo_ago is not none %}moved from {{ '%.3f' | format(l3d.nfci_3mo_ago) }} &rarr; {{ '%.3f' | format(l3d.nfci) }}{% else %}at {{ '%.3f' | format(l3d.nfci) }}{% endif %}{% if l3d.nfci_as_of %} ({{ l3d.nfci_as_of }}){% endif %}.
+      {%- endif %}
+      {%- if l3d.hy_oas is not none %}
+      HY OAS {% if l3d.hy_oas_prev is not none and l3d.hy_oas != l3d.hy_oas_prev %}{% if l3d.hy_oas < l3d.hy_oas_prev %}tightened from {{ l3d.hy_oas_prev }}&rarr;{{ l3d.hy_oas }}bp{% else %}widened from {{ l3d.hy_oas_prev }}&rarr;{{ l3d.hy_oas }}bp{% endif %}{% else %}at {{ l3d.hy_oas }}bp{% endif %}.
+      {%- endif %}
+      {%- if l3d.sofr is not none %}
+      SOFR {% if l3d.sofr_prev is not none and l3d.sofr != l3d.sofr_prev %}{% if l3d.sofr < l3d.sofr_prev %}eased to{% else %}rose to{% endif %} {{ '%.2f' | format(l3d.sofr) }}%{% else %}stable at {{ '%.2f' | format(l3d.sofr) }}%{% endif %}.
+      {%- endif %}
+      <strong style="color:var(--amber)">This is the key layer keeping the composite at {{ composite_int }} instead of 8-10. If HY &gt; 350bp or NFCI &gt; -0.30, score jumps to 8-10 (Active Deterioration &rarr; Cascade).</strong>
     </div>
     <div class="stats">
       {%- if l3d.nfci is not none %}
-      <div class="st"><div class="st-l">NFCI</div><div class="st-v" style="color:{% if l3d.nfci > -0.30 %}var(--red){% else %}var(--green){% endif %}">{{ '%.3f' | format(l3d.nfci) }}</div><div class="st-s">{% if l3d.nfci <= -0.30 %}Loosening{% else %}Tightening{% endif %}</div></div>
+      <div class="st">
+        <div class="st-l">NFCI</div>
+        <div class="st-v" style="color:{% if l3d.nfci > -0.30 %}var(--red){% else %}var(--green){% endif %}">{{ '%.3f' | format(l3d.nfci) }}</div>
+        <div class="st-s">{% if l3d.nfci_3mo_ago is not none and l3d.nfci < l3d.nfci_3mo_ago %}Loosening from {{ '%.3f' | format(l3d.nfci_3mo_ago) }}{% elif l3d.nfci_3mo_ago is not none and l3d.nfci > l3d.nfci_3mo_ago %}Tightening from {{ '%.3f' | format(l3d.nfci_3mo_ago) }}{% elif l3d.nfci <= -0.30 %}Loosening{% else %}Tightening{% endif %}</div>
+      </div>
       {%- endif %}
       {%- if l3d.hy_oas is not none %}
-      <div class="st"><div class="st-l">HY OAS</div><div class="st-v" style="color:{% if l3d.hy_oas > 350 %}var(--red){% else %}var(--green){% endif %}">{{ l3d.hy_oas | round(0) | int }}bp</div></div>
+      <div class="st">
+        <div class="st-l">HY OAS</div>
+        <div class="st-v" style="color:{% if l3d.hy_oas > 350 %}var(--red){% else %}var(--green){% endif %}">{{ l3d.hy_oas }}bp</div>
+        <div class="st-s">{% if l3d.hy_oas_prev is not none and l3d.hy_oas < l3d.hy_oas_prev %}Tighter from {{ l3d.hy_oas_prev }}{% elif l3d.hy_oas_prev is not none and l3d.hy_oas > l3d.hy_oas_prev %}Wider from {{ l3d.hy_oas_prev }}{% else %}Stable{% endif %}</div>
+      </div>
       {%- endif %}
+      <div class="st">
+        <div class="st-l">GS FCI</div>
+        <div class="st-v" style="color:{% if l3_score == 0 %}var(--green){% else %}var(--red){% endif %}">{% if l3_score == 0 %}Loose{% elif l3_score >= 2 %}Tight{% else %}Mixed{% endif %}</div>
+        <div class="st-s">{% if l3_score == 0 %}Rate cuts + end of QT{% else %}Conditions shifting{% endif %}</div>
+      </div>
       {%- if l3d.sofr is not none %}
-      <div class="st"><div class="st-l">SOFR</div><div class="st-v">{{ '%.2f' | format(l3d.sofr) }}%</div><div class="st-s">{% if l3d.sofr > 4.50 %}Elevated{% else %}Stable{% endif %}</div></div>
+      <div class="st">
+        <div class="st-l">SOFR</div>
+        <div class="st-v">{{ '%.2f' | format(l3d.sofr) }}%</div>
+        <div class="st-s">{% if l3d.sofr > 4.50 %}Elevated{% else %}Stable{% endif %}</div>
+      </div>
       {%- endif %}
     </div>
-    <div class="al al-o" style="margin-top:12px">TRIP WIRES: HY OAS &gt; 350bp &bull; NFCI &gt; -0.30 &bull; SOFR &gt; 4.50%</div>
+    <div class="al al-o" style="margin-top:12px">TRIP WIRES: HY OAS &gt; 350bp &bull; NFCI &gt; -0.30 &bull; SOFR &gt; 4.50% &bull; PB margin hikes &bull; GS FCI &rarr; &ldquo;tightening&rdquo;</div>
   </div>
 </div>
 

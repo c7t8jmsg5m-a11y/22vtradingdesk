@@ -154,23 +154,49 @@ def score_l3(latest):
     score = 0
     details = []
 
-    nfci = fin.get("nfci", {}).get("current")
-    hy_oas = fin.get("hy_oas", {}).get("current")
-    sofr = fin.get("sofr", {}).get("current")
+    nfci_data = fin.get("nfci", {})
+    hy_data = fin.get("hy_oas", {})
+    sofr_data = fin.get("sofr", {})
+
+    nfci = nfci_data.get("current")
+    nfci_prev = nfci_data.get("prev")
+    hy_oas_pct = hy_data.get("current")  # comes from FRED as percentage (e.g. 2.97)
+    hy_oas_prev = hy_data.get("prev")
+    sofr = sofr_data.get("current")
+
+    # Convert HY OAS from percentage to basis points for display and thresholds
+    hy_oas_bp = round(hy_oas_pct * 100) if hy_oas_pct is not None else None
+    hy_oas_prev_bp = round(hy_oas_prev * 100) if hy_oas_prev is not None else None
+
+    # NFCI directional context from 90d history
+    nfci_hist = nfci_data.get("history_90d", [])
+    nfci_3mo_ago = nfci_hist[0].get("value") if nfci_hist else None
 
     if nfci is not None:
         if nfci > -0.30:
             score += 1
             details.append(f"NFCI {nfci:+.3f} — tightening")
         else:
-            details.append(f"NFCI {nfci:+.3f} — loose")
+            direction = ""
+            if nfci_prev is not None:
+                if nfci < nfci_prev:
+                    direction = " (loosening)"
+                elif nfci > nfci_prev:
+                    direction = " (tightening)"
+            details.append(f"NFCI {nfci:+.3f} — loose{direction}")
 
-    if hy_oas is not None:
-        if hy_oas > 350:
+    if hy_oas_bp is not None:
+        if hy_oas_bp > 350:
             score += 1
-            details.append(f"HY OAS {hy_oas:.0f}bp — credit stress")
+            details.append(f"HY OAS {hy_oas_bp}bp — credit stress")
         else:
-            details.append(f"HY OAS {hy_oas:.0f}bp")
+            hy_dir = ""
+            if hy_oas_prev_bp is not None:
+                if hy_oas_bp < hy_oas_prev_bp:
+                    hy_dir = " (tighter)"
+                elif hy_oas_bp > hy_oas_prev_bp:
+                    hy_dir = " (wider)"
+            details.append(f"HY OAS {hy_oas_bp}bp{hy_dir}")
 
     # SOFR as additional trigger (capped at layer max of 2)
     if sofr is not None and sofr > 4.50 and score < 2:
@@ -186,8 +212,14 @@ def score_l3(latest):
         "details": " | ".join(details) if details else "Data unavailable",
         "data": {
             "nfci": nfci,
-            "hy_oas": hy_oas,
+            "nfci_prev": nfci_prev,
+            "nfci_3mo_ago": nfci_3mo_ago,
+            "nfci_as_of": nfci_data.get("as_of"),
+            "hy_oas": hy_oas_bp,
+            "hy_oas_prev": hy_oas_prev_bp,
+            "hy_oas_as_of": hy_data.get("as_of"),
             "sofr": sofr,
+            "sofr_prev": sofr_data.get("prev"),
             "signal": fin.get("signal", "UNKNOWN"),
         },
     }

@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-02-25T21:10:24.427540",
+  "timestamp": "2026-02-25T21:14:43.229252",
   "composite_score": 6.5,
   "composite_prev": 6.5,
   "regime": "FRAGILE_EQUILIBRIUM",
@@ -72,11 +72,17 @@
       "score": 0,
       "max": 2,
       "label": "Financing",
-      "details": "NFCI -0.563 \u2014 loose | HY OAS 3bp | SOFR 3.67%",
+      "details": "NFCI -0.563 \u2014 loose (tightening) | HY OAS 297bp (wider) | SOFR 3.67%",
       "data": {
         "nfci": -0.5629,
-        "hy_oas": 2.97,
+        "nfci_prev": -0.5654,
+        "nfci_3mo_ago": -0.51004,
+        "nfci_as_of": "2026-02-20",
+        "hy_oas": 297,
+        "hy_oas_prev": 295,
+        "hy_oas_as_of": "2026-02-24",
         "sofr": 3.67,
+        "sofr_prev": 3.66,
         "signal": "LOOSE"
       }
     },
@@ -282,5 +288,5 @@
     "key_tension": "protection buying vs loose financing",
     "bottom_line": "Structural leverage at records but financing actively easing"
   },
-  "options_data_timestamp": "2026-02-25T21:10:24.392657"
+  "options_data_timestamp": "2026-02-25T21:14:43.188644"
 }

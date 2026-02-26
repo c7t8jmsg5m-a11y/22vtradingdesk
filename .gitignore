@@ -1,5 +1,11 @@
 data/
+!data/manual_overrides.json
+!data/latest.json
+!data/leverage_monitor.json
+!data/alerts.json
 logs/
+output/
 __pycache__/
 *.pyc
 .DS_Store
+.env

@@ -217,7 +217,7 @@ def estimate_vol_surface(ticker="SPY"):
     """
     Rough 25-delta risk reversal estimate from options chain.
     Uses nearest monthly expiration, finds ~25-delta strikes,
-    compares implied vols.
+    compares implied vols. Filters for liquid strikes only.
     """
     surface = {
         "put_25d_iv": None,
@@ -226,18 +226,19 @@ def estimate_vol_surface(ticker="SPY"):
         "atm_iv": None,
         "timestamp": None,
     }
-    
+
     try:
         import yfinance as yf
         import numpy as np
-        
+
         tk = yf.Ticker(ticker)
         spot = tk.info.get("regularMarketPrice") or tk.info.get("previousClose")
         expirations = tk.options
-        
+
         if not expirations or not spot:
+            print(f"  [Yahoo] Vol surface: no expirations or spot price for {ticker}")
             return surface
-        
+
         # Use ~30 DTE expiration for cleaner vol surface
         target_exp = None
         for exp in expirations:
@@ -246,43 +247,81 @@ def estimate_vol_surface(ticker="SPY"):
             if 20 <= dte <= 45:
                 target_exp = exp
                 break
-        
+
         if not target_exp:
             target_exp = expirations[min(2, len(expirations) - 1)]
-        
+
         chain = tk.option_chain(target_exp)
-        calls = chain.calls
-        puts = chain.puts
-        
-        # ATM = closest to spot
-        atm_call = calls.iloc[(calls["strike"] - spot).abs().argsort()[:1]]
+        calls = chain.calls.copy()
+        puts = chain.puts.copy()
+
+        # Filter for liquid strikes: must have volume > 0 and bid > 0 and IV > 0
+        liquid_calls = calls[
+            (calls["volume"].fillna(0) > 0) &
+            (calls["bid"].fillna(0) > 0) &
+            (calls["impliedVolatility"].fillna(0) > 0.01)
+        ]
+        liquid_puts = puts[
+            (puts["volume"].fillna(0) > 0) &
+            (puts["bid"].fillna(0) > 0) &
+            (puts["impliedVolatility"].fillna(0) > 0.01)
+        ]
+
+        if liquid_calls.empty or liquid_puts.empty:
+            print(f"  [Yahoo] Vol surface: no liquid options found for {ticker} {target_exp}")
+            return surface
+
+        # ATM = closest liquid strike to spot
+        atm_call = liquid_calls.iloc[(liquid_calls["strike"] - spot).abs().argsort()[:1]]
         atm_iv = atm_call["impliedVolatility"].values[0] if not atm_call.empty else None
-        
-        # ~25-delta put ≈ ~5% OTM put
-        put_25d_strike = spot * 0.95
-        nearest_put = puts.iloc[(puts["strike"] - put_25d_strike).abs().argsort()[:1]]
+
+        # ~25-delta put ≈ ~3-4% OTM put (narrower range for more liquid strikes)
+        put_25d_strike = spot * 0.965
+        # Find nearest liquid put to the target strike
+        nearest_put = liquid_puts.iloc[(liquid_puts["strike"] - put_25d_strike).abs().argsort()[:1]]
         put_25d_iv = nearest_put["impliedVolatility"].values[0] if not nearest_put.empty else None
-        
-        # ~25-delta call ≈ ~5% OTM call
-        call_25d_strike = spot * 1.05
-        nearest_call = calls.iloc[(calls["strike"] - call_25d_strike).abs().argsort()[:1]]
+        put_strike_used = nearest_put["strike"].values[0] if not nearest_put.empty else None
+
+        # ~25-delta call ≈ ~3-4% OTM call
+        call_25d_strike = spot * 1.035
+        nearest_call = liquid_calls.iloc[(liquid_calls["strike"] - call_25d_strike).abs().argsort()[:1]]
         call_25d_iv = nearest_call["impliedVolatility"].values[0] if not nearest_call.empty else None
-        
+        call_strike_used = nearest_call["strike"].values[0] if not nearest_call.empty else None
+
         if put_25d_iv and call_25d_iv:
-            surface["put_25d_iv"] = round(put_25d_iv * 100, 2)
-            surface["call_25d_iv"] = round(call_25d_iv * 100, 2)
-            surface["risk_reversal"] = round((call_25d_iv - put_25d_iv) * 100, 2)
-            surface["atm_iv"] = round(atm_iv * 100, 2) if atm_iv else None
-            
+            put_iv_pct = round(put_25d_iv * 100, 2)
+            call_iv_pct = round(call_25d_iv * 100, 2)
+            atm_iv_pct = round(atm_iv * 100, 2) if atm_iv else None
+            rr = round((call_25d_iv - put_25d_iv) * 100, 2)
+
+            # Sanity check: IVs should be reasonable (5-80% for equity options)
+            if put_iv_pct < 5 or call_iv_pct < 5:
+                print(f"  [Yahoo] Vol surface: IVs suspiciously low "
+                      f"(put={put_iv_pct}%, call={call_iv_pct}%), falling back to ATM")
+                if atm_iv_pct and atm_iv_pct >= 5:
+                    surface["atm_iv"] = atm_iv_pct
+                return surface
+
+            # Sanity check: put and call should be different strikes
+            if put_strike_used == call_strike_used:
+                print(f"  [Yahoo] Vol surface: put and call landed on same strike ({put_strike_used})")
+
+            surface["put_25d_iv"] = put_iv_pct
+            surface["call_25d_iv"] = call_iv_pct
+            surface["risk_reversal"] = rr
+            surface["atm_iv"] = atm_iv_pct
+
             print(f"  [Yahoo] Vol Surface ({target_exp}): "
-                  f"25Δ Put={surface['put_25d_iv']:.1f}, "
-                  f"ATM={surface['atm_iv']:.1f}, "
-                  f"25Δ Call={surface['call_25d_iv']:.1f}, "
-                  f"RR={surface['risk_reversal']:.1f}")
-        
+                  f"25Δ Put={put_iv_pct:.1f}% @{put_strike_used}, "
+                  f"ATM={atm_iv_pct:.1f}%, "
+                  f"25Δ Call={call_iv_pct:.1f}% @{call_strike_used}, "
+                  f"RR={rr:.1f}")
+        else:
+            print(f"  [Yahoo] Vol surface: could not extract IVs for {ticker} {target_exp}")
+
     except Exception as e:
         print(f"  [Yahoo] Vol surface failed: {e}")
-    
+
     surface["timestamp"] = datetime.now().isoformat()
     return surface
 

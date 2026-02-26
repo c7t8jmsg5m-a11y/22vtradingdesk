@@ -1,0 +1,56 @@
+{
+  "last_updated": "2026-02-25T20:34:33.748946",
+  "l1_leverage": {
+    "updated": "2026-02-25",
+    "hf_gross_gs": 285,
+    "hf_gross_jpm": 298,
+    "hf_gross_ms_percentile": 99,
+    "multistrat_gross": 645,
+    "leveraged_etf_bn": 248,
+    "notes": "HF gross leverage from GS/JPM/MS prime brokerage reports."
+  },
+  "l4_crowding": {
+    "updated": "2026-02-25",
+    "themes": [
+      {
+        "name": "AI Infra Concentration",
+        "pct": 90,
+        "detail": "MU, LRCX, NOW, Korean semis"
+      },
+      {
+        "name": "Mag 7 % of HF Net",
+        "pct": 85,
+        "detail": "~19% \u2014 near 21% peak"
+      },
+      {
+        "name": "Semis Net Exposure",
+        "pct": 95,
+        "detail": "5yr high"
+      }
+    ],
+    "headline": "AI infra cluster + Mag7 rotation confirmed by Q4 13Fs",
+    "notes": "Druckenmiller pivoting to equal-weight (RSP)"
+  },
+  "gex_manual": {
+    "updated": "2026-02-25",
+    "source": "Barchart",
+    "flip_point": 6865.7,
+    "call_wall": 7000.0,
+    "put_wall": 7000.0,
+    "last_price": 6946.13,
+    "ivol": 14.33,
+    "hvol": 12.83,
+    "iv_rank": 11.52,
+    "iv_percentile": 54.0
+  },
+  "l6_calendar_manual_additions": {
+    "events": [
+      {
+        "date": "2026-05-01",
+        "name": "Powell Term Ends",
+        "severity": "HIGH"
+      }
+    ]
+  },
+  "commentary_override": null
+}

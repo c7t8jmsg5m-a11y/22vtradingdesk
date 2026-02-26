@@ -46,59 +46,84 @@ def fetch_gex_dix():
     # Try JSON API first
     try:
         resp = requests.get(api_url, timeout=15, headers=headers)
+        print(f"  [SQM] JSON API status: {resp.status_code}")
+
         if resp.status_code == 200:
             data = resp.json()
-            
-            # SqueezeMetrics returns data in columnar format
-            # Typical structure: {"data": [[date, dix, gex], ...]}
-            # or {"dates": [...], "dix": [...], "gex": [...]}
+
+            # Log the full structure for debugging
             if isinstance(data, dict):
-                print(f"  [SQM] JSON keys: {list(data.keys())[:5]}")
-                
-                # Handle different response structures
-                if "data" in data:
+                print(f"  [SQM] JSON keys: {list(data.keys())}")
+                # Log a sample of each top-level key's type and length
+                for k, v in data.items():
+                    if isinstance(v, list):
+                        print(f"  [SQM]   {k}: list[{len(v)}]"
+                              f"{' first=' + repr(v[0]) if v else ''}")
+                    elif isinstance(v, dict):
+                        print(f"  [SQM]   {k}: dict keys={list(v.keys())[:5]}")
+                    else:
+                        print(f"  [SQM]   {k}: {type(v).__name__} = {repr(v)[:80]}")
+            elif isinstance(data, list):
+                print(f"  [SQM] Response is list[{len(data)}]"
+                      f"{' first=' + repr(data[0]) if data else ''}")
+
+            # Parse known structures
+            parsed = False
+
+            if isinstance(data, dict):
+                # Structure A: {"data": [[date, dix, gex], ...]}
+                if "data" in data and isinstance(data["data"], list):
                     rows = data["data"]
-                    if rows:
+                    if rows and isinstance(rows[-1], (list, tuple)) and len(rows[-1]) >= 3:
                         latest = rows[-1]
-                        result["gex_current"] = latest[-1] if len(latest) > 2 else None
-                        result["dix_current"] = latest[1] if len(latest) > 1 else None
-                        
-                        # Last 30 days of history
+                        result["dix_current"] = latest[1]
+                        result["gex_current"] = latest[2]
                         for row in rows[-30:]:
-                            result["gex_history"].append({
-                                "date": row[0],
-                                "value": row[-1] if len(row) > 2 else None,
-                            })
-                            result["dix_history"].append({
-                                "date": row[0],
-                                "value": row[1] if len(row) > 1 else None,
-                            })
-                
-                elif "dates" in data:
+                            result["gex_history"].append({"date": row[0], "value": row[2]})
+                            result["dix_history"].append({"date": row[0], "value": row[1]})
+                        parsed = True
+
+                # Structure B: {"dates": [...], "dix": [...], "gex": [...]}
+                if not parsed and "dates" in data:
                     dates = data.get("dates", [])
                     gex_vals = data.get("gex", [])
                     dix_vals = data.get("dix", [])
-                    
                     if gex_vals:
                         result["gex_current"] = gex_vals[-1]
                     if dix_vals:
                         result["dix_current"] = dix_vals[-1]
-                    
                     for i in range(max(0, len(dates) - 30), len(dates)):
-                        result["gex_history"].append({
-                            "date": dates[i],
-                            "value": gex_vals[i] if i < len(gex_vals) else None,
-                        })
-                        result["dix_history"].append({
-                            "date": dates[i],
-                            "value": dix_vals[i] if i < len(dix_vals) else None,
-                        })
-            
+                        if i < len(gex_vals):
+                            result["gex_history"].append({"date": dates[i], "value": gex_vals[i]})
+                        if i < len(dix_vals):
+                            result["dix_history"].append({"date": dates[i], "value": dix_vals[i]})
+                    parsed = True
+
+                # Structure C: {"values": {"dix": ..., "gex": ...}} or similar nested
+                if not parsed:
+                    for key in ["values", "latest", "current"]:
+                        if key in data and isinstance(data[key], dict):
+                            sub = data[key]
+                            if "gex" in sub:
+                                result["gex_current"] = sub["gex"]
+                            if "dix" in sub:
+                                result["dix_current"] = sub["dix"]
+                            if result["gex_current"] is not None:
+                                parsed = True
+                                break
+
             if result["gex_current"] is not None:
-                print(f"  [SQM] GEX: {result['gex_current']:.2f}B, DIX: {result['dix_current']:.4f}")
+                gex_fmt = f"{result['gex_current']:.2f}" if isinstance(result['gex_current'], float) else str(result['gex_current'])
+                dix_fmt = f"{result['dix_current']:.4f}" if isinstance(result['dix_current'], float) else str(result['dix_current'])
+                print(f"  [SQM] GEX: {gex_fmt}B, DIX: {dix_fmt}")
             else:
-                print("  [SQM] JSON parsed but values not extracted — check response structure")
-                
+                print("  [SQM] JSON parsed but values not extracted — response structure unrecognized")
+
+        elif resp.status_code == 403:
+            print("  [SQM] JSON API returned 403 Forbidden — may require auth or be rate-limited")
+        else:
+            print(f"  [SQM] JSON API returned {resp.status_code}")
+
     except requests.exceptions.JSONDecodeError:
         print("  [SQM] JSON endpoint returned non-JSON, trying HTML scrape...")
         _try_html_scrape(url, headers, result)

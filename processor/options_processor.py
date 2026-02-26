@@ -5,10 +5,44 @@ consumed by the React dashboard and morning briefing.
 """
 
 import json
-from datetime import datetime
+import glob
+from datetime import datetime, timedelta
 from pathlib import Path
 
+
+def fetch_live_vix():
+    """
+    Fetch live VIX directly from yfinance.
+    Called by the processor to ensure VIX is never stale.
+    Returns dict with current, change, history_30d or empty dict on failure.
+    """
+    try:
+        import yfinance as yf
+        vix = yf.Ticker("^VIX")
+        hist = vix.history(period="1mo")
+        if hist.empty:
+            return {}
+        current = round(hist["Close"].iloc[-1], 2)
+        prev = round(hist["Close"].iloc[-2], 2) if len(hist) > 1 else None
+        change = round(current - prev, 2) if prev else None
+        history = [
+            {"date": str(d.date()), "value": round(v, 2)}
+            for d, v in hist["Close"].items()
+        ]
+        print(f"[Processor] Live VIX from yfinance: {current} ({change:+.2f})" if change else
+              f"[Processor] Live VIX from yfinance: {current}")
+        return {
+            "current": current,
+            "prev_close": prev,
+            "change": change,
+            "history_30d": history,
+        }
+    except Exception as e:
+        print(f"[Processor] Live VIX fetch failed: {e}")
+        return {}
+
 DATA_DIR = Path(__file__).parent.parent / "data"
+HISTORY_DIR = DATA_DIR / "history"
 
 
 def load_raw(filename):
@@ -18,6 +52,68 @@ def load_raw(filename):
         with open(path) as f:
             return json.load(f)
     return {}
+
+
+def load_history(days=30):
+    """
+    Load recent daily history files to compute moving averages.
+    Returns a list of (date_str, data_dict) sorted by date ascending.
+    """
+    history = []
+    if not HISTORY_DIR.exists():
+        return history
+
+    # Get all history files, sorted by name (date)
+    files = sorted(HISTORY_DIR.glob("*.json"))
+
+    # Only load the most recent N files
+    for f in files[-days:]:
+        try:
+            with open(f) as fh:
+                data = json.load(fh)
+            date_str = f.stem  # filename is YYYY-MM-DD
+            history.append((date_str, data))
+        except (json.JSONDecodeError, IOError):
+            continue
+
+    return history
+
+
+def compute_moving_averages(history, field_path, windows=(5, 20)):
+    """
+    Compute rolling moving averages from history data.
+
+    field_path: dot-separated path to the value, e.g. "pc_ratio.equity"
+    windows: tuple of window sizes to compute
+
+    Returns dict of {window_size: ma_value} and a list of {date, value} history.
+    """
+    values = []
+    history_series = []
+
+    for date_str, data in history:
+        # Navigate the dot path
+        val = data
+        for key in field_path.split("."):
+            if isinstance(val, dict):
+                val = val.get(key)
+            else:
+                val = None
+                break
+
+        if val is not None and isinstance(val, (int, float)):
+            values.append(val)
+            history_series.append({"date": date_str, "value": round(val, 4)})
+
+    mas = {}
+    for w in windows:
+        if len(values) >= w:
+            ma = sum(values[-w:]) / w
+            mas[w] = round(ma, 4)
+        else:
+            mas[w] = None
+
+    return mas, history_series
 
 
 def classify_pc_signal(equity_pc, ma_5d=None):
@@ -166,6 +262,10 @@ def process():
     cboe = load_raw("raw_cboe.json")
     squeeze = load_raw("raw_squeeze.json")
     yahoo = load_raw("raw_yahoo.json")
+    fred = load_raw("raw_fred.json")
+    finra = load_raw("raw_finra.json")
+    edgar = load_raw("raw_edgar.json")
+    calendar = load_raw("raw_calendar.json")
     
     # Build unified output
     spy_chain = yahoo.get("spy_chain", {})
@@ -173,24 +273,48 @@ def process():
     vol_surface = yahoo.get("vol_surface", {})
     premium = yahoo.get("net_premium", {})
     vix = cboe.get("vix", {})
+    # If CBOE collector didn't provide VIX, fetch live from yfinance
+    if not vix.get("current"):
+        vix = fetch_live_vix()
+    # Last resort: FRED VIX (lags 1 day)
+    if not vix.get("current") and fred.get("vix", {}).get("current"):
+        print("[Processor] WARNING: Using FRED VIX (1-day lag)")
+        vix = {
+            "current": fred["vix"]["current"],
+            "change": fred["vix"].get("change"),
+            "history_30d": [
+                {"date": h["date"], "value": h["value"]}
+                for h in fred["vix"].get("history", [])[-30:]
+            ],
+        }
     skew_data = cboe.get("skew", {})
     
     # P/C ratio — prefer CBOE official, fallback to Yahoo-derived
     pc_yf = cboe.get("pc_ratios_yf", {})
+    pc_cboe = cboe.get("pc_ratios_cboe", {})
     equity_pc = pc_yf.get("spy_pc_ratio") or summary.get("blended_pc_ratio")
-    
+
+    # Use CBOE official index/total P/C if available
+    index_pc = pc_cboe.get("index") if isinstance(pc_cboe.get("index"), (int, float)) else None
+    total_pc = pc_cboe.get("total") if isinstance(pc_cboe.get("total"), (int, float)) else None
+
+    # Load history for moving averages
+    history = load_history(30)
+    pc_mas, pc_history = compute_moving_averages(history, "pc_ratio.equity", windows=(5, 20))
+    print(f"[Processor] Loaded {len(history)} history files for MAs")
+
     output = {
         "timestamp": datetime.now().isoformat(),
         "source_tier": "free",
-        
+
         "pc_ratio": {
             "equity": equity_pc,
-            "index": None,  # Need CBOE HTML parse for this
-            "total": None,
-            "equity_5d_ma": None,  # Calculated from history DB
-            "equity_20d_ma": None,
-            "signal": classify_pc_signal(equity_pc),
-            "history_30d": [],  # Populated from history archive
+            "index": index_pc,
+            "total": total_pc,
+            "equity_5d_ma": pc_mas.get(5),
+            "equity_20d_ma": pc_mas.get(20),
+            "signal": classify_pc_signal(equity_pc, ma_5d=pc_mas.get(5)),
+            "history_30d": pc_history,
         },
         
         "gex": {
@@ -236,7 +360,69 @@ def process():
             "signal": classify_dix_signal(squeeze.get("dix_current")),
             "history_30d": squeeze.get("dix_history", [])[-30:],
         },
-        
+
+        "financing": {
+            "nfci": {
+                "current": fred.get("nfci", {}).get("current"),
+                "prev": fred.get("nfci", {}).get("prev"),
+                "change": fred.get("nfci", {}).get("change"),
+                "as_of": fred.get("nfci", {}).get("as_of"),
+                "history_90d": fred.get("nfci", {}).get("history", []),
+            },
+            "nfci_leverage": {
+                "current": fred.get("nfci_leverage", {}).get("current"),
+                "as_of": fred.get("nfci_leverage", {}).get("as_of"),
+                "history_90d": fred.get("nfci_leverage", {}).get("history", []),
+            },
+            "hy_oas": {
+                "current": fred.get("hy_oas", {}).get("current"),
+                "prev": fred.get("hy_oas", {}).get("prev"),
+                "change": fred.get("hy_oas", {}).get("change"),
+                "as_of": fred.get("hy_oas", {}).get("as_of"),
+                "history_90d": fred.get("hy_oas", {}).get("history", []),
+            },
+            "ccc_oas": {
+                "current": fred.get("ccc_oas", {}).get("current"),
+                "as_of": fred.get("ccc_oas", {}).get("as_of"),
+                "history_90d": fred.get("ccc_oas", {}).get("history", []),
+            },
+            "sofr": {
+                "current": fred.get("sofr", {}).get("current"),
+                "prev": fred.get("sofr", {}).get("prev"),
+                "change": fred.get("sofr", {}).get("change"),
+                "as_of": fred.get("sofr", {}).get("as_of"),
+                "history_90d": fred.get("sofr", {}).get("history", []),
+            },
+            "bbb_oas": {
+                "current": fred.get("bbb_oas", {}).get("current"),
+                "as_of": fred.get("bbb_oas", {}).get("as_of"),
+                "history_90d": fred.get("bbb_oas", {}).get("history", []),
+            },
+            "signal": fred.get("financing_signal", "UNKNOWN"),
+        },
+
+        "margin_debt": {
+            "current_bn": finra.get("margin_debt", {}).get("current_bn"),
+            "date_label": finra.get("margin_debt", {}).get("date_label"),
+            "yoy_pct": finra.get("margin_debt", {}).get("yoy_pct"),
+            "streak_months": finra.get("margin_debt", {}).get("streak_months"),
+            "streak_label": finra.get("margin_debt", {}).get("streak_label"),
+            "source": finra.get("margin_debt", {}).get("source") or "manual",
+        },
+
+        "debt_gdp_pct": finra.get("debt_gdp_pct"),
+        "spx_yoy_pct": finra.get("spx_yoy_pct"),
+
+        "crowding": {
+            "themes": edgar.get("crowding_themes", []),
+            "headline": edgar.get("crowding_headline", ""),
+            "mag7_concentration": edgar.get("mag7_concentration", {}),
+            "sector_concentration": edgar.get("sector_concentration", {}),
+            "filing_quarter": edgar.get("filing_quarter"),
+        },
+
+        "calendar_events": calendar.get("events", []),
+
         "alerts": [],
     }
     

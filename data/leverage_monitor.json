@@ -1,0 +1,238 @@
+{
+  "timestamp": "2026-02-25T20:47:21.101876",
+  "composite_score": 6.0,
+  "composite_prev": 6.0,
+  "regime": "FRAGILE_EQUILIBRIUM",
+  "regime_label": "Fragile Equilibrium",
+  "layers": {
+    "l1": {
+      "score": 2,
+      "max": 2,
+      "label": "Leverage Levels",
+      "details": "Margin $566.1B above FRED proxy $500B (scaled from $1T FINRA) | HF gross: GS 285%, JPM 298%",
+      "data": {
+        "updated": "2026-02-25",
+        "hf_gross_gs": 285,
+        "hf_gross_jpm": 298,
+        "hf_gross_ms_percentile": 99,
+        "multistrat_gross": 645,
+        "leveraged_etf_bn": 248,
+        "notes": "HF gross leverage from GS/JPM/MS prime brokerage reports.",
+        "finra_margin_bn": 566.1,
+        "finra_margin_date": "Q3 2025",
+        "finra_margin_streak": "2nd consecutive record"
+      }
+    },
+    "l2": {
+      "score": 2,
+      "max": 2,
+      "label": "Momentum",
+      "details": "Margin YoY +25.4% (>20% threshold) | Debt/GDP 1.8% above 1.5% threshold",
+      "data": {
+        "margin_yoy_pct": 25.4,
+        "debt_gdp_pct": 1.8,
+        "spx_yoy_pct": 15.5,
+        "notes": ""
+      }
+    },
+    "l3": {
+      "score": 0,
+      "max": 2,
+      "label": "Financing",
+      "details": "NFCI -0.563 \u2014 loose | HY OAS 3bp | SOFR 3.67%",
+      "data": {
+        "nfci": -0.5629,
+        "hy_oas": 2.97,
+        "sofr": 3.67,
+        "signal": "LOOSE"
+      }
+    },
+    "l4": {
+      "score": 1,
+      "max": 1,
+      "label": "Crowding",
+      "details": "High concentration: AI Infra Concentration, Mag 7 % of HF Net, Semis Net Exposure | AI infra cluster + Mag7 rotation confirmed by Q4 13Fs",
+      "data": {
+        "themes": [
+          {
+            "name": "AI Infra Concentration",
+            "pct": 90,
+            "detail": "MU, LRCX, NOW, Korean semis"
+          },
+          {
+            "name": "Mag 7 % of HF Net",
+            "pct": 85,
+            "detail": "~19% \u2014 near 21% peak"
+          },
+          {
+            "name": "Semis Net Exposure",
+            "pct": 95,
+            "detail": "5yr high"
+          }
+        ],
+        "headline": "AI infra cluster + Mag7 rotation confirmed by Q4 13Fs",
+        "notes": "Druckenmiller pivoting to equal-weight (RSP)",
+        "mag7_concentration": {
+          "holdings": {
+            "NVDA": {
+              "market_cap_bn": 4761.3,
+              "name": "NVIDIA Corporation"
+            },
+            "AAPL": {
+              "market_cap_bn": 4030.6,
+              "name": "Apple Inc."
+            },
+            "GOOGL": {
+              "market_cap_bn": 3785.2,
+              "name": "Alphabet Inc."
+            },
+            "MSFT": {
+              "market_cap_bn": 2977.4,
+              "name": "Microsoft Corporation"
+            },
+            "AMZN": {
+              "market_cap_bn": 2261.2,
+              "name": "Amazon.com, Inc."
+            },
+            "META": {
+              "market_cap_bn": 1653.5,
+              "name": "Meta Platforms, Inc."
+            },
+            "TSLA": {
+              "market_cap_bn": 1566.3,
+              "name": "Tesla, Inc."
+            }
+          },
+          "total_bn": 21035.5,
+          "pct_spx": 42.1
+        },
+        "sector_concentration": {
+          "Semis": 34.0,
+          "Internet": 28.5,
+          "Tech": 26.0,
+          "EV/Auto": 5.8,
+          "Semi Equip": 5.3,
+          "Software": 0.4
+        },
+        "filing_quarter": "2026-Q1"
+      }
+    },
+    "l5a": {
+      "score": 0.0,
+      "max": 1,
+      "label": "Vol Structure",
+      "details": "VIX 17.93",
+      "data": {
+        "vix": 17.93,
+        "ivol": 14.33,
+        "hvol": 12.83,
+        "iv_rank": 11.52
+      }
+    },
+    "l5b": {
+      "score": 0.0,
+      "max": 1,
+      "label": "Options Sentiment",
+      "details": "Neutral sentiment",
+      "data": {
+        "equity_pc": null,
+        "gex_level": "UNKNOWN",
+        "skew": null
+      }
+    },
+    "l6": {
+      "score": 1,
+      "max": 1,
+      "label": "Calendar",
+      "details": "HIGH events within 30d: FOMC Meeting + Dot Plot (21d), Quad Witching OPEX (23d)",
+      "data": {
+        "upcoming_high": [
+          "FOMC Meeting + Dot Plot (21d)",
+          "Quad Witching OPEX (23d)"
+        ],
+        "all_events": [
+          {
+            "date": "2026-03-18",
+            "name": "FOMC Meeting + Dot Plot",
+            "severity": "HIGH",
+            "source": "fed_scrape"
+          },
+          {
+            "date": "2026-03-20",
+            "name": "Quad Witching OPEX",
+            "severity": "HIGH",
+            "source": "deterministic"
+          },
+          {
+            "date": "2026-03-31",
+            "name": "Quarter-End Rebalancing",
+            "severity": "HIGH",
+            "source": "deterministic"
+          },
+          {
+            "date": "2026-04-02",
+            "name": "Treasury Refunding Announcement",
+            "severity": "MED",
+            "source": "manual"
+          },
+          {
+            "date": "2026-04-15",
+            "name": "Estimated Tax Payments",
+            "severity": "MED",
+            "source": "deterministic"
+          },
+          {
+            "date": "2026-04-17",
+            "name": "Monthly OPEX",
+            "severity": "MED",
+            "source": "deterministic"
+          },
+          {
+            "date": "2026-04-29",
+            "name": "FOMC Meeting",
+            "severity": "MED",
+            "source": "fed_scrape"
+          },
+          {
+            "date": "2026-05-01",
+            "name": "Powell Term Ends",
+            "severity": "HIGH",
+            "source": "manual"
+          },
+          {
+            "date": "2026-05-06",
+            "name": "Treasury Refunding Announcement",
+            "severity": "MED",
+            "source": "deterministic"
+          },
+          {
+            "date": "2026-05-15",
+            "name": "Monthly OPEX",
+            "severity": "MED",
+            "source": "deterministic"
+          }
+        ]
+      }
+    }
+  },
+  "alerts": [],
+  "cascade": {
+    "activation_probability": "MODERATE",
+    "steps_active": 2,
+    "blocked_at_step": 3,
+    "narrative": "Step 1 ACTIVE: Record leverage loaded | Step 2 ACTIVE: Momentum accelerating | Step 3 BLOCKED: Financing still loose (score 0/2) | Step 4 BLOCKED: Dealers long gamma, vol suppressed"
+  },
+  "real_time_pulse": {
+    "turbulence": "NORMAL",
+    "regime": "FRAGILE_EQ",
+    "synthesis": "WATCHING",
+    "synthesis_note": "Key levels holding"
+  },
+  "commentary": {
+    "headline_type": "SENTIMENT_STRUCTURE_DIVERGENCE",
+    "l3_direction": "loosening",
+    "key_tension": "protection buying vs loose financing",
+    "bottom_line": "Structural leverage at records but financing actively easing"
+  },
+  "options_data_timestamp": "2026-02-25T20:47:21.098301"
+}

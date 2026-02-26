@@ -35,3 +35,43 @@ vix:
   elevated: 20               # Above average fear
   spike: 25                  # Stress event
   extreme: 35                # Crisis level
+
+# --- Leverage Monitor Scoring Thresholds ---
+
+scoring:
+  l1_leverage:
+    finra_margin_threshold_bn: 1000    # Above Jan 2021 peak
+    hf_gross_gs_threshold: 275
+    hf_gross_jpm_threshold: 290
+
+  l2_momentum:
+    margin_yoy_threshold: 20           # YoY growth %
+    debt_gdp_threshold: 3.5            # Above historical avg
+
+  l3_financing:
+    nfci_tightening: -0.30             # NFCI > this = tightening
+    hy_oas_stress: 350                 # HY spread (bp) credit stress
+    sofr_elevated: 4.50                # SOFR % elevated
+
+  l4_crowding:
+    concentration_threshold: 80         # Theme pct above this = crowded
+
+  l5a_vol:
+    vix_elevated: 22
+    iv_rank_elevated: 50
+    iv_hv_ratio: 1.3                   # IV > HV*1.3 = divergence
+
+  l5b_options:
+    pc_fear: 0.85
+    pc_complacency: 0.45
+    vix_30d_roc: 25                    # VIX 30d rate of change %
+
+  l6_calendar:
+    event_horizon_days: 30             # Look-ahead window
+
+regimes:
+  low_risk: [0, 2]
+  elevated: [3, 4]
+  fragile_equilibrium: [5, 6]
+  active_deterioration: [7, 8]
+  cascade_risk: [9, 10]

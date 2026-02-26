@@ -20,12 +20,9 @@ HISTORY_DIR = DATA_DIR / "history"
 def fetch_put_call_ratios():
     """
     Fetch daily P/C ratios from CBOE.
-    
-    CBOE publishes ratios at:
-    https://www.cboe.com/us/options/market_statistics/daily/
-    
-    They also offer downloadable CSVs. The exact URL structure may change,
-    so this includes fallback logic.
+
+    Tries CBOE's delayed quote JSON API first, then falls back to
+    scraping the CBOE daily statistics pages with BeautifulSoup.
     """
     ratios = {
         "equity": None,
@@ -33,50 +30,92 @@ def fetch_put_call_ratios():
         "total": None,
         "timestamp": None,
     }
-    
-    # Primary: CBOE market statistics CSV
-    # These URLs serve CSV data for historical P/C ratios
-    urls = {
-        "total": "https://www.cboe.com/us/options/market_statistics/daily/?mkt=cone&dt=",
-        "equity": "https://www.cboe.com/us/options/market_statistics/daily/?mkt=cone&dt=",
-        "index": "https://www.cboe.com/us/options/market_statistics/daily/?mkt=cone&dt=",
+
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+        "Accept": "text/html,application/xhtml+xml,application/json",
     }
-    
-    # Try the CBOE datashop / direct CSV approach
-    try:
-        # Total P/C ratio
-        url = "https://cdn.cboe.com/api/global/delayed_quotes/options/_PCR.json"
-        resp = requests.get(url, timeout=15, headers={"User-Agent": "Mozilla/5.0"})
-        if resp.status_code == 200:
-            data = resp.json()
-            # Parse structure varies - adapt as needed
-            print(f"  [CBOE] Total P/C raw response keys: {list(data.keys())[:5]}")
-    except Exception as e:
-        print(f"  [CBOE] Primary endpoint failed: {e}")
-    
-    # Fallback: Use known CSV endpoints
+
+    # Primary: CBOE delayed quote JSON API
+    json_endpoints = {
+        "total": "https://cdn.cboe.com/api/global/delayed_quotes/options/_PCR.json",
+        "equity": "https://cdn.cboe.com/api/global/delayed_quotes/options/_EPCR.json",
+        "index": "https://cdn.cboe.com/api/global/delayed_quotes/options/_IPCR.json",
+    }
+
+    for ratio_type, url in json_endpoints.items():
+        try:
+            resp = requests.get(url, timeout=15, headers=headers)
+            if resp.status_code == 200:
+                data = resp.json()
+                # CBOE delayed quote JSON typically has "data" with "close" or "current_price"
+                if "data" in data:
+                    val = data["data"].get("close") or data["data"].get("current_price")
+                    if val is not None:
+                        ratios[ratio_type] = round(float(val), 4)
+                        print(f"  [CBOE] {ratio_type} P/C (JSON): {ratios[ratio_type]}")
+                        continue
+                # Try alternative structure
+                for key in ["close", "last", "current_price", "previousClose"]:
+                    if key in data:
+                        ratios[ratio_type] = round(float(data[key]), 4)
+                        print(f"  [CBOE] {ratio_type} P/C (JSON/{key}): {ratios[ratio_type]}")
+                        break
+                if ratios[ratio_type] is not None:
+                    continue
+                print(f"  [CBOE] {ratio_type} JSON keys: {list(data.keys())[:8]} — could not extract value")
+        except Exception as e:
+            print(f"  [CBOE] {ratio_type} JSON endpoint failed: {e}")
+
+    # Fallback: Scrape CBOE daily statistics HTML pages
     csv_urls = {
         "equity": "https://www.cboe.com/us/options/market_statistics/daily/equity-put-call-ratio/",
         "index": "https://www.cboe.com/us/options/market_statistics/daily/index-put-call-ratio/",
         "total": "https://www.cboe.com/us/options/market_statistics/daily/total-put-call-ratio/",
     }
-    
+
     for ratio_type, url in csv_urls.items():
+        if ratios[ratio_type] is not None:
+            continue  # Already got it from JSON API
+
         try:
-            resp = requests.get(url, timeout=15, headers={
-                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
-                "Accept": "text/html,application/xhtml+xml",
-            })
+            resp = requests.get(url, timeout=15, headers=headers)
             if resp.status_code == 200:
-                # Parse the HTML/CSV response
-                # CBOE pages include a data table - extract last row
-                print(f"  [CBOE] {ratio_type} P/C page fetched ({len(resp.text)} bytes)")
-                # Real implementation: parse with BeautifulSoup
-                # For now, flag as needing HTML parse
-                ratios[ratio_type] = "PARSE_HTML"
+                try:
+                    from bs4 import BeautifulSoup
+                    soup = BeautifulSoup(resp.text, "html.parser")
+
+                    # CBOE pages typically have a data table with date and ratio columns
+                    tables = soup.find_all("table")
+                    for table in tables:
+                        rows = table.find_all("tr")
+                        if len(rows) > 1:
+                            # Get the last data row (most recent date)
+                            last_row = rows[-1]
+                            cells = last_row.find_all("td")
+                            if len(cells) >= 2:
+                                # The ratio is typically in the last cell
+                                for cell in reversed(cells):
+                                    try:
+                                        val = float(cell.get_text(strip=True))
+                                        if 0.1 < val < 5.0:  # Sanity check for P/C ratio
+                                            ratios[ratio_type] = round(val, 4)
+                                            print(f"  [CBOE] {ratio_type} P/C (HTML): {ratios[ratio_type]}")
+                                            break
+                                    except ValueError:
+                                        continue
+                            if ratios[ratio_type] is not None:
+                                break
+                except ImportError:
+                    print(f"  [CBOE] BeautifulSoup not installed, cannot parse HTML for {ratio_type}")
+                except Exception as e:
+                    print(f"  [CBOE] HTML parse error for {ratio_type}: {e}")
+
+                if ratios[ratio_type] is None:
+                    print(f"  [CBOE] {ratio_type} P/C page fetched ({len(resp.text)} bytes) but could not parse value")
         except Exception as e:
             print(f"  [CBOE] {ratio_type} fetch failed: {e}")
-    
+
     ratios["timestamp"] = datetime.now().isoformat()
     return ratios
 

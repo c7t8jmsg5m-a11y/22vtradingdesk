@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maguire Leverage Monitor — 22V Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0e17;--card:#111827;--border:#1e293b;--red:#ef4444;--amber:#f59e0b;--green:#22c55e;--blue:#3b82f6;--text:#e2e8f0;--muted:#64748b;--dim:#334155;--accent:#f97316;--crit:#ff0040}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:820px;margin:0 auto;padding:24px 20px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px 20px;margin-bottom:12px}
+.glow-a{border-color:rgba(245,158,11,.27)}.glow-g{border-color:rgba(34,197,94,.27)}.glow-r{border-color:rgba(239,68,68,.27)}
+.mono{font-family:'JetBrains Mono',monospace}
+.pill{display:inline-block;border-radius:20px;padding:3px 12px;font-size:11px;font-weight:700;letter-spacing:.5px}
+.p-a{background:rgba(245,158,11,.09);color:var(--amber);border:1px solid rgba(245,158,11,.27)}
+.p-r{background:rgba(239,68,68,.09);color:var(--red);border:1px solid rgba(239,68,68,.27)}
+.p-g{background:rgba(34,197,94,.09);color:var(--green);border:1px solid rgba(34,197,94,.27)}
+.p-c{background:rgba(255,0,64,.09);color:var(--crit);border:1px solid rgba(255,0,64,.27)}
+.tabs{display:flex;gap:4px;margin-bottom:16px;overflow-x:auto;padding-bottom:4px}
+.tab{background:0;border:1px solid var(--border);color:var(--muted);border-radius:6px;padding:6px 12px;font-size:11px;font-weight:500;cursor:pointer;white-space:nowrap;font-family:inherit;transition:all .2s}
+.tab:hover{border-color:var(--accent);color:var(--accent)}
+.tab.on{background:rgba(249,115,22,.13);border-color:var(--accent);color:var(--accent);font-weight:700}
+.pnl{display:none}.pnl.on{display:block}
+.meter{display:flex;gap:3px;align-items:center;margin-top:10px}
+.m-s{width:10px;height:16px;border-radius:2px;background:var(--dim)}.m-s.on{background:var(--red)}
+.stats{display:flex;flex-wrap:wrap;gap:20px}
+.st{flex:1;min-width:130px}.st-l{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.st-v{font-size:20px;font-weight:800;font-family:'JetBrains Mono',monospace}.st-v.w{color:var(--red)}
+.st-s{font-size:10px;color:var(--muted);margin-top:2px}.st-s.w{color:var(--amber)}
+.lr{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border)}
+.lr:last-child{border-bottom:0}
+.ln{font-size:13px;font-weight:700}.ld{font-size:11px;color:var(--muted);margin-top:2px}
+.dots{display:flex;gap:3px}.dot{width:22px;height:8px;border-radius:2px;background:var(--dim)}
+.bch{display:flex;align-items:flex-end;gap:4px;height:180px;padding:10px 0;border-bottom:1px solid var(--border)}
+.bg{display:flex;flex-direction:column;align-items:center;flex:1;gap:2px;justify-content:flex-end;height:100%}
+.bg .bs{display:flex;gap:2px;align-items:flex-end;width:100%}
+.b{border-radius:3px 3px 0 0;min-width:8px;flex:1;position:relative;transition:opacity .15s}.b:hover{opacity:.8}
+.bl{font-size:9px;color:var(--muted);margin-top:4px;text-align:center}
+.bt{display:none;position:absolute;bottom:100%;left:50%;transform:translateX(-50%);background:var(--card);border:1px solid var(--border);border-radius:4px;padding:4px 8px;font-size:10px;white-space:nowrap;z-index:10}
+.b:hover .bt{display:block}
+.pt{height:8px;background:var(--dim);border-radius:4px;overflow:hidden}.pf{height:100%;border-radius:4px;transition:width .5s}
+.er{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid var(--border)}.er:last-child{border-bottom:0}
+.ed{min-width:70px;font-size:11px;font-weight:700;color:var(--muted)}.et{font-size:12px;font-weight:700}.ee{font-size:11px;color:var(--muted);margin-top:3px}
+.cs{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.cn{width:24px;height:24px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;border:1px solid var(--border);color:var(--muted)}
+.cn.h{background:rgba(239,68,68,.13);color:var(--red);border-color:rgba(239,68,68,.27)}
+.ct{font-size:12px}.ct.h{font-weight:600}.ca{color:var(--dim);font-size:14px;margin-left:4px}
+.al{margin-top:12px;padding:10px;border-radius:6px;font-size:11px;line-height:1.6}
+.al-r{background:rgba(239,68,68,.07);border-left:3px solid var(--red)}
+.al-g{background:rgba(34,197,94,.07);border-left:3px solid var(--green)}
+.al-o{background:rgba(249,115,22,.07);border-left:3px solid var(--accent)}
+.rc{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px}
+.ra{color:var(--accent);font-size:14px;line-height:1}.rt{font-size:12px;line-height:1.5}
+.foot{margin-top:20px;padding-top:12px;border-top:1px solid var(--border);font-size:9px;color:var(--dim);line-height:1.8}
+.chg{font-size:9px;padding:2px 6px;border-radius:3px;margin-left:6px;font-weight:700}
+.chg-u{background:rgba(239,68,68,.1);color:var(--red)}
+.chg-d{background:rgba(34,197,94,.1);color:var(--green)}
+.frow{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.ftag{font-size:10px;padding:4px 10px;border-radius:4px;font-weight:600;font-family:'JetBrains Mono',monospace}
+.ftag-r{background:rgba(239,68,68,.1);color:var(--red);border:1px solid rgba(239,68,68,.18)}
+.ftag-a{background:rgba(245,158,11,.1);color:var(--amber);border:1px solid rgba(245,158,11,.18)}
+.g4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px}
+.mc{text-align:center;padding:14px;background:var(--bg);border-radius:8px;border:1px solid var(--border)}
+.mc-l{font-size:9px;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
+.mc-v{font-size:26px;font-weight:800;font-family:'JetBrains Mono',monospace;margin:6px 0}
+.mc-s{font-size:9px}
+@media(max-width:600px){.stats{gap:12px}.st{min-width:110px}.st-v{font-size:16px}.g4{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+{#- ============================================================
+    MACROS
+    ============================================================ #}
+{%- macro score_pill_class(score) -%}
+{%- set s = score | round(0, 'floor') | int -%}
+{%- if s <= 0 %}p-g{% elif s <= 4 %}p-g{% elif s <= 6 %}p-a{% elif s <= 8 %}p-r{% else %}p-c{% endif -%}
+{%- endmacro -%}
+
+{%- macro score_color_var(score) -%}
+{%- set s = score | round(0, 'floor') | int -%}
+{%- if s <= 4 %}var(--green){% elif s <= 6 %}var(--amber){% elif s <= 8 %}var(--red){% else %}var(--crit){% endif -%}
+{%- endmacro -%}
+
+{%- macro layer_dot_color(score, max_score) -%}
+{#- Returns 'red' for filled, 'dim' for empty. Each dot = 1 if max>=2, each dot = 0.5 if max=1. -#}
+{%- if score >= max_score %}var(--red){% elif score > 0 and score < max_score %}var(--amber){% else %}var(--dim){% endif -%}
+{%- endmacro -%}
+
+{%- macro pulse_card_bg(value) -%}
+{%- if value in ['NORMAL', 'STABLE', 'LOW'] %}rgba(34,197,94,.06){% elif value in ['ELEVATED', 'ACTIVE_DETERI', 'STRESS BUILDING', 'CASCADE'] %}rgba(239,68,68,.06){% else %}rgba(245,158,11,.06){% endif -%}
+{%- endmacro -%}
+
+{%- macro pulse_card_border(value) -%}
+{%- if value in ['NORMAL', 'STABLE', 'LOW'] %}rgba(34,197,94,.15){% elif value in ['ELEVATED', 'ACTIVE_DETERI', 'STRESS BUILDING', 'CASCADE'] %}rgba(239,68,68,.15){% else %}rgba(245,158,11,.15){% endif -%}
+{%- endmacro -%}
+
+{%- macro pulse_card_color(value) -%}
+{%- if value in ['NORMAL', 'STABLE', 'LOW'] %}var(--green){% elif value in ['ELEVATED', 'ACTIVE_DETERI', 'STRESS BUILDING', 'CASCADE'] %}var(--red){% else %}var(--amber){% endif -%}
+{%- endmacro -%}
+
+{#- ============================================================
+    COMPUTED VARIABLES
+    ============================================================ #}
+{%- set composite = data.composite_score | default(0) -%}
+{%- set composite_int = composite | round(0, 'floor') | int -%}
+{%- set composite_prev = data.composite_prev | default(none) -%}
+{%- set regime = data.regime | default('UNKNOWN') -%}
+{%- set regime_label = data.regime_label | default('Unknown') -%}
+{%- set layers = data.layers | default({}) -%}
+{%- set cascade = data.cascade | default({}) -%}
+{%- set pulse = data.real_time_pulse | default({}) -%}
+{%- set commentary = data.commentary | default({}) -%}
+{%- set alerts = data.alerts | default([]) -%}
+{%- set ts = data.timestamp | default('') -%}
+{%- set score_color = score_color_var(composite) -%}
+
+{#- Format the timestamp for display #}
+{%- if ts -%}
+  {%- set ts_display = ts[:10] -%}
+{%- else -%}
+  {%- set ts_display = 'N/A' -%}
+{%- endif -%}
+
+<div class="wrap">
+{# ============================================================
+   HEADER: Score, Regime, Meter
+   ============================================================ #}
+<div style="margin-bottom:24px">
+  <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:4px">
+    <span style="font-size:11px;font-weight:800;letter-spacing:3px;color:var(--accent);text-transform:uppercase">Maguire Leverage Monitor</span>
+    <span style="font-size:10px;color:var(--muted)">22V Trading Desk</span>
+  </div>
+  <div style="display:flex;align-items:center;gap:16px;margin-top:12px">
+    <div class="mono" style="font-size:48px;font-weight:900;color:{{ score_color }};line-height:1">{{ composite_int }}<span style="font-size:24px;color:var(--muted)">/10</span></div>
+    <div>
+      <span class="pill {{ score_pill_class(composite) }}">{{ regime_label | upper }}</span>
+      {%- if composite_prev is not none and composite_prev != composite %}
+        {%- if composite < composite_prev %}
+      <span class="chg chg-u">&#9660; from {{ composite_prev | round(0, 'floor') | int }}</span>
+        {%- elif composite > composite_prev %}
+      <span class="chg chg-d">&#9650; from {{ composite_prev | round(0, 'floor') | int }}</span>
+        {%- endif %}
+      {%- endif %}
+      <div style="font-size:11px;color:var(--muted);margin-top:6px">{{ ts_display }} <span style="color:{{ score_color }}">{{ data.options_data_timestamp | default('') | truncate(10, true, '') }}</span></div>
+    </div>
+  </div>
+  {#- METER BAR: filled segments = composite_int, empty = 10 - composite_int #}
+  <div class="meter">
+    {%- for i in range(10) %}
+    <div class="m-s"{% if i < composite_int %} style="background:{{ score_color }}"{% endif %}></div>
+    {%- endfor %}
+    <span class="mono" style="margin-left:8px;font-size:14px;font-weight:800;color:{{ score_color }}">{{ composite_int }}/10</span>
+  </div>
+</div>
+
+{# ============================================================
+   COMMENTARY HEADLINE CARD
+   ============================================================ #}
+{%- if commentary %}
+{%- set hl_type = commentary.headline_type | default('') %}
+{%- set hl_map = {
+  'SENTIMENT_STRUCTURE_DIVERGENCE': 'SENTIMENT vs STRUCTURE DIVERGENCE',
+  'ACTIVE_STRESS': 'ACTIVE STRESS',
+  'FRAGILE_EQUILIBRIUM': 'FRAGILE EQUILIBRIUM',
+  'LOW_RISK': 'LOW RISK'
+} %}
+<div class="card" style="border-color:rgba(249,115,22,.35);border-left:3px solid var(--accent);margin-bottom:16px">
+  <div style="font-size:11px;font-weight:700;letter-spacing:1px;color:var(--accent);margin-bottom:4px">&#9888; {{ hl_map.get(hl_type, hl_type) | default('UPDATE') }}</div>
+  <div style="font-size:12px;line-height:1.7">
+    {%- if commentary.key_tension %}
+    <strong style="color:var(--amber)">Key tension:</strong> {{ commentary.key_tension }}.
+    {%- endif %}
+    {%- if commentary.l3_direction %}
+    Financing direction: <strong style="color:{% if commentary.l3_direction == 'loosening' %}var(--green){% else %}var(--red){% endif %}">{{ commentary.l3_direction }}</strong>.
+    {%- endif %}
+    {%- if commentary.bottom_line %}
+    <strong style="color:{{ score_color }}">{{ commentary.bottom_line }}.</strong>
+    {%- endif %}
+  </div>
+</div>
+{%- endif %}
+
+{# ============================================================
+   TAB NAVIGATION
+   ============================================================ #}
+<div class="tabs" id="tabs"></div>
+
+{# ============================================================
+   PANEL 0: COMPOSITE (Layer Breakdown + Pulse + Readings)
+   ============================================================ #}
+<div class="pnl on" id="p0">
+  <div class="card">
+    <div style="font-size:14px;font-weight:700;margin-bottom:14px;color:var(--accent)">Layer Breakdown</div>
+    {#- Loop over layers in defined order #}
+    {%- set layer_order = ['l1', 'l2', 'l3', 'l4', 'l5a', 'l5b', 'l6'] %}
+    {%- set layer_prefix = {'l1': 'L1', 'l2': 'L2', 'l3': 'L3', 'l4': 'L4', 'l5a': 'L5A', 'l5b': 'L5B', 'l6': 'L6'} %}
+    {%- for lkey in layer_order %}
+      {%- set layer = layers.get(lkey, {}) %}
+      {%- set lscore = layer.score | default(0) %}
+      {%- set lmax = layer.max | default(1) %}
+      {%- set llabel = layer.label | default(lkey) %}
+      {%- set ldetails = layer.details | default('') %}
+      {#- Determine score color for the fraction display #}
+      {%- if lscore >= lmax %}
+        {%- set lscore_color = 'var(--red)' %}
+      {%- elif lscore > 0 %}
+        {%- set lscore_color = 'var(--amber)' %}
+      {%- else %}
+        {%- set lscore_color = 'var(--green)' %}
+      {%- endif %}
+      {#- Calculate dots: if max >= 2, each dot = 1 unit; if max = 1, use 2 dots at 0.5 each #}
+      {%- if lmax >= 2 %}
+        {%- set num_dots = lmax | int %}
+        {%- set filled_dots = lscore | int %}
+      {%- else %}
+        {#- max is 1: show 2 dots (each 0.5), filled = score / 0.5 #}
+        {%- set num_dots = 2 %}
+        {%- set filled_dots = (lscore / 0.5) | round(0, 'floor') | int %}
+      {%- endif %}
+    <div class="lr">
+      <div style="flex:1">
+        <div class="ln">{{ layer_prefix[lkey] }}: {{ llabel }} <span style="font-size:10px;color:{{ lscore_color }};font-weight:800">{{ lscore }}/{{ lmax }}</span>
+        {%- if lkey == 'l5b' %} <span style="font-size:9px;padding:1px 6px;border-radius:3px;background:rgba(239,68,68,.1);color:var(--red);font-weight:700;margin-left:4px">PIPELINE + BARCHART</span>{%- endif %}
+        </div>
+        <div class="ld">{{ ldetails }}</div>
+      </div>
+      <div class="dots">
+        {%- for d in range(num_dots) %}
+          {%- if d < filled_dots %}
+            {#- Filled dot: red if full score, amber if partial #}
+            {%- if lscore >= lmax %}
+        <div class="dot" style="background:var(--red)"></div>
+            {%- else %}
+        <div class="dot" style="background:var(--amber)"></div>
+            {%- endif %}
+          {%- else %}
+        <div class="dot" style="background:var(--dim)"></div>
+          {%- endif %}
+        {%- endfor %}
+      </div>
+    </div>
+    {%- endfor %}
+  </div>
+
+  {#- Score Update Alert (if score changed) #}
+  {%- if composite_prev is not none and composite_prev != composite %}
+  <div class="card glow-a">
+    <div style="font-size:13px;font-weight:700;color:var(--amber);margin-bottom:8px">&#9889; Score Update — {{ composite_prev | round(0, 'floor') | int }} &rarr; {{ composite_int }} ({{ ts_display }})</div>
+    <div style="font-size:12px;line-height:1.7">
+      {%- for lkey in layer_order %}
+        {%- set layer = layers.get(lkey, {}) %}
+        {%- if layer.details | default('') %}
+      <strong>{{ layer_prefix[lkey] }}:</strong> {{ layer.details }}<br>
+        {%- endif %}
+      {%- endfor %}
+    </div>
+  </div>
+  {%- endif %}
+
+  {#- REAL-TIME PULSE #}
+  {%- set turbulence = pulse.turbulence | default('UNKNOWN') %}
+  {%- set p_regime = pulse.regime | default('UNKNOWN') %}
+  {%- set synthesis = pulse.synthesis | default('UNKNOWN') %}
+  {%- set synthesis_note = pulse.synthesis_note | default('') %}
+  <div class="card" style="border-color:rgba(245,158,11,.3)">
+    <div style="font-size:14px;font-weight:700;margin-bottom:12px;color:var(--amber)">Real-Time Pulse</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:14px">
+      <div style="text-align:center;padding:14px 10px;background:{{ pulse_card_bg(turbulence) }};border-radius:8px;border:1px solid {{ pulse_card_border(turbulence) }}">
+        <div style="font-size:9px;color:var(--muted);letter-spacing:1px;text-transform:uppercase">Turbulence</div>
+        <div class="mono" style="font-size:18px;font-weight:800;color:{{ pulse_card_color(turbulence) }};margin-top:6px">{{ turbulence }}</div>
+        <div style="font-size:9px;color:var(--dim);margin-top:4px">VIX {{ latest.vix.current | default('N/A') }}{% if overrides.gex_manual.last_price is defined %} &bull; SPX {{ overrides.gex_manual.last_price | default('') | string | replace('.0', '') }}{% endif %}</div>
+      </div>
+      <div style="text-align:center;padding:14px 10px;background:{{ pulse_card_bg(p_regime) }};border-radius:8px;border:1px solid {{ pulse_card_border(p_regime) }}">
+        <div style="font-size:9px;color:var(--muted);letter-spacing:1px;text-transform:uppercase">Regime</div>
+        <div class="mono" style="font-size:18px;font-weight:800;color:{{ pulse_card_color(p_regime) }};margin-top:6px">{{ p_regime | replace('_', ' ') }}</div>
+        <div style="font-size:9px;color:var(--dim);margin-top:4px">Score {{ composite_int }}/10</div>
+      </div>
+      <div style="text-align:center;padding:14px 10px;background:{{ pulse_card_bg(synthesis) }};border-radius:8px;border:1px solid {{ pulse_card_border(synthesis) }}">
+        <div style="font-size:9px;color:var(--muted);letter-spacing:1px;text-transform:uppercase">Synthesis</div>
+        <div class="mono" style="font-size:14px;font-weight:700;color:{{ pulse_card_color(synthesis) }};margin-top:6px">{{ synthesis }}</div>
+        <div style="font-size:9px;color:var(--dim);margin-top:4px">{{ synthesis_note }}</div>
+      </div>
+    </div>
+    {%- if commentary.bottom_line | default('') %}
+    <div style="font-size:11px;color:var(--amber);font-weight:600;font-style:italic;line-height:1.6;padding:10px 14px;background:rgba(245,158,11,.05);border-radius:8px">{{ commentary.bottom_line }}. {{ commentary.key_tension | default('') }}</div>
+    {%- endif %}
+  </div>
+
+  {#- REAL-TIME READINGS #}
+  <div class="card">
+    <div style="font-size:14px;font-weight:700;margin-bottom:4px">Real-Time Readings</div>
+    <div style="font-size:10px;color:var(--amber);margin-bottom:10px">{{ ts_display }}</div>
+    <div class="stats">
+      {#- Equity P/C #}
+      {%- set pc_val = latest.pc_ratio.equity | default(none) %}
+      {%- set pc_signal = latest.pc_ratio.signal | default('') %}
+      <div class="st">
+        <div class="st-l">Equity P/C</div>
+        <div class="st-v{% if pc_signal in ['EXTREME_FEAR', 'FEAR'] %} w{% endif %}">{{ '%.3f' | format(pc_val) if pc_val is not none else 'N/A' }}</div>
+        <div class="st-s{% if pc_signal in ['EXTREME_FEAR', 'FEAR'] %} w{% endif %}">{{ pc_signal | default('N/A') | replace('_', ' ') }}</div>
+      </div>
+      {#- GEX #}
+      {%- set gex_data = overrides.gex_manual | default({}) %}
+      {%- set gex_level = latest.gex.level | default('UNKNOWN') %}
+      {%- set gex_flip = gex_data.flip_point | default(latest.gex.flip_point | default(none)) %}
+      {%- set gex_cw = gex_data.call_wall | default(latest.gex.call_wall | default(none)) %}
+      {%- set gex_pw = gex_data.put_wall | default(latest.gex.put_wall | default(none)) %}
+      <div class="st">
+        <div class="st-l">GEX{% if gex_data %} ({{ gex_data.source | default('Manual') }}){% endif %}</div>
+        <div class="st-v" style="color:{% if gex_level in ['NEGATIVE', 'DEEP_NEGATIVE'] %}var(--red){% else %}var(--green){% endif %}">
+          {%- if gex_data.last_price is defined and gex_flip is not none %}
+            {%- if gex_data.last_price > gex_flip %}LONG{% else %}SHORT{% endif %}
+          {%- else %}{{ gex_level }}{% endif %}
+        </div>
+        <div class="st-s">{% if gex_flip is not none %}Flip {{ gex_flip | int }}{% endif %}{% if gex_cw is not none %} &bull; Walls {{ gex_cw | int }}{% endif %}</div>
+      </div>
+      {#- VIX #}
+      {%- set vix_val = latest.vix.current | default(none) %}
+      <div class="st">
+        <div class="st-l">VIX</div>
+        <div class="st-v" style="color:{% if vix_val is not none and vix_val > 22 %}var(--red){% elif vix_val is not none and vix_val > 20 %}var(--amber){% else %}var(--green){% endif %}">{{ '%.2f' | format(vix_val) if vix_val is not none else 'N/A' }}</div>
+        <div class="st-s">{% if gex_data.ivol is defined %}IV {{ gex_data.ivol }}%{% endif %}</div>
+      </div>
+      {#- CBOE SKEW #}
+      {%- set skew_val = latest.skew.cboe_skew | default(none) %}
+      <div class="st">
+        <div class="st-l">CBOE SKEW</div>
+        <div class="st-v">{{ '%.2f' | format(skew_val) if skew_val is not none else 'N/A' }}</div>
+        <div class="st-s">{{ latest.skew.signal | default('N/A') | replace('_', ' ') }}</div>
+      </div>
+      {#- L3 Financing data if available #}
+      {%- set l3_data = layers.get('l3', {}).get('data', {}) %}
+      {%- if l3_data.hy_oas is not none %}
+      <div class="st">
+        <div class="st-l">HY OAS</div>
+        <div class="st-v" style="color:{% if l3_data.hy_oas > 350 %}var(--red){% else %}var(--green){% endif %}">{{ l3_data.hy_oas | round(0) | int }}bp</div>
+        <div class="st-s">{{ l3_data.signal | default('') }}</div>
+      </div>
+      {%- endif %}
+      {%- if l3_data.nfci is not none %}
+      <div class="st">
+        <div class="st-l">NFCI</div>
+        <div class="st-v" style="color:{% if l3_data.nfci > -0.30 %}var(--red){% else %}var(--green){% endif %}">{{ '%.3f' | format(l3_data.nfci) }}</div>
+        <div class="st-s">{% if l3_data.nfci <= -0.30 %}Loose{% else %}Tightening{% endif %}</div>
+      </div>
+      {%- endif %}
+      {#- L1 data — margin from layer data (automated), HF from overrides #}
+      {%- set l1d_rt = layers.get('l1', {}).get('data', {}) %}
+      {%- set l1o_rt = overrides.l1_leverage | default({}) %}
+      {%- if l1d_rt.finra_margin_bn is defined %}
+      <div class="st">
+        <div class="st-l">FINRA Margin</div>
+        <div class="st-v w">${{ '%.2f' | format(l1d_rt.finra_margin_bn / 1000) }}T</div>
+        <div class="st-s w">{{ l1d_rt.finra_margin_streak | default('') }} {{ l1d_rt.finra_margin_date | default('') }}</div>
+      </div>
+      {%- endif %}
+      {%- if l1o_rt.hf_gross_gs is defined %}
+      <div class="st">
+        <div class="st-l">HF Gross (GS)</div>
+        <div class="st-v w">{{ l1o_rt.hf_gross_gs }}%</div>
+        <div class="st-s w">{% if l1o_rt.hf_gross_jpm is defined %}JPM {{ l1o_rt.hf_gross_jpm }}%{% endif %}</div>
+      </div>
+      {%- endif %}
+      {%- if l3_data.sofr is not none %}
+      <div class="st">
+        <div class="st-l">SOFR</div>
+        <div class="st-v">{{ '%.2f' | format(l3_data.sofr) }}%</div>
+        <div class="st-s">{% if l3_data.sofr > 4.50 %}Elevated{% else %}Stable{% endif %}</div>
+      </div>
+      {%- endif %}
+      {%- if gex_data.ivol is defined and gex_data.hvol is defined %}
+      <div class="st">
+        <div class="st-l">IV / HV</div>
+        <div class="st-v">{{ gex_data.ivol }}% / {{ gex_data.hvol }}%</div>
+        <div class="st-s">IV Rank {{ gex_data.iv_rank | default('N/A') }}%</div>
+      </div>
+      {%- endif %}
+    </div>
+  </div>
+</div>
+
+{# ============================================================
+   PANEL 1: L1 Levels (Margin Debt)
+   ============================================================ #}
+<div class="pnl" id="p1">
+  {%- set l1d = layers.get('l1', {}).get('data', {}) %}
+  {%- set l1o = overrides.l1_leverage | default({}) %}
+  <div class="card">
+    <div style="font-size:14px;font-weight:700;margin-bottom:4px">FINRA Margin Debt</div>
+    <div style="font-size:11px;color:var(--muted);margin-bottom:14px">
+      ${{ l1d.finra_margin_bn | default('N/A') }}B &mdash; {{ l1d.finra_margin_streak | default('') }} ({{ l1d.finra_margin_date | default('N/A') }})
+    </div>
+    {#- L1 stats: margin from layer data (automated), HF from overrides #}
+    <div class="stats">
+      <div class="st"><div class="st-l">FINRA Margin</div><div class="st-v w">${{ l1d.finra_margin_bn | default('N/A') }}B</div><div class="st-s w">{{ l1d.finra_margin_streak | default('') }}</div></div>
+      <div class="st"><div class="st-l">HF Gross GS</div><div class="st-v w">{{ l1o.hf_gross_gs | default(l1d.hf_gross_gs | default('N/A')) }}%</div><div class="st-s w">Record</div></div>
+      <div class="st"><div class="st-l">HF Gross JPM</div><div class="st-v w">{{ l1o.hf_gross_jpm | default(l1d.hf_gross_jpm | default('N/A')) }}%</div><div class="st-s w">5yr high</div></div>
+      <div class="st"><div class="st-l">MS Percentile</div><div class="st-v w">{{ l1o.hf_gross_ms_percentile | default('N/A') }}%</div><div class="st-s w">of 15yr</div></div>
+      <div class="st"><div class="st-l">Multistrat Gross</div><div class="st-v w">{{ l1o.multistrat_gross | default('N/A') }}%</div><div class="st-s w">Extreme</div></div>
+      <div class="st"><div class="st-l">Leveraged ETFs</div><div class="st-v">{{ l1o.leveraged_etf_bn | default('N/A') }}B</div></div>
+    </div>
+    {%- if l1o.notes | default('') %}
+    <div class="al al-r" style="margin-top:12px">{{ l1o.notes }}</div>
+    {%- endif %}
+  </div>
+
+  {#- L2 Momentum stats — now from layer data (automated) #}
+  {%- set l2d = layers.get('l2', {}).get('data', {}) %}
+  <div class="card">
+    <div style="font-size:14px;font-weight:700;margin-bottom:10px">Momentum & Normalization</div>
+    <div class="stats">
+      <div class="st"><div class="st-l">Margin YoY</div><div class="st-v w">+{{ l2d.margin_yoy_pct | default('N/A') }}%</div><div class="st-s w">SPX +{{ l2d.spx_yoy_pct | default('N/A') }}%</div></div>
+      <div class="st"><div class="st-l">Margin/GDP</div><div class="st-v w">{{ l2d.debt_gdp_pct | default('N/A') }}%</div><div class="st-s w">{% if l2d.debt_gdp_pct is defined and l2d.debt_gdp_pct > 3.5 %}ALL-TIME RECORD{% else %}Normal{% endif %}</div></div>
+    </div>
+    {%- if l2d.notes | default('') %}
+    <div class="al al-r" style="margin-top:12px">{{ l2d.notes }}</div>
+    {%- endif %}
+  </div>
+</div>
+
+{# ============================================================
+   PANEL 2: L2 Momentum (Leverage Gap)
+   ============================================================ #}
+<div class="pnl" id="p2">
+  {%- set l2d = layers.get('l2', {}).get('data', {}) %}
+  <div class="card">
+    <div style="font-size:14px;font-weight:700;margin-bottom:4px">Leverage Gap (Margin YoY &minus; SPX YoY)</div>
+    <div style="font-size:11px;color:var(--muted);margin-bottom:14px">
+      Current: +{{ (l2d.margin_yoy_pct | default(0)) - (l2d.spx_yoy_pct | default(0)) }}pp.
+      {{ l2d.notes | default('') }}
+    </div>
+    <div class="stats">
+      <div class="st"><div class="st-l">Margin YoY</div><div class="st-v w">+{{ l2d.margin_yoy_pct | default('N/A') }}%</div></div>
+      <div class="st"><div class="st-l">SPX YoY</div><div class="st-v">+{{ l2d.spx_yoy_pct | default('N/A') }}%</div></div>
+      <div class="st"><div class="st-l">Gap</div><div class="st-v w">+{{ (l2d.margin_yoy_pct | default(0)) - (l2d.spx_yoy_pct | default(0)) }}pp</div></div>
+      <div class="st"><div class="st-l">Debt/GDP</div><div class="st-v w">{{ l2d.debt_gdp_pct | default('N/A') }}%</div></div>
+    </div>
+  </div>
+</div>
+
+{# ============================================================
+   PANEL 3: L3 Financing
+   ============================================================ #}
+<div class="pnl" id="p3">
+  {%- set l3_layer = layers.get('l3', {}) %}
+  {%- set l3d = l3_layer.get('data', {}) %}
+  {%- set l3_score = l3_layer.score | default(0) %}
+  <div class="card" style="border-left:3px solid {% if l3_score == 0 %}var(--green){% elif l3_score >= 2 %}var(--red){% else %}var(--amber){% endif %}">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+      <div style="width:10px;height:10px;border-radius:5px;background:{% if l3_score == 0 %}var(--green){% elif l3_score >= 2 %}var(--red){% else %}var(--amber){% endif %}"></div>
+      <span style="font-size:14px;font-weight:700">Financing: THE KEY LAYER &mdash; {% if l3_score == 0 %}Actively Loosening{% elif l3_score >= 2 %}Tightening{% else %}Mixed{% endif %}</span>
+    </div>
+    <div style="font-size:12px;line-height:1.7;margin-bottom:16px">
+      {{ l3_layer.details | default('Financing data unavailable.') }}
+    </div>
+    <div class="stats">
+      {%- if l3d.nfci is not none %}
+      <div class="st"><div class="st-l">NFCI</div><div class="st-v" style="color:{% if l3d.nfci > -0.30 %}var(--red){% else %}var(--green){% endif %}">{{ '%.3f' | format(l3d.nfci) }}</div><div class="st-s">{% if l3d.nfci <= -0.30 %}Loosening{% else %}Tightening{% endif %}</div></div>
+      {%- endif %}
+      {%- if l3d.hy_oas is not none %}
+      <div class="st"><div class="st-l">HY OAS</div><div class="st-v" style="color:{% if l3d.hy_oas > 350 %}var(--red){% else %}var(--green){% endif %}">{{ l3d.hy_oas | round(0) | int }}bp</div></div>
+      {%- endif %}
+      {%- if l3d.sofr is not none %}
+      <div class="st"><div class="st-l">SOFR</div><div class="st-v">{{ '%.2f' | format(l3d.sofr) }}%</div><div class="st-s">{% if l3d.sofr > 4.50 %}Elevated{% else %}Stable{% endif %}</div></div>
+      {%- endif %}
+    </div>
+    <div class="al al-o" style="margin-top:12px">TRIP WIRES: HY OAS &gt; 350bp &bull; NFCI &gt; -0.30 &bull; SOFR &gt; 4.50%</div>
+  </div>
+</div>
+
+{# ============================================================
+   PANEL 4: L4 Crowding
+   ============================================================ #}
+<div class="pnl" id="p4">
+  {%- set l4d = layers.get('l4', {}).get('data', {}) %}
+  {%- set l4_themes = l4d.themes | default([]) %}
+  <div class="card">
+    <div style="font-size:14px;font-weight:700;margin-bottom:14px">Positioning &amp; Crowding</div>
+    {%- for theme in l4_themes %}
+    <div style="margin-bottom:12px">
+      <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px">
+        <span style="font-weight:600">{{ theme.name | default('') }}</span>
+        <span style="color:var(--muted)">{{ theme.detail | default('') }}</span>
+      </div>
+      <div class="pt"><div class="pf" style="width:{{ theme.pct | default(0) }}%;background:{% if theme.pct | default(0) > 80 %}var(--red){% elif theme.pct | default(0) > 50 %}var(--amber){% else %}var(--green){% endif %}"></div></div>
+    </div>
+    {%- endfor %}
+  </div>
+  {%- if l4d.headline | default('') or l4d.notes | default('') %}
+  <div class="card glow-a">
+    <div style="font-size:13px;font-weight:700;color:var(--amber);margin-bottom:8px">&#9889; {{ l4d.headline | default('Crowding Update') }}{% if l4d.filing_quarter %} <span style="font-size:10px;color:var(--muted)">({{ l4d.filing_quarter }})</span>{% endif %}</div>
+    <div style="font-size:12px;line-height:1.7">{{ l4d.notes | default('') }}</div>
+  </div>
+  {%- endif %}
+  {%- if l4d.mag7_concentration %}
+  <div class="card">
+    <div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:10px">MAG-7 MARKET CAP CONCENTRATION</div>
+    <div class="stats">
+      <div class="st"><div class="st-l">Mag-7 % of SPX</div><div class="st-v w">{{ l4d.mag7_concentration.pct_spx | default('N/A') }}%</div></div>
+      <div class="st"><div class="st-l">Mag-7 Total</div><div class="st-v">${{ '%.1f' | format(l4d.mag7_concentration.total_bn / 1000) if l4d.mag7_concentration.total_bn is defined else 'N/A' }}T</div></div>
+    </div>
+  </div>
+  {%- endif %}
+</div>
+
+{# ============================================================
+   PANEL 5: L5 Vol & Options
+   ============================================================ #}
+<div class="pnl" id="p5">
+  {%- set l5b = layers.get('l5b', {}) %}
+  {%- set l5b_data = l5b.get('data', {}) %}
+  {%- set l5a = layers.get('l5a', {}) %}
+  {%- set gex_m = overrides.gex_manual | default({}) %}
+  {%- set pc_equity = latest.pc_ratio.equity | default(none) %}
+  {%- set pc_signal = latest.pc_ratio.signal | default('') %}
+
+  {#- L5B Options Sentiment Card #}
+  <div class="card glow-a">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+      <div>
+        <span style="font-size:14px;font-weight:700">Layer 5B: Options Sentiment</span>
+        <span style="font-size:9px;padding:2px 8px;border-radius:3px;background:rgba(245,158,11,.15);color:var(--amber);font-weight:700;margin-left:8px">PIPELINE + BARCHART</span>
+      </div>
+      {%- if pc_signal %}
+      <span class="pill {% if pc_signal in ['EXTREME_FEAR', 'FEAR'] %}p-r{% elif pc_signal in ['EXTREME_COMPLACENCY', 'COMPLACENCY'] %}p-a{% else %}p-g{% endif %}">{{ pc_signal | replace('_', ' ') }}</span>
+      {%- endif %}
+    </div>
+    <div style="font-size:10px;color:var(--muted);margin-bottom:14px">{{ ts_display }}</div>
+    <div class="g4">
+      {#- Equity P/C #}
+      <div class="mc" style="border-color:{% if pc_equity is not none and pc_equity > 0.85 %}rgba(239,68,68,.25){% else %}rgba(100,116,139,.25){% endif %}">
+        <div class="mc-l">Equity P/C</div>
+        <div class="mc-v" style="color:{% if pc_equity is not none and pc_equity > 0.85 %}var(--red){% else %}var(--muted){% endif %}">{{ '%.3f' | format(pc_equity) if pc_equity is not none else 'N/A' }}</div>
+        <div class="mc-s" style="color:{% if pc_equity is not none and pc_equity > 0.85 %}var(--amber){% else %}var(--muted){% endif %};font-weight:700">{% if pc_equity is not none and pc_equity > 0.85 %}+0.50 pts{% else %}0 pts{% endif %}</div>
+        <div class="mc-s">Threshold: &gt; 0.85</div>
+      </div>
+      {#- GEX #}
+      {%- set gex_is_negative = (latest.gex.level | default('UNKNOWN')) in ['NEGATIVE', 'DEEP_NEGATIVE'] %}
+      <div class="mc" style="border-color:{% if gex_is_negative %}rgba(239,68,68,.25){% elif gex_m.flip_point is defined %}rgba(34,197,94,.25){% else %}rgba(100,116,139,.25){% endif %}">
+        <div class="mc-l">GEX</div>
+        <div class="mc-v" style="color:{% if gex_is_negative %}var(--red){% elif gex_m.last_price is defined and gex_m.flip_point is defined and gex_m.last_price > gex_m.flip_point %}var(--green){% else %}var(--muted){% endif %}">
+          {%- if gex_m.last_price is defined and gex_m.flip_point is defined %}
+            {%- if gex_m.last_price > gex_m.flip_point %}LONG{% else %}SHORT{% endif %}
+          {%- else %}{{ latest.gex.level | default('N/A') }}{% endif %}
+        </div>
+        <div class="mc-s" style="color:var(--muted);font-weight:700">{% if gex_is_negative %}+0.25 pts{% else %}0 pts{% endif %}</div>
+        <div class="mc-s">{% if gex_m.flip_point is defined %}Flip {{ gex_m.flip_point | int }}{% endif %}{% if gex_m.last_price is defined %} &bull; SPX {% if gex_m.last_price > (gex_m.flip_point | default(0)) %}above{% else %}below{% endif %}{% endif %}</div>
+      </div>
+      {#- VIX 30d RoC #}
+      {%- set vix_hist = latest.vix.history_30d | default([]) %}
+      {%- if vix_hist | length >= 2 %}
+        {%- set vix_first = vix_hist[0].value | default(0) %}
+        {%- set vix_last = vix_hist[-1].value | default(0) %}
+        {%- if vix_first > 0 %}
+          {%- set vix_roc = ((vix_last - vix_first) / vix_first * 100) | round(0) | int %}
+        {%- else %}
+          {%- set vix_roc = 0 %}
+        {%- endif %}
+      {%- else %}
+        {%- set vix_roc = 0 %}
+      {%- endif %}
+      <div class="mc" style="border-color:{% if vix_roc > 25 %}rgba(239,68,68,.25){% else %}rgba(100,116,139,.25){% endif %}">
+        <div class="mc-l">VIX 30d RoC</div>
+        <div class="mc-v" style="color:{% if vix_roc > 25 %}var(--red){% else %}var(--muted){% endif %}">{% if vix_roc > 0 %}+{% endif %}{{ vix_roc }}%</div>
+        <div class="mc-s" style="color:{% if vix_roc > 25 %}var(--amber){% else %}var(--muted){% endif %};font-weight:700">{% if vix_roc > 25 %}+0.25 pts{% else %}0 pts{% endif %}</div>
+        <div class="mc-s">Threshold: &gt; 25%</div>
+      </div>
+      {#- CBOE SKEW #}
+      {%- set skew = latest.skew.cboe_skew | default(none) %}
+      <div class="mc" style="border-color:{% if skew is not none and skew > 145 %}rgba(239,68,68,.25){% else %}rgba(100,116,139,.25){% endif %}">
+        <div class="mc-l">CBOE SKEW</div>
+        <div class="mc-v" style="color:{% if skew is not none and skew > 145 %}var(--red){% else %}var(--muted){% endif %}">{{ '%.2f' | format(skew) if skew is not none else 'N/A' }}</div>
+        <div class="mc-s" style="color:var(--muted);font-weight:700">{{ latest.skew.signal | default('N/A') | replace('_', ' ') }}</div>
+        <div class="mc-s">Threshold: &gt; 145</div>
+      </div>
+    </div>
+    <div style="margin-top:12px;font-size:12px;font-weight:700;color:var(--muted)">Layer 5B Score: <span style="color:var(--amber);font-size:16px" class="mono">{{ '%.2f' | format(l5b.score | default(0)) }} / {{ '%.2f' | format(l5b.max | default(1)) }}</span></div>
+  </div>
+
+  {#- Vol Surface Card #}
+  {%- if gex_m %}
+  <div class="card">
+    <div style="font-size:14px;font-weight:700;margin-bottom:10px">Vol Surface</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px">
+      <div class="mc"><div class="mc-l">IV</div><div class="mc-v" style="font-size:20px">{{ gex_m.ivol | default('N/A') }}%</div></div>
+      <div class="mc"><div class="mc-l">HV (30d)</div><div class="mc-v" style="font-size:20px">{{ gex_m.hvol | default('N/A') }}%</div></div>
+      <div class="mc"><div class="mc-l">IV Rank</div><div class="mc-v" style="font-size:20px">{{ gex_m.iv_rank | default('N/A') }}%</div></div>
+      <div class="mc"><div class="mc-l">IV Pctl</div><div class="mc-v" style="font-size:20px">{{ gex_m.iv_percentile | default('N/A') }}%</div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:10px">
+      <div class="mc" style="border-color:{% if gex_m.last_price is defined and gex_m.flip_point is defined and gex_m.last_price > gex_m.flip_point %}rgba(34,197,94,.2){% else %}rgba(239,68,68,.2){% endif %}">
+        <div class="mc-l">GEX Flip</div>
+        <div class="mc-v" style="color:{% if gex_m.last_price is defined and gex_m.flip_point is defined and gex_m.last_price > gex_m.flip_point %}var(--green){% else %}var(--red){% endif %};font-size:20px">{{ gex_m.flip_point | default('N/A') | int if gex_m.flip_point is defined else 'N/A' }}</div>
+        <div class="mc-s">{% if gex_m.last_price is defined and gex_m.flip_point is defined %}SPX {% if gex_m.last_price > gex_m.flip_point %}above{% else %}below{% endif %} &rarr; {% if gex_m.last_price > gex_m.flip_point %}long{% else %}short{% endif %} &gamma;{% endif %}</div>
+      </div>
+      <div class="mc"><div class="mc-l">Put Wall</div><div class="mc-v" style="font-size:20px">{{ gex_m.put_wall | default('N/A') | int if gex_m.put_wall is defined else 'N/A' }}</div></div>
+      <div class="mc"><div class="mc-l">Call Wall</div><div class="mc-v" style="font-size:20px">{{ gex_m.call_wall | default('N/A') | int if gex_m.call_wall is defined else 'N/A' }}</div></div>
+    </div>
+    <div style="font-size:10px;color:var(--muted);margin-top:6px;text-align:right">Source: {{ gex_m.source | default('Manual') }} &mdash; {{ ts_display }}</div>
+  </div>
+  {%- endif %}
+</div>
+
+{# ============================================================
+   PANEL 6: L6 Calendar
+   ============================================================ #}
+<div class="pnl" id="p6">
+  {%- set l6d = layers.get('l6', {}).get('data', {}) %}
+  {%- set cal_events = l6d.all_events | default([]) %}
+  <div class="card">
+    <div style="font-size:14px;font-weight:700;margin-bottom:14px">Liquidity Calendar</div>
+    {%- for event in cal_events %}
+    <div class="er">
+      <div class="ed"{% if event.severity | default('') == 'HIGH' %} style="color:var(--red)"{% endif %}>{{ event.date | default('TBD') }}</div>
+      <div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="et">{{ event.name | default('Event') }}</span>
+          <span class="pill {% if event.severity | default('') == 'HIGH' %}p-r{% elif event.severity | default('') == 'MED' %}p-a{% else %}p-g{% endif %}">{{ event.severity | default('INFO') }}</span>
+        </div>
+        {%- if event.detail is defined %}
+        <div class="ee">{{ event.detail }}</div>
+        {%- endif %}
+      </div>
+    </div>
+    {%- endfor %}
+    {%- if not cal_events %}
+    <div style="font-size:12px;color:var(--muted);padding:12px 0">No calendar events configured.</div>
+    {%- endif %}
+  </div>
+  {#- Cluster warning if multiple HIGH events #}
+  {%- set high_events = cal_events | selectattr('severity', 'equalto', 'HIGH') | list %}
+  {%- if high_events | length >= 2 %}
+  <div class="al al-o"><strong style="color:var(--amber)">CLUSTER:</strong> {{ high_events | length }} HIGH-severity events on calendar. Peak vulnerability window.</div>
+  {%- endif %}
+</div>
+
+{# ============================================================
+   PANEL 7: CASCADE
+   ============================================================ #}
+<div class="pnl" id="p7">
+  {%- set cascade_steps = [
+    'Margin calls',
+    'Forced selling',
+    'Gamma hedging amplification',
+    'Leveraged ETF rebalancing',
+    'Credit spread widening',
+    'Prime broker margin hikes',
+    'Second wave forced selling'
+  ] %}
+  {%- set steps_active = cascade.steps_active | default(0) %}
+  {%- set blocked_at = cascade.blocked_at_step | default(none) %}
+  <div class="card glow-a">
+    <div style="font-size:14px;font-weight:700;margin-bottom:14px;color:var(--amber)">Cascade Vulnerability Chain</div>
+    {%- for step in cascade_steps %}
+    {%- set step_num = loop.index %}
+    {%- set is_active = step_num <= steps_active or (blocked_at is not none and step_num < blocked_at) %}
+    <div class="cs">
+      <div class="cn{% if is_active %} h{% endif %}">{{ step_num }}</div>
+      <span class="ct{% if is_active %} h{% endif %}">{{ step }}</span>
+      {%- if not loop.last %}<span class="ca">&rarr;</span>{% endif %}
+    </div>
+    {%- endfor %}
+    <div style="margin-top:16px;padding:12px;background:var(--card);border-radius:6px;border:1px solid rgba(245,158,11,.27)">
+      <div style="display:flex;justify-content:space-between;margin-bottom:8px">
+        <span style="font-size:11px;font-weight:700;color:var(--muted)">ACTIVATION PROBABILITY</span>
+        <span class="pill {% if cascade.activation_probability | default('') in ['HIGH'] %}p-r{% elif cascade.activation_probability | default('') in ['MODERATE-HIGH', 'MODERATE'] %}p-a{% else %}p-g{% endif %}">{{ cascade.activation_probability | default('UNKNOWN') }}{% if steps_active > 0 %} &mdash; STEPS 1-{{ steps_active }} PRE-LOADED{% endif %}</span>
+      </div>
+      <div style="font-size:12px;line-height:1.7">{{ cascade.narrative | default('Cascade analysis unavailable.') }}</div>
+    </div>
+  </div>
+
+  {#- Alerts #}
+  {%- if alerts %}
+  <div class="card">
+    <div style="font-size:14px;font-weight:700;margin-bottom:14px">Active Alerts</div>
+    {%- for alert in alerts %}
+    <div class="al {% if alert.severity | default('') == 'critical' %}al-r{% elif alert.severity | default('') == 'warning' %}al-o{% else %}al-g{% endif %}" style="margin-bottom:8px">
+      <strong>{{ alert.type | default('ALERT') | replace('_', ' ') }}:</strong> {{ alert.message | default('') }}
+    </div>
+    {%- endfor %}
+  </div>
+  {%- endif %}
+</div>
+
+{# ============================================================
+   FOOTER
+   ============================================================ #}
+<div class="foot">Sources: FINRA, OFR Form PF, GS/JPM/MS Prime, Chicago Fed NFCI, HY OAS, SOFR, Bloomberg OVME, Barchart GEX, Pipeline. Not investment advice. Maguire Leverage Monitor &mdash; 22V Trading Desk. Updated {{ ts_display }}.</div>
+</div>
+
+{# ============================================================
+   JAVASCRIPT: Tab switching (unchanged DOM manipulation)
+   ============================================================ #}
+<script>
+var T=["Composite","L1 Levels","L2 Momentum","L3 Financing","L4 Crowding","L5 Vol & Options","L6 Calendar","Cascade"];
+var tb=document.getElementById("tabs");
+T.forEach(function(t,i){var b=document.createElement("button");b.className="tab"+(i===0?" on":"");b.textContent=t;b.onclick=function(){document.querySelectorAll(".pnl").forEach(function(p){p.classList.remove("on")});document.querySelectorAll(".tab").forEach(function(x){x.classList.remove("on")});document.getElementById("p"+i).classList.add("on");b.classList.add("on")};tb.appendChild(b)});
+</script>
+</body>
+</html>

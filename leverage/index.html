@@ -153,7 +153,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
       <div style="flex:1">
         <div class="ln">L4: Crowding <span style="font-size:10px;color:var(--red);font-weight:800">1/1</span>
         </div>
-        <div class="ld">High concentration: AI Infra Concentration, Mag 7 % of HF Net, Semis Net Exposure | AI infra cluster + Mag7 rotation confirmed by Q4 13Fs</div>
+        <div class="ld">High concentration: AI Infra Concentration, Mag 7 % of HF Net, Semis Net Exposure, Multistrat Leverage | AI infra cluster + Mag7 rotation confirmed by Q4 13Fs</div>
       </div>
       <div class="dots">
         <div class="dot" style="background:var(--red)"></div>
@@ -641,9 +641,12 @@ T.forEach(function(t,i){var b=document.createElement("button");b.className="tab"
 })();
 (function(){
   var d=[
-    {n:"AI Infra Concentration",p:90,t:"MU, LRCX, NOW, Korean semis",c:"var(--red)"},
-    {n:"Mag 7 % of HF Net",p:85,t:"~19% — near 21% peak",c:"var(--red)"},
-    {n:"Semis Net Exposure",p:95,t:"5yr high",c:"var(--red)"}
+    {n:"AI Infra Concentration",p:90,t:"MU, LRCX, NOW, Korean semis — multiple PMs",c:"var(--red)"},
+    {n:"Mag 7 % of HF Net",p:85,t:"~19% — near 21% peak, rotation underway",c:"var(--red)"},
+    {n:"Semis Net Exposure",p:95,t:"5yr high — max concentration",c:"var(--red)"},
+    {n:"Crypto ETF Exposure",p:30,t:"Down 28% Q3→Q4 — derisking",c:"var(--green)"},
+    {n:"Equal-Weight Pivot",p:40,t:"Druckenmiller RSP — breadth play",c:"var(--green)"},
+    {n:"Multistrat Leverage",p:92,t:"645% gross — extreme",c:"var(--red)"}
     ,{n:"Mag-7 % of SPX",p:84,t:"42.1% of S&P 500",c:"var(--red)"}
   ],e=document.getElementById("cb");
   if(!e)return;

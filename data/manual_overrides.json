@@ -15,17 +15,32 @@
       {
         "name": "AI Infra Concentration",
         "pct": 90,
-        "detail": "MU, LRCX, NOW, Korean semis"
+        "detail": "MU, LRCX, NOW, Korean semis \u2014 multiple PMs"
       },
       {
         "name": "Mag 7 % of HF Net",
         "pct": 85,
-        "detail": "~19% \u2014 near 21% peak"
+        "detail": "~19% \u2014 near 21% peak, rotation underway"
       },
       {
         "name": "Semis Net Exposure",
         "pct": 95,
-        "detail": "5yr high"
+        "detail": "5yr high \u2014 max concentration"
+      },
+      {
+        "name": "Crypto ETF Exposure",
+        "pct": 30,
+        "detail": "Down 28% Q3\u2192Q4 \u2014 derisking"
+      },
+      {
+        "name": "Equal-Weight Pivot",
+        "pct": 40,
+        "detail": "Druckenmiller RSP \u2014 breadth play"
+      },
+      {
+        "name": "Multistrat Leverage",
+        "pct": 92,
+        "detail": "645% gross \u2014 extreme"
       }
     ],
     "headline": "AI infra cluster + Mag7 rotation confirmed by Q4 13Fs",

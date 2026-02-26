@@ -266,6 +266,8 @@ def process():
     finra = load_raw("raw_finra.json")
     edgar = load_raw("raw_edgar.json")
     calendar = load_raw("raw_calendar.json")
+    overrides = load_raw("manual_overrides.json")
+    gex_manual = overrides.get("gex_manual", {})
     
     # Build unified output
     spy_chain = yahoo.get("spy_chain", {})
@@ -320,9 +322,10 @@ def process():
         "gex": {
             "estimate_bn": squeeze.get("gex_current"),
             "level": classify_gex_signal(squeeze.get("gex_current")),
-            "flip_point": None,  # Requires chain-level GEX calc
-            "call_wall": None,
-            "put_wall": None,
+            "flip_point": gex_manual.get("flip_point"),
+            "call_wall": gex_manual.get("call_wall"),
+            "put_wall": gex_manual.get("put_wall"),
+            "last_price": gex_manual.get("last_price"),
             "history_5d": squeeze.get("gex_history", [])[-5:],
         },
         

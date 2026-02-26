@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-02-25T20:47:21.101876",
-  "composite_score": 6.0,
+  "timestamp": "2026-02-25T20:53:22.850844",
+  "composite_score": 6.5,
   "composite_prev": 6.0,
   "regime": "FRAGILE_EQUILIBRIUM",
   "regime_label": "Fragile Equilibrium",
@@ -130,14 +130,14 @@
       }
     },
     "l5b": {
-      "score": 0.0,
+      "score": 0.5,
       "max": 1,
       "label": "Options Sentiment",
-      "details": "Neutral sentiment",
+      "details": "P/C 1.19 \u2014 elevated fear",
       "data": {
-        "equity_pc": null,
+        "equity_pc": 1.187,
         "gex_level": "UNKNOWN",
-        "skew": null
+        "skew": 146.05
       }
     },
     "l6": {
@@ -225,8 +225,8 @@
   "real_time_pulse": {
     "turbulence": "NORMAL",
     "regime": "FRAGILE_EQ",
-    "synthesis": "WATCHING",
-    "synthesis_note": "Key levels holding"
+    "synthesis": "TAPE DIVERGING",
+    "synthesis_note": "Calm surface - loaded"
   },
   "commentary": {
     "headline_type": "SENTIMENT_STRUCTURE_DIVERGENCE",
@@ -234,5 +234,5 @@
     "key_tension": "protection buying vs loose financing",
     "bottom_line": "Structural leverage at records but financing actively easing"
   },
-  "options_data_timestamp": "2026-02-25T20:47:21.098301"
+  "options_data_timestamp": "2026-02-25T20:53:22.846805"
 }

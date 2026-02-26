@@ -81,6 +81,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
     <div class="mono" style="font-size:48px;font-weight:900;color:var(--amber);line-height:1">6<span style="font-size:24px;color:var(--muted)">/10</span></div>
     <div>
       <span class="pill p-a">FRAGILE EQUILIBRIUM</span>
+      <span class="chg chg-d">&#9650; from 6</span>
       <div style="font-size:11px;color:var(--muted);margin-top:6px">2026-02-25 <span style="color:var(--amber)">2026-02-25</span></div>
     </div>
   </div>
@@ -173,12 +174,12 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
     </div>
     <div class="lr">
       <div style="flex:1">
-        <div class="ln">L5B: Options Sentiment <span style="font-size:10px;color:var(--green);font-weight:800">0.0/1</span> <span style="font-size:9px;padding:1px 6px;border-radius:3px;background:rgba(239,68,68,.1);color:var(--red);font-weight:700;margin-left:4px">PIPELINE + BARCHART</span>
+        <div class="ln">L5B: Options Sentiment <span style="font-size:10px;color:var(--amber);font-weight:800">0.5/1</span> <span style="font-size:9px;padding:1px 6px;border-radius:3px;background:rgba(239,68,68,.1);color:var(--red);font-weight:700;margin-left:4px">PIPELINE + BARCHART</span>
         </div>
-        <div class="ld">Neutral sentiment</div>
+        <div class="ld">P/C 1.19 — elevated fear</div>
       </div>
       <div class="dots">
-        <div class="dot" style="background:var(--dim)"></div>
+        <div class="dot" style="background:var(--amber)"></div>
         <div class="dot" style="background:var(--dim)"></div>
       </div>
     </div>
@@ -192,6 +193,18 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
         <div class="dot" style="background:var(--red)"></div>
         <div class="dot" style="background:var(--red)"></div>
       </div>
+    </div>
+  </div>
+  <div class="card glow-a">
+    <div style="font-size:13px;font-weight:700;color:var(--amber);margin-bottom:8px">&#9889; Score Update — 6 &rarr; 6 (2026-02-25)</div>
+    <div style="font-size:12px;line-height:1.7">
+      <strong>L1:</strong> Margin $566.1B above FRED proxy $500B (scaled from $1T FINRA) | HF gross: GS 285%, JPM 298%<br>
+      <strong>L2:</strong> Margin YoY +25.4% (>20% threshold) | Debt/GDP 1.8% above 1.5% threshold<br>
+      <strong>L3:</strong> NFCI -0.563 — loose | HY OAS 3bp | SOFR 3.67%<br>
+      <strong>L4:</strong> High concentration: AI Infra Concentration, Mag 7 % of HF Net, Semis Net Exposure | AI infra cluster + Mag7 rotation confirmed by Q4 13Fs<br>
+      <strong>L5A:</strong> VIX 17.93<br>
+      <strong>L5B:</strong> P/C 1.19 — elevated fear<br>
+      <strong>L6:</strong> HIGH events within 30d: FOMC Meeting + Dot Plot (21d), Quad Witching OPEX (23d)<br>
     </div>
   </div>
   <div class="card" style="border-color:rgba(245,158,11,.3)">
@@ -209,8 +222,8 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
       </div>
       <div style="text-align:center;padding:14px 10px;background:rgba(245,158,11,.06);border-radius:8px;border:1px solid rgba(245,158,11,.15)">
         <div style="font-size:9px;color:var(--muted);letter-spacing:1px;text-transform:uppercase">Synthesis</div>
-        <div class="mono" style="font-size:14px;font-weight:700;color:var(--amber);margin-top:6px">WATCHING</div>
-        <div style="font-size:9px;color:var(--dim);margin-top:4px">Key levels holding</div>
+        <div class="mono" style="font-size:14px;font-weight:700;color:var(--amber);margin-top:6px">TAPE DIVERGING</div>
+        <div style="font-size:9px;color:var(--dim);margin-top:4px">Calm surface - loaded</div>
       </div>
     </div>
     <div style="font-size:11px;color:var(--amber);font-weight:600;font-style:italic;line-height:1.6;padding:10px 14px;background:rgba(245,158,11,.05);border-radius:8px">Structural leverage at records but financing actively easing. protection buying vs loose financing</div>
@@ -221,8 +234,8 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
     <div class="stats">
       <div class="st">
         <div class="st-l">Equity P/C</div>
-        <div class="st-v">N/A</div>
-        <div class="st-s">UNKNOWN</div>
+        <div class="st-v w">1.187</div>
+        <div class="st-s w">EXTREME FEAR</div>
       </div>
       <div class="st">
         <div class="st-l">GEX (Barchart)</div>
@@ -237,8 +250,8 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
       </div>
       <div class="st">
         <div class="st-l">CBOE SKEW</div>
-        <div class="st-v">N/A</div>
-        <div class="st-s">UNKNOWN</div>
+        <div class="st-v">146.05</div>
+        <div class="st-s">ELEVATED</div>
       </div>
       <div class="st">
         <div class="st-l">HY OAS</div>
@@ -383,14 +396,14 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
         <span style="font-size:14px;font-weight:700">Layer 5B: Options Sentiment</span>
         <span style="font-size:9px;padding:2px 8px;border-radius:3px;background:rgba(245,158,11,.15);color:var(--amber);font-weight:700;margin-left:8px">PIPELINE + BARCHART</span>
       </div>
-      <span class="pill p-g">UNKNOWN</span>
+      <span class="pill p-r">EXTREME FEAR</span>
     </div>
     <div style="font-size:10px;color:var(--muted);margin-bottom:14px">2026-02-25</div>
     <div class="g4">
-      <div class="mc" style="border-color:rgba(100,116,139,.25)">
+      <div class="mc" style="border-color:rgba(239,68,68,.25)">
         <div class="mc-l">Equity P/C</div>
-        <div class="mc-v" style="color:var(--muted)">N/A</div>
-        <div class="mc-s" style="color:var(--muted);font-weight:700">0 pts</div>
+        <div class="mc-v" style="color:var(--red)">1.187</div>
+        <div class="mc-s" style="color:var(--amber);font-weight:700">+0.50 pts</div>
         <div class="mc-s">Threshold: &gt; 0.85</div>
       </div>
       <div class="mc" style="border-color:rgba(34,197,94,.25)">
@@ -406,14 +419,14 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
         <div class="mc-s" style="color:var(--muted);font-weight:700">0 pts</div>
         <div class="mc-s">Threshold: &gt; 25%</div>
       </div>
-      <div class="mc" style="border-color:rgba(100,116,139,.25)">
+      <div class="mc" style="border-color:rgba(239,68,68,.25)">
         <div class="mc-l">CBOE SKEW</div>
-        <div class="mc-v" style="color:var(--muted)">N/A</div>
-        <div class="mc-s" style="color:var(--muted);font-weight:700">UNKNOWN</div>
+        <div class="mc-v" style="color:var(--red)">146.05</div>
+        <div class="mc-s" style="color:var(--muted);font-weight:700">ELEVATED</div>
         <div class="mc-s">Threshold: &gt; 145</div>
       </div>
     </div>
-    <div style="margin-top:12px;font-size:12px;font-weight:700;color:var(--muted)">Layer 5B Score: <span style="color:var(--amber);font-size:16px" class="mono">0.00 / 1.00</span></div>
+    <div style="margin-top:12px;font-size:12px;font-weight:700;color:var(--muted)">Layer 5B Score: <span style="color:var(--amber);font-size:16px" class="mono">0.50 / 1.00</span></div>
   </div>
   <div class="card">
     <div style="font-size:14px;font-weight:700;margin-bottom:10px">Vol Surface</div>

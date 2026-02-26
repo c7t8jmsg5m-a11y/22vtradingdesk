@@ -18,10 +18,10 @@
   "gex": {
     "estimate_bn": null,
     "level": "UNKNOWN",
-    "flip_point": 6865.7,
+    "flip_point": 6901.29,
     "call_wall": 7000.0,
     "put_wall": 7000.0,
-    "last_price": 6946.13,
+    "last_price": 6866.88,
     "history_5d": []
   },
   "skew": {
@@ -603,8 +603,8 @@
     ]
   },
   "vix": {
-    "current": 17.93,
-    "change": -1.62,
+    "current": 19.97,
+    "change": 2.04,
     "history_30d": [
       {
         "date": "2026-01-26",
@@ -693,6 +693,10 @@
       {
         "date": "2026-02-25",
         "value": 17.93
+      },
+      {
+        "date": "2026-02-26",
+        "value": 19.97
       }
     ]
   },

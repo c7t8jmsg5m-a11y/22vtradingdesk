@@ -64,14 +64,14 @@ def score_l1(latest, overrides):
     margin_source = margin_data.get("source", "manual")
 
     # Threshold depends on data source:
-    # - FINRA monthly margin debt: $1000B (the $1T Jan-2021 peak)
+    # - FINRA monthly margin debt: $1000B (the $1T Jun-2025 record)
     # - FRED quarterly proxy (BOGZ1FL663067003Q): $500B (scaled equivalent)
     if margin_source == "fred_quarterly":
         margin_threshold = 500
         threshold_label = "FRED proxy $500B (scaled from $1T FINRA)"
     else:
         margin_threshold = 1000
-        threshold_label = "$1T Jan-2021 peak"
+        threshold_label = "$1T record (Jun 2025)"
 
     if margin > margin_threshold:
         score += 1
@@ -90,6 +90,7 @@ def score_l1(latest, overrides):
         "finra_margin_streak": margin_streak,
         "margin_history": margin_data.get("history", []),
         "margin_yoy_pct": margin_data.get("yoy_pct"),
+        "margin_mom_pct": margin_data.get("mom_pct"),
         "debt_gdp_pct": latest.get("debt_gdp_pct"),
         "spx_yoy_pct": latest.get("spx_yoy_pct"),
     })

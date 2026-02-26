@@ -408,6 +408,7 @@ def process():
             "current_bn": finra.get("margin_debt", {}).get("current_bn"),
             "date_label": finra.get("margin_debt", {}).get("date_label"),
             "yoy_pct": finra.get("margin_debt", {}).get("yoy_pct"),
+            "mom_pct": finra.get("margin_debt", {}).get("mom_pct"),
             "streak_months": finra.get("margin_debt", {}).get("streak_months"),
             "streak_label": finra.get("margin_debt", {}).get("streak_label"),
             "source": finra.get("margin_debt", {}).get("source") or "manual",

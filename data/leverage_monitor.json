@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-02-25T21:14:43.229252",
+  "timestamp": "2026-02-25T21:25:21.160974",
   "composite_score": 6.5,
   "composite_prev": 6.5,
   "regime": "FRAGILE_EQUILIBRIUM",
@@ -9,7 +9,7 @@
       "score": 2,
       "max": 2,
       "label": "Leverage Levels",
-      "details": "Margin $566.1B above FRED proxy $500B (scaled from $1T FINRA) | HF gross: GS 285%, JPM 298%",
+      "details": "Margin $1279.0B above $1T record (Jun 2025) | HF gross: GS 285%, JPM 298%",
       "data": {
         "updated": "2026-02-25",
         "hf_gross_gs": 285,
@@ -18,41 +18,66 @@
         "multistrat_gross": 645,
         "leveraged_etf_bn": 248,
         "notes": "HF gross leverage from GS/JPM/MS prime brokerage reports.",
-        "finra_margin_bn": 566.1,
-        "finra_margin_date": "Q3 2025",
-        "finra_margin_streak": "2nd consecutive record",
+        "finra_margin_bn": 1279.0,
+        "finra_margin_date": "Jan 2026",
+        "finra_margin_streak": "8th consecutive record high",
         "margin_history": [
           {
-            "date": "2024-01-01",
-            "value_bn": 433.8
-          },
-          {
-            "date": "2024-04-01",
-            "value_bn": 451.0
-          },
-          {
-            "date": "2024-07-01",
-            "value_bn": 451.5
-          },
-          {
-            "date": "2024-10-01",
-            "value_bn": 485.5
-          },
-          {
             "date": "2025-01-01",
-            "value_bn": 476.9
+            "value_bn": 937.3
+          },
+          {
+            "date": "2025-02-01",
+            "value_bn": 918.1
+          },
+          {
+            "date": "2025-03-01",
+            "value_bn": 880.3
           },
           {
             "date": "2025-04-01",
-            "value_bn": 506.4
+            "value_bn": 850.6
+          },
+          {
+            "date": "2025-05-01",
+            "value_bn": 921.0
+          },
+          {
+            "date": "2025-06-01",
+            "value_bn": 1008.0
           },
           {
             "date": "2025-07-01",
-            "value_bn": 566.1
+            "value_bn": 1022.5
+          },
+          {
+            "date": "2025-08-01",
+            "value_bn": 1059.7
+          },
+          {
+            "date": "2025-09-01",
+            "value_bn": 1126.5
+          },
+          {
+            "date": "2025-10-01",
+            "value_bn": 1183.7
+          },
+          {
+            "date": "2025-11-01",
+            "value_bn": 1214.3
+          },
+          {
+            "date": "2025-12-01",
+            "value_bn": 1225.6
+          },
+          {
+            "date": "2026-01-01",
+            "value_bn": 1279.0
           }
         ],
-        "margin_yoy_pct": 25.4,
-        "debt_gdp_pct": 1.8,
+        "margin_yoy_pct": 36.5,
+        "margin_mom_pct": 4.4,
+        "debt_gdp_pct": 4.06,
         "spx_yoy_pct": 15.5
       }
     },
@@ -60,10 +85,10 @@
       "score": 2,
       "max": 2,
       "label": "Momentum",
-      "details": "Margin YoY +25.4% (>20% threshold) | Debt/GDP 1.8% above 1.5% threshold",
+      "details": "Margin YoY +36.5% (>20% threshold) | Debt/GDP 4.06% above 3.5% threshold",
       "data": {
-        "margin_yoy_pct": 25.4,
-        "debt_gdp_pct": 1.8,
+        "margin_yoy_pct": 36.5,
+        "debt_gdp_pct": 4.06,
         "spx_yoy_pct": 15.5,
         "notes": ""
       }
@@ -288,5 +313,5 @@
     "key_tension": "protection buying vs loose financing",
     "bottom_line": "Structural leverage at records but financing actively easing"
   },
-  "options_data_timestamp": "2026-02-25T21:14:43.188644"
+  "options_data_timestamp": "2026-02-25T21:25:21.126560"
 }

@@ -394,7 +394,8 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
   <div class="card">
     <div style="font-size:14px;font-weight:700;margin-bottom:4px">FINRA Margin Debt</div>
     <div style="font-size:11px;color:var(--muted);margin-bottom:14px">
-      ${{ l1d.finra_margin_bn | default('N/A') }}B &mdash; {{ l1d.finra_margin_streak | default('') }} ({{ l1d.finra_margin_date | default('N/A') }})
+      ${{ '%.0f' | format(l1d.finra_margin_bn | default(0)) }}B &mdash; {{ l1d.finra_margin_streak | default('') }} ({{ l1d.finra_margin_date | default('N/A') }})
+      {%- if l1d.margin_mom_pct is defined %} &bull; +{{ l1d.margin_mom_pct }}% MoM{% endif %}
       {%- if l1d.margin_yoy_pct %} &bull; +{{ l1d.margin_yoy_pct }}% YoY{% endif %}
     </div>
     {%- if mhist | length > 1 %}

@@ -3,524 +3,109 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>22V Research — Overnight Briefing | February 26, 2026</title>
+<title>22V Research — Overnight Briefing | February 27, 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --brand-orange: #E4762D;
-    --cream-bg: #FAF7F2;
-    --dark-text: #1A1A1A;
-    --gray-text: #666666;
-    --green: #27AE60;
-    --red: #C0392B;
-    --dark-bg: #2D2D2D;
-    --light-gray: #F5F5F5;
-    --blue: #1A5276;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: 'Source Sans 3', sans-serif;
-    background: var(--cream-bg);
-    color: var(--dark-text);
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
-  }
-  .container { max-width: 820px; margin: 0 auto; padding: 0 24px; }
-
-  /* HEADER */
-  .header-bar {
-    background: var(--dark-bg);
-    padding: 18px 0 14px;
-    border-bottom: 3px solid var(--brand-orange);
-  }
-  .header-bar .container {
-    display: flex; justify-content: space-between; align-items: center;
-  }
-  .header-brand {
-    font-family: 'JetBrains Mono', monospace;
-    color: #999;
-    font-size: 10px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-  }
-  .header-brand strong {
-    color: var(--brand-orange);
-    font-size: 13px;
-    letter-spacing: 2px;
-  }
-  .header-type {
-    font-family: 'JetBrains Mono', monospace;
-    color: #bbb;
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-  }
-
-  /* DATE BAR */
-  .date-bar {
-    background: #3D3D3D;
-    padding: 8px 0;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10.5px;
-    color: #aaa;
-    letter-spacing: 1px;
-  }
-  .date-bar .container {
-    display: flex; justify-content: space-between; align-items: center;
-  }
-  .date-bar .catalyst { color: var(--brand-orange); }
-
-  /* HEADLINE */
-  .headline-section { padding: 32px 0 8px; }
-  .headline {
-    font-family: 'Playfair Display', serif;
-    font-weight: 900;
-    font-size: 28px;
-    line-height: 1.2;
-    color: var(--dark-text);
-  }
-  .headline em { font-style: italic; color: var(--brand-orange); }
-  .lede {
-    font-size: 17px;
-    font-weight: 300;
-    color: var(--gray-text);
-    margin-top: 10px;
-    line-height: 1.55;
-  }
-
-  /* INDEX BAR */
-  .index-bar {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0;
-    margin: 18px 0 12px;
-    background: white;
-    border: 1px solid #e0e0e0;
-    border-radius: 4px;
-    overflow: hidden;
-  }
-  .idx {
-    flex: 1 1 0;
-    min-width: 90px;
-    text-align: center;
-    padding: 10px 6px;
-    border-right: 1px solid #eee;
-    font-family: 'JetBrains Mono', monospace;
-  }
-  .idx:last-child { border-right: none; }
-  .idx-label {
-    font-size: 9px;
-    color: #999;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-  }
-  .idx-price {
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--dark-text);
-    margin-top: 2px;
-  }
-  .idx-chg {
-    font-size: 10px;
-    font-weight: 500;
-    margin-top: 1px;
-  }
-  .up { color: var(--green); }
-  .dn { color: var(--red); }
-  .flat { color: #999; }
-
-  /* SECTION HEADERS */
-  .section-hdr {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: var(--brand-orange);
-    border-bottom: 2px solid var(--brand-orange);
-    padding-bottom: 6px;
-    margin: 28px 0 14px;
-  }
-
-  /* SECTOR PULSE GRID */
-  .pulse-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 4px;
-    margin-bottom: 6px;
-  }
-  .pulse-cell {
-    text-align: center;
-    padding: 10px 6px;
-    border-radius: 3px;
-    border: 1px solid #e0e0e0;
-  }
-  .pulse-cell.pos { background: #eafaf1; border-color: #c8e6c9; }
-  .pulse-cell.neg { background: #fdeded; border-color: #f5c6cb; }
-  .pulse-name {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    color: #555;
-  }
-  .pulse-chg {
-    font-size: 13px;
-    font-weight: 700;
-    margin-top: 2px;
-  }
-  .pulse-driver {
-    font-size: 9.5px;
-    color: #888;
-    margin-top: 2px;
-  }
-  .pulse-source {
-    font-size: 9px;
-    color: #bbb;
-    font-style: italic;
-    margin-top: 6px;
-  }
-
-  /* COMMODITY TABLE */
-  .macro-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 13px;
-    margin-bottom: 8px;
-  }
-  .macro-table th {
-    background: #1A5276;
-    color: white;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 9.5px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 8px 10px;
-    text-align: left;
-  }
-  .macro-table th:nth-child(2),
-  .macro-table th:nth-child(3) { text-align: center; }
-  .macro-table td {
-    padding: 7px 10px;
-    border-bottom: 1px solid #e8e8e8;
-  }
-  .macro-table td:nth-child(2),
-  .macro-table td:nth-child(3) { text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; }
-  .macro-table tr:nth-child(even) { background: #fafafa; }
-  .macro-table .asset-name { font-weight: 600; }
-
-  /* BOTTOM LINE */
-  .bottom-line {
-    background: white;
-    border-left: 4px solid var(--brand-orange);
-    padding: 16px 20px;
-    margin: 16px 0;
-    font-size: 14.5px;
-    line-height: 1.65;
-    color: #333;
-  }
-  .bottom-line strong { color: var(--dark-text); }
-
-  /* STORIES TABLE */
-  .stories-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 12.5px;
-    margin-bottom: 8px;
-  }
-  .stories-table th {
-    background: #1A5276;
-    color: white;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 9.5px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 8px 8px;
-    text-align: left;
-  }
-  .stories-table th:first-child { text-align: center; width: 28px; }
-  .stories-table th:nth-child(3),
-  .stories-table th:nth-child(4) { text-align: center; }
-  .stories-table td { padding: 8px 8px; border-bottom: 1px solid #e8e8e8; vertical-align: top; }
-  .stories-table td:first-child { text-align: center; font-weight: 700; color: var(--brand-orange); }
-  .stories-table td:nth-child(3),
-  .stories-table td:nth-child(4) { text-align: center; font-size: 11px; }
-  .stories-table tr:nth-child(even) { background: #fafafa; }
-  .story-headline { font-weight: 700; }
-  .bias-bull { color: var(--green); font-weight: 700; }
-  .bias-bear { color: var(--red); font-weight: 700; }
-  .bias-mixed { color: var(--brand-orange); font-weight: 700; }
-  .bias-cautious { color: var(--blue); font-weight: 700; }
-
-  /* GAP CALLOUT */
-  .gap-callout {
-    background: #fff8f0;
-    border: 1px solid #f0d0a0;
-    border-left: 4px solid var(--brand-orange);
-    padding: 14px 18px;
-    margin: 16px 0;
-    font-size: 13.5px;
-    line-height: 1.6;
-  }
-  .gap-callout strong { color: var(--brand-orange); }
-
-  /* WATCH ITEMS */
-  .watch-item {
-    padding: 10px 0;
-    border-bottom: 1px solid #eee;
-    font-size: 13.5px;
-    line-height: 1.55;
-  }
-  .watch-item:last-child { border-bottom: none; }
-  .watch-num {
-    font-family: 'JetBrains Mono', monospace;
-    font-weight: 700;
-    color: var(--brand-orange);
-    margin-right: 6px;
-  }
-
-  /* CALENDAR TABLES */
-  .cal-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 12px;
-    margin-bottom: 8px;
-  }
-  .cal-table th {
-    background: #f0f0f0;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 9.5px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 8px 10px;
-    text-align: left;
-    color: #555;
-  }
-  .cal-table td {
-    padding: 7px 10px;
-    border-bottom: 1px solid #eee;
-  }
-  .cal-table tr:nth-child(even) { background: #fafafa; }
-  .cal-table .key-watch {
-    font-style: italic;
-    color: var(--gray-text);
-    font-size: 11.5px;
-    padding: 8px 10px;
-  }
-
-  /* THEMES */
-  .theme-item {
-    padding: 10px 0;
-    border-bottom: 1px solid #eee;
-    font-size: 13.5px;
-    line-height: 1.55;
-  }
-  .theme-item:last-child { border-bottom: none; }
-
-  /* FOOTER */
-  .footer-bar {
-    background: var(--dark-bg);
-    padding: 16px 0;
-    margin-top: 40px;
-  }
-  .footer-bar .container {
-    display: flex; justify-content: space-between; align-items: center;
-  }
-  .footer-brand {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 9px;
-    color: #666;
-    letter-spacing: 2px;
-  }
-  .footer-disc {
-    font-size: 9px;
-    color: #555;
-    letter-spacing: 1px;
-  }
-
-  @media (max-width: 600px) {
-    .pulse-grid { grid-template-columns: repeat(2, 1fr); }
-    .headline { font-size: 22px; }
-    .index-bar { flex-wrap: wrap; }
-    .idx { min-width: 80px; }
-  }
+  :root { --brand-orange:#E4762D;--cream-bg:#FAF7F2;--dark-text:#1A1A1A;--gray-text:#666;--green:#27AE60;--red:#C0392B;--dark-bg:#2D2D2D;--light-gray:#F5F5F5;--blue:#1A5276; }
+  *{margin:0;padding:0;box-sizing:border-box}body{font-family:'Source Sans 3',sans-serif;background:var(--cream-bg);color:var(--dark-text);line-height:1.5;-webkit-font-smoothing:antialiased}.container{max-width:820px;margin:0 auto;padding:0 24px}.header-bar{background:var(--dark-bg);padding:18px 0 14px;border-bottom:3px solid var(--brand-orange)}.header-bar .container{display:flex;justify-content:space-between;align-items:center}.header-brand{font-family:'JetBrains Mono',monospace;color:#999;font-size:10px;letter-spacing:3px;text-transform:uppercase}.header-brand strong{color:var(--brand-orange);font-size:13px;letter-spacing:2px}.header-type{font-family:'JetBrains Mono',monospace;color:#bbb;font-size:10px;letter-spacing:2px;text-transform:uppercase}.date-bar{background:#3D3D3D;padding:8px 0;font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#aaa;letter-spacing:1px}.date-bar .container{display:flex;justify-content:space-between;align-items:center}.date-bar .catalyst{color:var(--brand-orange)}.headline-section{padding:32px 0 8px}.headline{font-family:'Playfair Display',serif;font-weight:900;font-size:28px;line-height:1.2;color:var(--dark-text)}.headline em{font-style:italic;color:var(--brand-orange)}.lede{font-size:17px;font-weight:300;color:var(--gray-text);margin-top:10px;line-height:1.55}.index-bar{display:flex;flex-wrap:wrap;gap:0;margin:18px 0 12px;background:#fff;border:1px solid #e0e0e0;border-radius:4px;overflow:hidden}.idx{flex:1 1 0;min-width:90px;text-align:center;padding:10px 6px;border-right:1px solid #eee;font-family:'JetBrains Mono',monospace}.idx:last-child{border-right:none}.idx-label{font-size:9px;color:#999;letter-spacing:1.5px;text-transform:uppercase}.idx-price{font-size:13px;font-weight:700;color:var(--dark-text);margin-top:2px}.idx-chg{font-size:10px;font-weight:500;margin-top:1px}.up{color:var(--green)}.dn{color:var(--red)}.flat{color:#999}.section-hdr{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--brand-orange);border-bottom:2px solid var(--brand-orange);padding-bottom:6px;margin:28px 0 14px}.pulse-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin-bottom:6px}.pulse-cell{text-align:center;padding:10px 6px;border-radius:3px;border:1px solid #e0e0e0}.pulse-cell.pos{background:#eafaf1;border-color:#c8e6c9}.pulse-cell.neg{background:#fdeded;border-color:#f5c6cb}.pulse-name{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:1px;color:#555}.pulse-chg{font-size:13px;font-weight:700;margin-top:2px}.pulse-driver{font-size:9.5px;color:#888;margin-top:2px}.pulse-source{font-size:9px;color:#bbb;font-style:italic;margin-top:6px}.macro-table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:8px}.macro-table th{background:#1A5276;color:#fff;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:1px;text-transform:uppercase;padding:8px 10px;text-align:left}.macro-table th:nth-child(2),.macro-table th:nth-child(3){text-align:center}.macro-table td{padding:7px 10px;border-bottom:1px solid #e8e8e8}.macro-table td:nth-child(2),.macro-table td:nth-child(3){text-align:center;font-family:'JetBrains Mono',monospace;font-size:12px}.macro-table tr:nth-child(even){background:#fafafa}.macro-table .asset-name{font-weight:600}.bottom-line{background:#fff;border-left:4px solid var(--brand-orange);padding:16px 20px;margin:16px 0;font-size:14.5px;line-height:1.65;color:#333}.bottom-line strong{color:var(--dark-text)}.stories-table{width:100%;border-collapse:collapse;font-size:12.5px;margin-bottom:8px}.stories-table th{background:#1A5276;color:#fff;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:1px;text-transform:uppercase;padding:8px;text-align:left}.stories-table th:first-child{text-align:center;width:28px}.stories-table th:nth-child(3),.stories-table th:nth-child(4){text-align:center}.stories-table td{padding:8px;border-bottom:1px solid #e8e8e8;vertical-align:top}.stories-table td:first-child{text-align:center;font-weight:700;color:var(--brand-orange)}.stories-table td:nth-child(3),.stories-table td:nth-child(4){text-align:center;font-size:11px}.stories-table tr:nth-child(even){background:#fafafa}.story-headline{font-weight:700}.bias-bull{color:var(--green);font-weight:700}.bias-bear{color:var(--red);font-weight:700}.bias-mixed{color:var(--brand-orange);font-weight:700}.bias-cautious{color:var(--blue);font-weight:700}.gap-callout{background:#fff8f0;border:1px solid #f0d0a0;border-left:4px solid var(--brand-orange);padding:14px 18px;margin:16px 0;font-size:13.5px;line-height:1.6}.gap-callout strong{color:var(--brand-orange)}.watch-item{padding:10px 0;border-bottom:1px solid #eee;font-size:13.5px;line-height:1.55}.watch-item:last-child{border-bottom:none}.watch-num{font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--brand-orange);margin-right:6px}.cal-table{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:8px}.cal-table th{background:#f0f0f0;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:1px;text-transform:uppercase;padding:8px 10px;text-align:left;color:#555}.cal-table td{padding:7px 10px;border-bottom:1px solid #eee}.cal-table tr:nth-child(even){background:#fafafa}.cal-table .key-watch{font-style:italic;color:var(--gray-text);font-size:11.5px;padding:8px 10px}.theme-item{padding:10px 0;border-bottom:1px solid #eee;font-size:13.5px;line-height:1.55}.theme-item:last-child{border-bottom:none}.footer-bar{background:var(--dark-bg);padding:16px 0;margin-top:40px}.footer-bar .container{display:flex;justify-content:space-between;align-items:center}.footer-brand{font-family:'JetBrains Mono',monospace;font-size:9px;color:#666;letter-spacing:2px}.footer-disc{font-size:9px;color:#555;letter-spacing:1px}@media(max-width:600px){.pulse-grid{grid-template-columns:repeat(2,1fr)}.headline{font-size:22px}.index-bar{flex-wrap:wrap}.idx{min-width:80px}}
 </style>
 </head>
 <body>
-
-<!-- HEADER -->
-<div class="header-bar">
-  <div class="container">
-    <div class="header-brand"><strong>22V</strong> Research</div>
-    <div class="header-type">Overnight Briefing</div>
-  </div>
-</div>
-<div class="date-bar">
-  <div class="container">
-    <span>Thursday, February 26, 2026 — 7:30 AM ET</span>
-    <span class="catalyst">Catalyst: US-Iran Geneva Talks • Jobless Claims 8:30</span>
-  </div>
-</div>
-
-<!-- HEADLINE -->
+<div class="header-bar"><div class="container"><div class="header-brand"><strong>22V</strong> Research</div><div class="header-type">Overnight Briefing</div></div></div>
+<div class="date-bar"><div class="container"><span>Friday, February 27, 2026 — 7:30 AM ET</span><span class="catalyst">Catalyst: January PPI 8:30 AM • Month-End Rebalancing</span></div></div>
 <div class="container">
   <div class="headline-section">
-    <h1 class="headline">NVDA Beats Clean, Market <em>Shrugs</em>; Geneva Talks Are the Swing Factor</h1>
-    <p class="lede">Nvidia's $78B Q1 guide couldn't break futures out of the flatline — the AI capex trade wants ROI proof now. Crude falls nearly 2% as Iran tables a deal proposal in Geneva. Nikkei hits third straight record on Takaichi trade.</p>
+    <h1 class="headline">AI Valuation Fatigue <em>Deepens</em>; Block Cuts 40% of Staff as DELL Surges on Record Backlog</h1>
+    <p class="lede">NVDA's 5.5% post-beat selloff crystallizes the 'prove it' shift — Nasdaq tracking worst February since March '25. Dell +11% after hours on $43B AI server backlog validates downstream infra. Block's AI-driven 40% workforce cut stokes cross-sector disruption fears. PPI at 8:30 is the last inflation read before March FOMC.</p>
   </div>
-
-  <!-- INDEX BAR -->
   <div class="index-bar">
-    <div class="idx">
-      <div class="idx-label">SPX</div>
-      <div class="idx-price">6,946.13</div>
-      <div class="idx-chg up">+0.81%</div>
-    </div>
-    <div class="idx">
-      <div class="idx-label">NDX</div>
-      <div class="idx-price">23,152</div>
-      <div class="idx-chg up">+1.26%</div>
-    </div>
-    <div class="idx">
-      <div class="idx-label">INDU</div>
-      <div class="idx-price">49,482</div>
-      <div class="idx-chg up">+0.63%</div>
-    </div>
-    <div class="idx">
-      <div class="idx-label">RTY</div>
-      <div class="idx-price">2,663</div>
-      <div class="idx-chg up">+0.41%</div>
-    </div>
-    <div class="idx">
-      <div class="idx-label">VIX</div>
-      <div class="idx-price">17.76</div>
-      <div class="idx-chg dn">-0.95%</div>
-    </div>
-    <div class="idx">
-      <div class="idx-label">WTI</div>
-      <div class="idx-price">$64.18</div>
-      <div class="idx-chg dn">-1.90%</div>
-    </div>
-    <div class="idx">
-      <div class="idx-label">Gold</div>
-      <div class="idx-price">$5,181</div>
-      <div class="idx-chg up">+0.31%</div>
-    </div>
-    <div class="idx">
-      <div class="idx-label">10Y</div>
-      <div class="idx-price">4.050%</div>
-      <div class="idx-chg flat">-0.05%</div>
-    </div>
+    <div class="idx"><div class="idx-label">SPX</div><div class="idx-price">6,908.86</div><div class="idx-chg dn">-0.54%</div></div>
+    <div class="idx"><div class="idx-label">NDX</div><div class="idx-price">22,878</div><div class="idx-chg dn">-1.18%</div></div>
+    <div class="idx"><div class="idx-label">INDU</div><div class="idx-price">49,499</div><div class="idx-chg up">+0.03%</div></div>
+    <div class="idx"><div class="idx-label">RTY</div><div class="idx-price">2,677</div><div class="idx-chg up">+0.52%</div></div>
+    <div class="idx"><div class="idx-label">VIX</div><div class="idx-price">20.36</div><div class="idx-chg dn">+9.29%</div></div>
+    <div class="idx"><div class="idx-label">WTI</div><div class="idx-price">$65.23</div><div class="idx-chg flat">+0.02%</div></div>
+    <div class="idx"><div class="idx-label">Gold</div><div class="idx-price">$5,185</div><div class="idx-chg up">+0.01%</div></div>
+    <div class="idx"><div class="idx-label">10Y</div><div class="idx-price">4.002%</div><div class="idx-chg flat">-1bp</div></div>
   </div>
-
-  <!-- SECTOR PULSE -->
   <div class="section-hdr">Overnight Sector Pulse</div>
   <div class="pulse-grid">
-    <div class="pulse-cell pos"><div class="pulse-name">Energy</div><div class="pulse-chg up">▲ +0.4%</div><div class="pulse-driver">Iran talks premium</div></div>
-    <div class="pulse-cell pos"><div class="pulse-name">Financials</div><div class="pulse-chg up">▲ +0.3%</div><div class="pulse-driver">Curve steepens</div></div>
-    <div class="pulse-cell neg"><div class="pulse-name">Tech</div><div class="pulse-chg dn">▼ -0.1%</div><div class="pulse-driver">NVDA tepid follow</div></div>
-    <div class="pulse-cell pos"><div class="pulse-name">Healthcare</div><div class="pulse-chg up">▲ +0.2%</div><div class="pulse-driver">Pharma rotation</div></div>
-    <div class="pulse-cell pos"><div class="pulse-name">Industrials</div><div class="pulse-chg up">▲ +0.2%</div><div class="pulse-driver">Copper rally lifts</div></div>
-    <div class="pulse-cell pos"><div class="pulse-name">Materials</div><div class="pulse-chg up">▲ +0.5%</div><div class="pulse-driver">Copper at $6.01</div></div>
-    <div class="pulse-cell neg"><div class="pulse-name">Cons Disc</div><div class="pulse-chg dn">▼ -0.2%</div><div class="pulse-driver">Tariff drag lingers</div></div>
-    <div class="pulse-cell pos"><div class="pulse-name">Cons Stpls</div><div class="pulse-chg up">▲ +0.1%</div><div class="pulse-driver">Defensive bid</div></div>
-    <div class="pulse-cell pos"><div class="pulse-name">Utilities</div><div class="pulse-chg up">▲ +0.1%</div><div class="pulse-driver">Rate cut hopes</div></div>
-    <div class="pulse-cell neg"><div class="pulse-name">REITs</div><div class="pulse-chg dn">▼ -0.1%</div><div class="pulse-driver">Office vacancy</div></div>
+    <div class="pulse-cell pos"><div class="pulse-name">Energy</div><div class="pulse-chg up">▲ +0.3%</div><div class="pulse-driver">Oil steady, Iran risk</div></div>
+    <div class="pulse-cell neg"><div class="pulse-name">Financials</div><div class="pulse-chg dn">▼ -0.4%</div><div class="pulse-driver">Yield curve flattens</div></div>
+    <div class="pulse-cell neg"><div class="pulse-name">Tech</div><div class="pulse-chg dn">▼▼ -1.2%</div><div class="pulse-driver">NVDA sell-the-news</div></div>
+    <div class="pulse-cell pos"><div class="pulse-name">Healthcare</div><div class="pulse-chg up">▲ +0.2%</div><div class="pulse-driver">Defensive rotation</div></div>
+    <div class="pulse-cell neg"><div class="pulse-name">Industrials</div><div class="pulse-chg dn">▼ -0.3%</div><div class="pulse-driver">Tariff uncertainty</div></div>
+    <div class="pulse-cell pos"><div class="pulse-name">Materials</div><div class="pulse-chg up">▲ +0.5%</div><div class="pulse-driver">Gold/silver bid</div></div>
+    <div class="pulse-cell neg"><div class="pulse-name">Cons Disc</div><div class="pulse-chg dn">▼ -0.6%</div><div class="pulse-driver">AI disruption fear</div></div>
+    <div class="pulse-cell pos"><div class="pulse-name">Cons Stpls</div><div class="pulse-chg up">▲ +0.1%</div><div class="pulse-driver">Safe haven flows</div></div>
+    <div class="pulse-cell pos"><div class="pulse-name">Utilities</div><div class="pulse-chg up">▲ +0.2%</div><div class="pulse-driver">Rate-sensitive bid</div></div>
+    <div class="pulse-cell pos"><div class="pulse-name">REITs</div><div class="pulse-chg up">▲ +0.1%</div><div class="pulse-driver">10Y below 4%</div></div>
   </div>
-  <div class="pulse-source">Pre-market sector ETF futures as of 7:15 AM EST</div>
-
-  <!-- COMMODITY & MACRO -->
-  <div class="section-hdr">Commodity & Macro Snapshot</div>
+  <div class="pulse-source">Source: Pre-market sector ETF futures (XLE, XLF, XLK, XLV, XLI, XLB, XLY, XLP, XLU, XLRE) as of 7:15 AM EST</div>
+  <div class="section-hdr">Commodity &amp; Macro Snapshot</div>
   <table class="macro-table">
     <tr><th>Asset</th><th>Price</th><th>Change</th><th>Key Driver</th></tr>
-    <tr><td class="asset-name">Gold (spot)</td><td>$5,180.76</td><td class="up">+0.31%</td><td>Safe-haven bid on Iran talks; +19.9% YTD</td></tr>
-    <tr><td class="asset-name">Silver (spot)</td><td>$87.02</td><td class="dn">-2.48%</td><td>Profit-taking; still +21.4% YTD</td></tr>
-    <tr><td class="asset-name">Copper (HG)</td><td>$6.01/lb</td><td class="dn">-0.5%</td><td>Consolidation; COPX +12% in Feb</td></tr>
-    <tr><td class="asset-name">WTI Crude</td><td>$64.18</td><td class="dn">-1.90%</td><td>Iran deal hopes weigh; +12.5% YTD</td></tr>
-    <tr><td class="asset-name">Brent Crude</td><td>$69.85</td><td class="dn">-1.40%</td><td>Saudi output ramp capping; API +11.4M</td></tr>
-    <tr><td class="asset-name">Bitcoin</td><td>~$67,930</td><td class="up">+6.0%</td><td>Bounce from Warsh lows; SOL ETF flows</td></tr>
-    <tr><td class="asset-name">US 10Y Yield</td><td>4.050%</td><td class="flat">-0.05%</td><td>Duration bid; -4.4% MTD; claims eyed</td></tr>
-    <tr><td class="asset-name">US 2Y Yield</td><td>3.469%</td><td class="flat">-0.06%</td><td>Flat; -1.5% MTD; 3 cuts priced</td></tr>
-    <tr><td class="asset-name">2s10s Spread</td><td>57.9bps</td><td class="up">+0.02%</td><td>Steepening -18.3% MTD</td></tr>
-    <tr><td class="asset-name">DXY</td><td>97.69</td><td class="flat">-0.01%</td><td>Flat; EUR strength at 1.181 offsetting</td></tr>
-    <tr><td class="asset-name">Nat Gas (NG1)</td><td>$2.791</td><td class="dn">-2.68%</td><td>Demand fade; -35.9% MTD, -24.3% YTD</td></tr>
-    <tr><td class="asset-name">VIX</td><td>17.76</td><td class="dn">-0.95%</td><td>Fear receding post-NVDA; +18.8% YTD</td></tr>
+    <tr><td class="asset-name">Gold (spot)</td><td>$5,185/oz</td><td class="up">+0.01%</td><td>Holding near highs; safe-haven bid intact; +20% YTD</td></tr>
+    <tr><td class="asset-name">Silver (spot)</td><td>$89.49/oz</td><td class="up">+1.35%</td><td>Industrial + monetary demand; Au/Ag ratio compressing to 57.8</td></tr>
+    <tr><td class="asset-name">Copper (HG)</td><td>$6.06/lb</td><td class="up">+1.82%</td><td>China infra hopes; supply tightness; +3.7% WTD</td></tr>
+    <tr><td class="asset-name">WTI Crude</td><td>$65.23/bbl</td><td class="flat">+0.02%</td><td>Flat; US-Iran tensions offset by 16M bbl inventory build</td></tr>
+    <tr><td class="asset-name">Brent Crude</td><td>$70.78/bbl</td><td class="dn">-0.08%</td><td>Demand concerns vs. geopolitical risk premium</td></tr>
+    <tr><td class="asset-name">Bitcoin</td><td>~$67,539</td><td class="dn">-0.9%</td><td>Risk-off tone; AI capex fears weigh on crypto</td></tr>
+    <tr><td class="asset-name">US 10Y Yield</td><td>4.002%</td><td class="dn">-1bp</td><td>Dipped below 4% on flight to quality; -4.5% MTD</td></tr>
+    <tr><td class="asset-name">DXY</td><td>97.70</td><td class="flat">-0.09%</td><td>Soft ahead of PPI; EUR strength near 1.18</td></tr>
+    <tr><td class="asset-name">VIX</td><td>20.36</td><td class="dn">+9.3%</td><td>Fear gauge spiking on tech rout + month-end hedging; +36% YTD</td></tr>
   </table>
-
-  <!-- BOTTOM LINE -->
   <div class="section-hdr">Bottom Line</div>
   <div class="bottom-line">
-    Overnight tone is <strong>cautiously constructive but capped</strong>. NVDA delivered a clean beat — $68.1B revenue (+73% YoY), $1.62 adj. EPS vs. $1.53 est., and $78B Q1 guide vs. $72.6B Street — yet shares gained only ~1.2% pre-market as the market prices perfection. SPX closed +0.81% at 6,946 with CCMP +1.26% at 23,152 and INDU +308 at 49,482. Crude is the notable mover this morning — <strong>WTI -1.9% to $64.18</strong> as Iran deal optimism builds ahead of Geneva talks, unwinding a chunk of the geopolitical premium. VIX at 17.76 (-0.95%) is well off the Feb highs but still +18.8% YTD, reflecting structural uncertainty. The 2Y/10Y spread at 57.9bps is steepening as the long end rallies on rate cut hopes — 10Y at 4.05%, 30Y at 4.70%. Gold +0.31% to $5,181 marks +19.9% YTD. Play the range until Geneva clarity emerges; lean into materials/copper miners on the structural scarcity bid, and stay nimble on mega-cap tech post-NVDA.
+    Overnight tone is <strong>cautiously risk-off as AI valuation fatigue deepens into month-end</strong>. NVDA dropped 5.5% Thursday despite posting $68.1B in Q4 revenue and guiding Q1 to $78B — Morgan Stanley called it the largest, cleanest beat in semis history, yet the market shrugged. The <strong>10-year yield broke below 4.00%</strong> for the first time this week as quality bids picked up, while <strong>VIX spiked 9.3% to 20.36</strong>. The key tension today: January PPI at 8:30 AM (consensus +0.3% MoM) is the last inflation read before the March 17-18 FOMC, and a hot print would further complicate the Warsh transition narrative. With the Nasdaq tracking a 2.5% February loss — its worst month since March 2025 — and Block's AI-driven 40% workforce cut stoking cross-sector disruption fears, lean defensive into the weekend and let DELL's blowout after-hours guide (+11%) compete with the broader tech unease.
   </div>
-
-  <!-- TOP 10 STORIES -->
   <div class="section-hdr">Top 10 Overnight Stories</div>
   <table class="stories-table">
     <tr><th>#</th><th>Story</th><th>Sector</th><th>Bias</th></tr>
-    <tr><td>1</td><td><span class="story-headline">NVDA beats across the board, guides Q1 to $78B.</span> Data center revenue $62.3B (+75% YoY), EPS $1.62 vs. $1.53 est. Pro Viz +159% YoY. First Vera Rubin samples shipped, production in H2. Stock +1.2% pre-market — muted reaction signals high bar.</td><td>Tech</td><td><span class="bias-mixed">Mixed</span></td></tr>
-    <tr><td>2</td><td><span class="story-headline">US-Iran nuclear talks resume in Geneva — deal proposal on table.</span> Third round of Oman-mediated indirect talks. Iran FM Araghchi presented a written proposal Thursday morning. US has two carrier groups deployed; Rubio says Iran missiles a "big problem." Oil holding $64-70 range.</td><td>FX/Macro</td><td><span class="bias-cautious">Cautious</span></td></tr>
-    <tr><td>3</td><td><span class="story-headline">CRM beats on rev/EPS but FY27 guide disappoints.</span> Q4 revenue $11.2B (+12% YoY), adj. EPS $3.81 vs. $3.04 est. Agentforce ARR hit $1.8B. But FY27 guide of $45.8-46.2B implies ~10-11% growth, below buyside. Benioff announced $50B buyback. Stock -3.6% pre-market.</td><td>Tech</td><td><span class="bias-bear">Bearish</span></td></tr>
-    <tr><td>4</td><td><span class="story-headline">Nikkei 225 hits third consecutive record at 59,199.</span> Takaichi trade extends as PM taps two dovish BOJ board members. Topix also at new peak. Nikkei now +45% past year. Yen weakened to 155.85/USD. Japan 6.4T stimulus boosting sentiment.</td><td>Asia</td><td><span class="bias-bull">Bullish</span></td></tr>
-    <tr><td>5</td><td><span class="story-headline">Copper +6.4% YTD; COPX miners ETF +12% in Feb.</span> May contracts heading for longest monthly advance since Feb 2011. COPX +30% YTD, +140% 12m. Supply-side tightness as smelter capacity lags. Structural scarcity thesis intact.</td><td>Cmdty</td><td><span class="bias-bull">Bullish</span></td></tr>
-    <tr><td>6</td><td><span class="story-headline">Bank of Korea holds at 2.50% for fifth straight meeting.</span> Signals end of easing cycle amid won weakness near 16-year lows and housing risks. Joins BOJ in cautious stance. EM Asia FX under pressure.</td><td>Rates</td><td><span class="bias-cautious">Cautious</span></td></tr>
-    <tr><td>7</td><td><span class="story-headline">Stellantis posts first-ever annual loss — -$26B.</span> Writedowns of €25.4B driven by over-estimated EV transition pace. CEO acknowledges need to "reset." US-listed shares -0.3% pre-market.</td><td>Consumer</td><td><span class="bias-bear">Bearish</span></td></tr>
-    <tr><td>8</td><td><span class="story-headline">Gold holds above $5,150 amid Iran hedging demand.</span> Spot at $5,181, supported by PBoC buying (15th consecutive month) and safe-haven flows. Gold/Silver ratio at 59.2x. Structural bid intact with 3 Fed cuts priced.</td><td>Cmdty</td><td><span class="bias-bull">Bullish</span></td></tr>
-    <tr><td>9</td><td><span class="story-headline">Bitcoin rebounds 6% to ~$67,930.</span> BTC bouncing from post-Warsh lows. ETH +11%, SOL +11%. US spot SOL ETFs saw $30M inflow Wed. Risk-on tone returning to digital assets.</td><td>Crypto</td><td><span class="bias-bull">Bullish</span></td></tr>
-    <tr><td>10</td><td><span class="story-headline">US slaps new sanctions on Iran oil vessels ahead of Geneva.</span> Treasury targeted vessels linked to Iranian oil trade. India-Russia oil freeze unconfirmed. Saudi reportedly boosting output in anticipation of US strikes.</td><td>Energy</td><td><span class="bias-cautious">Cautious</span></td></tr>
+    <tr><td>1</td><td><span class="story-headline">NVDA posts record $68.1B Q4 revenue, guides Q1 to $78B — stock drops 5.5%.</span> EPS $1.62 vs. $1.53 est., data center +75% YoY. Morgan Stanley: "largest, cleanest beat in semis history." Market in 'prove it' mode on AI capex sustainability. Read-through: SMH, AVGO, AMD all under pressure.</td><td>Tech</td><td><span class="bias-mixed">Mixed</span></td></tr>
+    <tr><td>2</td><td><span class="story-headline">Block (XYZ) cuts 40% of workforce — 4,000+ jobs — citing AI.</span> Stock surges 24% after hours. Dorsey: "Smaller teams using intelligence tools can do more." Biggest single-company AI-driven reduction to date. Q4 gross profit +24% YoY to $2.87B. Raises 2026 guide to $12.2B gross profit.</td><td>Tech</td><td><span class="bias-bear">Bearish</span></td></tr>
+    <tr><td>3</td><td><span class="story-headline">WBD board deems Paramount's $31/share ($111B) bid superior to Netflix's $83B offer.</span> NFLX declines to match, stock jumps ~10%. PSKY +4%, WBD -2%. Sarandos: WB "was always a 'nice to have' at the right price." Senate antitrust hearing March 4. Paramount to pay $2.8B breakup fee.</td><td>Consumer</td><td><span class="bias-mixed">Mixed</span></td></tr>
+    <tr><td>4</td><td><span class="story-headline">Dell (DELL) crushes Q4: revenue $33.4B (+39% YoY), EPS $3.89 vs. $3.44 est.</span> AI server revenue $9.0B with $43B backlog. FY26 revenue $113.5B (+19%). Guides FY27 to $140B and $12.90 EPS vs. $10.56 consensus. Stock +11% after hours. AI infra demand validated at enterprise tier.</td><td>Tech</td><td><span class="bias-bull">Bullish</span></td></tr>
+    <tr><td>5</td><td><span class="story-headline">US 10Y yield breaks below 4.00% as flight-to-quality accelerates.</span> 2Y at 3.40%, 5Y at 3.54%, 30Y at 4.64%. Curve steepening. Rate-sensitive sectors catching a bid. Jobless claims 212K vs. 217K est. — labor market still tight. Fed funds steady at 3.50-3.75%.</td><td>Rates</td><td><span class="bias-bull">Bullish</span></td></tr>
+    <tr><td>6</td><td><span class="story-headline">CoreWeave (CRWV) -11% on doubling capex guidance; Zscaler (ZS) -9%.</span> CRM -2%, MSFT -1% premarket. Duolingo (DUOL) -25% premarket on weak 2026 guidance. AI capex fatigue spreading from semis to cloud infra to SaaS. Software destruction narrative intensifying.</td><td>Tech</td><td><span class="bias-bear">Bearish</span></td></tr>
+    <tr><td>7</td><td><span class="story-headline">Japan Tokyo CPI eases to 1.8% YoY, below BoJ's 2% target.</span> First time below target since Oct 2024. National CPI drops to 1.5%. BoJ hike expectations pushed out. Nikkei flat; Hang Seng +0.74%, Kospi -2.3%. MSCI Asia-Pacific headed for best February on record.</td><td>Asia</td><td><span class="bias-cautious">Cautious</span></td></tr>
+    <tr><td>8</td><td><span class="story-headline">Eurozone sentiment falls to 98.3, missing 99.8 consensus.</span> Services confidence collapses to 5.0 from 7.2. Consumer inflation expectations surge to 25.8 — highest since Sep 2024. ECB disinflation narrative complicated. Stoxx 600 on track for 8th straight monthly gain.</td><td>Europe</td><td><span class="bias-cautious">Cautious</span></td></tr>
+    <tr><td>9</td><td><span class="story-headline">Precious metals resilient: gold $5,185, silver surges 3%+ to $89.70.</span> Copper +1.8% to $6.06/lb. Au/Ag ratio compresses to 57.78. Metals acting as alt risk gauge — real asset bid vs. equity valuation concerns. YTD: Au +20%, Ag +25%, Cu +6.6%.</td><td>Cmdty</td><td><span class="bias-bull">Bullish</span></td></tr>
+    <tr><td>10</td><td><span class="story-headline">January PPI due 8:30 AM — last inflation read before March FOMC.</span> Consensus +0.3% MoM headline and core. Dec was hot at +0.5%. PCE-relevant service components key. Warsh nomination adds policy uncertainty. Goldman: Warsh argued for pairing rate cuts with balance sheet reduction.</td><td>FX/Macro</td><td><span class="bias-cautious">Cautious</span></td></tr>
   </table>
-
-  <!-- PRICE vs NARRATIVE GAP -->
   <div class="gap-callout">
-    <strong>■ PRICE vs. NARRATIVE GAP:</strong> CRM is down 28% YTD while delivering accelerating revenue growth (12% YoY, fastest in two years) and $1.8B Agentforce ARR — the market is pricing terminal disruption of enterprise SaaS by open-source AI agents, but CRM's 22,000 Agentforce deals and 11.14T tokens processed suggest it is becoming the disruptor, not the disrupted. Meanwhile, NVDA's muted +1.2% reaction to a massive beat-and-raise suggests the AI infrastructure trade may be shifting from "buy the capex" to "show me the ROI" — watch for rotation from picks-and-shovels into application-layer AI plays.
+    <strong>■ PRICE vs. NARRATIVE GAP:</strong> NVDA is now flat since August despite posting the largest clean beat in semis history — the market has completely decoupled price from fundamentals. Meanwhile, DELL guided FY27 to $140B (+24% YoY) with $43B AI server backlog and surged 11% — the arbitrage is clearly in downstream AI infrastructure over GPU suppliers. JPMorgan's point stands: you cannot simultaneously believe AI will destroy all software companies AND that hyperscaler capex is wasted. Pick a lane.
   </div>
-
-  <!-- WATCH FOR TODAY -->
   <div class="section-hdr">Watch for Today</div>
-  <div class="watch-item"><span class="watch-num">1.</span><strong>US-Iran Geneva outcome (all day):</strong> Binary risk event. Iran tabled a proposal; Witkoff/Kushner meeting Araghchi via Omani mediators. WTI already -1.9% to $64.18 on deal optimism — a breakthrough sends crude sub-$60; breakdown sends WTI toward $72+ and VIX back above 22.</div>
-  <div class="watch-item"><span class="watch-num">2.</span><strong>Initial Jobless Claims (8:30 AM ET):</strong> Expected 217K vs. prior 206K. A print above 225K reignites recession fears and bolsters the case for a June Fed cut. Markets currently price 3 cuts in 2026.</div>
-  <div class="watch-item"><span class="watch-num">3.</span><strong>NVDA price action at the open:</strong> The +1.2% pre-market on a massive beat is underwhelming. Watch the $170 support level — a close below signals the market is rotating out of AI infrastructure. Move above $180 confirms buy-the-dip.</div>
-  <div class="watch-item"><span class="watch-num">4.</span><strong>7-Year Treasury Auction (1:00 PM ET):</strong> With 10Y at 4.05% and duration demand strong, a solid bid-to-cover confirms the rate cut trade. Fed Gov. Bowman also speaks — watch for pushback on dovish pricing.</div>
-
-  <!-- EARNINGS CALENDAR -->
+  <div class="watch-item"><span class="watch-num">1.</span><strong>January PPI at 8:30 AM ET:</strong> Consensus +0.3% MoM headline and core. December was hot at +0.5%. PCE-relevant service components — healthcare and portfolio management PPIs — feed directly into the March 13 PCE release. A print above +0.4% would push 2Y yields back above 3.45% and pressure rate-cut bets.</div>
+  <div class="watch-item"><span class="watch-num">2.</span><strong>Dell (DELL) premarket reaction:</strong> Stock +11% after hours on $33.4B Q4 revenue and $140B FY27 guide. Watch whether AI infra narrative holds given broader semi/cloud selloff. Key level: $134.75 AH print needs to hold above $130 at the open.</div>
+  <div class="watch-item"><span class="watch-num">3.</span><strong>Block (XYZ) opening trade:</strong> +24% after hours on AI-driven 40% workforce cut. This is the canary for broader AI labor displacement. If XYZ holds gains, watch for contagion into SaaS names (CRM, WDAY, NOW) as the market reprices headcount assumptions.</div>
+  <div class="watch-item"><span class="watch-num">4.</span><strong>Month-end rebalancing flows:</strong> SPX tracking 0.4% Feb loss, Nasdaq -2.5%. Pension rebalancing typically pushes equity buying into the close when bonds outperform. Watch SPX 6,875 support — break opens door to 6,800. VIX at 20.36 suggests elevated hedging demand.</div>
   <div class="section-hdr">Major Earnings This Week</div>
   <table class="cal-table">
     <tr><th>Day</th><th>Before Open</th><th>After Close</th></tr>
-    <tr><td>Mon 2/23</td><td>—</td><td>—</td></tr>
-    <tr><td>Tue 2/24</td><td>HD, BABA</td><td>MELI, EOG, WDAY, AXON, FSLR, HPQ</td></tr>
-    <tr><td>Wed 2/25</td><td>BIDU, LI, NIO</td><td><strong>NVDA</strong>, CRM, SNOW, NTNX, IONQ</td></tr>
-    <tr><td>Thu 2/26</td><td>DELL, W, WB, BBWI</td><td>AMAT, MRVL, INTU, ZS, OKTA</td></tr>
-    <tr><td>Fri 2/27</td><td>FRO, NWL</td><td>—</td></tr>
+    <tr><td>Mon 2/23</td><td>D, DPZ, HIMS</td><td>FANG, OKE, KTOS</td></tr>
+    <tr><td>Tue 2/24</td><td>HD, AMT, LCID, O</td><td>MELI, EOG, AXON, WDAY, FSLR, HPQ</td></tr>
+    <tr><td>Wed 2/25</td><td>LOW, TJX</td><td><strong>NVDA</strong>, CRM, IONQ, SNOW, TTD, ZM, AI</td></tr>
+    <tr><td>Thu 2/26</td><td>BIDU, WBD, VST, CELH</td><td><strong>DELL</strong>, XYZ, CRWV, RKLB, ZS, SOUN, MARA</td></tr>
+    <tr><td>Fri 2/27</td><td>DUOL</td><td>—</td></tr>
   </table>
-  <div class="cal-table key-watch"><strong>Key Watch:</strong> MRVL and AMAT after close Thursday — critical reads on AI infrastructure supply chain and will either confirm or challenge NVDA's $78B Q1 guide. DELL before open is the enterprise AI server bellwether.</div>
-
-  <!-- THEMATIC WATCH -->
+  <div class="cal-table key-watch"><strong>Key Watch:</strong> DELL's after-hours surge (+11%) on record AI server demand ($43B backlog, $140B FY27 guide) is the most important data point for the AI infrastructure complex. DUOL -25% premarket on weak 2026 guidance adds to the software destruction narrative.</div>
   <div class="section-hdr">Thematic Watch</div>
-  <div class="theme-item"><strong>1. AI Capex Arms Race — Show-Me Phase Begins.</strong> Combined hyperscaler capex approaching $700B in 2026. NVDA's $78B Q1 guide confirms the spend is real, but CRM's -28% YTD and muted NVDA reaction suggest the market wants downstream ROI. Watch application-layer names (NOW, CRM, PLTR) for rotation from infrastructure to monetization.</div>
-  <div class="theme-item"><strong>2. Precious Metals Structural Bid.</strong> Gold at $5,181 with PBoC buying for 15 consecutive months. Silver underperforming (G/S ratio at 59.2x) but industrial demand from solar accelerating. Copper miners (COPX) up 140% in 12 months. Tariffs, supply bottlenecks, and central bank diversification all supportive.</div>
-  <div class="theme-item"><strong>3. Takaichi Trade / Japan Reflation 2.0.</strong> Nikkei has hit records in 7 of past 12 sessions. PM Takaichi's 6.4T yen strategic investment plan, two dovish BOJ board picks, and food tax suspension create a reflationary cocktail. USD/JPY at 155.85 — yen weakness is the fuel. Risk: JGB yields past 3%.</div>
-  <div class="theme-item"><strong>4. US-Iran Risk Premium — Binary Setup.</strong> Two carrier groups, three rounds of talks, and Iran has tabled a written proposal. WTI at $64.18 (-1.9%) already pricing some optimism. Resolution sends crude toward $58-60, benefiting airlines and consumer. Escalation sends WTI toward $72+ and reignites stagflation fears. NatGas at $2.79 (-36% MTD) is a separate story — warm weather crushing the contract.</div>
-
-  <!-- ECON CALENDAR -->
+  <div class="theme-item"><strong>1. AI Valuation Reset — 'Prove It' Mode.</strong> The market is no longer paying up for AI revenue growth. NVDA's record beat met with a 5.5% selloff crystallizes the shift from 'buy the dream' to 'show me the margins.' Nasdaq's 2.5% Feb decline is worst since March 2025. Dispersion accelerating: downstream (DELL, ANET) separating from GPU names.</div>
+  <div class="theme-item"><strong>2. AI Labor Displacement Goes Mainstream.</strong> Block's 40% workforce reduction, explicitly attributed to AI, marks an inflection point. After Amazon's 16K cuts and Salesforce's AI-driven efficiencies, the playbook is spreading from 'trim the fat' to 'restructure the organism.' Bearish for service-sector employment, bullish for margins if execution holds.</div>
+  <div class="theme-item"><strong>3. Precious Metals Structural Bid.</strong> Gold at $5,185 and silver at $89.70 well-bid despite January volatility washout. Au/Ag ratio compressing to 57.78 suggests broadening demand. Copper at $6.06/lb — industrial metals not pricing recession. Real assets outperforming SPX YTD as anti-fiat bid persists.</div>
+  <div class="theme-item"><strong>4. Warsh Transition — Policy Wildcard.</strong> Kevin Warsh's nomination to succeed Powell adds rate path uncertainty. Goldman: Warsh argued for pairing rate cuts with balance sheet reduction — hawkish-dovish hybrid that could confuse positioning. March 17-18 FOMC is last Powell-chaired meeting. Today's PPI is final pre-meeting inflation print.</div>
   <div class="section-hdr">Key Economic Data This Week</div>
   <table class="cal-table">
     <tr><th>Day</th><th>Release</th><th>Time / Notes</th></tr>
-    <tr><td>Mon 2/23</td><td>No major releases</td><td>—</td></tr>
-    <tr><td>Tue 2/24</td><td>Consumer Confidence (Feb)</td><td>10:00 AM; Improved, helped risk sentiment</td></tr>
-    <tr><td>Wed 2/25</td><td>No marquee releases</td><td>Fed speakers; 10Y at 4.05%</td></tr>
-    <tr><td>Thu 2/26</td><td><strong>Initial Jobless Claims</strong></td><td><strong>8:30 AM; Est. 217K vs. prior 206K — Marquee release</strong></td></tr>
-    <tr><td>Thu 2/26</td><td>7-Year Note Auction</td><td>1:00 PM; Fed Gov. Bowman speaks</td></tr>
-    <tr><td>Fri 2/27</td><td><strong>PCE Price Index (Jan)</strong></td><td><strong>8:30 AM; Core PCE est. 2.6% YoY — key for Fed path</strong></td></tr>
-    <tr><td>Fri 2/27</td><td>Personal Income/Spending (Jan)</td><td>8:30 AM; Consumer health check</td></tr>
+    <tr><td>Mon 2/23</td><td>German ifo Business Climate</td><td>JPY/CNY holiday; light US calendar</td></tr>
+    <tr><td>Tue 2/24</td><td>CB Consumer Confidence (Feb)</td><td>10:00 AM; Richmond Mfg Index also due</td></tr>
+    <tr><td>Wed 2/25</td><td>No marquee US releases</td><td>NVDA earnings dominated the session</td></tr>
+    <tr><td>Thu 2/26</td><td>Initial Jobless Claims</td><td>8:30 AM; Came in 212K vs. 217K est. — labor market still tight</td></tr>
+    <tr><td>Fri 2/27</td><td><strong>January PPI (headline + core)</strong></td><td><strong>Marquee release. 8:30 AM — Consensus +0.3% MoM. Last inflation read before March FOMC. German prelim CPI also due.</strong></td></tr>
   </table>
-
 </div>
-
-<!-- FOOTER -->
-<div class="footer-bar">
-  <div class="container">
-    <div class="footer-brand">22V Research | February 26, 2026</div>
-    <div class="footer-disc">Confidential — For Institutional Use Only</div>
-  </div>
-</div>
-
+<div class="footer-bar"><div class="container"><div class="footer-brand">22V Research | February 27, 2026</div><div class="footer-disc">Confidential — For Institutional Use Only</div></div></div>
 </body>
 </html>

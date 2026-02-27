@@ -78,24 +78,25 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
     <span style="font-size:10px;color:var(--muted)">22V Trading Desk</span>
   </div>
   <div style="display:flex;align-items:center;gap:16px;margin-top:12px">
-    <div class="mono" style="font-size:48px;font-weight:900;color:var(--red);line-height:1">7.5<span style="font-size:24px;color:var(--muted)">/10</span></div>
+    <div class="mono" style="font-size:48px;font-weight:900;color:var(--amber);line-height:1">6<span style="font-size:24px;color:var(--muted)">/10</span></div>
     <div>
-      <span class="pill p-r">ACTIVE DETERIORATION</span>
-      <div style="font-size:11px;color:var(--muted);margin-top:6px">2026-02-26 13:16 ET <span style="color:var(--red)">▲ from 6.5</span></div>
+      <span class="pill p-a">FRAGILE EQUILIBRIUM</span>
+      <span class="chg chg-d">&#9650; from 5</span>
+      <div style="font-size:11px;color:var(--muted);margin-top:6px">2026-02-26 <span style="color:var(--amber)">2026-02-26</span></div>
     </div>
   </div>
   <div class="meter">
-    <div class="m-s" style="background:var(--red)"></div>
-    <div class="m-s" style="background:var(--red)"></div>
-    <div class="m-s" style="background:var(--red)"></div>
-    <div class="m-s" style="background:var(--red)"></div>
-    <div class="m-s" style="background:var(--red)"></div>
-    <div class="m-s" style="background:var(--red)"></div>
-    <div class="m-s" style="background:var(--red)"></div>
-    <div class="m-s" style="background:rgba(239,68,68,.5)"></div>
+    <div class="m-s" style="background:var(--amber)"></div>
+    <div class="m-s" style="background:var(--amber)"></div>
+    <div class="m-s" style="background:var(--amber)"></div>
+    <div class="m-s" style="background:var(--amber)"></div>
+    <div class="m-s" style="background:var(--amber)"></div>
+    <div class="m-s" style="background:var(--amber)"></div>
     <div class="m-s"></div>
     <div class="m-s"></div>
-    <span class="mono" style="margin-left:8px;font-size:14px;font-weight:800;color:var(--red)">7.5/10</span>
+    <div class="m-s"></div>
+    <div class="m-s"></div>
+    <span class="mono" style="margin-left:8px;font-size:14px;font-weight:800;color:var(--amber)">6/10</span>
   </div>
 </div>
 
@@ -142,7 +143,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
       <div style="flex:1">
         <div class="ln">L3: Financing <span style="font-size:10px;color:var(--green);font-weight:800">0/2</span>
         </div>
-        <div class="ld">NFCI -0.563 — loose (tightening) | HY OAS 297bp (wider) | SOFR 3.67%</div>
+        <div class="ld">NFCI -0.563 — loose (tightening) | HY OAS 294bp (tighter) | SOFR 3.67%</div>
       </div>
       <div class="dots">
         <div class="dot" style="background:var(--dim)"></div>
@@ -162,9 +163,9 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
     </div>
     <div class="lr">
       <div style="flex:1">
-        <div class="ln">L5A: Vol Structure <span style="font-size:10px;color:var(--amber);font-weight:800">0.5/1</span>
+        <div class="ln">L5A: Vol Structure <span style="font-size:10px;color:var(--green);font-weight:800">0.0/1</span>
         </div>
-        <div class="ld">VIX 19.97 (▲+11.4%) | IV 16.17% > HV 13.20%</div>
+        <div class="ld">VIX 18.63</div>
       </div>
       <div class="dots">
         <div class="dot" style="background:var(--dim)"></div>
@@ -173,9 +174,9 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
     </div>
     <div class="lr">
       <div style="flex:1">
-        <div class="ln">L5B: Options Sentiment <span style="font-size:10px;color:var(--red);font-weight:800">1.0/1</span> <span style="font-size:9px;padding:1px 6px;border-radius:3px;background:rgba(239,68,68,.1);color:var(--red);font-weight:700;margin-left:4px">PIPELINE + BARCHART</span>
+        <div class="ln">L5B: Options Sentiment <span style="font-size:10px;color:var(--amber);font-weight:800">0.5/1</span> <span style="font-size:9px;padding:1px 6px;border-radius:3px;background:rgba(239,68,68,.1);color:var(--red);font-weight:700;margin-left:4px">PIPELINE + BARCHART</span>
         </div>
-        <div class="ld">P/C 1.19 — elevated fear</div>
+        <div class="ld">P/C 1.31 — elevated fear</div>
       </div>
       <div class="dots">
         <div class="dot" style="background:var(--amber)"></div>
@@ -186,7 +187,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
       <div style="flex:1">
         <div class="ln">L6: Calendar <span style="font-size:10px;color:var(--red);font-weight:800">1/1</span>
         </div>
-        <div class="ld">HIGH events within 30d: FOMC Meeting + Dot Plot (21d), Quad Witching OPEX (23d)</div>
+        <div class="ld">HIGH events within 30d: FOMC Meeting + Dot Plot (20d), Quad Witching OPEX (22d)</div>
       </div>
       <div class="dots">
         <div class="dot" style="background:var(--red)"></div>
@@ -194,56 +195,68 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
       </div>
     </div>
   </div>
+  <div class="card glow-a">
+    <div style="font-size:13px;font-weight:700;color:var(--amber);margin-bottom:8px">&#9889; Score Update — 5 &rarr; 6 (2026-02-26)</div>
+    <div style="font-size:12px;line-height:1.7">
+      <strong>L1:</strong> Margin $1279.0B above $1T record (Jun 2025) | HF gross: GS 285%, JPM 298%<br>
+      <strong>L2:</strong> Margin YoY +36.5% (>20% threshold) | Debt/GDP 4.06% above 3.5% threshold<br>
+      <strong>L3:</strong> NFCI -0.563 — loose (tightening) | HY OAS 294bp (tighter) | SOFR 3.67%<br>
+      <strong>L4:</strong> High concentration: AI Infra Concentration, Mag 7 % of HF Net, Semis Net Exposure, Multistrat Leverage | AI infra cluster + Mag7 rotation confirmed by Q4 13Fs<br>
+      <strong>L5A:</strong> VIX 18.63<br>
+      <strong>L5B:</strong> P/C 1.31 — elevated fear<br>
+      <strong>L6:</strong> HIGH events within 30d: FOMC Meeting + Dot Plot (20d), Quad Witching OPEX (22d)<br>
+    </div>
+  </div>
   <div class="card" style="border-color:rgba(245,158,11,.3)">
     <div style="font-size:14px;font-weight:700;margin-bottom:12px;color:var(--amber)">Real-Time Pulse</div>
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:14px">
       <div style="text-align:center;padding:14px 10px;background:rgba(34,197,94,.06);border-radius:8px;border:1px solid rgba(34,197,94,.15)">
         <div style="font-size:9px;color:var(--muted);letter-spacing:1px;text-transform:uppercase">Turbulence</div>
-        <div class="mono" style="font-size:18px;font-weight:800;color:var(--red);margin-top:6px">ELEVATED</div>
-        <div style="font-size:9px;color:var(--dim);margin-top:4px">VIX 19.97 ▲ &bull; SPX 6,866.88</div>
+        <div class="mono" style="font-size:18px;font-weight:800;color:var(--green);margin-top:6px">NORMAL</div>
+        <div style="font-size:9px;color:var(--dim);margin-top:4px">VIX 18.63 &bull; SPX 6946.13</div>
       </div>
       <div style="text-align:center;padding:14px 10px;background:rgba(245,158,11,.06);border-radius:8px;border:1px solid rgba(245,158,11,.15)">
         <div style="font-size:9px;color:var(--muted);letter-spacing:1px;text-transform:uppercase">Regime</div>
-        <div class="mono" style="font-size:18px;font-weight:800;color:var(--red);margin-top:6px">STRESS ONSET</div>
-        <div style="font-size:9px;color:var(--dim);margin-top:4px">Score 7.5/10</div>
+        <div class="mono" style="font-size:18px;font-weight:800;color:var(--amber);margin-top:6px">FRAGILE EQ</div>
+        <div style="font-size:9px;color:var(--dim);margin-top:4px">Score 6/10</div>
       </div>
       <div style="text-align:center;padding:14px 10px;background:rgba(245,158,11,.06);border-radius:8px;border:1px solid rgba(245,158,11,.15)">
         <div style="font-size:9px;color:var(--muted);letter-spacing:1px;text-transform:uppercase">Synthesis</div>
-        <div class="mono" style="font-size:14px;font-weight:700;color:var(--red);margin-top:6px">TAPE CONFIRMING</div>
-        <div style="font-size:9px;color:var(--dim);margin-top:4px">Structural + real-time stress aligned</div>
+        <div class="mono" style="font-size:14px;font-weight:700;color:var(--amber);margin-top:6px">TAPE DIVERGING</div>
+        <div style="font-size:9px;color:var(--dim);margin-top:4px">Calm surface - loaded</div>
       </div>
     </div>
     <div style="font-size:11px;color:var(--amber);font-weight:600;font-style:italic;line-height:1.6;padding:10px 14px;background:rgba(245,158,11,.05);border-radius:8px">Structural leverage at records but financing actively easing. protection buying vs loose financing</div>
   </div>
   <div class="card">
     <div style="font-size:14px;font-weight:700;margin-bottom:4px">Real-Time Readings</div>
-    <div style="font-size:10px;color:var(--red);margin-bottom:10px">2026-02-26 13:16 ET</div>
+    <div style="font-size:10px;color:var(--amber);margin-bottom:10px">2026-02-26</div>
     <div class="stats">
       <div class="st">
         <div class="st-l">Equity P/C</div>
-        <div class="st-v w">1.187</div>
+        <div class="st-v w">1.309</div>
         <div class="st-s w">EXTREME FEAR</div>
       </div>
       <div class="st">
         <div class="st-l">GEX (Barchart)</div>
         <div class="st-v" style="color:var(--green)">LONG
         </div>
-        <div class="st-s">Flip 6901 &bull; SPX BELOW ⚠️</div>
+        <div class="st-s">Flip 6865 &bull; Walls 7000</div>
       </div>
       <div class="st">
         <div class="st-l">VIX</div>
-        <div class="st-v" style="color:var(--amber)">19.97</div>
-        <div class="st-s">IV 16.17% ▲</div>
+        <div class="st-v" style="color:var(--green)">18.63</div>
+        <div class="st-s">IV 14.33%</div>
       </div>
       <div class="st">
         <div class="st-l">CBOE SKEW</div>
-        <div class="st-v">146.05</div>
+        <div class="st-v">146.57</div>
         <div class="st-s">ELEVATED</div>
       </div>
       <div class="st">
         <div class="st-l">HY OAS</div>
-        <div class="st-v" style="color:var(--green)">297bp</div>
-        <div class="st-s">Wider from 295</div>
+        <div class="st-v" style="color:var(--green)">294bp</div>
+        <div class="st-s">Tighter from 297</div>
       </div>
       <div class="st">
         <div class="st-l">NFCI</div>
@@ -267,8 +280,8 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
       </div>
       <div class="st">
         <div class="st-l">IV / HV</div>
-        <div class="st-v">16.17% / 13.20%</div>
-        <div class="st-s">IV Rank 17.29% | IV Pctl 70%</div>
+        <div class="st-v">14.33% / 12.83%</div>
+        <div class="st-s">IV Rank 11.52%</div>
       </div>
     </div>
   </div>
@@ -305,7 +318,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
         <text x="568" y="195" fill="#64748b" font-size="8" text-anchor="middle" >2025 Q4</text>
         <text x="615" y="195" fill="#ff0040" font-size="8" text-anchor="middle" font-weight="700">2026 Q1</text>
     </svg>
-    <div class="frow"><span class="ftag ftag-r">Debt/GDP: 4.06% (record)</span><span class="ftag ftag-r">Margin YoY: +36.5%</span><span class="ftag ftag-a">SPX YoY: +15.5%</span>
+    <div class="frow"><span class="ftag ftag-r">Debt/GDP: 4.06% (record)</span><span class="ftag ftag-r">Margin YoY: +36.5%</span><span class="ftag ftag-a">SPX YoY: +14.9%</span>
     </div>
   </div>
   <div class="card">
@@ -326,7 +339,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
       <div class="st">
         <div class="st-l">Margin YoY</div>
         <div class="st-v w">+36.5%</div>
-        <div class="st-s w">SPX +15.5% = 2.4x gap</div>
+        <div class="st-s w">SPX +14.9% = 2.4x gap</div>
       </div>
       <div class="st">
         <div class="st-l">Leveraged ETFs</div>
@@ -342,13 +355,13 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
   <div class="card">
     <div style="font-size:14px;font-weight:700;margin-bottom:4px">Leverage Gap (Margin YoY &minus; SPX YoY)</div>
     <div style="font-size:11px;color:var(--muted);margin-bottom:14px">
-      Current: +21.0pp. 
+      Current: +21.6pp. 
     </div>
     <div class="bch" id="gc"></div>
     <div class="stats" style="margin-top:14px">
       <div class="st"><div class="st-l">Margin YoY</div><div class="st-v w">+36.5%</div></div>
-      <div class="st"><div class="st-l">SPX YoY</div><div class="st-v">+15.5%</div></div>
-      <div class="st"><div class="st-l">Gap</div><div class="st-v w">+21.0pp</div></div>
+      <div class="st"><div class="st-l">SPX YoY</div><div class="st-v">+14.9%</div></div>
+      <div class="st"><div class="st-l">Gap</div><div class="st-v w">+21.6pp</div></div>
       <div class="st"><div class="st-l">Debt/GDP</div><div class="st-v w">4.06%</div></div>
     </div>
   </div>
@@ -364,8 +377,8 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
     <div style="font-size:12px;line-height:1.7;margin-bottom:16px">
       <strong style="color:var(--green)">Financing conditions are easing, not tightening.</strong>
       NFCI moved from -0.510 &rarr; -0.563 (2026-02-20).
-      HY OAS widened from 295&rarr;297bp.
-      SOFR rose to 3.67%.
+      HY OAS tightened from 297&rarr;294bp.
+      SOFR stable at 3.67%.
       <strong style="color:var(--amber)">This is the key layer keeping the composite at 6 instead of 8-10. If HY &gt; 350bp or NFCI &gt; -0.30, score jumps to 8-10 (Active Deterioration &rarr; Cascade).</strong>
     </div>
     <div class="stats">
@@ -376,8 +389,8 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
       </div>
       <div class="st">
         <div class="st-l">HY OAS</div>
-        <div class="st-v" style="color:var(--green)">297bp</div>
-        <div class="st-s">Wider from 295</div>
+        <div class="st-v" style="color:var(--green)">294bp</div>
+        <div class="st-s">Tighter from 297</div>
       </div>
       <div class="st">
         <div class="st-l">GS FCI</div>
@@ -407,8 +420,8 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
   <div class="card">
     <div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:10px">MAG-7 MARKET CAP CONCENTRATION</div>
     <div class="stats">
-      <div class="st"><div class="st-l">Mag-7 % of SPX</div><div class="st-v w">42.1%</div></div>
-      <div class="st"><div class="st-l">Mag-7 Total</div><div class="st-v">$21.0T</div></div>
+      <div class="st"><div class="st-l">Mag-7 % of SPX</div><div class="st-v w">41.3%</div></div>
+      <div class="st"><div class="st-l">Mag-7 Total</div><div class="st-v">$20.6T</div></div>
     </div>
   </div>
 </div>
@@ -423,11 +436,11 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
       </div>
       <span class="pill p-r">EXTREME FEAR</span>
     </div>
-    <div style="font-size:10px;color:var(--muted);margin-bottom:14px">2026-02-26 13:16 ET</div>
+    <div style="font-size:10px;color:var(--muted);margin-bottom:14px">2026-02-26</div>
     <div class="g4">
       <div class="mc" style="border-color:rgba(239,68,68,.25)">
         <div class="mc-l">Equity P/C</div>
-        <div class="mc-v" style="color:var(--red)">1.187</div>
+        <div class="mc-v" style="color:var(--red)">1.309</div>
         <div class="mc-s" style="color:var(--amber);font-weight:700">+0.50 pts</div>
         <div class="mc-s">Threshold: &gt; 0.85</div>
       </div>
@@ -436,41 +449,41 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
         <div class="mc-v" style="color:var(--green)">LONG
         </div>
         <div class="mc-s" style="color:var(--muted);font-weight:700">0 pts</div>
-        <div class="mc-s">Flip 6901 &bull; SPX BELOW ⚠️</div>
+        <div class="mc-s">Flip 6865 &bull; SPX above</div>
       </div>
       <div class="mc" style="border-color:rgba(100,116,139,.25)">
         <div class="mc-l">VIX 30d RoC</div>
-        <div class="mc-v" style="color:var(--muted)">+11%</div>
+        <div class="mc-v" style="color:var(--muted)">+15%</div>
         <div class="mc-s" style="color:var(--muted);font-weight:700">0 pts</div>
         <div class="mc-s">Threshold: &gt; 25%</div>
       </div>
       <div class="mc" style="border-color:rgba(239,68,68,.25)">
         <div class="mc-l">CBOE SKEW</div>
-        <div class="mc-v" style="color:var(--red)">146.05</div>
+        <div class="mc-v" style="color:var(--red)">146.57</div>
         <div class="mc-s" style="color:var(--muted);font-weight:700">ELEVATED</div>
         <div class="mc-s">Threshold: &gt; 145</div>
       </div>
     </div>
-    <div style="margin-top:12px;font-size:12px;font-weight:700;color:var(--muted)">Layer 5B Score: <span style="color:var(--red);font-size:16px" class="mono">1.00 / 1.00</span></div>
+    <div style="margin-top:12px;font-size:12px;font-weight:700;color:var(--muted)">Layer 5B Score: <span style="color:var(--amber);font-size:16px" class="mono">0.50 / 1.00</span></div>
   </div>
   <div class="card">
     <div style="font-size:14px;font-weight:700;margin-bottom:10px">Vol Surface</div>
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px">
-      <div class="mc"><div class="mc-l">IV</div><div class="mc-v" style="font-size:20px">16.17%</div></div>
-      <div class="mc"><div class="mc-l">HV (30d)</div><div class="mc-v" style="font-size:20px">13.20%</div></div>
-      <div class="mc"><div class="mc-l">IV Rank</div><div class="mc-v" style="font-size:20px;color:var(--amber)">17.29%</div></div>
-      <div class="mc"><div class="mc-l">IV Pctl</div><div class="mc-v" style="font-size:20px;color:var(--amber)">70.0%</div></div>
+      <div class="mc"><div class="mc-l">IV</div><div class="mc-v" style="font-size:20px">14.33%</div></div>
+      <div class="mc"><div class="mc-l">HV (30d)</div><div class="mc-v" style="font-size:20px">12.83%</div></div>
+      <div class="mc"><div class="mc-l">IV Rank</div><div class="mc-v" style="font-size:20px">11.52%</div></div>
+      <div class="mc"><div class="mc-l">IV Pctl</div><div class="mc-v" style="font-size:20px">54.0%</div></div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:10px">
       <div class="mc" style="border-color:rgba(34,197,94,.2)">
         <div class="mc-l">GEX Flip</div>
-        <div class="mc-v" style="color:var(--red);font-size:20px">6901</div>
-        <div class="mc-s">SPX 6867 BELOW &rarr; short &gamma; ⚠️</div>
+        <div class="mc-v" style="color:var(--green);font-size:20px">6865</div>
+        <div class="mc-s">SPX above &rarr; long &gamma;</div>
       </div>
       <div class="mc"><div class="mc-l">Put Wall</div><div class="mc-v" style="font-size:20px">7000</div></div>
       <div class="mc"><div class="mc-l">Call Wall</div><div class="mc-v" style="font-size:20px">7000</div></div>
     </div>
-    <div style="font-size:10px;color:var(--muted);margin-top:6px;text-align:right">Source: Barchart &mdash; 2026-02-26 13:16 ET</div>
+    <div style="font-size:10px;color:var(--muted);margin-top:6px;text-align:right">Source: Barchart &mdash; 2026-02-26</div>
   </div>
   <div class="card">
     <div style="font-size:14px;font-weight:700;margin-bottom:4px">VIX 30-Day Trend</div>
@@ -478,11 +491,11 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
       <line x1="30" y1="120" x2="590" y2="120" stroke="#1e293b" stroke-width=".5"/>
       <line x1="30" y1="61" x2="590" y2="61" stroke="#f59e0b" stroke-dasharray="4 4" stroke-width=".5"/>
       <text x="595" y="64" fill="#f59e0b" font-size="8">20</text>
-      <polyline points="40,105 66,103 91,103 117,97 143,90 169,103 194,84 220,76 246,40 271,56 297,91 323,86 349,88 374,51 400,54 426,57 451,65 477,58 503,71 529,49 554,66 580,85" fill="none" stroke="var(--accent)" stroke-width="2"/>
-      <circle cx="580" cy="85" r="4" fill="var(--green)"/>
-      <text x="575" y="78" fill="var(--red)" font-size="8" text-anchor="end">19.97</text>
+      <polyline points="40,105 65,103 89,103 114,97 138,90 163,103 187,84 212,76 236,40 261,56 285,91 310,86 335,88 359,51 384,54 408,57 433,65 457,58 482,71 506,49 531,66 555,85 580,76" fill="none" stroke="var(--accent)" stroke-width="2"/>
+      <circle cx="580" cy="76" r="4" fill="var(--green)"/>
+      <text x="575" y="69" fill="var(--green)" font-size="8" text-anchor="end">18.63</text>
       <text x="40" y="130" fill="#64748b" font-size="8">2026-01-26</text>
-      <text x="580" y="130" fill="var(--red)" font-size="8" text-anchor="end">2026-02-26</text>
+      <text x="580" y="130" fill="var(--green)" font-size="8" text-anchor="end">2026-02-26</text>
     </svg>
   </div>
 </div>
@@ -515,15 +528,6 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
         <div style="display:flex;align-items:center;gap:8px">
           <span class="et">Quarter-End Rebalancing</span>
           <span class="pill p-r">HIGH</span>
-        </div>
-      </div>
-    </div>
-    <div class="er">
-      <div class="ed">2026-04-02</div>
-      <div>
-        <div style="display:flex;align-items:center;gap:8px">
-          <span class="et">Treasury Refunding Announcement</span>
-          <span class="pill p-a">MED</span>
         </div>
       </div>
     </div>
@@ -622,13 +626,13 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
         <span style="font-size:11px;font-weight:700;color:var(--muted)">ACTIVATION PROBABILITY</span>
         <span class="pill p-a">MODERATE &mdash; STEPS 1-2 PRE-LOADED</span>
       </div>
-      <div style="font-size:12px;line-height:1.7">Step 1 ACTIVE: Record leverage loaded | Step 2 ACTIVE: Momentum accelerating | Step 3 NEWLY ACTIVE: SPX below gamma flip, neg gamma amplification, VIX surging +11% | Step 4 BLOCKED: Financing still loose (L3=0/2) — but HY OAS widening to 297bp</div>
+      <div style="font-size:12px;line-height:1.7">Step 1 ACTIVE: Record leverage loaded | Step 2 ACTIVE: Momentum accelerating | Step 3 BLOCKED: Financing still loose (score 0/2) | Step 4 BLOCKED: Dealers long gamma, vol suppressed</div>
     </div>
   </div>
 </div>
 
 
-<div class="foot">Sources: FINRA, OFR Form PF, GS/JPM/MS Prime, Chicago Fed NFCI, HY OAS, SOFR, Bloomberg OVME, Barchart GEX, Pipeline. Not investment advice. Maguire Leverage Monitor &mdash; 22V Trading Desk. Updated 2026-02-26 13:16 ET.</div>
+<div class="foot">Sources: FINRA, OFR Form PF, GS/JPM/MS Prime, Chicago Fed NFCI, HY OAS, SOFR, Bloomberg OVME, Barchart GEX, Pipeline. Not investment advice. Maguire Leverage Monitor &mdash; 22V Trading Desk. Updated 2026-02-26.</div>
 </div>
 
 
@@ -655,7 +659,7 @@ T.forEach(function(t,i){var b=document.createElement("button");b.className="tab"
 (function(){
   var d=[
     {m:"Jul 25",g:18},{m:"Aug",g:20},{m:"Sep",g:22},{m:"Oct",g:25},{m:"Nov",g:28},{m:"Dec",g:30},
-    {m:"Current",g:21}
+    {m:"Current",g:22}
   ],c=document.getElementById("gc");
   if(!c)return;
   var h="";
@@ -674,7 +678,7 @@ T.forEach(function(t,i){var b=document.createElement("button");b.className="tab"
     {n:"Crypto ETF Exposure",p:30,t:"Down 28% Q3→Q4 — derisking",c:"var(--green)"},
     {n:"Equal-Weight Pivot",p:40,t:"Druckenmiller RSP — breadth play",c:"var(--green)"},
     {n:"Multistrat Leverage",p:92,t:"645% gross — extreme",c:"var(--red)"}
-    ,{n:"Mag-7 % of SPX",p:84,t:"42.1% of S&P 500",c:"var(--red)"}
+    ,{n:"Mag-7 % of SPX",p:83,t:"41.3% of S&P 500",c:"var(--red)"}
   ],e=document.getElementById("cb");
   if(!e)return;
   var h="";

@@ -649,13 +649,10 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
 var T=["Composite","L1 Levels","L2 Momentum","L3 Financing","L4 Crowding","L5 Vol & Options","L6 Calendar","Cascade"];
 var tb=document.getElementById("tabs");
 T.forEach(function(t,i){var b=document.createElement("button");b.className="tab"+(i===0?" on":"");b.textContent=t;b.onclick=function(){document.querySelectorAll(".pnl").forEach(function(p){p.classList.remove("on")});document.querySelectorAll(".tab").forEach(function(x){x.classList.remove("on")});document.getElementById("p"+i).classList.add("on");b.classList.add("on")};tb.appendChild(b)});
-(function(){
-  var d=[
-    {q:"Q1 24",gs:258,jpm:265},{q:"Q2 24",gs:262,jpm:270},
-    {q:"Q3 24",gs:268,jpm:278},{q:"Q4 24",gs:273,jpm:284},
-    {q:"Q1 25",gs:275,jpm:288},{q:"Q2 25",gs:278,jpm:290},
-    {q:"Q3 25",gs:280,jpm:294},
-    {q:"Q4 25",gs:285,jpm:298}
+(function(){var d=[
+    {q:"Jan 25",gs:273,jpm:280},{q:"Jun 25",gs:294,jpm:291},
+    {q:"Nov 25",gs:285,jpm:298},{q:"Dec 25",gs:293,jpm:300},
+    {q:"Current",gs:285,jpm:298}
   ],mn=240,mx=310,r=mx-mn,c=document.getElementById("hfc");
   if(!c)return;
   var h="";
@@ -665,9 +662,8 @@ T.forEach(function(t,i){var b=document.createElement("button");b.className="tab"
   });
   c.innerHTML=h;
 })();
-(function(){
-  var d=[
-    {m:"Jul 25",g:18},{m:"Aug",g:20},{m:"Sep",g:22},{m:"Oct",g:25},{m:"Nov",g:28},{m:"Dec",g:30},
+(function(){var d=[
+    {m:"Jun 25",g:12},{m:"Aug",g:17},{m:"Oct",g:21},{m:"Dec",g:15},
     {m:"Current",g:21}
   ],c=document.getElementById("gc");
   if(!c)return;

@@ -853,12 +853,16 @@ T.forEach(function(t,i){var b=document.createElement("button");b.className="tab"
 
 {#- HF Gross Leverage Bar Chart (L1) #}
 (function(){
+  {#- Verified data: GS/JPM prime brokerage reports via Reuters, Hedgeweek, Goldman Marquee.
+       Start of 2025: GS ~273% (285.2 - 12.4pp YTD per Reuters Dec 4 2025).
+       Jun 2025: GS 294% (Hedgeweek "five-year high").
+       Nov 2025: GS 285.2%, JPM 297.9% (Reuters Dec 4 2025). MS: top 1% of 15yr.
+       Dec 2025: GS 286.6% → 292.8% (Longbridge Dec 9 2025, Financial Content Jan 7 2026).
+       Current: from pipeline l1_leverage overrides. -#}
   var d=[
-    {q:"Q1 24",gs:258,jpm:265},{q:"Q2 24",gs:262,jpm:270},
-    {q:"Q3 24",gs:268,jpm:278},{q:"Q4 24",gs:273,jpm:284},
-    {q:"Q1 25",gs:275,jpm:288},{q:"Q2 25",gs:278,jpm:290},
-    {q:"Q3 25",gs:280,jpm:294},
-    {q:"Q4 25",gs:{{ (layers.get('l1', {}).get('data', {}).hf_gross_gs | default(285)) }},jpm:{{ (layers.get('l1', {}).get('data', {}).hf_gross_jpm | default(298)) }}}
+    {q:"Jan 25",gs:273,jpm:280},{q:"Jun 25",gs:294,jpm:291},
+    {q:"Nov 25",gs:285,jpm:298},{q:"Dec 25",gs:293,jpm:300},
+    {q:"Current",gs:{{ (layers.get('l1', {}).get('data', {}).hf_gross_gs | default(285)) }},jpm:{{ (layers.get('l1', {}).get('data', {}).hf_gross_jpm | default(298)) }}}
   ],mn=240,mx=310,r=mx-mn,c=document.getElementById("hfc");
   if(!c)return;
   var h="";
@@ -873,8 +877,14 @@ T.forEach(function(t,i){var b=document.createElement("button");b.className="tab"
 (function(){
   {%- set l2d_js = layers.get('l2', {}).get('data', {}) %}
   {%- set gap_val = (l2d_js.margin_yoy_pct | default(0)) - (l2d_js.spx_yoy_pct | default(0)) %}
+  {#- Leverage gap: margin YoY minus SPX YoY. Using pipeline margin_history data.
+       Jun 25: $1008B, Jun 24 est ~$800B → +26% margin vs SPX ~+14% = +12pp gap
+       Aug 25: $1060B (+33% YoY per FINRA/Advisor Perspectives) vs SPX ~+16% = +17pp
+       Oct 25: $1184B (+39% per pipeline) vs SPX ~+18% = +21pp
+       Dec 25: $1226B (+31% per pipeline) vs SPX ~+16% = +15pp
+       Jan 26: $1279B (+36.5% per pipeline) vs SPX +15.5% = +21pp -#}
   var d=[
-    {m:"Jul 25",g:18},{m:"Aug",g:20},{m:"Sep",g:22},{m:"Oct",g:25},{m:"Nov",g:28},{m:"Dec",g:30},
+    {m:"Jun 25",g:12},{m:"Aug",g:17},{m:"Oct",g:21},{m:"Dec",g:15},
     {m:"Current",g:{{ '%.0f' | format(gap_val) }}}
   ],c=document.getElementById("gc");
   if(!c)return;

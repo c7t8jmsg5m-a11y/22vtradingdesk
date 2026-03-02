@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maguire Leverage Monitor — 22V Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0e17;--card:#111827;--border:#1e293b;--red:#ef4444;--amber:#f59e0b;--green:#22c55e;--blue:#3b82f6;--text:#e2e8f0;--muted:#64748b;--dim:#334155;--accent:#f97316;--crit:#ff0040}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:820px;margin:0 auto;padding:24px 20px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px 20px;margin-bottom:12px}
+.glow-a{border-color:rgba(245,158,11,.27)}.glow-g{border-color:rgba(34,197,94,.27)}.glow-r{border-color:rgba(239,68,68,.27)}
+.mono{font-family:'JetBrains Mono',monospace}
+.pill{display:inline-block;border-radius:20px;padding:3px 12px;font-size:11px;font-weight:700;letter-spacing:.5px}
+.p-a{background:rgba(245,158,11,.09);color:var(--amber);border:1px solid rgba(245,158,11,.27)}
+.p-r{background:rgba(239,68,68,.09);color:var(--red);border:1px solid rgba(239,68,68,.27)}
+.p-g{background:rgba(34,197,94,.09);color:var(--green);border:1px solid rgba(34,197,94,.27)}
+.p-c{background:rgba(255,0,64,.09);color:var(--crit);border:1px solid rgba(255,0,64,.27)}
+.tabs{display:flex;gap:4px;margin-bottom:16px;overflow-x:auto;padding-bottom:4px}
+.tab{background:0;border:1px solid var(--border);color:var(--muted);border-radius:6px;padding:6px 12px;font-size:11px;font-weight:500;cursor:pointer;white-space:nowrap;font-family:inherit;transition:all .2s}
+.tab:hover{border-color:var(--accent);color:var(--accent)}
+.tab.on{background:rgba(249,115,22,.13);border-color:var(--accent);color:var(--accent);font-weight:700}
+.pnl{display:none}.pnl.on{display:block}
+.meter{display:flex;gap:3px;align-items:center;margin-top:10px}
+.m-s{width:10px;height:16px;border-radius:2px;background:var(--dim)}.m-s.on{background:var(--red)}
+.stats{display:flex;flex-wrap:wrap;gap:20px}
+.st{flex:1;min-width:130px}.st-l{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.st-v{font-size:20px;font-weight:800;font-family:'JetBrains Mono',monospace}.st-v.w{color:var(--red)}
+.st-s{font-size:10px;color:var(--muted);margin-top:2px}.st-s.w{color:var(--amber)}
+.lr{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border)}
+.lr:last-child{border-bottom:0}
+.ln{font-size:13px;font-weight:700}.ld{font-size:11px;color:var(--muted);margin-top:2px}
+.dots{display:flex;gap:3px}.dot{width:22px;height:8px;border-radius:2px;background:var(--dim)}
+.bch{display:flex;align-items:flex-end;gap:4px;height:180px;padding:10px 0;border-bottom:1px solid var(--border)}
+.bg{display:flex;flex-direction:column;align-items:center;flex:1;gap:2px;justify-content:flex-end;height:100%}
+.bg .bs{display:flex;gap:2px;align-items:flex-end;width:100%}
+.b{border-radius:3px 3px 0 0;min-width:8px;flex:1;position:relative;transition:opacity .15s}.b:hover{opacity:.8}
+.bl{font-size:9px;color:var(--muted);margin-top:4px;text-align:center}
+.bt{display:none;position:absolute;bottom:100%;left:50%;transform:translateX(-50%);background:var(--card);border:1px solid var(--border);border-radius:4px;padding:4px 8px;font-size:10px;white-space:nowrap;z-index:10}
+.b:hover .bt{display:block}
+.pt{height:8px;background:var(--dim);border-radius:4px;overflow:hidden}.pf{height:100%;border-radius:4px;transition:width .5s}
+.er{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid var(--border)}.er:last-child{border-bottom:0}
+.ed{min-width:70px;font-size:11px;font-weight:700;color:var(--muted)}.et{font-size:12px;font-weight:700}.ee{font-size:11px;color:var(--muted);margin-top:3px}
+.cs{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.cn{width:24px;height:24px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;border:1px solid var(--border);color:var(--muted)}
+.cn.h{background:rgba(239,68,68,.13);color:var(--red);border-color:rgba(239,68,68,.27)}
+.ct{font-size:12px}.ct.h{font-weight:600}.ca{color:var(--dim);font-size:14px;margin-left:4px}
+.al{margin-top:12px;padding:10px;border-radius:6px;font-size:11px;line-height:1.6}
+.al-r{background:rgba(239,68,68,.07);border-left:3px solid var(--red)}
+.al-g{background:rgba(34,197,94,.07);border-left:3px solid var(--green)}
+.al-o{background:rgba(249,115,22,.07);border-left:3px solid var(--accent)}
+.rc{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px}
+.ra{color:var(--accent);font-size:14px;line-height:1}.rt{font-size:12px;line-height:1.5}
+.foot{margin-top:20px;padding-top:12px;border-top:1px solid var(--border);font-size:9px;color:var(--dim);line-height:1.8}
+.chg{font-size:9px;padding:2px 6px;border-radius:3px;margin-left:6px;font-weight:700}
+.chg-u{background:rgba(239,68,68,.1);color:var(--red)}
+.chg-d{background:rgba(34,197,94,.1);color:var(--green)}
+.frow{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.ftag{font-size:10px;padding:4px 10px;border-radius:4px;font-weight:600;font-family:'JetBrains Mono',monospace}
+.ftag-r{background:rgba(239,68,68,.1);color:var(--red);border:1px solid rgba(239,68,68,.18)}
+.ftag-a{background:rgba(245,158,11,.1);color:var(--amber);border:1px solid rgba(245,158,11,.18)}
+.g4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px}
+.mc{text-align:center;padding:14px;background:var(--bg);border-radius:8px;border:1px solid var(--border)}
+.mc-l{font-size:9px;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
+.mc-v{font-size:26px;font-weight:800;font-family:'JetBrains Mono',monospace;margin:6px 0}
+.mc-s{font-size:9px}
+@media(max-width:600px){.stats{gap:12px}.st{min-width:110px}.st-v{font-size:16px}.g4{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body><div class="wrap">
+
+<div style="margin-bottom:24px">
+  <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:4px">
+    <span style="font-size:11px;font-weight:800;letter-spacing:3px;color:var(--accent);text-transform:uppercase">Maguire Leverage Monitor</span>
+    <span style="font-size:10px;color:var(--muted)">22V Trading Desk</span>
+  </div>
+  <div style="display:flex;align-items:center;gap:16px;margin-top:12px">
+    <div class="mono" style="font-size:48px;font-weight:900;color:var(--red);line-height:1">8<span style="font-size:24px;color:var(--muted)">/10</span></div>
+    <div>
+      <span class="pill p-r">ACTIVE DETERIORATION</span>
+      <span class="chg chg-d">&#9650; from 7</span>
+      <div style="font-size:11px;color:var(--muted);margin-top:6px">2026-03-02 <span style="color:var(--red)">2026-03-02</span></div>
+    </div>
+  </div>
+  <div class="meter">
+    <div class="m-s" style="background:var(--red)"></div>
+    <div class="m-s" style="background:var(--red)"></div>
+    <div class="m-s" style="background:var(--red)"></div>
+    <div class="m-s" style="background:var(--red)"></div>
+    <div class="m-s" style="background:var(--red)"></div>
+    <div class="m-s" style="background:var(--red)"></div>
+    <div class="m-s" style="background:var(--red)"></div>
+    <div class="m-s" style="background:var(--red)"></div>
+    <div class="m-s"></div>
+    <div class="m-s"></div>
+    <span class="mono" style="margin-left:8px;font-size:14px;font-weight:800;color:var(--red)">8/10</span>
+  </div>
+</div>
+
+
+<div class="card" style="border-color:rgba(249,115,22,.35);border-left:3px solid var(--accent);margin-bottom:16px">
+  <div style="font-size:11px;font-weight:700;letter-spacing:1px;color:var(--accent);margin-bottom:4px">&#9888; REGIME_UPGRADE</div>
+  <div style="font-size:12px;line-height:1.7">
+    <strong style="color:var(--amber)">Key tension:</strong> Structural leverage + options fear CONFIRMED by vol surge and spread widening. VVIX >110 new trigger.
+    Financing direction: <strong style="color:var(--red)">early tightening (HY OAS 297bp up from 265bp, +6.47bp today)</strong>.
+    <strong style="color:var(--red)">Composite upgraded 7.5 → 8.0. VVIX broke 110 (now 114) and VIX surging to 21.54 — upgraded L5A to 1.0/1.0. Spreads widening: HY +6.47bp, CCC at 915bp — L3 upgraded to 0.5/2. SPX in neg gamma below both 50d and 200d MAs. FOMC + quad witch in 16-18 days. The only firewall is L3 not yet at stress levels — if HY OAS breaks 325bp, upgrade to Cascade Imminent.</strong>
+  </div>
+</div>
+
+
+<div class="tabs" id="tabs"></div>
+
+
+<div class="pnl on" id="p0">
+  <div class="card">
+    <div style="font-size:14px;font-weight:700;margin-bottom:14px;color:var(--accent)">Layer Breakdown</div>
+    <div class="lr">
+      <div style="flex:1">
+        <div class="ln">L1: Leverage Levels <span style="font-size:10px;color:var(--red);font-weight:800">2/2</span>
+        </div>
+        <div class="ld">Margin $1279.0B above $1T record (Jun 2025) | HF gross: GS 285%, JPM 298%</div>
+      </div>
+      <div class="dots">
+        <div class="dot" style="background:var(--red)"></div>
+        <div class="dot" style="background:var(--red)"></div>
+      </div>
+    </div>
+    <div class="lr">
+      <div style="flex:1">
+        <div class="ln">L2: Momentum <span style="font-size:10px;color:var(--red);font-weight:800">2/2</span>
+        </div>
+        <div class="ld">Margin YoY +36.5% (>20% threshold) | Debt/GDP 4.06% above 3.5% threshold</div>
+      </div>
+      <div class="dots">
+        <div class="dot" style="background:var(--red)"></div>
+        <div class="dot" style="background:var(--red)"></div>
+      </div>
+    </div>
+    <div class="lr">
+      <div style="flex:1">
+        <div class="ln">L3: Financing <span style="font-size:10px;color:var(--amber);font-weight:800">0.5/2</span>
+        </div>
+        <div class="ld">NFCI -0.563 — loose but tightening | HY OAS 297bp widening from 265bp Jan low | CCC 915bp | BBB 102bp | SOFR 3.68% | HY spread +6.47bp today</div>
+      </div>
+      <div class="dots">
+        <div class="dot" style="background:var(--dim)"></div>
+        <div class="dot" style="background:var(--dim)"></div>
+      </div>
+    </div>
+    <div class="lr">
+      <div style="flex:1">
+        <div class="ln">L4: Crowding <span style="font-size:10px;color:var(--red);font-weight:800">1/1</span>
+        </div>
+        <div class="ld">High concentration: AI Infra Concentration, Mag 7 % of HF Net, Semis Net Exposure, Multistrat Leverage | AI infra cluster + Mag7 rotation confirmed by Q4 13Fs</div>
+      </div>
+      <div class="dots">
+        <div class="dot" style="background:var(--red)"></div>
+        <div class="dot" style="background:var(--red)"></div>
+      </div>
+    </div>
+    <div class="lr">
+      <div style="flex:1">
+        <div class="ln">L5A: Vol Structure <span style="font-size:10px;color:var(--red);font-weight:800">1.0/1</span>
+        </div>
+        <div class="ld">VIX 21.54 (+8.5% today, approaching 22 trigger) | VVIX 114.07 >110 = +0.5 | IV 16.95% > HV 12.88% = +0.5 | MOVE 73.38 +14.8% | SPX below 50d (6881) AND 200d (6903) MA</div>
+      </div>
+      <div class="dots">
+        <div class="dot" style="background:var(--red)"></div>
+        <div class="dot" style="background:var(--red)"></div>
+      </div>
+    </div>
+    <div class="lr">
+      <div style="flex:1">
+        <div class="ln">L5B: Options Sentiment <span style="font-size:10px;color:var(--red);font-weight:800">1.0/1</span> <span style="font-size:9px;padding:1px 6px;border-radius:3px;background:rgba(239,68,68,.1);color:var(--red);font-weight:700;margin-left:4px">PIPELINE + BARCHART</span>
+        </div>
+        <div class="ld">P/C 1.19 EXTREME FEAR + RR -8.01 (+0.5) | SPX 6,876 BELOW gamma flip 6,885 = NEG GAMMA (+0.5)</div>
+      </div>
+      <div class="dots">
+        <div class="dot" style="background:var(--red)"></div>
+        <div class="dot" style="background:var(--red)"></div>
+      </div>
+    </div>
+    <div class="lr">
+      <div style="flex:1">
+        <div class="ln">L6: Calendar <span style="font-size:10px;color:var(--red);font-weight:800">1/1</span>
+        </div>
+        <div class="ld">HIGH events within 30d: FOMC Meeting + Dot Plot (21d), Quad Witching OPEX (23d)</div>
+      </div>
+      <div class="dots">
+        <div class="dot" style="background:var(--red)"></div>
+        <div class="dot" style="background:var(--red)"></div>
+      </div>
+    </div>
+  </div>
+  <div class="card glow-a">
+    <div style="font-size:13px;font-weight:700;color:var(--amber);margin-bottom:8px">&#9889; Score Update — 7 &rarr; 8 (2026-03-02)</div>
+    <div style="font-size:12px;line-height:1.7">
+      <strong>L1:</strong> Margin $1279.0B above $1T record (Jun 2025) | HF gross: GS 285%, JPM 298%<br>
+      <strong>L2:</strong> Margin YoY +36.5% (>20% threshold) | Debt/GDP 4.06% above 3.5% threshold<br>
+      <strong>L3:</strong> NFCI -0.563 — loose but tightening | HY OAS 297bp widening from 265bp Jan low | CCC 915bp | BBB 102bp | SOFR 3.68% | HY spread +6.47bp today<br>
+      <strong>L4:</strong> High concentration: AI Infra Concentration, Mag 7 % of HF Net, Semis Net Exposure, Multistrat Leverage | AI infra cluster + Mag7 rotation confirmed by Q4 13Fs<br>
+      <strong>L5A:</strong> VIX 21.54 (+8.5% today, approaching 22 trigger) | VVIX 114.07 >110 = +0.5 | IV 16.95% > HV 12.88% = +0.5 | MOVE 73.38 +14.8% | SPX below 50d (6881) AND 200d (6903) MA<br>
+      <strong>L5B:</strong> P/C 1.19 EXTREME FEAR + RR -8.01 (+0.5) | SPX 6,876 BELOW gamma flip 6,885 = NEG GAMMA (+0.5)<br>
+      <strong>L6:</strong> HIGH events within 30d: FOMC Meeting + Dot Plot (21d), Quad Witching OPEX (23d)<br>
+    </div>
+  </div>
+  <div class="card" style="border-color:rgba(245,158,11,.3)">
+    <div style="font-size:14px;font-weight:700;margin-bottom:12px;color:var(--amber)">Real-Time Pulse</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:14px">
+      <div style="text-align:center;padding:14px 10px;background:rgba(239,68,68,.06);border-radius:8px;border:1px solid rgba(239,68,68,.15)">
+        <div style="font-size:9px;color:var(--muted);letter-spacing:1px;text-transform:uppercase">Turbulence</div>
+        <div class="mono" style="font-size:18px;font-weight:800;color:var(--red);margin-top:6px">ELEVATED</div>
+        <div style="font-size:9px;color:var(--dim);margin-top:4px">VIX 21.54 &bull; SPX 6876.35</div>
+      </div>
+      <div style="text-align:center;padding:14px 10px;background:rgba(245,158,11,.06);border-radius:8px;border:1px solid rgba(245,158,11,.15)">
+        <div style="font-size:9px;color:var(--muted);letter-spacing:1px;text-transform:uppercase">Regime</div>
+        <div class="mono" style="font-size:18px;font-weight:800;color:var(--amber);margin-top:6px">STRESS ONSET</div>
+        <div style="font-size:9px;color:var(--dim);margin-top:4px">Score 8/10</div>
+      </div>
+      <div style="text-align:center;padding:14px 10px;background:rgba(245,158,11,.06);border-radius:8px;border:1px solid rgba(245,158,11,.15)">
+        <div style="font-size:9px;color:var(--muted);letter-spacing:1px;text-transform:uppercase">Synthesis</div>
+        <div class="mono" style="font-size:14px;font-weight:700;color:var(--amber);margin-top:6px">TAPE CONFIRMING</div>
+        <div style="font-size:9px;color:var(--dim);margin-top:4px">Score upgraded 7.5 → 8.0. VIX surging, VVIX >110, MOVE +14.8%. Spreads widening across IG & HY. SPX in negative gamma below both MAs. Defensive positioning warranted.</div>
+      </div>
+    </div>
+    <div style="font-size:11px;color:var(--amber);font-weight:600;font-style:italic;line-height:1.6;padding:10px 14px;background:rgba(245,158,11,.05);border-radius:8px">Composite upgraded 7.5 → 8.0. VVIX broke 110 (now 114) and VIX surging to 21.54 — upgraded L5A to 1.0/1.0. Spreads widening: HY +6.47bp, CCC at 915bp — L3 upgraded to 0.5/2. SPX in neg gamma below both 50d and 200d MAs. FOMC + quad witch in 16-18 days. The only firewall is L3 not yet at stress levels — if HY OAS breaks 325bp, upgrade to Cascade Imminent. Structural leverage + options fear CONFIRMED by vol surge and spread widening. VVIX >110 new trigger</div>
+  </div>
+  <div class="card">
+    <div style="font-size:14px;font-weight:700;margin-bottom:4px">Real-Time Readings</div>
+    <div style="font-size:10px;color:var(--amber);margin-bottom:10px">2026-03-02</div>
+    <div class="stats">
+      <div class="st">
+        <div class="st-l">Equity P/C</div>
+        <div class="st-v w">1.187</div>
+        <div class="st-s w">EXTREME FEAR</div>
+      </div>
+      <div class="st">
+        <div class="st-l">GEX (Barchart_intraday)</div>
+        <div class="st-v" style="color:var(--green)">SHORT
+        </div>
+        <div class="st-s">Flip 6884 &bull; Walls 7000</div>
+      </div>
+      <div class="st">
+        <div class="st-l">VIX</div>
+        <div class="st-v" style="color:var(--amber)">21.54</div>
+        <div class="st-s">IV 16.95%</div>
+      </div>
+      <div class="st">
+        <div class="st-l">CBOE SKEW</div>
+        <div class="st-v">146.05</div>
+        <div class="st-s">ELEVATED</div>
+      </div>
+      <div class="st">
+        <div class="st-l">HY OAS</div>
+        <div class="st-v" style="color:var(--green)">297bp</div>
+        <div class="st-s">Wider from 295</div>
+      </div>
+      <div class="st">
+        <div class="st-l">NFCI</div>
+        <div class="st-v" style="color:var(--green)">-0.563</div>
+        <div class="st-s">Loose</div>
+      </div>
+      <div class="st">
+        <div class="st-l">FINRA Margin</div>
+        <div class="st-v w">$1.28T</div>
+        <div class="st-s w">8th consecutive record high Jan 2026</div>
+      </div>
+      <div class="st">
+        <div class="st-l">HF Gross (GS)</div>
+        <div class="st-v w">285%</div>
+        <div class="st-s w">JPM 298%</div>
+      </div>
+      <div class="st">
+        <div class="st-l">SOFR</div>
+        <div class="st-v">3.68%</div>
+        <div class="st-s">Stable</div>
+      </div>
+      <div class="st">
+        <div class="st-l">IV / HV</div>
+        <div class="st-v">16.95% / 12.88%</div>
+        <div class="st-s">IV Rank 19.74%</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="pnl" id="p1">
+  <div class="card">
+    <div style="font-size:14px;font-weight:700;margin-bottom:4px">FINRA Margin Debt</div>
+    <div style="font-size:11px;color:var(--muted);margin-bottom:14px">
+      $1279B &mdash; 8th consecutive record high (Jan 2026) &bull; +4.4% MoM &bull; +36.5% YoY
+    </div>
+    <svg viewBox="0 0 620 210" style="width:100%;height:210px">
+      <defs><linearGradient id="mg" x1="0" y1="0" x2="0" y2="1"><stop offset="5%" stop-color="#ef4444" stop-opacity=".3"/><stop offset="95%" stop-color="#ef4444" stop-opacity="0"/></linearGradient></defs>
+      <line x1="50" y1="10" x2="50" y2="180" stroke="#1e293b" stroke-width=".5"/>
+      <line x1="50" y1="180" x2="610" y2="180" stroke="#1e293b" stroke-width=".5"/>
+      <text x="45" y="15" fill="#64748b" font-size="9" text-anchor="end" font-family="JetBrains Mono">$1343B</text>
+      <text x="45" y="98" fill="#64748b" font-size="9" text-anchor="end" font-family="JetBrains Mono">$1063B</text>
+      <text x="45" y="183" fill="#64748b" font-size="9" text-anchor="end" font-family="JetBrains Mono">$783B</text>
+      <polygon points="55,133 102,139 148,150 195,159 242,138 288,112 335,107 382,96 428,76 475,58 522,49 568,46 615,29 615,180 55,180" fill="url(#mg)"/>
+      <polyline points="55,133 102,139 148,150 195,159 242,138 288,112 335,107 382,96 428,76 475,58 522,49 568,46 615,29" fill="none" stroke="#ef4444" stroke-width="2.5"/>
+      <circle cx="615" cy="29" r="4" fill="#ff0040" stroke="#fff" stroke-width="1.5"/>
+        <text x="55" y="195" fill="#64748b" font-size="8" text-anchor="middle" >2025 Q1</text>
+        <text x="102" y="195" fill="#64748b" font-size="8" text-anchor="middle" >2025 Q1</text>
+        <text x="148" y="195" fill="#64748b" font-size="8" text-anchor="middle" >2025 Q1</text>
+        <text x="195" y="195" fill="#64748b" font-size="8" text-anchor="middle" >2025 Q2</text>
+        <text x="242" y="195" fill="#64748b" font-size="8" text-anchor="middle" >2025 Q2</text>
+        <text x="288" y="195" fill="#64748b" font-size="8" text-anchor="middle" >2025 Q2</text>
+        <text x="335" y="195" fill="#64748b" font-size="8" text-anchor="middle" >2025 Q3</text>
+        <text x="382" y="195" fill="#64748b" font-size="8" text-anchor="middle" >2025 Q3</text>
+        <text x="428" y="195" fill="#64748b" font-size="8" text-anchor="middle" >2025 Q3</text>
+        <text x="475" y="195" fill="#64748b" font-size="8" text-anchor="middle" >2025 Q4</text>
+        <text x="522" y="195" fill="#64748b" font-size="8" text-anchor="middle" >2025 Q4</text>
+        <text x="568" y="195" fill="#64748b" font-size="8" text-anchor="middle" >2025 Q4</text>
+        <text x="615" y="195" fill="#ff0040" font-size="8" text-anchor="middle" font-weight="700">2026 Q1</text>
+    </svg>
+    <div class="frow"><span class="ftag ftag-r">Debt/GDP: 4.06% (record)</span><span class="ftag ftag-r">Margin YoY: +36.5%</span><span class="ftag ftag-a">SPX YoY: +15.5%</span>
+    </div>
+  </div>
+  <div class="card">
+    <div style="font-size:14px;font-weight:700;margin-bottom:4px">Hedge Fund Gross Leverage</div>
+    <div style="font-size:11px;color:var(--muted);margin-bottom:14px">
+      GS: 285% (record) &bull; JPM: 298% (5yr high) &bull; MS: top 99% of 15yr history &bull; Multistrat: 645%
+    </div>
+    <div class="bch" id="hfc"></div>
+  </div>
+  <div class="card">
+    <div style="font-size:14px;font-weight:700;margin-bottom:10px">Normalization Divergence</div>
+    <div class="stats">
+      <div class="st">
+        <div class="st-l">Margin/GDP</div>
+        <div class="st-v w">4.06%</div>
+        <div class="st-s w">ALL-TIME RECORD</div>
+      </div>
+      <div class="st">
+        <div class="st-l">Margin YoY</div>
+        <div class="st-v w">+36.5%</div>
+        <div class="st-s w">SPX +15.5% = 2.4x gap</div>
+      </div>
+      <div class="st">
+        <div class="st-l">Leveraged ETFs</div>
+        <div class="st-v">248B</div>
+      </div>
+    </div>
+    <div class="al al-r" style="margin-top:12px">HF gross leverage from GS/JPM/MS prime brokerage reports.</div>
+  </div>
+</div>
+
+
+<div class="pnl" id="p2">
+  <div class="card">
+    <div style="font-size:14px;font-weight:700;margin-bottom:4px">Leverage Gap (Margin YoY &minus; SPX YoY)</div>
+    <div style="font-size:11px;color:var(--muted);margin-bottom:14px">
+      Current: +21.0pp. 
+    </div>
+    <div class="bch" id="gc"></div>
+    <div class="stats" style="margin-top:14px">
+      <div class="st"><div class="st-l">Margin YoY</div><div class="st-v w">+36.5%</div></div>
+      <div class="st"><div class="st-l">SPX YoY</div><div class="st-v">+15.5%</div></div>
+      <div class="st"><div class="st-l">Gap</div><div class="st-v w">+21.0pp</div></div>
+      <div class="st"><div class="st-l">Debt/GDP</div><div class="st-v w">4.06%</div></div>
+    </div>
+  </div>
+</div>
+
+
+<div class="pnl" id="p3">
+  <div class="card" style="border-left:3px solid var(--amber)">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+      <div style="width:10px;height:10px;border-radius:5px;background:var(--amber)"></div>
+      <span style="font-size:14px;font-weight:700">Financing: THE KEY LAYER &mdash; Mixed</span>
+    </div>
+    <div style="font-size:12px;line-height:1.7;margin-bottom:16px">
+      <strong style="color:var(--amber)">Financing conditions are mixed.</strong>
+      NFCI moved from -0.510 &rarr; -0.563 (2026-02-20).
+      HY OAS widened from 295&rarr;297bp.
+      SOFR rose to 3.68%.
+      <strong style="color:var(--amber)">This is the key layer keeping the composite at 8 instead of 8-10. If HY &gt; 350bp or NFCI &gt; -0.30, score jumps to 8-10 (Active Deterioration &rarr; Cascade).</strong>
+    </div>
+    <div class="stats">
+      <div class="st">
+        <div class="st-l">NFCI</div>
+        <div class="st-v" style="color:var(--green)">-0.563</div>
+        <div class="st-s">Loosening from -0.510</div>
+      </div>
+      <div class="st">
+        <div class="st-l">HY OAS</div>
+        <div class="st-v" style="color:var(--green)">297bp</div>
+        <div class="st-s">Wider from 295</div>
+      </div>
+      <div class="st">
+        <div class="st-l">GS FCI</div>
+        <div class="st-v" style="color:var(--red)">Mixed</div>
+        <div class="st-s">Conditions shifting</div>
+      </div>
+      <div class="st">
+        <div class="st-l">SOFR</div>
+        <div class="st-v">3.68%</div>
+        <div class="st-s">Stable</div>
+      </div>
+    </div>
+    <div class="al al-o" style="margin-top:12px">TRIP WIRES: HY OAS &gt; 350bp &bull; NFCI &gt; -0.30 &bull; SOFR &gt; 4.50% &bull; PB margin hikes &bull; GS FCI &rarr; &ldquo;tightening&rdquo;</div>
+  </div>
+</div>
+
+
+<div class="pnl" id="p4">
+  <div class="card">
+    <div style="font-size:14px;font-weight:700;margin-bottom:14px">Positioning &amp; Crowding</div>
+    <div id="cb"></div>
+  </div>
+  <div class="card glow-a">
+    <div style="font-size:13px;font-weight:700;color:var(--amber);margin-bottom:8px">&#9889; AI infra cluster + Mag7 rotation confirmed by Q4 13Fs <span style="font-size:10px;color:var(--muted)">(2026-Q1)</span></div>
+    <div style="font-size:12px;line-height:1.7">Druckenmiller pivoting to equal-weight (RSP)</div>
+  </div>
+  <div class="card">
+    <div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:10px">MAG-7 MARKET CAP CONCENTRATION</div>
+    <div class="stats">
+      <div class="st"><div class="st-l">Mag-7 % of SPX</div><div class="st-v w">42.1%</div></div>
+      <div class="st"><div class="st-l">Mag-7 Total</div><div class="st-v">$21.0T</div></div>
+    </div>
+  </div>
+</div>
+
+
+<div class="pnl" id="p5">
+  <div class="card glow-a">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+      <div>
+        <span style="font-size:14px;font-weight:700">Layer 5B: Options Sentiment</span>
+        <span style="font-size:9px;padding:2px 8px;border-radius:3px;background:rgba(245,158,11,.15);color:var(--amber);font-weight:700;margin-left:8px">PIPELINE + BARCHART</span>
+      </div>
+      <span class="pill p-r">EXTREME FEAR</span>
+    </div>
+    <div style="font-size:10px;color:var(--muted);margin-bottom:14px">2026-03-02</div>
+    <div class="g4">
+      <div class="mc" style="border-color:rgba(239,68,68,.25)">
+        <div class="mc-l">Equity P/C</div>
+        <div class="mc-v" style="color:var(--red)">1.187</div>
+        <div class="mc-s" style="color:var(--amber);font-weight:700">+0.50 pts</div>
+        <div class="mc-s">Threshold: &gt; 0.85</div>
+      </div>
+      <div class="mc" style="border-color:rgba(34,197,94,.25)">
+        <div class="mc-l">GEX</div>
+        <div class="mc-v" style="color:var(--muted)">SHORT
+        </div>
+        <div class="mc-s" style="color:var(--muted);font-weight:700">0 pts</div>
+        <div class="mc-s">Flip 6884 &bull; SPX below</div>
+      </div>
+      <div class="mc" style="border-color:rgba(239,68,68,.25)">
+        <div class="mc-l">VIX 30d RoC</div>
+        <div class="mc-v" style="color:var(--red)">+33%</div>
+        <div class="mc-s" style="color:var(--amber);font-weight:700">+0.25 pts</div>
+        <div class="mc-s">Threshold: &gt; 25%</div>
+      </div>
+      <div class="mc" style="border-color:rgba(239,68,68,.25)">
+        <div class="mc-l">CBOE SKEW</div>
+        <div class="mc-v" style="color:var(--red)">146.05</div>
+        <div class="mc-s" style="color:var(--muted);font-weight:700">ELEVATED</div>
+        <div class="mc-s">Threshold: &gt; 145</div>
+      </div>
+    </div>
+    <div style="margin-top:12px;font-size:12px;font-weight:700;color:var(--muted)">Layer 5B Score: <span style="color:var(--amber);font-size:16px" class="mono">1.00 / 1.00</span></div>
+  </div>
+  <div class="card">
+    <div style="font-size:14px;font-weight:700;margin-bottom:10px">Vol Surface</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px">
+      <div class="mc"><div class="mc-l">IV</div><div class="mc-v" style="font-size:20px">16.95%</div></div>
+      <div class="mc"><div class="mc-l">HV (30d)</div><div class="mc-v" style="font-size:20px">12.88%</div></div>
+      <div class="mc"><div class="mc-l">IV Rank</div><div class="mc-v" style="font-size:20px">19.74%</div></div>
+      <div class="mc"><div class="mc-l">IV Pctl</div><div class="mc-v" style="font-size:20px">77.0%</div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:10px">
+      <div class="mc" style="border-color:rgba(239,68,68,.2)">
+        <div class="mc-l">GEX Flip</div>
+        <div class="mc-v" style="color:var(--red);font-size:20px">6884</div>
+        <div class="mc-s">SPX below &rarr; short &gamma;</div>
+      </div>
+      <div class="mc"><div class="mc-l">Put Wall</div><div class="mc-v" style="font-size:20px">7000</div></div>
+      <div class="mc"><div class="mc-l">Call Wall</div><div class="mc-v" style="font-size:20px">7000</div></div>
+    </div>
+    <div style="font-size:10px;color:var(--muted);margin-top:6px;text-align:right">Source: Barchart_intraday &mdash; 2026-03-02</div>
+  </div>
+  <div class="card">
+    <div style="font-size:14px;font-weight:700;margin-bottom:4px">VIX 30-Day Trend</div>
+    <svg viewBox="0 0 600 130" style="width:100%;height:130px">
+      <line x1="30" y1="120" x2="590" y2="120" stroke="#1e293b" stroke-width=".5"/>
+      <line x1="30" y1="61" x2="590" y2="61" stroke="#f59e0b" stroke-dasharray="4 4" stroke-width=".5"/>
+      <text x="595" y="64" fill="#f59e0b" font-size="8">20</text>
+      <polyline points="40,105 63,103 87,103 110,97 134,90 157,103 181,84 204,76 228,40 251,56 275,91 298,86 322,88 345,51 369,54 392,57 416,65 439,58 463,71 486,49 510,66 533,85 557,61 580,43" fill="none" stroke="var(--accent)" stroke-width="2"/>
+      <circle cx="580" cy="43" r="4" fill="var(--amber)"/>
+      <text x="575" y="36" fill="var(--amber)" font-size="8" text-anchor="end">21.54</text>
+      <text x="40" y="130" fill="#64748b" font-size="8">2026-01-26</text>
+      <text x="580" y="130" fill="var(--green)" font-size="8" text-anchor="end">2026-03-02</text>
+    </svg>
+  </div>
+</div>
+
+
+<div class="pnl" id="p6">
+  <div class="card">
+    <div style="font-size:14px;font-weight:700;margin-bottom:14px">Liquidity Calendar</div>
+    <div class="er">
+      <div class="ed" style="color:var(--red)">2026-03-18</div>
+      <div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="et">FOMC Meeting + Dot Plot</span>
+          <span class="pill p-r">HIGH</span>
+        </div>
+      </div>
+    </div>
+    <div class="er">
+      <div class="ed" style="color:var(--red)">2026-03-20</div>
+      <div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="et">Quad Witching OPEX</span>
+          <span class="pill p-r">HIGH</span>
+        </div>
+      </div>
+    </div>
+    <div class="er">
+      <div class="ed" style="color:var(--red)">2026-03-31</div>
+      <div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="et">Quarter-End Rebalancing</span>
+          <span class="pill p-r">HIGH</span>
+        </div>
+      </div>
+    </div>
+    <div class="er">
+      <div class="ed">2026-04-02</div>
+      <div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="et">Treasury Refunding Announcement</span>
+          <span class="pill p-a">MED</span>
+        </div>
+      </div>
+    </div>
+    <div class="er">
+      <div class="ed">2026-04-15</div>
+      <div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="et">Estimated Tax Payments</span>
+          <span class="pill p-a">MED</span>
+        </div>
+      </div>
+    </div>
+    <div class="er">
+      <div class="ed">2026-04-17</div>
+      <div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="et">Monthly OPEX</span>
+          <span class="pill p-a">MED</span>
+        </div>
+      </div>
+    </div>
+    <div class="er">
+      <div class="ed">2026-04-29</div>
+      <div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="et">FOMC Meeting</span>
+          <span class="pill p-a">MED</span>
+        </div>
+      </div>
+    </div>
+    <div class="er">
+      <div class="ed" style="color:var(--red)">2026-05-01</div>
+      <div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="et">Powell Term Ends</span>
+          <span class="pill p-r">HIGH</span>
+        </div>
+      </div>
+    </div>
+    <div class="er">
+      <div class="ed">2026-05-06</div>
+      <div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="et">Treasury Refunding Announcement</span>
+          <span class="pill p-a">MED</span>
+        </div>
+      </div>
+    </div>
+    <div class="er">
+      <div class="ed">2026-05-15</div>
+      <div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="et">Monthly OPEX</span>
+          <span class="pill p-a">MED</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="al al-o"><strong style="color:var(--amber)">CLUSTER:</strong> 4 HIGH-severity events on calendar. Peak vulnerability window.</div>
+</div>
+
+
+<div class="pnl" id="p7">
+  <div class="card glow-a">
+    <div style="font-size:14px;font-weight:700;margin-bottom:14px;color:var(--amber)">Cascade Vulnerability Chain</div>
+    <div class="cs">
+      <div class="cn h">1</div>
+      <span class="ct h">Margin calls</span><span class="ca">&rarr;</span>
+    </div>
+    <div class="cs">
+      <div class="cn h">2</div>
+      <span class="ct h">Forced selling</span><span class="ca">&rarr;</span>
+    </div>
+    <div class="cs">
+      <div class="cn h">3</div>
+      <span class="ct h">Gamma hedging amplification</span><span class="ca">&rarr;</span>
+    </div>
+    <div class="cs">
+      <div class="cn">4</div>
+      <span class="ct">Leveraged ETF rebalancing</span><span class="ca">&rarr;</span>
+    </div>
+    <div class="cs">
+      <div class="cn">5</div>
+      <span class="ct">Credit spread widening</span><span class="ca">&rarr;</span>
+    </div>
+    <div class="cs">
+      <div class="cn">6</div>
+      <span class="ct">Prime broker margin hikes</span><span class="ca">&rarr;</span>
+    </div>
+    <div class="cs">
+      <div class="cn">7</div>
+      <span class="ct">Second wave forced selling</span>
+    </div>
+    <div style="margin-top:16px;padding:12px;background:var(--card);border-radius:6px;border:1px solid rgba(245,158,11,.27)">
+      <div style="display:flex;justify-content:space-between;margin-bottom:8px">
+        <span style="font-size:11px;font-weight:700;color:var(--muted)">ACTIVATION PROBABILITY</span>
+        <span class="pill p-r">HIGH &mdash; STEPS 1-3 PRE-LOADED</span>
+      </div>
+      <div style="font-size:12px;line-height:1.7">Step 1 ACTIVE: Record leverage loaded | Step 2 ACTIVE: Momentum accelerating | Step 3 ACTIVE: SPX below gamma flip, neg gamma, VIX 21.54, VVIX 114 | Step 4 WARNING: Financing tightening direction (L3=0.5/2) — HY +6.47bp today, CCC at 915bp | Step 5 BLOCKED: No forced selling yet</div>
+    </div>
+  </div>
+</div>
+
+
+<div class="foot">Sources: FINRA, OFR Form PF, GS/JPM/MS Prime, Chicago Fed NFCI, HY OAS, SOFR, Bloomberg OVME, Barchart GEX, Pipeline. Not investment advice. Maguire Leverage Monitor &mdash; 22V Trading Desk. Updated 2026-03-02.</div>
+</div>
+
+
+<script>
+var T=["Composite","L1 Levels","L2 Momentum","L3 Financing","L4 Crowding","L5 Vol & Options","L6 Calendar","Cascade"];
+var tb=document.getElementById("tabs");
+T.forEach(function(t,i){var b=document.createElement("button");b.className="tab"+(i===0?" on":"");b.textContent=t;b.onclick=function(){document.querySelectorAll(".pnl").forEach(function(p){p.classList.remove("on")});document.querySelectorAll(".tab").forEach(function(x){x.classList.remove("on")});document.getElementById("p"+i).classList.add("on");b.classList.add("on")};tb.appendChild(b)});
+(function(){
+  var d=[
+    {q:"Q1 24",gs:258,jpm:265},{q:"Q2 24",gs:262,jpm:270},
+    {q:"Q3 24",gs:268,jpm:278},{q:"Q4 24",gs:273,jpm:284},
+    {q:"Q1 25",gs:275,jpm:288},{q:"Q2 25",gs:278,jpm:290},
+    {q:"Q3 25",gs:280,jpm:294},
+    {q:"Q4 25",gs:285,jpm:298}
+  ],mn=240,mx=310,r=mx-mn,c=document.getElementById("hfc");
+  if(!c)return;
+  var h="";
+  d.forEach(function(x){
+    var g=Math.round(((x.gs-mn)/r)*160),j=Math.round(((x.jpm-mn)/r)*160);
+    h+='<div class="bg"><div class="bs"><div class="b" style="height:'+g+'px;background:var(--amber)"><div class="bt">GS: '+x.gs+'%</div></div><div class="b" style="height:'+j+'px;background:var(--red)"><div class="bt">JPM: '+x.jpm+'%</div></div></div><div class="bl">'+x.q+'</div></div>';
+  });
+  c.innerHTML=h;
+})();
+(function(){
+  var d=[
+    {m:"Jul 25",g:18},{m:"Aug",g:20},{m:"Sep",g:22},{m:"Oct",g:25},{m:"Nov",g:28},{m:"Dec",g:30},
+    {m:"Current",g:21}
+  ],c=document.getElementById("gc");
+  if(!c)return;
+  var h="";
+  d.forEach(function(x){
+    var p=Math.round((Math.abs(x.g)/40)*160),
+        k=x.g>25?"var(--red)":x.g>15?"var(--amber)":"var(--green)";
+    h+='<div class="bg"><div class="bs"><div class="b" style="height:'+p+'px;background:'+k+'"><div class="bt">+'+x.g+'pp</div></div></div><div class="bl">'+x.m+'</div></div>';
+  });
+  c.innerHTML=h;
+})();
+(function(){
+  var d=[
+    {n:"AI Infra Concentration",p:90,t:"MU, LRCX, NOW, Korean semis — multiple PMs",c:"var(--red)"},
+    {n:"Mag 7 % of HF Net",p:85,t:"~19% — near 21% peak, rotation underway",c:"var(--red)"},
+    {n:"Semis Net Exposure",p:95,t:"5yr high — max concentration",c:"var(--red)"},
+    {n:"Crypto ETF Exposure",p:30,t:"Down 28% Q3→Q4 — derisking",c:"var(--green)"},
+    {n:"Equal-Weight Pivot",p:40,t:"Druckenmiller RSP — breadth play",c:"var(--green)"},
+    {n:"Multistrat Leverage",p:92,t:"645% gross — extreme",c:"var(--red)"}
+    ,{n:"Mag-7 % of SPX",p:84,t:"42.1% of S&P 500",c:"var(--red)"}
+  ],e=document.getElementById("cb");
+  if(!e)return;
+  var h="";
+  d.forEach(function(x){
+    h+='<div style="margin-bottom:12px"><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px"><span style="font-weight:600">'+x.n+'</span><span style="color:var(--muted)">'+x.t+'</span></div><div class="pt"><div class="pf" style="width:'+x.p+'%;background:'+x.c+'"></div></div></div>';
+  });
+  e.innerHTML=h;
+})();
+</script>
+</body>
+</html>

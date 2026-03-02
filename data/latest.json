@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-02-25T21:25:21.126560",
+  "timestamp": "2026-03-02T15:19:00.000000",
   "source_tier": "free",
   "pc_ratio": {
     "equity": 1.187,
@@ -18,10 +18,10 @@
   "gex": {
     "estimate_bn": null,
     "level": "UNKNOWN",
-    "flip_point": 6901.29,
+    "flip_point": 6884.91,
     "call_wall": 7000.0,
     "put_wall": 7000.0,
-    "last_price": 6866.88,
+    "last_price": 6876.35,
     "history_5d": []
   },
   "skew": {
@@ -603,8 +603,8 @@
     ]
   },
   "vix": {
-    "current": 19.97,
-    "change": 2.04,
+    "current": 21.54,
+    "change": 1.68,
     "history_30d": [
       {
         "date": "2026-01-26",
@@ -697,6 +697,10 @@
       {
         "date": "2026-02-26",
         "value": 19.97
+      },
+      {
+        "date": "2026-03-02",
+        "value": 21.54
       }
     ]
   },
@@ -1351,8 +1355,8 @@
       ]
     },
     "sofr": {
-      "current": 3.67,
-      "prev": 3.66,
+      "current": 3.68,
+      "prev": 3.67,
       "change": 0.01,
       "as_of": "2026-02-24",
       "history_90d": [

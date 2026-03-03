@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-03T12:41:00.000000",
+  "timestamp": "2026-03-03T13:30:00.000000",
   "composite_score": 9.0,
   "composite_prev": 8.0,
   "regime": "CASCADE_IMMINENT",
@@ -97,19 +97,19 @@
       "score": 1.0,
       "max": 2,
       "label": "Financing",
-      "details": "NFCI -0.563 \u2014 loose but tightening 3 straight weeks | HY OAS ~312bp widening sharply from 265bp Jan low (+47bp in 6 weeks) | 10yr yield 4.10% on geopolitical inflation fears | CCC 915bp+ | BBB 102bp+ | SOFR 3.68% | Geopolitical shock (US-Iran conflict, Strait of Hormuz closure) = acute financing stress catalyst",
+      "details": "NFCI -0.563 \u2014 loose but tightening 3 straight weeks | HY OAS ~297-310bp widening from 265bp Jan low | 10yr yield 4.06% (up 3bp) | 2s10s curve 55.7bp | CCC 915bp+ | BBB 102bp+ | SOFR 3.68% | Oil +5.4% to $75 on Mideast tensions = inflation risk",
       "data": {
         "nfci": -0.5629,
         "nfci_prev": -0.5654,
         "nfci_3mo_ago": -0.51004,
         "nfci_as_of": "2026-02-20",
-        "hy_oas": 312,
+        "hy_oas": 305,
         "hy_oas_prev": 297,
         "hy_oas_as_of": "2026-03-03",
         "sofr": 3.68,
         "sofr_prev": 3.67,
         "signal": "LOOSE",
-        "notes": "HY spreads widening sharply on US-Iran military escalation. 10yr yield 4.10%. War risk premiums surging 300%. Strait of Hormuz closure = supply shock catalyst."
+        "notes": "HY spreads widening on geopolitical risk. 10yr 4.06%. Oil +5.4% to $75. Gold -4.2% (margin call liquidation signal). DXY +0.74% to 99.11."
       }
     },
     "l4": {
@@ -201,50 +201,53 @@
       "score": 1.0,
       "max": 1,
       "label": "Vol Structure",
-      "details": "VIX 26.43 (+23% today, WELL above 22 trigger) = +0.5 | VVIX >110 (est ~125+ on 23% VIX spike) AND IV 19.50% > HV 13.45% = +0.5 | IV Rank 27.71%, IV Percentile 87% | SPX 6,788 below 50d MA (6,883) AND 200d MA (6,902) | GEOPOLITICAL VOL REGIME: US-Iran conflict, Strait of Hormuz closure",
+      "details": "VIX 23.81 (+11.05% today, above 22 trigger) = +0.5 | VVIX est ~118-120 (elevated) AND IV 19.50% > HV 13.45% = +0.5 | IV Rank 27.71%, IV Percentile 87% | SPX 6,801 below 50d MA (6,883) AND 200d MA (6,902) | VIX +59.3% YTD, +26.6% WTD per Bloomberg",
       "data": {
-        "vix": 26.43,
+        "vix": 23.81,
         "vix_prev_close": 21.54,
-        "vix_intraday_change_pct": 23.0,
+        "vix_change": 2.37,
+        "vix_intraday_change_pct": 11.05,
+        "vix_ytd_pct": 59.26,
+        "vix_wtd_pct": 26.64,
         "ivol": 19.5,
         "hvol": 13.45,
         "iv_rank": 27.71,
         "iv_percentile": 87.0,
-        "vvix": 125.0,
-        "vvix_note": "estimated \u2014 VVIX not directly observed, extrapolated from 114.07 + 23% VIX surge",
+        "vvix": 118.0,
+        "vvix_note": "estimated \u2014 extrapolated from 114.07 + VIX spike",
         "spx_50dma": 6883.49,
         "spx_200dma": 6902.2,
+        "spx_last": 6800.58,
         "spx_below_50d": true,
-        "spx_below_200d": true,
-        "catalyst": "US-Iran military conflict, Strait of Hormuz closure, oil +8%"
+        "spx_below_200d": true
       }
     },
     "l5b": {
       "score": 1.0,
       "max": 1,
       "label": "Options Sentiment",
-      "details": "P/C 1.19 EXTREME FEAR + RR -8.01 = +0.5 | SPX 6,788 is 122pts BELOW gamma flip 6,911 = DEEPLY NEGATIVE GAMMA + VIX 30d RoC +63.7% (16.15\u219226.43) >> 25% threshold = +0.5 | All 5B sub-triggers firing simultaneously",
+      "details": "P/C 1.19 EXTREME FEAR + RR -8.01 = +0.5 | SPX 6,801 is 110pts BELOW gamma flip 6,911 = NEGATIVE GAMMA + VIX 30d RoC +47.4% (16.15\u219223.81) >> 25% threshold = +0.5 | All 5B sub-triggers firing",
       "data": {
         "equity_pc": 1.187,
         "risk_reversal": -8.01,
         "cboe_skew": 146.05,
         "gex_flip": 6910.52,
-        "spx_last": 6787.76,
+        "spx_last": 6800.58,
         "spx_below_flip": true,
-        "gamma_regime": "DEEPLY_NEGATIVE",
-        "gamma_distance_pts": -122.76,
+        "gamma_regime": "NEGATIVE",
+        "gamma_distance_pts": -109.94,
         "put_wall": 7000.0,
         "call_wall": 7000.0,
-        "vix_30d_roc_pct": 63.7,
+        "vix_30d_roc_pct": 47.4,
         "vix_30d_start": 16.15,
-        "vix_30d_end": 26.43
+        "vix_30d_end": 23.81
       }
     },
     "l6": {
       "score": 1,
       "max": 1,
       "label": "Calendar",
-      "details": "HIGH events within 30d: FOMC + Dot Plot (15d), Quad Witching OPEX (17d), Quarter-End Rebalancing (28d) | FOMC now a live event given geopolitical inflation shock",
+      "details": "HIGH events within 30d: FOMC + Dot Plot (15d), Quad Witching OPEX (17d), Quarter-End Rebalancing (28d) | FOMC complicated by oil inflation shock",
       "data": {
         "upcoming_high": [
           "FOMC Meeting + Dot Plot (21d)",
@@ -341,5 +344,35 @@
     "key_tension": "Structural leverage + options fear CONFIRMED by vol surge and spread widening. VVIX >110 new trigger",
     "bottom_line": "Composite upgraded 7.5 \u2192 8.0. VVIX broke 110 (now 114) and VIX surging to 21.54 \u2014 upgraded L5A to 1.0/1.0. Spreads widening: HY +6.47bp, CCC at 915bp \u2014 L3 upgraded to 0.5/2. SPX in neg gamma below both 50d and 200d MAs. FOMC + quad witch in 16-18 days. The only firewall is L3 not yet at stress levels \u2014 if HY OAS breaks 325bp, upgrade to Cascade Imminent"
   },
-  "options_data_timestamp": "2026-03-02T15:19:00"
+  "options_data_timestamp": "2026-03-02T15:19:00",
+  "cross_asset": {
+    "spx": 6800.58,
+    "spx_chg_pct": -1.18,
+    "spy": 678.54,
+    "ccmp": 22454.61,
+    "ccmp_chg_pct": -1.29,
+    "indu": 48375.67,
+    "indu_chg_pct": -1.08,
+    "rty": 2608.78,
+    "rty_chg_pct": -1.78,
+    "vix": 23.81,
+    "vix_chg": 2.37,
+    "vix_chg_pct": 11.05,
+    "dxy": 99.113,
+    "dxy_chg_pct": 0.74,
+    "cla": 75.08,
+    "cla_chg_pct": 5.41,
+    "ng1": 3.118,
+    "ng1_chg_pct": 5.34,
+    "xau": 5098.7,
+    "xau_chg_pct": -4.2,
+    "xag": 83.13,
+    "xag_chg_pct": -6.99,
+    "usgg2yr": 3.5019,
+    "usgg10yr": 4.0613,
+    "usgg30yr": 4.7088,
+    "usyc2y10": 55.729,
+    "source": "Bloomberg Terminal",
+    "as_of": "2026-03-03T13:30:00"
+  }
 }

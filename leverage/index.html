@@ -403,6 +403,76 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
         <div class="st-s">Stable</div>
       </div>
     </div>
+    <!-- HY OAS Spread Chart -->
+    <div style="margin-top:16px;padding:14px;background:var(--bg);border-radius:8px;border:1px solid var(--border)">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px">
+        <div style="font-size:12px;font-weight:700;color:var(--text)">HY OAS Spread (bp) — 12 Month Trend</div>
+        <div style="font-size:9px;color:var(--muted)">ICE BofA US HY Index | Source: FRED</div>
+      </div>
+      <svg viewBox="0 0 700 180" style="width:100%;height:auto">
+        <!-- Grid lines -->
+        <line x1="40" y1="10" x2="40" y2="150" stroke="#1e293b" stroke-width="0.5"/>
+        <line x1="40" y1="150" x2="690" y2="150" stroke="#1e293b" stroke-width="0.5"/>
+        <line x1="40" y1="115" x2="690" y2="115" stroke="#1e293b" stroke-width="0.5" stroke-dasharray="4,3"/>
+        <line x1="40" y1="80" x2="690" y2="80" stroke="#1e293b" stroke-width="0.5" stroke-dasharray="4,3"/>
+        <line x1="40" y1="45" x2="690" y2="45" stroke="#1e293b" stroke-width="0.5" stroke-dasharray="4,3"/>
+        <line x1="40" y1="10" x2="690" y2="10" stroke="#1e293b" stroke-width="0.5" stroke-dasharray="4,3"/>
+        <!-- Y-axis labels -->
+        <text x="36" y="153" fill="#64748b" font-size="9" text-anchor="end" font-family="JetBrains Mono,monospace">250</text>
+        <text x="36" y="118" fill="#64748b" font-size="9" text-anchor="end" font-family="JetBrains Mono,monospace">275</text>
+        <text x="36" y="83" fill="#64748b" font-size="9" text-anchor="end" font-family="JetBrains Mono,monospace">300</text>
+        <text x="36" y="48" fill="#64748b" font-size="9" text-anchor="end" font-family="JetBrains Mono,monospace">325</text>
+        <text x="36" y="13" fill="#64748b" font-size="9" text-anchor="end" font-family="JetBrains Mono,monospace">350</text>
+        <!-- Trip wire at 350bp -->
+        <line x1="40" y1="10" x2="690" y2="10" stroke="#ef4444" stroke-width="1" stroke-dasharray="6,3" opacity="0.6"/>
+        <text x="694" y="13" fill="#ef4444" font-size="8" font-family="JetBrains Mono,monospace" font-weight="700">TRIP</text>
+        <!-- Area fill under the line -->
+        <defs>
+          <linearGradient id="oasGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.25"/>
+            <stop offset="100%" stop-color="#f59e0b" stop-opacity="0.02"/>
+          </linearGradient>
+        </defs>
+        <!-- Data: Mar25=310, Apr25=335, May25=305, Jun25=290, Jul25=280, Aug25=295, Sep25=310, Oct25=285, Nov25=275, Dec25=270, Jan26=265, Feb26=294 -->
+        <path d="M90,108 L145,72 L200,118 L255,132 L310,146 L365,126 L420,108 L475,138 L530,146 L585,150 L640,142 L690,129 L690,150 L90,150 Z" fill="url(#oasGrad)"/>
+        <polyline points="90,108 145,72 200,118 255,132 310,146 365,126 420,108 475,138 530,146 585,150 640,142 690,129"
+          fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- Data points -->
+        <circle cx="90" cy="108" r="3" fill="#f59e0b"/><text x="90" y="101" fill="#94a3b8" font-size="8" text-anchor="middle" font-family="JetBrains Mono,monospace">310</text>
+        <circle cx="145" cy="72" r="3" fill="#ef4444"/><text x="145" y="65" fill="#ef4444" font-size="8" text-anchor="middle" font-family="JetBrains Mono,monospace" font-weight="700">335</text>
+        <circle cx="200" cy="118" r="3" fill="#f59e0b"/>
+        <circle cx="255" cy="132" r="3" fill="#22c55e"/>
+        <circle cx="310" cy="146" r="3" fill="#22c55e"/>
+        <circle cx="365" cy="126" r="3" fill="#f59e0b"/>
+        <circle cx="420" cy="108" r="3" fill="#f59e0b"/>
+        <circle cx="475" cy="138" r="3" fill="#22c55e"/>
+        <circle cx="530" cy="146" r="3" fill="#22c55e"/>
+        <circle cx="585" cy="150" r="3" fill="#22c55e"/><text x="585" y="143" fill="#22c55e" font-size="8" text-anchor="middle" font-family="JetBrains Mono,monospace">265</text>
+        <circle cx="640" cy="142" r="3" fill="#22c55e"/>
+        <circle cx="690" cy="129" r="3.5" fill="#f59e0b" stroke="#f59e0b" stroke-width="2" opacity="1"/>
+        <text x="690" y="122" fill="#f59e0b" font-size="9" text-anchor="middle" font-family="JetBrains Mono,monospace" font-weight="700">297</text>
+        <!-- X-axis labels -->
+        <text x="90" y="165" fill="#64748b" font-size="8" text-anchor="middle" font-family="JetBrains Mono,monospace">Mar</text>
+        <text x="145" y="165" fill="#64748b" font-size="8" text-anchor="middle" font-family="JetBrains Mono,monospace">Apr</text>
+        <text x="200" y="165" fill="#64748b" font-size="8" text-anchor="middle" font-family="JetBrains Mono,monospace">May</text>
+        <text x="255" y="165" fill="#64748b" font-size="8" text-anchor="middle" font-family="JetBrains Mono,monospace">Jun</text>
+        <text x="310" y="165" fill="#64748b" font-size="8" text-anchor="middle" font-family="JetBrains Mono,monospace">Jul</text>
+        <text x="365" y="165" fill="#64748b" font-size="8" text-anchor="middle" font-family="JetBrains Mono,monospace">Aug</text>
+        <text x="420" y="165" fill="#64748b" font-size="8" text-anchor="middle" font-family="JetBrains Mono,monospace">Sep</text>
+        <text x="475" y="165" fill="#64748b" font-size="8" text-anchor="middle" font-family="JetBrains Mono,monospace">Oct</text>
+        <text x="530" y="165" fill="#64748b" font-size="8" text-anchor="middle" font-family="JetBrains Mono,monospace">Nov</text>
+        <text x="585" y="165" fill="#64748b" font-size="8" text-anchor="middle" font-family="JetBrains Mono,monospace">Dec</text>
+        <text x="640" y="165" fill="#64748b" font-size="8" text-anchor="middle" font-family="JetBrains Mono,monospace">Jan</text>
+        <text x="690" y="165" fill="#f59e0b" font-size="8" text-anchor="middle" font-family="JetBrains Mono,monospace" font-weight="700">Feb</text>
+        <!-- Year labels -->
+        <text x="310" y="176" fill="#334155" font-size="8" text-anchor="middle" font-family="JetBrains Mono,monospace">2025</text>
+        <text x="665" y="176" fill="#334155" font-size="8" text-anchor="middle" font-family="JetBrains Mono,monospace">2026</text>
+      </svg>
+      <div style="display:flex;justify-content:space-between;margin-top:8px">
+        <div style="font-size:10px;color:var(--muted)">Jan low: <span style="color:var(--green);font-weight:700">265bp</span> &bull; Apr tariff spike: <span style="color:var(--red);font-weight:700">335bp</span></div>
+        <div style="font-size:10px;color:var(--amber);font-weight:600">Current: 297bp &mdash; widening from Jan trough</div>
+      </div>
+    </div>
     <div class="al al-o" style="margin-top:12px">TRIP WIRES: HY OAS &gt; 350bp &bull; NFCI &gt; -0.30 &bull; SOFR &gt; 4.50% &bull; PB margin hikes &bull; GS FCI &rarr; &ldquo;tightening&rdquo;</div>
   </div>
 </div>

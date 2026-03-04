@@ -78,35 +78,35 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
     <span style="font-size:10px;color:var(--muted)">22V Trading Desk</span>
   </div>
   <div style="display:flex;align-items:center;gap:16px;margin-top:12px">
-    <div class="mono" style="font-size:48px;font-weight:900;color:var(--crit);line-height:1">9<span style="font-size:24px;color:var(--muted)">/10</span></div>
+    <div class="mono" style="font-size:48px;font-weight:900;color:var(--red);line-height:1">7.5<span style="font-size:24px;color:var(--muted)">/10</span></div>
     <div>
-      <span class="pill p-c">CASCADE IMMINENT</span>
-      <span class="chg chg-d">&#9650; from 8</span>
-      <div style="font-size:11px;color:var(--muted);margin-top:6px">2026-03-03 <span style="color:var(--crit)">2026-03-02</span></div>
+      <span class="pill p-r">ACTIVE DETERIORATION</span>
+      <span class="chg chg-d">&#9660; from 9</span>
+      <div style="font-size:11px;color:var(--muted);margin-top:6px">2026-03-04 <span style="color:var(--amber)">intraday</span></div>
     </div>
   </div>
   <div class="meter">
-    <div class="m-s" style="background:var(--crit)"></div>
-    <div class="m-s" style="background:var(--crit)"></div>
-    <div class="m-s" style="background:var(--crit)"></div>
-    <div class="m-s" style="background:var(--crit)"></div>
-    <div class="m-s" style="background:var(--crit)"></div>
-    <div class="m-s" style="background:var(--crit)"></div>
-    <div class="m-s" style="background:var(--crit)"></div>
-    <div class="m-s" style="background:var(--crit)"></div>
-    <div class="m-s" style="background:var(--crit)"></div>
+    <div class="m-s" style="background:var(--red)"></div>
+    <div class="m-s" style="background:var(--red)"></div>
+    <div class="m-s" style="background:var(--red)"></div>
+    <div class="m-s" style="background:var(--red)"></div>
+    <div class="m-s" style="background:var(--red)"></div>
+    <div class="m-s" style="background:var(--red)"></div>
+    <div class="m-s" style="background:var(--red)"></div>
+    <div class="m-s" style="background:var(--amber)"></div>
     <div class="m-s"></div>
-    <span class="mono" style="margin-left:8px;font-size:14px;font-weight:800;color:var(--crit)">9/10</span>
+    <div class="m-s"></div>
+    <span class="mono" style="margin-left:8px;font-size:14px;font-weight:800;color:var(--red)">7.5/10</span>
   </div>
 </div>
 
 
-<div class="card" style="border-color:rgba(249,115,22,.35);border-left:3px solid var(--accent);margin-bottom:16px">
-  <div style="font-size:11px;font-weight:700;letter-spacing:1px;color:var(--accent);margin-bottom:4px">&#9888; REGIME_UPGRADE</div>
+<div class="card" style="border-color:rgba(34,197,94,.35);border-left:3px solid var(--green);margin-bottom:16px">
+  <div style="font-size:11px;font-weight:700;letter-spacing:1px;color:var(--green);margin-bottom:4px">&#9660; REGIME_DOWNGRADE</div>
   <div style="font-size:12px;line-height:1.7">
-    <strong style="color:var(--amber)">Key tension:</strong> Structural leverage + options fear CONFIRMED by vol surge and spread widening. VVIX >110 new trigger.
-    Financing direction: <strong style="color:var(--red)">early tightening (HY OAS 297bp up from 265bp, +6.47bp today)</strong>.
-    <strong style="color:var(--crit)">Composite upgraded 7.5 → 8.0. VVIX broke 110 (now 114) and VIX surging to 21.54 — upgraded L5A to 1.0/1.0. Spreads widening: HY +6.47bp, CCC at 915bp — L3 upgraded to 0.5/2. SPX in neg gamma below both 50d and 200d MAs. FOMC + quad witch in 16-18 days. The only firewall is L3 not yet at stress levels — if HY OAS breaks 325bp, upgrade to Cascade Imminent.</strong>
+    <strong style="color:var(--green)">Key shift:</strong> Vol structure de-escalating intraday. VVIX dropped below 110 (now 107.54), VIX fell 10% to 21.19 (below 22 threshold). SPX rallied above gamma flip — now in <strong style="color:var(--green)">POSITIVE GAMMA</strong> territory.
+    Financing: <strong style="color:var(--amber)">HY OAS 295bp, still in early tightening direction but not accelerating</strong>. NFCI -0.524 remains loose.
+    <strong style="color:var(--amber)">Composite downgraded 9 &rarr; 7.5. L5A zeroed out: VVIX 107.54 &lt; 110, VIX 21.19 &lt; 22. SPX 6,874 now ABOVE gamma flip 6,852 = positive gamma. L5B still maxed (P/C 1.19 + VIX 30d RoC +31%). Structural leverage (L1-L2) unchanged at max. Calendar risk still elevated: FOMC 3/18 + quad witch 3/20. This is a tactical relief within a structurally loaded regime — NOT an all-clear. Re-upgrade to 8+ if VVIX recrosses 110 or SPX drops below gamma flip.</strong>
   </div>
 </div>
 
@@ -163,20 +163,20 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
     </div>
     <div class="lr">
       <div style="flex:1">
-        <div class="ln">L5A: Vol Structure <span style="font-size:10px;color:var(--red);font-weight:800">1.0/1</span>
+        <div class="ln">L5A: Vol Structure <span style="font-size:10px;color:var(--green);font-weight:800">0.0/1</span>
         </div>
-        <div class="ld">VIX 23.81 (+11.05% today, above 22 trigger) = +0.5 | VVIX est ~118-120 (elevated) AND IV 19.50% > HV 13.45% = +0.5 | IV Rank 27.71%, IV Percentile 87% | SPX 6,801 below 50d MA (6,883) AND 200d MA (6,902) | VIX +59.3% YTD, +26.6% WTD per Bloomberg</div>
+        <div class="ld">VIX 21.19 (-10.1% today, BELOW 22 trigger) = +0.0 | VVIX 107.54 (below 110 threshold) = +0.0 | IV 16.52% > HV 11.94% but VVIX sub-trigger off | IV Rank 18.39%, IV Percentile 74% | SPX 6,867 just below 50d MA (6,883) but above 200d MA (6,902)</div>
       </div>
       <div class="dots">
-        <div class="dot" style="background:var(--red)"></div>
-        <div class="dot" style="background:var(--red)"></div>
+        <div class="dot" style="background:var(--green)"></div>
+        <div class="dot" style="background:var(--green)"></div>
       </div>
     </div>
     <div class="lr">
       <div style="flex:1">
         <div class="ln">L5B: Options Sentiment <span style="font-size:10px;color:var(--red);font-weight:800">1.0/1</span> <span style="font-size:9px;padding:1px 6px;border-radius:3px;background:rgba(239,68,68,.1);color:var(--red);font-weight:700;margin-left:4px">PIPELINE + BARCHART</span>
         </div>
-        <div class="ld">P/C 1.19 EXTREME FEAR + RR -8.01 = +0.5 | SPX 6,801 is 110pts BELOW gamma flip 6,911 = NEGATIVE GAMMA + VIX 30d RoC +47.4% (16.15→23.81) >> 25% threshold = +0.5 | All 5B sub-triggers firing</div>
+        <div class="ld">P/C 1.19 EXTREME FEAR + RR -8.01 = +0.5 | GEX now POSITIVE (SPX 6,874 ABOVE gamma flip 6,852) but VIX 30d RoC +31.2% (16.15&rarr;21.19) >> 25% threshold = +0.5 | Protection demand still elevated</div>
       </div>
       <div class="dots">
         <div class="dot" style="background:var(--red)"></div>
@@ -195,42 +195,42 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
       </div>
     </div>
   </div>
-  <div class="card glow-a">
-    <div style="font-size:13px;font-weight:700;color:var(--amber);margin-bottom:8px">&#9889; Score Update — 8 &rarr; 9 (2026-03-03)</div>
+  <div class="card glow-g">
+    <div style="font-size:13px;font-weight:700;color:var(--green);margin-bottom:8px">&#9660; Score Update — 9 &rarr; 7.5 (2026-03-04 intraday)</div>
     <div style="font-size:12px;line-height:1.7">
-      <strong>L1:</strong> Margin $1279.0B above $1T record (Jun 2025) | HF gross: GS 285%, JPM 298%<br>
-      <strong>L2:</strong> Margin YoY +36.5% (>20% threshold) | Debt/GDP 4.06% above 3.5% threshold<br>
-      <strong>L3:</strong> NFCI -0.563 — loose but tightening 3 straight weeks | HY OAS ~297-310bp widening from 265bp Jan low | 10yr yield 4.06% (up 3bp) | 2s10s curve 55.7bp | CCC 915bp+ | BBB 102bp+ | SOFR 3.68% | Oil +5.4% to $75 on Mideast tensions = inflation risk<br>
-      <strong>L4:</strong> High concentration: AI Infra Concentration, Mag 7 % of HF Net, Semis Net Exposure, Multistrat Leverage | AI infra cluster + Mag7 rotation confirmed by Q4 13Fs<br>
-      <strong>L5A:</strong> VIX 23.81 (+11.05% today, above 22 trigger) = +0.5 | VVIX est ~118-120 (elevated) AND IV 19.50% > HV 13.45% = +0.5 | IV Rank 27.71%, IV Percentile 87% | SPX 6,801 below 50d MA (6,883) AND 200d MA (6,902) | VIX +59.3% YTD, +26.6% WTD per Bloomberg<br>
-      <strong>L5B:</strong> P/C 1.19 EXTREME FEAR + RR -8.01 = +0.5 | SPX 6,801 is 110pts BELOW gamma flip 6,911 = NEGATIVE GAMMA + VIX 30d RoC +47.4% (16.15→23.81) >> 25% threshold = +0.5 | All 5B sub-triggers firing<br>
-      <strong>L6:</strong> HIGH events within 30d: FOMC + Dot Plot (15d), Quad Witching OPEX (17d), Quarter-End Rebalancing (28d) | FOMC complicated by oil inflation shock<br>
+      <strong>L1:</strong> Margin $1279.0B — 8th consecutive record high (Jan 2026) | HF gross: GS 285%, JPM 298% | UNCHANGED<br>
+      <strong>L2:</strong> Margin YoY +36.5% (>20% threshold) | Debt/GDP 4.06% above 3.5% threshold | UNCHANGED<br>
+      <strong>L3:</strong> NFCI -0.524 (loosened from -0.510) | HY OAS ~295bp (modest tightening from 297) | SOFR 3.70% | MOVE 77.75 (+6.2%) — rates vol rising | UNCHANGED at 0.5/2<br>
+      <strong>L4:</strong> AI infra cluster + Mag7 concentration | UNCHANGED at 1/1<br>
+      <strong style="color:var(--green)">L5A:</strong> <strong style="color:var(--green)">VIX 21.19 (-10.1%, BELOW 22) = +0.0 | VVIX 107.54 (below 110) = +0.0 | DOWNGRADED 1.0 &rarr; 0.0</strong><br>
+      <strong>L5B:</strong> P/C 1.19 EXTREME FEAR + RR -8.01 = +0.5 | GEX now POSITIVE (SPX 6,874 > flip 6,852) but VIX 30d RoC +31.2% > 25% = +0.5 | UNCHANGED at 1.0/1<br>
+      <strong>L6:</strong> FOMC + Dot Plot (14d), Quad Witching OPEX (16d), Quarter-End (27d) | UNCHANGED at 1/1<br>
     </div>
   </div>
   <div class="card" style="border-color:rgba(245,158,11,.3)">
     <div style="font-size:14px;font-weight:700;margin-bottom:12px;color:var(--amber)">Real-Time Pulse</div>
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:14px">
-      <div style="text-align:center;padding:14px 10px;background:rgba(239,68,68,.06);border-radius:8px;border:1px solid rgba(239,68,68,.15)">
+      <div style="text-align:center;padding:14px 10px;background:rgba(245,158,11,.06);border-radius:8px;border:1px solid rgba(245,158,11,.15)">
         <div style="font-size:9px;color:var(--muted);letter-spacing:1px;text-transform:uppercase">Turbulence</div>
-        <div class="mono" style="font-size:18px;font-weight:800;color:var(--red);margin-top:6px">ELEVATED</div>
-        <div style="font-size:9px;color:var(--dim);margin-top:4px">VIX 21.54 &bull; SPX 6876.35</div>
+        <div class="mono" style="font-size:18px;font-weight:800;color:var(--amber);margin-top:6px">MODERATE</div>
+        <div style="font-size:9px;color:var(--dim);margin-top:4px">VIX 21.19 &bull; SPX 6867.16</div>
       </div>
       <div style="text-align:center;padding:14px 10px;background:rgba(245,158,11,.06);border-radius:8px;border:1px solid rgba(245,158,11,.15)">
         <div style="font-size:9px;color:var(--muted);letter-spacing:1px;text-transform:uppercase">Regime</div>
-        <div class="mono" style="font-size:18px;font-weight:800;color:var(--amber);margin-top:6px">STRESS ONSET</div>
-        <div style="font-size:9px;color:var(--dim);margin-top:4px">Score 9/10</div>
+        <div class="mono" style="font-size:18px;font-weight:800;color:var(--amber);margin-top:6px">FRAGILE EQ.</div>
+        <div style="font-size:9px;color:var(--dim);margin-top:4px">Score 7.5/10</div>
       </div>
       <div style="text-align:center;padding:14px 10px;background:rgba(245,158,11,.06);border-radius:8px;border:1px solid rgba(245,158,11,.15)">
         <div style="font-size:9px;color:var(--muted);letter-spacing:1px;text-transform:uppercase">Synthesis</div>
-        <div class="mono" style="font-size:14px;font-weight:700;color:var(--amber);margin-top:6px">TAPE CONFIRMING</div>
-        <div style="font-size:9px;color:var(--dim);margin-top:4px">Score upgraded 7.5 → 8.0. VIX surging, VVIX >110, MOVE +14.8%. Spreads widening across IG & HY. SPX in negative gamma below both MAs. Defensive positioning warranted.</div>
+        <div class="mono" style="font-size:14px;font-weight:700;color:var(--amber);margin-top:6px">TAPE DIVERGING</div>
+        <div style="font-size:9px;color:var(--dim);margin-top:4px">Calm Surface: VIX -10%, VVIX &lt;110, SPX in positive gamma. Structural leverage still at records. Classic pre-event setup — monitor for catalyst.</div>
       </div>
     </div>
-    <div style="font-size:11px;color:var(--amber);font-weight:600;font-style:italic;line-height:1.6;padding:10px 14px;background:rgba(245,158,11,.05);border-radius:8px">Composite upgraded 7.5 → 8.0. VVIX broke 110 (now 114) and VIX surging to 21.54 — upgraded L5A to 1.0/1.0. Spreads widening: HY +6.47bp, CCC at 915bp — L3 upgraded to 0.5/2. SPX in neg gamma below both 50d and 200d MAs. FOMC + quad witch in 16-18 days. The only firewall is L3 not yet at stress levels — if HY OAS breaks 325bp, upgrade to Cascade Imminent. Structural leverage + options fear CONFIRMED by vol surge and spread widening. VVIX >110 new trigger</div>
+    <div style="font-size:11px;color:var(--amber);font-weight:600;font-style:italic;line-height:1.6;padding:10px 14px;background:rgba(245,158,11,.05);border-radius:8px">Composite downgraded 9 &rarr; 7.5. Vol structure de-escalated: VVIX 107.54 (below 110), VIX 21.19 (below 22), SPX above gamma flip in positive gamma. But structural leverage maxed (L1-L2), options fear persistent (P/C 1.19 extreme), and calendar loaded (FOMC + quad witch in 14-16 days). This is a tactical relief bounce within a structurally loaded regime. Not an all-clear — if VVIX recrosses 110 or HY OAS breaks 325bp, re-upgrade immediately.</div>
   </div>
   <div class="card">
     <div style="font-size:14px;font-weight:700;margin-bottom:4px">Real-Time Readings</div>
-    <div style="font-size:10px;color:var(--amber);margin-bottom:10px">2026-03-03</div>
+    <div style="font-size:10px;color:var(--amber);margin-bottom:10px">2026-03-04 intraday</div>
     <div class="stats">
       <div class="st">
         <div class="st-l">Equity P/C</div>
@@ -238,29 +238,29 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
         <div class="st-s w">EXTREME FEAR</div>
       </div>
       <div class="st">
-        <div class="st-l">GEX (Barchart_intraday)</div>
-        <div class="st-v" style="color:var(--green)">SHORT
+        <div class="st-l">GEX (Barchart)</div>
+        <div class="st-v" style="color:var(--green)">LONG
         </div>
-        <div class="st-s">Flip 6884 &bull; Walls 7000</div>
+        <div class="st-s">Flip 6852 &bull; SPX 6874 &bull; Walls 7000</div>
       </div>
       <div class="st">
         <div class="st-l">VIX</div>
-        <div class="st-v" style="color:var(--amber)">21.54</div>
-        <div class="st-s">IV 16.95%</div>
+        <div class="st-v" style="color:var(--amber)">21.19</div>
+        <div class="st-s">-10.1% today</div>
       </div>
       <div class="st">
-        <div class="st-l">CBOE SKEW</div>
-        <div class="st-v">146.05</div>
-        <div class="st-s">ELEVATED</div>
+        <div class="st-l">VVIX</div>
+        <div class="st-v" style="color:var(--green)">107.54</div>
+        <div class="st-s">Below 110 trigger</div>
       </div>
       <div class="st">
         <div class="st-l">HY OAS</div>
-        <div class="st-v" style="color:var(--green)">305bp</div>
-        <div class="st-s">Wider from 297</div>
+        <div class="st-v" style="color:var(--amber)">295bp</div>
+        <div class="st-s">Modest from 297</div>
       </div>
       <div class="st">
         <div class="st-l">NFCI</div>
-        <div class="st-v" style="color:var(--green)">-0.563</div>
+        <div class="st-v" style="color:var(--green)">-0.524</div>
         <div class="st-s">Loose</div>
       </div>
       <div class="st">
@@ -275,13 +275,13 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
       </div>
       <div class="st">
         <div class="st-l">SOFR</div>
-        <div class="st-v">3.68%</div>
+        <div class="st-v">3.70%</div>
         <div class="st-s">Stable</div>
       </div>
       <div class="st">
         <div class="st-l">IV / HV</div>
-        <div class="st-v">16.95% / 12.88%</div>
-        <div class="st-s">IV Rank 19.74%</div>
+        <div class="st-v">16.52% / 11.94%</div>
+        <div class="st-s">IV Rank 18.39% &bull; IV Pctile 74%</div>
       </div>
     </div>
   </div>
@@ -376,10 +376,10 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
     </div>
     <div style="font-size:12px;line-height:1.7;margin-bottom:16px">
       <strong style="color:var(--amber)">Financing conditions are mixed.</strong>
-      NFCI moved from -0.510 &rarr; -0.563 (2026-02-20).
-      HY OAS widened from 297&rarr;305bp.
-      SOFR rose to 3.68%.
-      <strong style="color:var(--amber)">This is the key layer keeping the composite at 9 instead of 8-10. If HY &gt; 350bp or NFCI &gt; -0.30, score jumps to 8-10 (Active Deterioration &rarr; Cascade).</strong>
+      NFCI -0.524 (loosened from -0.510). Still accommodative.
+      HY OAS ~295bp (slight tightening from 297).
+      SOFR 3.70%. MOVE 77.75 (+6.2% — rates vol rising).
+      <strong style="color:var(--amber)">L3 remains the key firewall at 0.5/2. If HY &gt; 350bp or NFCI &gt; -0.30, L3 upgrades and composite rises toward Cascade territory.</strong>
     </div>
     <div class="stats">
       <div class="st">
@@ -436,7 +436,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
       </div>
       <span class="pill p-r">EXTREME FEAR</span>
     </div>
-    <div style="font-size:10px;color:var(--muted);margin-bottom:14px">2026-03-03</div>
+    <div style="font-size:10px;color:var(--muted);margin-bottom:14px">2026-03-04 intraday</div>
     <div class="g4">
       <div class="mc" style="border-color:rgba(239,68,68,.25)">
         <div class="mc-l">Equity P/C</div>
@@ -446,15 +446,15 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
       </div>
       <div class="mc" style="border-color:rgba(34,197,94,.25)">
         <div class="mc-l">GEX</div>
-        <div class="mc-v" style="color:var(--muted)">SHORT
+        <div class="mc-v" style="color:var(--green)">LONG
         </div>
-        <div class="mc-s" style="color:var(--muted);font-weight:700">0 pts</div>
-        <div class="mc-s">Flip 6884 &bull; SPX below</div>
+        <div class="mc-s" style="color:var(--green);font-weight:700">POSITIVE &gamma;</div>
+        <div class="mc-s">Flip 6852 &bull; SPX 6874 above</div>
       </div>
       <div class="mc" style="border-color:rgba(239,68,68,.25)">
         <div class="mc-l">VIX 30d RoC</div>
-        <div class="mc-v" style="color:var(--red)">+33%</div>
-        <div class="mc-s" style="color:var(--amber);font-weight:700">+0.25 pts</div>
+        <div class="mc-v" style="color:var(--red)">+31%</div>
+        <div class="mc-s" style="color:var(--amber);font-weight:700">+0.50 pts</div>
         <div class="mc-s">Threshold: &gt; 25%</div>
       </div>
       <div class="mc" style="border-color:rgba(239,68,68,.25)">
@@ -469,21 +469,21 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
   <div class="card">
     <div style="font-size:14px;font-weight:700;margin-bottom:10px">Vol Surface</div>
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px">
-      <div class="mc"><div class="mc-l">IV</div><div class="mc-v" style="font-size:20px">16.95%</div></div>
-      <div class="mc"><div class="mc-l">HV (30d)</div><div class="mc-v" style="font-size:20px">12.88%</div></div>
-      <div class="mc"><div class="mc-l">IV Rank</div><div class="mc-v" style="font-size:20px">19.74%</div></div>
-      <div class="mc"><div class="mc-l">IV Pctl</div><div class="mc-v" style="font-size:20px">77.0%</div></div>
+      <div class="mc"><div class="mc-l">IV</div><div class="mc-v" style="font-size:20px">16.52%</div></div>
+      <div class="mc"><div class="mc-l">HV (30d)</div><div class="mc-v" style="font-size:20px">11.94%</div></div>
+      <div class="mc"><div class="mc-l">IV Rank</div><div class="mc-v" style="font-size:20px">18.39%</div></div>
+      <div class="mc"><div class="mc-l">IV Pctl</div><div class="mc-v" style="font-size:20px">74.0%</div></div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:10px">
-      <div class="mc" style="border-color:rgba(239,68,68,.2)">
+      <div class="mc" style="border-color:rgba(34,197,94,.2)">
         <div class="mc-l">GEX Flip</div>
-        <div class="mc-v" style="color:var(--red);font-size:20px">6884</div>
-        <div class="mc-s">SPX below &rarr; short &gamma;</div>
+        <div class="mc-v" style="color:var(--green);font-size:20px">6852</div>
+        <div class="mc-s">SPX 6874 above &rarr; long &gamma;</div>
       </div>
       <div class="mc"><div class="mc-l">Put Wall</div><div class="mc-v" style="font-size:20px">7000</div></div>
       <div class="mc"><div class="mc-l">Call Wall</div><div class="mc-v" style="font-size:20px">7000</div></div>
     </div>
-    <div style="font-size:10px;color:var(--muted);margin-top:6px;text-align:right">Source: Barchart_intraday &mdash; 2026-03-03</div>
+    <div style="font-size:10px;color:var(--muted);margin-top:6px;text-align:right">Source: Barchart &mdash; 2026-03-04</div>
   </div>
   <div class="card">
     <div style="font-size:14px;font-weight:700;margin-bottom:4px">VIX 30-Day Trend</div>
@@ -635,13 +635,13 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
         <span style="font-size:11px;font-weight:700;color:var(--muted)">ACTIVATION PROBABILITY</span>
         <span class="pill p-r">HIGH &mdash; STEPS 1-3 PRE-LOADED</span>
       </div>
-      <div style="font-size:12px;line-height:1.7">Step 1 ACTIVE: Record leverage loaded | Step 2 ACTIVE: Momentum accelerating | Step 3 ACTIVE: SPX below gamma flip, neg gamma, VIX 21.54, VVIX 114 | Step 4 WARNING: Financing tightening direction (L3=0.5/2) — HY +6.47bp today, CCC at 915bp | Step 5 BLOCKED: No forced selling yet</div>
+      <div style="font-size:12px;line-height:1.7">Step 1 ACTIVE: Record leverage loaded | Step 2 ACTIVE: Momentum accelerating | Step 3 DE-ESCALATING: SPX above gamma flip, positive gamma, VIX 21.19 (-10%), VVIX 107.54 (below 110) | Step 4 WARNING: Financing direction mixed (L3=0.5/2) — HY OAS 295bp, NFCI -0.524 loose | Step 5 BLOCKED: No forced selling yet</div>
     </div>
   </div>
 </div>
 
 
-<div class="foot">Sources: FINRA, OFR Form PF, GS/JPM/MS Prime, Chicago Fed NFCI, HY OAS, SOFR, Bloomberg OVME, Barchart GEX, Pipeline. Not investment advice. Maguire Leverage Monitor &mdash; 22V Trading Desk. Updated 2026-03-03.</div>
+<div class="foot">Sources: FINRA, OFR Form PF, GS/JPM/MS Prime, Chicago Fed NFCI, HY OAS, SOFR, Bloomberg OVME, Barchart GEX, Pipeline. Not investment advice. Maguire Leverage Monitor &mdash; 22V Trading Desk. Updated 2026-03-04.</div>
 </div>
 
 

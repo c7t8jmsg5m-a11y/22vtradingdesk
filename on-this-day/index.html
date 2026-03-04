@@ -81,16 +81,6 @@
     border: 1px solid var(--gray-200);
     box-shadow: 0 4px 20px rgba(0,0,0,0.08);
   }
-  .infographic-placeholder {
-    background: white;
-    border: 2px dashed var(--gray-200);
-    border-radius: 6px;
-    padding: 80px 40px;
-    color: var(--gray-400);
-    font-size: 14px;
-    font-family: 'JetBrains Mono', monospace;
-    letter-spacing: 0.5px;
-  }
 
   /* -- EVENT CARDS -- */
   .events-section {
@@ -127,47 +117,6 @@
     color: var(--ink-light);
   }
 
-  /* -- GEMINI PROMPT SECTION -- */
-  .prompt-section {
-    margin-top: 48px;
-    background: white;
-    border: 1px solid var(--gray-200);
-    border-radius: 4px;
-    padding: 24px;
-  }
-  .prompt-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--gray-400);
-    margin-bottom: 12px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .copy-btn {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    padding: 4px 10px;
-    background: var(--brand-orange);
-    color: white;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    letter-spacing: 0.5px;
-  }
-  .copy-btn:hover { opacity: 0.85; }
-  .prompt-text {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    line-height: 1.7;
-    color: var(--ink-light);
-    white-space: pre-wrap;
-    max-height: 300px;
-    overflow-y: auto;
-  }
-
   /* -- FOOTER -- */
   .footer {
     max-width: 880px;
@@ -198,9 +147,7 @@
 
     <!-- INFOGRAPHIC IMAGE -->
     <div class="infographic-section">
-      <!-- When infographic is ready, uncomment: -->
-      <!-- <img src="infographic.png" alt="On This Day: March 4"> -->
-      <div class="infographic-placeholder">Infographic pending &mdash; paste Gemini prompt below to generate</div>
+      <img src="infographic.png" alt="On This Day: March 4 &mdash; Four historical events infographic">
     </div>
 
     <!-- EVENT DESCRIPTIONS -->
@@ -226,27 +173,6 @@
         <div class="event-headline">Charlie Chaplin Knighted &mdash; <span class="event-year">1975</span></div>
         <div class="event-desc">At 85 years old and too frail to kneel, cinema pioneer Charlie Chaplin was wheeled before Queen Elizabeth II at Buckingham Palace to be dubbed Sir Charles Spencer Chaplin. The Welsh Guards played the theme from his film "Limelight" as the king of silent comedy finally received recognition from Britain after a 20-year delay caused by Cold War politics.</div>
       </div>
-    </div>
-
-    <!-- GEMINI PROMPT -->
-    <div class="prompt-section">
-      <div class="prompt-label">
-        <span>Gemini Image Prompt</span>
-        <button class="copy-btn" onclick="navigator.clipboard.writeText(document.getElementById('gemini-prompt').innerText).then(()=>{this.textContent='COPIED';setTimeout(()=>{this.textContent='COPY'},1500)})">COPY</button>
-      </div>
-      <div class="prompt-text" id="gemini-prompt">Create a four-quadrant infographic titled "On This Day: March 4"
-
-Each quadrant should feature one historical event with a bold headline, a short 1-2 sentence description, and a supporting illustration. Use a clean, textbook-style cartoon look -- educational but not silly. The overall layout should feel like a polished historical broadsheet.
-
-Top Left: "Lincoln's First Inauguration - 1861" -- Abraham Lincoln took the oath of office as the 16th president on the Capitol steps while seven Southern states had already seceded. Illustrate Lincoln standing at the Capitol with his hand raised, surrounded by armed cavalry, storm clouds gathering behind him.
-
-Top Right: "FDR's 'Only Thing We Have to Fear' - 1933" -- As the Great Depression reached its nadir, Franklin D. Roosevelt was inaugurated and delivered his iconic phrase that fear itself was the true enemy. Illustrate FDR at the microphone delivering his address, with breadlines and closed bank buildings visible in the background, American flags framing the scene.
-
-Bottom Left: "Emile Berliner Patents the Microphone - 1877" -- On his way to watch President Hayes's inauguration, inventor Emile Berliner demonstrated a crude but revolutionary device assembled from household items. Illustrate Berliner holding his primitive microphone device, with telephone wires and early telegraph equipment around him, a look of discovery on his face.
-
-Bottom Right: "Charlie Chaplin Knighted - 1975" -- At 85 years old and too frail to kneel, cinema pioneer Charlie Chaplin was wheeled before Queen Elizabeth II at Buckingham Palace. Illustrate Chaplin in his iconic bowler hat being presented to Queen Elizabeth II in the ornate ballroom of Buckingham Palace, guards in dress uniform nearby.
-
-Style notes: Keep the color palette warm and muted. Each quadrant should be visually distinct but cohesive as a set. No modern design elements -- think vintage editorial illustration meets educational poster.</div>
     </div>
 
   </main>

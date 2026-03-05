@@ -1,9 +1,9 @@
 {
-  "timestamp": "2026-03-03T13:30:00.000000",
-  "composite_score": 9.0,
-  "composite_prev": 8.0,
-  "regime": "CASCADE_IMMINENT",
-  "regime_label": "Cascade Imminent",
+  "timestamp": "2026-03-04T16:30:00.000000",
+  "composite_score": 7.5,
+  "composite_prev": 9.0,
+  "regime": "ACTIVE_DETERIORATION",
+  "regime_label": "Active Deterioration",
   "layers": {
     "l1": {
       "score": 2,
@@ -94,22 +94,33 @@
       }
     },
     "l3": {
-      "score": 1.0,
+      "score": 0,
       "max": 2,
       "label": "Financing",
-      "details": "NFCI -0.563 \u2014 loose but tightening 3 straight weeks | HY OAS ~297-310bp widening from 265bp Jan low | 10yr yield 4.06% (up 3bp) | 2s10s curve 55.7bp | CCC 915bp+ | BBB 102bp+ | SOFR 3.68% | Oil +5.4% to $75 on Mideast tensions = inflation risk",
+      "details": "HY OAS 281bp (tightened 16bp from 297bp on 3/3) | MOVE 70.03 (collapsed -9.93% in 1 session) | NFCI -0.5236 (loosened from -0.5629) | SOFR 3.67 (down 4bp) | Financing conditions LOOSENING -- no tightening signal",
       "data": {
-        "nfci": -0.5629,
-        "nfci_prev": -0.5654,
-        "nfci_3mo_ago": -0.51004,
-        "nfci_as_of": "2026-02-20",
-        "hy_oas": 305,
+        "hy_oas": 281,
         "hy_oas_prev": 297,
-        "hy_oas_as_of": "2026-03-03",
-        "sofr": 3.68,
-        "sofr_prev": 3.67,
-        "signal": "LOOSE",
-        "notes": "HY spreads widening on geopolitical risk. 10yr 4.06%. Oil +5.4% to $75. Gold -4.2% (margin call liquidation signal). DXY +0.74% to 99.11."
+        "hy_oas_chg": -16,
+        "ccc_oas": 915,
+        "move": 70.03,
+        "move_prev": 77.75,
+        "move_chg_pct": -9.93,
+        "nfci": -0.5236,
+        "nfci_prev": -0.5629,
+        "sofr": 3.67,
+        "bbb_oas": 102,
+        "ig_oas": 80,
+        "signal": "LOOSENING",
+        "nfci_3mo_ago": -0.51,
+        "nfci_as_of": "2026-03-04",
+        "hy_oas_6mo_ago": 285,
+        "ccc_oas_6mo_ago": 894,
+        "sofr_6mo_ago": 3.93,
+        "bbb_oas_6mo_ago": 105,
+        "hy_oas_history": [],
+        "nfci_history": [],
+        "sofr_prev": 3.71
       }
     },
     "l4": {
@@ -198,26 +209,24 @@
       }
     },
     "l5a": {
-      "score": 1.0,
+      "score": 0.5,
       "max": 1,
       "label": "Vol Structure",
-      "details": "VIX 23.81 (+11.05% today, above 22 trigger) = +0.5 | VVIX est ~118-120 (elevated) AND IV 19.50% > HV 13.45% = +0.5 | IV Rank 27.71%, IV Percentile 87% | SPX 6,801 below 50d MA (6,883) AND 200d MA (6,902) | VIX +59.3% YTD, +26.6% WTD per Bloomberg",
+      "details": "VIX 21.15 (down from 23.81, BELOW 22 trigger) = 0 | IV 16.70% > HV 11.88% (implied still above realized) = +0.5 | IV Rank 18.93%, IV Percentile 76% -- vol premium persists but VIX has mean-reverted | SPX 6,869.50 reclaimed above 50d MA est ~6,880",
       "data": {
-        "vix": 23.81,
-        "vix_prev_close": 21.54,
-        "vix_change": 2.37,
-        "vix_intraday_change_pct": 11.05,
-        "vix_ytd_pct": 59.26,
-        "vix_wtd_pct": 26.64,
-        "ivol": 19.5,
-        "hvol": 13.45,
-        "iv_rank": 27.71,
-        "iv_percentile": 87.0,
-        "vvix": 118.0,
-        "vvix_note": "estimated \u2014 extrapolated from 114.07 + VIX spike",
+        "vix": 21.15,
+        "vix_prev_close": 23.81,
+        "vix_change": -2.66,
+        "vix_intraday_change_pct": -11.17,
+        "ivol": 16.7,
+        "hvol": 11.88,
+        "iv_rank": 18.93,
+        "iv_percentile": 76.0,
+        "vvix": 110.0,
+        "vvix_note": "estimated -- declining with VIX",
         "spx_50dma": 6883.49,
         "spx_200dma": 6902.2,
-        "spx_last": 6800.58,
+        "spx_last": 6869.5,
         "spx_below_50d": true,
         "spx_below_200d": true
       }
@@ -226,32 +235,32 @@
       "score": 1.0,
       "max": 1,
       "label": "Options Sentiment",
-      "details": "P/C 1.19 EXTREME FEAR + RR -8.01 = +0.5 | SPX 6,801 is 110pts BELOW gamma flip 6,911 = NEGATIVE GAMMA + VIX 30d RoC +47.4% (16.15\u219223.81) >> 25% threshold = +0.5 | All 5B sub-triggers firing",
+      "details": "P/C 1.19 EXTREME FEAR + RR -8.01 = +0.5 | SPX 6,869.50 barely ABOVE gamma flip 6,865.82 -- just crossed back to positive gamma | VIX 30d RoC +31% (16.15->21.15) still > 25% threshold = +0.5 | GEX flip reclaim is key development -- if holds, dealer hedging shifts from amplifier to damper",
       "data": {
         "equity_pc": 1.187,
         "risk_reversal": -8.01,
         "cboe_skew": 146.05,
-        "gex_flip": 6910.52,
-        "spx_last": 6800.58,
-        "spx_below_flip": true,
-        "gamma_regime": "NEGATIVE",
-        "gamma_distance_pts": -109.94,
+        "gex_flip": 6865.82,
+        "spx_last": 6869.5,
+        "spx_below_flip": false,
+        "gamma_regime": "POSITIVE (MARGINAL)",
+        "gamma_distance_pts": 3.68,
         "put_wall": 7000.0,
         "call_wall": 7000.0,
-        "vix_30d_roc_pct": 47.4,
+        "vix_30d_roc_pct": 31.0,
         "vix_30d_start": 16.15,
-        "vix_30d_end": 23.81
+        "vix_30d_end": 21.15
       }
     },
     "l6": {
       "score": 1,
       "max": 1,
       "label": "Calendar",
-      "details": "HIGH events within 30d: FOMC + Dot Plot (15d), Quad Witching OPEX (17d), Quarter-End Rebalancing (28d) | FOMC complicated by oil inflation shock",
+      "details": "HIGH events within 30d: FOMC + Dot Plot (14d), Quad Witching OPEX (16d), Quarter-End Rebalancing (27d) | FOMC complicated by oil inflation shock + tariff uncertainty",
       "data": {
         "upcoming_high": [
-          "FOMC Meeting + Dot Plot (21d)",
-          "Quad Witching OPEX (23d)"
+          "FOMC Meeting + Dot Plot (14d)",
+          "Quad Witching OPEX (16d)"
         ],
         "all_events": [
           {
@@ -320,59 +329,48 @@
   },
   "alerts": [],
   "cascade": {
-    "activation_probability": "HIGH",
-    "steps_active": 3,
-    "blocked_at_step": 4,
-    "narrative": "Step 1 ACTIVE: Record leverage loaded | Step 2 ACTIVE: Momentum accelerating | Step 3 ACTIVE: SPX below gamma flip, neg gamma, VIX 21.54, VVIX 114 | Step 4 WARNING: Financing tightening direction (L3=0.5/2) \u2014 HY +6.47bp today, CCC at 915bp | Step 5 BLOCKED: No forced selling yet"
+    "activation_probability": "MODERATE-HIGH",
+    "steps_active": 2,
+    "blocked_at_step": 3,
+    "narrative": "Step 1 ACTIVE: Record leverage loaded | Step 2 ACTIVE: Momentum accelerating | Step 3 PAUSED: SPX reclaimed gamma flip (6869 vs 6866), VIX retreated below 22, MOVE collapsed -10% | Step 4 BLOCKED: Financing loosening -- HY tightened 16bp, NFCI improved | Step 5 BLOCKED: No forced selling"
   },
   "real_time_pulse": {
-    "turbulence": "ELEVATED",
-    "turbulence_detail": "VIX 21.54 (+8.5% today), VVIX 114, MOVE +14.8%, SPX below BOTH 50d (6881) and 200d (6903) MA, negative gamma",
-    "regime": "STRESS_ONSET",
+    "turbulence": "MODERATE",
+    "turbulence_detail": "VIX 21.15 (down from 23.81), MOVE 70.03 (-10%), SPX +0.78% reclaiming gamma flip, oil retreating on Bessent escort comments, HY OAS tightened 16bp",
+    "regime": "FRAGILE_EQUILIBRIUM",
     "regime_probs": {
-      "S1_calm": 10,
-      "S2_fragile": 25,
-      "S3_stress": 45,
-      "S4_deleveraging": 20
+      "S1_calm": 15,
+      "S2_fragile": 45,
+      "S3_stress": 30,
+      "S4_deleveraging": 10
     },
-    "synthesis": "TAPE CONFIRMING",
-    "synthesis_note": "Score upgraded 7.5 \u2192 8.0. VIX surging, VVIX >110, MOVE +14.8%. Spreads widening across IG & HY. SPX in negative gamma below both MAs. Defensive positioning warranted."
+    "synthesis": "TAPE DIVERGING (CALM SURFACE)",
+    "synthesis_note": "Score downgraded 9.0 -> 7.5. Sharp relief rally -- VIX -11%, MOVE -10%, HY -16bp, SPX reclaimed gamma flip. But structural leverage (L1-L2) unchanged at max, and P/C still screaming fear (1.19). Classic 'eye of the storm' setup -- the catalyst (Iran/Hormuz) hasn't resolved, only the acute vol has compressed. FOMC + quad witch in 2 weeks is the next pressure test. KEY LEVELS: HY OAS 350bp and VIX backwardation remain the two confirmation triggers for regime shift to Cascade Imminent."
   },
   "commentary": {
-    "headline_type": "REGIME_UPGRADE",
-    "l3_direction": "early tightening (HY OAS 297bp up from 265bp, +6.47bp today)",
-    "key_tension": "Structural leverage + options fear CONFIRMED by vol surge and spread widening. VVIX >110 new trigger",
-    "bottom_line": "Composite upgraded 7.5 \u2192 8.0. VVIX broke 110 (now 114) and VIX surging to 21.54 \u2014 upgraded L5A to 1.0/1.0. Spreads widening: HY +6.47bp, CCC at 915bp \u2014 L3 upgraded to 0.5/2. SPX in neg gamma below both 50d and 200d MAs. FOMC + quad witch in 16-18 days. The only firewall is L3 not yet at stress levels \u2014 if HY OAS breaks 325bp, upgrade to Cascade Imminent"
+    "headline_type": "SCORE_DOWNGRADE",
+    "l3_direction": "loosening (HY OAS 281bp down from 297bp, MOVE -10%, NFCI improved)",
+    "key_tension": "Structural leverage still at historical extremes (L1=2, L2=2) but acute stress decompressed sharply. SPX reclaimed gamma flip by 3.68pts -- marginal positive gamma. Options sentiment still extreme fear (P/C 1.19) despite rally.",
+    "bottom_line": "Composite downgraded 9.0 -> 7.5. Single-day de-escalation driven by Bessent Persian Gulf escort offer + strong ADP + oil retreat. L3 (financing) flipped from early tightening to loosening (HY -16bp, MOVE -10%). L5A lost 0.5pts as VIX dropped below 22. But the 'all clear' is NOT here: leverage at record highs (L1-L2 maxed), concentration extreme (L4=1), options still pricing fear (L5B=1.0), and calendar loaded (L6=1). This is a relief rally within Active Deterioration, not a regime change. If Iran escalates or Hormuz closes, the loaded leverage snaps back instantly."
   },
   "options_data_timestamp": "2026-03-02T15:19:00",
   "cross_asset": {
-    "spx": 6800.58,
-    "spx_chg_pct": -1.18,
-    "spy": 678.54,
-    "ccmp": 22454.61,
-    "ccmp_chg_pct": -1.29,
-    "indu": 48375.67,
-    "indu_chg_pct": -1.08,
-    "rty": 2608.78,
-    "rty_chg_pct": -1.78,
-    "vix": 23.81,
-    "vix_chg": 2.37,
-    "vix_chg_pct": 11.05,
-    "dxy": 99.113,
-    "dxy_chg_pct": 0.74,
-    "cla": 75.08,
-    "cla_chg_pct": 5.41,
-    "ng1": 3.118,
-    "ng1_chg_pct": 5.34,
-    "xau": 5098.7,
-    "xau_chg_pct": -4.2,
-    "xag": 83.13,
-    "xag_chg_pct": -6.99,
-    "usgg2yr": 3.5019,
-    "usgg10yr": 4.0613,
-    "usgg30yr": 4.7088,
-    "usyc2y10": 55.729,
+    "spx": 6869.5,
+    "spx_chg_pct": 0.78,
+    "vix": 21.15,
+    "vix_chg": -2.66,
+    "vix_chg_pct": -11.17,
+    "move": 70.03,
+    "move_chg": -7.72,
+    "move_chg_pct": -9.93,
+    "hy_oas": 281,
+    "ig_oas": 80,
+    "nfci": -0.5236,
+    "sofr": 3.67,
+    "usdjpy": 157.47,
+    "cla": 70.92,
+    "cla_chg_pct": -5.5,
     "source": "Bloomberg Terminal",
-    "as_of": "2026-03-03T13:30:00"
+    "as_of": "2026-03-04T16:30:00"
   }
 }

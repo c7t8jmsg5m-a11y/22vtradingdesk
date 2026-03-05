@@ -3,531 +3,297 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>22V Midday Trading Recap — March 4, 2026</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Source+Sans+3:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>22V Midday Trading Recap — March 5, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --cream: #FAF7F2;
-    --dark: #1A2332;
-    --orange: #E4762D;
-    --red: #C0392B;
-    --green: #27AE60;
-    --gray: #666;
-    --light-gray: #F5F0EB;
-    --warm-red: #8B0000;
-    --border-red: #C0392B;
-  }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: 'Source Sans 3', sans-serif;
-    background: var(--cream);
-    color: var(--dark);
-    line-height: 1.5;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0;
-  }
-  .header {
-    background: var(--dark);
-    color: #FFF;
-    padding: 16px 28px 12px;
-  }
-  .header-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 6px;
-  }
-  .header-brand {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.5);
-  }
-  .header-title {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    color: var(--orange);
-  }
-  .datebar {
-    background: #2A2A2A;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    color: rgba(255,255,255,0.7);
-    padding: 8px 28px;
-    display: flex;
-    justify-content: space-between;
-    letter-spacing: 0.5px;
-  }
-  .content { padding: 24px 28px; }
-  .headline {
-    font-family: 'Playfair Display', serif;
-    font-size: 28px;
-    font-weight: 800;
-    line-height: 1.15;
-    color: var(--dark);
-    margin-bottom: 12px;
-  }
-  .lede {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 14px;
-    line-height: 1.6;
-    color: #444;
-    margin-bottom: 20px;
-    border-left: 3px solid var(--orange);
-    padding-left: 14px;
-  }
-  .lede b { font-style: normal; color: var(--dark); }
-  .index-bar {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 8px;
-    margin-bottom: 24px;
-    background: #FFF;
-    border: 1px solid #E8E3DD;
-    border-radius: 6px;
-    padding: 14px 12px;
-  }
-  .index-card { text-align: center; }
-  .index-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 1px;
-    color: var(--gray);
-    text-transform: uppercase;
-  }
-  .index-value {
-    font-family: 'Playfair Display', serif;
-    font-size: 20px;
-    font-weight: 700;
-  }
-  .index-chg {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    font-weight: 500;
-  }
-  .pos { color: var(--green); }
-  .neg { color: var(--red); }
-  .section-header {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--orange);
-    margin: 24px 0 10px;
-    padding-bottom: 4px;
-    border-bottom: 1px solid #E8E3DD;
-  }
-  .prose {
-    font-size: 13.5px;
-    line-height: 1.65;
-    color: #333;
-    margin-bottom: 14px;
-  }
-  .prose b { color: var(--dark); }
-  .callout {
-    background: #FFF8F5;
-    border-left: 3px solid var(--border-red);
-    padding: 12px 16px;
-    margin: 16px 0;
-    border-radius: 0 4px 4px 0;
-  }
-  .callout-title {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 2px;
-    color: var(--red);
-    margin-bottom: 6px;
-  }
-  .callout p {
-    font-size: 12.5px;
-    line-height: 1.55;
-    color: #444;
-  }
-  .pull-quote {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 18px;
-    line-height: 1.45;
-    color: var(--warm-red);
-    padding: 16px 20px;
-    margin: 20px 0;
-    border-left: 3px solid var(--warm-red);
-  }
-  table.sector-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 12px 0 20px;
-    font-size: 12px;
-  }
-  .sector-table th {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: var(--gray);
-    text-align: left;
-    padding: 6px 8px;
-    border-bottom: 1px solid #CCC;
-  }
-  .sector-table th:nth-child(2),
-  .sector-table th:nth-child(3) { text-align: right; }
-  .sector-table td {
-    padding: 7px 8px;
-    border-bottom: 1px solid #EEE;
-  }
-  .sector-table td:nth-child(2),
-  .sector-table td:nth-child(3) { 
-    text-align: right;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-  }
+  body { background: #FAF7F2; color: #1A1A1A; font-family: 'Source Sans 3', sans-serif; line-height: 1.5; }
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+  
+  /* Header */
+  .top-bar { background: #2D2D2D; padding: 8px 0; }
+  .top-bar .container { display: flex; justify-content: space-between; align-items: center; }
+  .top-bar-left { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #999; letter-spacing: 1.5px; }
+  .top-bar-right { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #E4762D; letter-spacing: 1px; }
+  
+  .header { background: #2D2D2D; padding: 16px 0 20px; border-bottom: 3px solid #E4762D; }
+  .header-brand { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #888; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 2px; }
+  .header-title { font-family: 'Playfair Display', serif; font-size: 18px; color: #fff; letter-spacing: 2px; font-weight: 400; }
+  
+  .date-bar { background: #3D3D3D; padding: 6px 0; }
+  .date-bar .container { display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #ccc; letter-spacing: 0.5px; }
+  
+  /* Headline */
+  .headline { padding: 28px 0 8px; }
+  .headline h1 { font-family: 'Playfair Display', serif; font-size: 26px; line-height: 1.2; color: #1A1A1A; font-weight: 700; }
+  .lede { font-family: 'Source Sans 3', sans-serif; font-size: 14px; line-height: 1.6; color: #444; font-style: italic; padding: 8px 0 20px; border-bottom: 1px solid #ddd; }
+  
+  /* Index Bar */
+  .index-bar { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; padding: 16px 0; border-bottom: 1px solid #ddd; }
+  .index-item { text-align: center; padding: 8px 4px; }
+  .index-item:not(:last-child) { border-right: 1px solid #eee; }
+  .index-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: #888; letter-spacing: 1px; text-transform: uppercase; }
+  .index-value { font-family: 'Source Sans 3', sans-serif; font-size: 20px; font-weight: 700; margin: 2px 0; }
+  .index-change { font-family: 'JetBrains Mono', monospace; font-size: 10px; }
+  .neg { color: #C0392B; }
+  .pos { color: #27AE60; }
+  .neutral { color: #666; }
+  
+  /* Section headers */
+  .section-header { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 2px; color: #888; text-transform: uppercase; margin: 24px 0 12px; padding-bottom: 4px; border-bottom: 1px solid #ddd; }
+  
+  /* Body text */
+  .body-text { font-size: 13.5px; line-height: 1.65; color: #333; margin-bottom: 12px; }
+  .body-text b { color: #1A1A1A; }
+  
+  /* Callout box */
+  .callout { background: #FFF8F6; border-left: 3px solid #C0392B; padding: 12px 16px; margin: 16px 0; }
+  .callout-title { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 2px; color: #C0392B; margin-bottom: 6px; font-weight: 700; }
+  .callout-text { font-size: 12.5px; line-height: 1.55; color: #444; }
+  
+  /* Pull quote */
+  .pull-quote { font-family: 'Playfair Display', serif; font-size: 16px; line-height: 1.5; color: #8B0000; font-style: italic; padding: 16px 0 16px 16px; border-left: 3px solid #8B0000; margin: 20px 0; }
+  
+  /* Sector table */
+  .sector-table { width: 100%; border-collapse: collapse; margin: 12px 0 20px; font-size: 12px; }
+  .sector-table th { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 1px; color: #888; text-transform: uppercase; padding: 6px 8px; border-bottom: 1px solid #999; text-align: left; }
+  .sector-table th:nth-child(2), .sector-table th:nth-child(3) { text-align: center; }
+  .sector-table td { padding: 7px 8px; border-bottom: 1px solid #eee; font-family: 'Source Sans 3', sans-serif; }
+  .sector-table tr:nth-child(even) { background: #F5F5F5; }
+  .sector-table td:nth-child(2), .sector-table td:nth-child(3) { text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; }
   .sector-table td:nth-child(4) { font-size: 11px; color: #555; }
-  .sector-table tr:nth-child(even) { background: var(--light-gray); }
-  .movers-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin: 16px 0;
-  }
-  .movers-box {
-    background: #FFF;
-    border: 1px solid #E8E3DD;
-    border-radius: 6px;
-    overflow: hidden;
-  }
-  .movers-header {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 2px;
-    padding: 8px 12px;
-    color: #FFF;
-  }
-  .movers-header.win { background: var(--green); }
-  .movers-header.lose { background: var(--red); }
-  .mover-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 5px 12px;
-    font-size: 11.5px;
-    border-bottom: 1px solid #F0F0F0;
-  }
-  .mover-row:last-child { border-bottom: none; }
-  .mover-ticker {
-    font-family: 'JetBrains Mono', monospace;
-    font-weight: 600;
-    min-width: 50px;
-  }
-  .mover-cat { color: #666; font-size: 10.5px; flex: 1; margin: 0 8px; }
-  .mover-pct {
-    font-family: 'JetBrains Mono', monospace;
-    font-weight: 600;
-    min-width: 55px;
-    text-align: right;
-  }
-  .rates-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    margin: 14px 0;
-  }
-  .rate-card {
-    background: #FFF;
-    border: 1px solid #E8E3DD;
-    border-radius: 5px;
-    padding: 10px;
-    text-align: center;
-  }
-  .rate-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 1px;
-    color: var(--gray);
-  }
-  .rate-value {
-    font-family: 'Playfair Display', serif;
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--dark);
-    margin: 2px 0;
-  }
-  .rate-chg {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-  }
-  .rate-note {
-    font-size: 10px;
-    color: #888;
-    margin-top: 2px;
-  }
-  .watch-box {
-    background: var(--dark);
-    color: #FFF;
-    border-radius: 6px;
-    padding: 20px 24px;
-    margin: 20px 0;
-  }
-  .watch-box h3 {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 2px;
-    color: var(--orange);
-    margin: 14px 0 6px;
-  }
-  .watch-box h3:first-child { margin-top: 0; }
-  .watch-box p {
-    font-size: 12px;
-    line-height: 1.55;
-    color: rgba(255,255,255,0.85);
-  }
-  .bottom-line {
-    background: #FFF;
-    border: 2px solid var(--orange);
-    border-radius: 6px;
-    padding: 20px 24px;
-    margin: 20px 0;
-  }
-  .bottom-line h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 20px;
-    color: var(--orange);
-    margin-bottom: 10px;
-  }
-  .bottom-line p {
-    font-size: 13.5px;
-    line-height: 1.65;
-    color: #333;
-  }
-  .footer {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 8px;
-    letter-spacing: 2px;
-    color: var(--gray);
-    text-align: center;
-    padding: 20px;
-    border-top: 1px solid #E8E3DD;
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
+  
+  /* Winners/Losers */
+  .wl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0 20px; }
+  .wl-box { border: 1px solid #ddd; padding: 0; }
+  .wl-header { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 2px; padding: 8px 12px; color: #fff; }
+  .wl-header.winners { background: #1a6b3c; }
+  .wl-header.losers { background: #8B0000; }
+  .wl-row { display: flex; justify-content: space-between; align-items: baseline; padding: 5px 12px; font-size: 12px; border-bottom: 1px solid #f0f0f0; }
+  .wl-row:nth-child(even) { background: #fafafa; }
+  .wl-ticker { font-family: 'JetBrains Mono', monospace; font-weight: 700; width: 50px; }
+  .wl-catalyst { flex: 1; padding: 0 8px; color: #555; font-size: 11px; }
+  .wl-pct { font-family: 'JetBrains Mono', monospace; font-weight: 700; white-space: nowrap; }
+  
+  /* Rates cards */
+  .rates-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 12px 0; }
+  .rate-card { background: #2D2D2D; padding: 10px 12px; color: #fff; }
+  .rate-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: #999; letter-spacing: 1px; }
+  .rate-value { font-size: 18px; font-weight: 700; margin: 4px 0 2px; }
+  .rate-change { font-family: 'JetBrains Mono', monospace; font-size: 10px; }
+  .rate-driver { font-size: 10px; color: #999; margin-top: 4px; line-height: 1.3; }
+  
+  /* Watch box */
+  .watch-box { background: #2D2D2D; color: #fff; padding: 16px 20px; margin: 16px 0; }
+  .watch-box .callout-title { color: #E4762D; }
+  .watch-sub { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #E4762D; letter-spacing: 1px; margin: 12px 0 6px; }
+  .watch-text { font-size: 12px; line-height: 1.6; color: #ccc; }
+  
+  /* Bottom line */
+  .bottom-line { background: #1A1A1A; color: #fff; padding: 20px 24px; margin: 20px 0; }
+  .bottom-line-header { font-family: 'Playfair Display', serif; font-size: 18px; color: #E4762D; margin-bottom: 10px; }
+  .bottom-line-text { font-size: 13px; line-height: 1.65; color: #ddd; }
+  
+  /* Footer */
+  .footer { text-align: center; padding: 16px 0; font-family: 'JetBrains Mono', monospace; font-size: 9px; color: #999; letter-spacing: 2px; border-top: 1px solid #ddd; }
+  
+  @media (max-width: 700px) {
+    .index-bar { grid-template-columns: repeat(3, 1fr); }
+    .wl-grid { grid-template-columns: 1fr; }
+    .rates-grid { grid-template-columns: repeat(2, 1fr); }
+    .headline h1 { font-size: 20px; }
+    .date-bar .container { flex-direction: column; gap: 2px; }
   }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
+<div class="top-bar">
+  <div class="container">
+    <span class="top-bar-left">INSTITUTIONAL TRADING INTELLIGENCE</span>
+    <span class="top-bar-right">22V RESEARCH</span>
+  </div>
+</div>
+
 <div class="header">
-  <div class="header-top">
-    <span class="header-brand">Institutional Trading Intelligence</span>
-    <span class="header-title">22V Research — Midday Trading Recap</span>
-  </div>
-</div>
-<div class="datebar">
-  <span>WEDNESDAY, MARCH 4, 2026 &nbsp;|&nbsp; 12:45 PM ET &nbsp;•&nbsp; ISM SERVICES 10:00 AM • BESSENT: TARIFFS THIS WEEK</span>
-  <span>AVGO EARNINGS TONIGHT • MU 3/18 • FED 3/17-18</span>
-</div>
-
-<div class="content">
-
-<!-- HEADLINE -->
-<h1 class="headline">Memory Rip Meets Crypto Moonshot as Tech Leads Rebound; Energy Fades, BF/B Crushed on Jack Daniel's Canada Boycott</h1>
-
-<div class="lede">
-  <b>COIN</b> +15% as Trump backs stablecoin bill and Bitcoin punches through $73K. <b>MU</b> +7% on Stifel's street-high $550 PT and Morgan Stanley top pick, dragging <b>STX</b> +8% and <b>WDC</b> +8% higher. <b>MRNA</b> +11% after settling $2.25B LNP patent dispute. <b>ROST</b> +7% on Q4 beat. <b>BF/B</b> −7% worst in the tape — Jack Daniel's Canada sales cratered 60% on tariff boycott.
-</div>
-
-<!-- INDEX BAR -->
-<div class="index-bar">
-  <div class="index-card">
-    <div class="index-label">S&P 500</div>
-    <div class="index-value pos">6,867</div>
-    <div class="index-chg pos">+0.74%</div>
-  </div>
-  <div class="index-card">
-    <div class="index-label">Nasdaq</div>
-    <div class="index-value pos">22,813</div>
-    <div class="index-chg pos">+1.31%</div>
-  </div>
-  <div class="index-card">
-    <div class="index-label">Dow</div>
-    <div class="index-value pos">48,758</div>
-    <div class="index-chg pos">+0.53%</div>
-  </div>
-  <div class="index-card">
-    <div class="index-label">Russell</div>
-    <div class="index-value pos">2,639</div>
-    <div class="index-chg pos">+1.16%</div>
-  </div>
-  <div class="index-card">
-    <div class="index-label">VIX</div>
-    <div class="index-value neg">21.19</div>
-    <div class="index-chg neg">-2.38</div>
-  </div>
-  <div class="index-card">
-    <div class="index-label">10Y</div>
-    <div class="index-value">4.071</div>
-    <div class="index-chg pos">+1bp</div>
+  <div class="container">
+    <div class="header-brand">TRADING DESK</div>
+    <div class="header-title">MIDDAY TRADING RECAP</div>
   </div>
 </div>
 
-<!-- MARKET OVERVIEW -->
-<div class="section-header">Market Overview</div>
-<p class="prose">
-  <b>SPX</b> 6,867 is attempting to reclaim the 50-day moving average at 6,901 after slipping below it earlier in the week on the Iran escalation selloff. The bounce today is broad but not aggressive — this is a relief rally, not a momentum breakout. The index reclaimed Monday's low pivot and is pushing into the gap left by Friday's selloff, but needs to clear 6,900 cleanly to reset short-term sentiment. Resistance stacks at the 50-DMA and the March 2 gap at 6,920; support sits at yesterday's low of 6,817 and the 100-DMA at ~6,790.
-</p>
-<p class="prose">
-  <b>NDX</b> is leading with +1.3%, driven by a broad tech rally headlined by the memory complex (<b>MU</b> +7%, <b>STX</b> +8%, <b>WDC</b> +8%) and crypto-adjacent names (<b>COIN</b> +15%, <b>HOOD</b> +8%). The <b>DJIA</b> +0.5% is lagging as energy drags (<b>CVX</b> −1.6%, <b>MRK</b> flat) offset gains in <b>CAT</b> +2.2% and <b>AMZN</b> +2.9%. <b>RTY</b> +1.2% is actually outperforming for the first time in three sessions — small caps getting a bid as rate fears ebb with the ISM Services prices index cooling.
-</p>
-<p class="prose">
-  The session's macro cocktail: the ISM Non-Manufacturing PMI showed service-sector expansion at its strongest pace since mid-2022, while the prices sub-index hit an almost-one-year low — the goldilocks print the market needed. Treasury Secretary Bessent added noise by confirming 15% global tariffs will be implemented this week, but signaled measures to ease fuel prices. The tape took Bessent's fuel comment as a crude negative, pushing <b>CLA</b> off early highs. Meanwhile, Trump's late-Tuesday social media broadside backing crypto firms against banks on stablecoin yields lit a fire under <b>COIN</b>, <b>MSTR</b>, and the entire digital asset complex.
-</p>
-
-<!-- BREADTH CHECK -->
-<div class="callout">
-  <div class="callout-title">BREADTH CHECK</div>
-  <p>~249 advancers vs ~254 decliners in the S&P 500 — essentially dead even at 1:1. Volume running light, roughly 0.6-0.8x the 20-day average across most names. Mega-cap tech doing the heavy lifting; beneath the surface this is narrower than the headline number suggests. The bounce is real but conviction is low.</p>
-</div>
-
-<!-- VIX -->
-<div class="section-header">Volatility</div>
-<p class="prose">
-  <b>VIX</b> 21.19, down 2.38 handles (−10.1%), pulling back sharply from yesterday's 23.57 close. Still elevated vs. the pre-Iran baseline of ~17-18 that prevailed through mid-February. The term structure is flattening from backwardation — spot VIX is falling faster than the March contract, which suggests the market is repricing the near-term tail risk lower but keeping medium-term protection bid. Vol sellers stepping in cautiously on the ISM relief.
-</p>
-
-<!-- SECTOR TABLE -->
-<div class="section-header">Sector Performance</div>
-<table class="sector-table">
-  <thead><tr><th>Sector</th><th>Avg</th><th>Adv/Dec</th><th>Notable</th></tr></thead>
-  <tbody>
-    <tr><td>Technology</td><td class="pos">+1.56%</td><td>50/11</td><td>STX +8.3%, MU +7.2%, INTC +6.4%</td></tr>
-    <tr><td>Communications</td><td class="pos">+1.35%</td><td>30/10</td><td>HOOD +7.8%, ANET +6.5%, APP +6.4%</td></tr>
-    <tr><td>Basic Materials</td><td class="pos">+0.80%</td><td>9/9</td><td>LYB +5.3%, DOW +4.1%, Q +3.6%</td></tr>
-    <tr><td>Financials</td><td class="pos">+0.16%</td><td>43/52</td><td>COIN +15.0%, KKR +3.3%, BX +2.3%</td></tr>
-    <tr><td>Cons. Discretionary</td><td class="pos">+0.15%</td><td>25/31</td><td>ROST +7.3%, TSLA +3.2%, PCAR +2.5%</td></tr>
-    <tr><td>Utilities</td><td class="pos">+0.09%</td><td>16/15</td><td>NRG +1.4%, CEG −0.3%, VST +0.2%</td></tr>
-    <tr><td>Healthcare / Staples</td><td class="neg">-0.09%</td><td>46/59</td><td>MRNA +10.6%, ELV +3.0%, MOH +3.6%</td></tr>
-    <tr><td>Industrials</td><td class="neg">-0.28%</td><td>25/49</td><td>ODFL +3.3%, FIX +2.7%, TEL +2.7%</td></tr>
-    <tr><td>Energy</td><td class="neg">-0.80%</td><td>5/18</td><td>MPC +3.2%, VLO +2.5%, PSX +2.0%</td></tr>
-  </tbody>
-</table>
-
-<!-- PULL QUOTE -->
-<div class="pull-quote">
-  "Memory rips, crypto screams, but breadth is a coin flip — the tape is a relief rally on an ISM print, not a regime change. Stay tactical."
-</div>
-
-<!-- SECTOR NARRATIVES -->
-<div class="section-header">Sector Narratives</div>
-<p class="prose">
-  <b>Technology</b> is the clear leader at +1.6% with a 50/11 advance-decline ratio — the broadest green in the tape. The memory storage complex is the epicenter: <b>MU</b> +7.2% after Stifel raised its price target to a street-high $550 and Morgan Stanley named it their top semiconductor pick, citing HBM supply shortages that "will last a while yet." The bull case hinges on HBM3E/HBM4 demand from AI data centers — Micron's capacity is essentially pre-sold through 2026. The move dragged <b>STX</b> +8.3%, <b>WDC</b> +7.7%, and <b>SNDK</b> +5.6% higher in sympathy. Semis were broadly strong with <b>INTC</b> +6.4%, <b>AMD</b> +4.8%, <b>LRCX</b> +3.0%, <b>AMAT</b> +2.0%, and <b>NVDA</b> +1.3% all in the green. Software also participating: <b>DDOG</b> +6.4%, <b>PLTR</b> +3.8%, <b>FTNT</b> +2.5%.
-</p>
-<p class="prose">
-  <b>Communications/Crypto</b> are surging +1.4% led by the crypto-adjacent names. <b>COIN</b> +15% is the standout after President Trump met with CEO Brian Armstrong Tuesday night and then posted backing the Clarity Act stablecoin bill — directly challenging bank opposition to yield-bearing stablecoins. Bitcoin punched through $73K for the first time in a month, lifting <b>HOOD</b> +7.8%. Elsewhere, <b>ANET</b> +6.5% and <b>APP</b> +6.4% lead the networking/ad-tech rally. <b>AMZN</b> +2.9% and <b>META</b> +1.9% adding to megacap strength.
-</p>
-<p class="prose">
-  <b>Energy</b> is the tape's weak link at −0.8% despite crude holding at ~$75 with Hormuz risk still elevated. The E&P complex is selling off — <b>APA</b> −3.0%, <b>COP</b> −2.5%, <b>CVX</b> −1.6%, <b>XOM</b> −1.4% — as the market digests Bessent's fuel price easing comments and OPEC+'s modest 206K bpd April output increase. Refiners are the exception: <b>MPC</b> +3.2%, <b>VLO</b> +2.5%, <b>PSX</b> +2.0% bid on crack spread widening.
-</p>
-
-<!-- WINNERS / LOSERS -->
-<div class="section-header">Movers</div>
-<div class="movers-grid">
-  <div class="movers-box">
-    <div class="movers-header win">TOP WINNERS</div>
-    <div class="mover-row"><span class="mover-ticker">COIN</span><span class="mover-cat">BTC >$73K, Trump backs Clarity Act stablecoin bill</span><span class="mover-pct pos">+15.0%</span></div>
-    <div class="mover-row"><span class="mover-ticker">MRNA</span><span class="mover-cat">$2.25B Arbutus/Roivant LNP patent settlement; clea</span><span class="mover-pct pos">+10.6%</span></div>
-    <div class="mover-row"><span class="mover-ticker">STX</span><span class="mover-cat">Memory storage rally on Morgan Stanley MU upgrade;</span><span class="mover-pct pos">+8.3%</span></div>
-    <div class="mover-row"><span class="mover-ticker">HOOD</span><span class="mover-cat">Crypto tailwind, BTC >$73K; ARK loaded $12M shares</span><span class="mover-pct pos">+7.8%</span></div>
-    <div class="mover-row"><span class="mover-ticker">WDC</span><span class="mover-cat">Storage sector sympathy lift; HDD/SSD demand recov</span><span class="mover-pct pos">+7.7%</span></div>
-    <div class="mover-row"><span class="mover-ticker">ROST</span><span class="mover-cat">Q4 EPS $2.00 vs $1.88 est; rev $6.64B beat; new bu</span><span class="mover-pct pos">+7.3%</span></div>
-    <div class="mover-row"><span class="mover-ticker">MU</span><span class="mover-cat">Stifel PT $550; Morgan Stanley top pick; HBM suppl</span><span class="mover-pct pos">+7.2%</span></div>
-  </div>
-  <div class="movers-box">
-    <div class="movers-header lose">TOP LOSERS</div>
-    <div class="mover-row"><span class="mover-ticker">BF/B</span><span class="mover-cat">Q3 FY26 earnings miss; Jack Daniel's Canada sales </span><span class="mover-pct neg">-6.9%</span></div>
-    <div class="mover-row"><span class="mover-ticker">CLX</span><span class="mover-cat">Consumer staples weakness; margin pressure from in</span><span class="mover-pct neg">-3.8%</span></div>
-    <div class="mover-row"><span class="mover-ticker">AOS</span><span class="mover-cat">Industrial weakness; housing-tied demand concerns</span><span class="mover-pct neg">-3.8%</span></div>
-    <div class="mover-row"><span class="mover-ticker">APA</span><span class="mover-cat">E&P selloff despite $75 crude; Hormuz risk priced </span><span class="mover-pct neg">-3.0%</span></div>
-    <div class="mover-row"><span class="mover-ticker">WRB</span><span class="mover-cat">Insurance sector rotation out after recent outperf</span><span class="mover-pct neg">-2.9%</span></div>
-    <div class="mover-row"><span class="mover-ticker">STZ</span><span class="mover-cat">Alcohol sector sympathy with BF/B; consumer spendi</span><span class="mover-pct neg">-2.9%</span></div>
-    <div class="mover-row"><span class="mover-ticker">BKR</span><span class="mover-cat">Oilfield services under pressure despite elevated </span><span class="mover-pct neg">-2.7%</span></div>
+<div class="date-bar">
+  <div class="container">
+    <span>THURSDAY, MARCH 5, 2026</span>
+    <span>12:45 PM ET • JOBS REPORT TOMORROW 8:30 AM</span>
+    <span>COSTCO AMC AFTER CLOSE • FED WILLIAMS 1:15 PM</span>
   </div>
 </div>
 
-<!-- SINGLE STOCK NARRATIVES -->
-<div class="section-header">Key Single-Stock Narratives</div>
-<p class="prose">
-  <b>COIN +15.0%</b> — The day's biggest story. Bitcoin surged above $73,000 for the first time since late January, and then President Trump poured gasoline on it by publicly backing crypto firms in the stablecoin yield battle against JPMorgan and BofA. Trump met with Coinbase CEO Armstrong at the White House Tuesday before posting that banks are "threatening and undermining" the Genius Act. The Clarity Act would allow crypto firms like COIN to offer interest-like returns on stablecoins — banks warn this could siphon $6.6T in deposits. Regardless of the policy outcome, the price action speaks: COIN is the proxy for the crypto policy trade, and today it's running. ARK Invest loaded $4M in shares Tuesday. Volume 1.0x average — not a blowoff.
-</p>
-<p class="prose">
-  <b>MRNA +10.6%</b> — Moderna settled all worldwide patent litigation with Arbutus Biopharma and Roivant's Genevant Sciences over LNP delivery technology used in Spikevax and mResvia. The deal: $950M upfront in July 2026 plus $1.3B contingent on a government contractor liability appeal outcome. Crucially, Moderna gets a global non-exclusive license with <i>no future royalties</i> — this clears the entire pipeline, including the cancer immunotherapy work with <b>MRK</b>. The settlement removes the biggest IP overhang on the stock. RSI 69, approaching overbought after running from $22 lows.
-</p>
-<p class="prose">
-  <b>MU +7.2%</b> — The memory supercycle thesis is alive. Stifel issued a street-high $550 price target (stock at ~$407), and Morgan Stanley named MU their top semiconductor pick, replacing NVDA. The bull case: HBM supply shortage through 2026, DRAM/NAND pricing surging (+30% ASP QoQ for MU, +60% QoQ for NAND per SanDisk guidance), and FY26 EPS potentially north of $52 vs. consensus ~$12. MU earnings March 18 — the next catalyst. The move is pulling the entire storage complex higher.
-</p>
-<p class="prose">
-  <b>ROST +7.3%</b> — Ross Stores delivered a clean Q4 beat: EPS $2.00 vs. $1.88 consensus, revenue $6.64B vs. $6.38B expected. The off-price retailer is benefiting from trade-down behavior as consumers seek value amid inflationary pressures. Announced a new buyback authorization. The read-through to the broader consumer is mixed — the strength in off-price suggests discretionary budgets are tight, which isn't great for full-price retailers.
-</p>
-<p class="prose">
-  <b>BF/B −6.9%</b> — Brown-Forman reported Q3 FY26 earnings this morning and the numbers were ugly. The Jack Daniel's maker is getting hammered by a Canadian boycott of American whiskey in response to U.S. tariffs — Canadian sales plunged nearly 60%. The broader spirits market remains "flat" per CEO Lawson Whiting, with overproduction and potential price wars looming. The stock is now down 26% YTD and trading at its lowest since 2020. RSI 35, getting oversold.
-</p>
+<div class="container">
 
-<!-- RATES/FX/COMMODITIES -->
-<div class="section-header">Rates / FX / Commodities</div>
-<div class="rates-grid">
-  <div class="rate-card">
-    <div class="rate-label">2Y / 10Y</div>
-    <div class="rate-value">3.52 / 4.07</div>
-    <div class="rate-chg pos">+1bp / +1bp</div>
-    <div class="rate-note">Curve 55bp, stable</div>
+  <div class="headline">
+    <h1>Iran Oil Shock Resumes as Crude Rips 7%; Airlines Crushed, AVGO +5% Saves Tech from Tape Carnage</h1>
   </div>
-  <div class="rate-card">
-    <div class="rate-label">DXY</div>
-    <div class="rate-value">98.86</div>
-    <div class="rate-chg neg">−0.19%</div>
-    <div class="rate-note">Soft on ISM prices</div>
+  <div class="lede"><b>SPX</b> −81 pts (−1.18%) back below 6,800 as yesterday's rebound evaporates on fresh Hormuz fears and a crude spike to $79.78 (+6.9%). Airlines <b>DAL</b> −6.9%, <b>UAL</b> −7.7%, and <b>LUV</b> −6.4% lead the carnage as jet fuel costs reprice. <b>AVGO</b> +4.5% on a massive Q1 beat ($2.05 vs $1.88) and $100B AI chip revenue line of sight. <b>TTD</b> +17% on OpenAI ad partnership talks and a $151M CEO buy. <b>BLK</b> −2.2% after slashing another private credit loan from 100 to zero.</div>
+
+  <!-- Index Bar -->
+  <div class="index-bar">
+    <div class="index-item">
+      <div class="index-label">S&P 500</div>
+      <div class="index-value neg">6,789</div>
+      <div class="index-change neg">−1.18%</div>
+    </div>
+    <div class="index-item">
+      <div class="index-label">NASDAQ</div>
+      <div class="index-value neg">22,581</div>
+      <div class="index-change neg">−0.99%</div>
+    </div>
+    <div class="index-item">
+      <div class="index-label">DOW</div>
+      <div class="index-value neg">47,773</div>
+      <div class="index-change neg">−1.98%</div>
+    </div>
+    <div class="index-item">
+      <div class="index-label">RUSSELL</div>
+      <div class="index-value neg">2,582</div>
+      <div class="index-change neg">−2.06%</div>
+    </div>
+    <div class="index-item">
+      <div class="index-label">VIX</div>
+      <div class="index-value neg">24.42</div>
+      <div class="index-change neg">+3.27</div>
+    </div>
+    <div class="index-item">
+      <div class="index-label">10Y</div>
+      <div class="index-value neg">4.142%</div>
+      <div class="index-change neg">+5bp</div>
+    </div>
   </div>
-  <div class="rate-card">
-    <div class="rate-label">Gold</div>
-    <div class="rate-value">$5,136</div>
-    <div class="rate-chg pos">+$47 (+0.9%)</div>
-    <div class="rate-note">Near ATH, safe haven</div>
+
+  <div class="section-header">Market Overview</div>
+  <p class="body-text"><b>SPX</b> gave back the entirety of Wednesday's relief rally and then some, slicing through the 5-day MA (6,845) and dropping below 6,800 for the first time since late February. The session opened weak and never found a bid — sellers controlled the tape from the jump as WTI crude ripped 7% on reports that hundreds of ships remain stuck in the Persian Gulf despite U.S. escort promises, and Iran has enough drone inventory to disrupt Gulf flows for months. The inflationary read-through hit rates immediately — 2Y yields posted their biggest 4-day surge since October 2024 as rate traders priced out multiple cuts, now positioning for just one in 2026. The colliding forces are clear: geopolitical risk repricing energy costs → inflation expectations rising → rate cut expectations dying → risk assets selling. Only pockets of tech strength (AVGO earnings, TTD/OpenAI catalyst) prevented a deeper rout.</p>
+  <p class="body-text"><b>NDX</b> outperformed meaningfully, down just −0.99% vs SPX −1.18%, entirely on the back of <b>AVGO</b> +4.5%, <b>NOW</b> +6.3%, <b>CRM</b> +5.1%, <b>INTU</b> +6.2%, and <b>MSFT</b> +1.1%. Strip those out and the average tech name was down over 1.5%. <b>DJIA</b> bore the brunt at −1.98% (−967 pts) with <b>MRK</b> −4.1%, <b>JNJ</b> −3.6%, <b>WMT</b> −4.4%, and <b>CAT</b> −4.2% dragging. <b>RTY</b> −2.06% confirmed the risk-off character — small caps have no oil hedge, no AI halo, and their cost structures are most exposed to energy inflation. Breadth is abysmal at 113 advancers vs 390 decliners — a 1:3.5 ratio that screams indiscriminate selling outside of a narrow tech leadership.</p>
+
+  <div class="callout">
+    <div class="callout-title">BREADTH CHECK</div>
+    <div class="callout-text">113 advancers vs 390 decliners — a 1:3.5 ratio. Volume running elevated on airlines (DAL 1.2x avg) and industrials. This is the worst breadth reading in two weeks. Two-thirds of S&P names are red, and the median stock is down −1.7%. The few winners are clustered in AI-adjacent tech and energy names with direct Iran exposure.</div>
   </div>
-  <div class="rate-card">
-    <div class="rate-label">WTI Crude</div>
-    <div class="rate-value">$74.91</div>
-    <div class="rate-chg pos">+$0.35 (+0.5%)</div>
-    <div class="rate-note">Hormuz risk vs Bessent</div>
+
+  <div class="section-header">Volatility</div>
+  <p class="body-text"><b>VIX</b> 24.42 (+3.27), now +63% YTD and +23% MTD. The term structure remains in backwardation — front-month vol is pricing more risk than deferred months, a classic stress signal. Options dealers are net short gamma below 6,800, which means any further selling accelerates mechanically. The 25 level on VIX is the next watch — a close above it would be the highest since October 2024 and signal regime change in vol markets.</p>
+
+  <div class="section-header">Sector Performance</div>
+  <table class="sector-table">
+    <tr><th>Sector</th><th>Avg</th><th>Adv/Dec</th><th>Notable</th></tr>
+    <tr><td>Energy</td><td class="pos">+0.23%</td><td>14/9</td><td>APA +3.3% — Iran crude proxy bid</td></tr>
+    <tr><td>Communications</td><td class="pos">+0.15%</td><td>19/21</td><td>TTD +17% — OpenAI ad talks, CEO buys $151M</td></tr>
+    <tr><td>Technology</td><td class="neutral">0.00%</td><td>30/31</td><td>NOW +6.3% — AVGO halo, AI spend durable</td></tr>
+    <tr><td>Financial</td><td class="neg">−1.09%</td><td>16/79</td><td>BLK −2.2% — another pvt credit loan → zero</td></tr>
+    <tr><td>Basic Materials</td><td class="neg">−1.26%</td><td>5/13</td><td>FCX −6.1% — Cu demand fear on growth scare</td></tr>
+    <tr><td>Utilities</td><td class="neg">−1.39%</td><td>2/29</td><td>PCG −4.5% — rate sensitivity, yield backup</td></tr>
+    <tr><td>Cons Staples/HC</td><td class="neg">−1.56%</td><td>14/91</td><td>MRNA −6.1% — reversal of Wed relief rally</td></tr>
+    <tr><td>Cons Cyclical</td><td class="neg">−1.73%</td><td>8/48</td><td>UAL −7.7% — jet fuel cost repricing</td></tr>
+    <tr><td>Industrials</td><td class="neg">−2.52%</td><td>5/69</td><td>FIX −8.3% — construction capex fear</td></tr>
+  </table>
+
+  <div class="pull-quote">"Crude ripping, airlines crashing, private credit cracking — and only Broadcom's AI vision and a $151M CEO bet on Trade Desk are keeping the Nasdaq from joining the wreckage."</div>
+
+  <div class="section-header">Sector Narratives</div>
+  <p class="body-text"><b>Technology</b> was the tale of two tapes. <b>AVGO</b> +4.5% dominated after reporting Q1 EPS of $2.05 vs $1.88 est on revenue of $19.3B (+29% y/y), then guiding Q2 to $22B vs $20.6B consensus. CEO Hock Tan dropped the mic with "line of sight to $100B in AI chip revenue by 2027" and detailed custom XPU ramps for Anthropic, Meta, and OpenAI. <b>NOW</b> +6.3%, <b>CRM</b> +5.1%, and <b>INTU</b> +6.2% rode the AI spending durability narrative. But semis ex-AVGO got hammered — <b>LRCX</b> −5.0%, <b>KLAC</b> −4.0%, <b>AMAT</b> −4.6%, <b>ADI</b> −3.4% — the capex sensitivity names that suffer when growth scares meet rate anxiety. <b>MU</b> −3.7% despite the AVGO AI tailwind.</p>
+  <p class="body-text"><b>Consumer Cyclicals</b> were a bloodbath concentrated in travel and transport. Airlines repriced violently on jet fuel cost inflation — <b>UAL</b> −7.7%, <b>DAL</b> −6.9%, <b>LUV</b> −6.4%, <b>NCLH</b> −1.4%. Crude at $80 changes the earnings math for every carrier. <b>WMT</b> −4.4% (the Dow's biggest drag) on tariff cost absorption and consumer spending fears. <b>TPR</b> −5.8% and <b>F</b> −3.5% added to the discretionary wreckage. The only green: <b>EXPE</b> +10.6% on a Goldman upgrade.</p>
+  <p class="body-text"><b>Financials</b> sold off on a one-two punch: rate sensitivity (yield curve steepening hurts NIM assumptions for banks) and private credit contagion. <b>BLK</b> −2.2% after Bloomberg reported the firm slashed yet another private loan from 100 cents to zero — the $25M Infinite Commerce loan marked at par just 90 days ago. <b>GS</b> −3.7%, <b>WFC</b> −3.1%, <b>MS</b> −2.8% hit on rate repricing. Alt managers <b>APO</b> +0.5% and <b>KKR</b> +0.7% held up better than expected given the BLK headline.</p>
+
+  <div class="wl-grid">
+    <div class="wl-box">
+      <div class="wl-header winners">TOP WINNERS</div>
+      <div class="wl-row"><span class="wl-ticker">TTD</span><span class="wl-catalyst">OpenAI ad partnership talks, CEO buys $151M of stock</span><span class="wl-pct pos">+16.8%</span></div>
+      <div class="wl-row"><span class="wl-ticker">EXPE</span><span class="wl-catalyst">Goldman upgrade, travel demand resilience call</span><span class="wl-pct pos">+10.6%</span></div>
+      <div class="wl-row"><span class="wl-ticker">BKNG</span><span class="wl-catalyst">Sympathy with EXPE, international travel mix</span><span class="wl-pct pos">+8.0%</span></div>
+      <div class="wl-row"><span class="wl-ticker">LYB</span><span class="wl-catalyst">Iran disrupts 11-15% of global ethylene capacity</span><span class="wl-pct pos">+7.7%</span></div>
+      <div class="wl-row"><span class="wl-ticker">NOW</span><span class="wl-catalyst">AI enterprise spend durability, guidance raise read</span><span class="wl-pct pos">+6.3%</span></div>
+      <div class="wl-row"><span class="wl-ticker">INTU</span><span class="wl-catalyst">AI-powered tax season, consumer software strength</span><span class="wl-pct pos">+6.2%</span></div>
+      <div class="wl-row"><span class="wl-ticker">DOW</span><span class="wl-catalyst">KeyBanc upgrade to OW, ethylene supply disruption</span><span class="wl-pct pos">+5.4%</span></div>
+    </div>
+    <div class="wl-box">
+      <div class="wl-header losers">TOP LOSERS</div>
+      <div class="wl-row"><span class="wl-ticker">CIEN</span><span class="wl-catalyst">Tepid 2026 guidance despite Q1 beat</span><span class="wl-pct neg">−17.7%</span></div>
+      <div class="wl-row"><span class="wl-ticker">FIX</span><span class="wl-catalyst">Construction capex fears, rate sensitivity</span><span class="wl-pct neg">−8.3%</span></div>
+      <div class="wl-row"><span class="wl-ticker">GLW</span><span class="wl-catalyst">Broadcom CEO comments on fiber outlook</span><span class="wl-pct neg">−7.9%</span></div>
+      <div class="wl-row"><span class="wl-ticker">UAL</span><span class="wl-catalyst">Jet fuel cost repricing on crude +7%</span><span class="wl-pct neg">−7.7%</span></div>
+      <div class="wl-row"><span class="wl-ticker">DAL</span><span class="wl-catalyst">Airlines repricing entire H2 fuel hedges</span><span class="wl-pct neg">−6.9%</span></div>
+      <div class="wl-row"><span class="wl-ticker">LUV</span><span class="wl-catalyst">No intl exposure hedge, pure domestic fuel hit</span><span class="wl-pct neg">−6.4%</span></div>
+      <div class="wl-row"><span class="wl-ticker">MRNA</span><span class="wl-catalyst">Reversal of Wed relief rally, patent costs</span><span class="wl-pct neg">−6.1%</span></div>
+    </div>
   </div>
-</div>
-<p class="prose">
-  Treasuries are quiet after Monday's violent selloff — the 10-year backing off the 4.5% panic level to 4.07%, a full 40bp retracement. The ISM Services price index cooling is the key driver: if the Hormuz disruption doesn't feed through to sustained goods inflation, the bond market can breathe. The 2s10s curve at 55bp is little changed. <b>DXY</b> 98.86, slipping as the dollar weakens on the softer inflation read. <b>Gold</b> $5,136, up $47 and holding near all-time highs as the safe-haven bid persists amid Iran uncertainty. <b>WTI</b> $74.91 is the interesting one — crude is essentially flat on the session despite Hormuz shipping risk because Bessent's comments about easing fuel prices and OPEC+'s modest output increase are providing an offset. <b>Nat Gas</b> $2.92, down 4.3% — weather-driven give-back. <b>Silver</b> $33.86, up 1.9%.
-</p>
 
-<!-- WATCHING INTO CLOSE -->
-<div class="watch-box">
-  <h3>KEY LEVELS</h3>
-  <p>SPX: Support 6,817 (yesterday's close) / 6,790 (100-DMA). Resistance 6,901 (50-DMA) / 6,920 (Friday gap). NDX: needs 22,900 to confirm. RTY: 2,650 pivot — holding above is constructive.</p>
-  <h3>CATALYSTS</h3>
-  <p>ISM Services PMI 10:00 AM (RELEASED — 54.4, strong). EIA crude inventories 2:30 PM. Bessent tariff implementation timeline. AVGO earnings after close — the read for AI capex. BF/B earnings call 10:00 AM for color on spirits demand.</p>
-  <h3>SETUPS</h3>
-  <p>Oversold: BF/B (RSI 35), BSX (RSI 33), DHR (RSI 32), APO (RSI 32) — deep value if the macro doesn't crack. Overbought watch: KMI (RSI 80), TRGP (RSI 76), VLO (RSI 76), PCG (RSI 75) — extended energy/ute names that could fade into close. Crypto complex (COIN, HOOD, MSTR) needs BTC to hold $72K into the close or gains unwind fast.</p>
+  <div class="section-header">Key Single-Stock Narratives</div>
+  <p class="body-text"><b>AVGO +4.5% ($331.85)</b> — Beat on every metric: Q1 EPS $2.05 vs $1.88 est, revenue $19.3B vs $19.1B est (+29% y/y). AI semiconductor revenue hit $8.4B. Guided Q2 to $22B revenue ($14.8B semis, crushing $13.06B est) at 68% adj EBITDA margins. The headline: CEO Hock Tan's "line of sight to $100B in AI chip revenue from chips alone in 2027." Detailed 1GW of Google TPUs for Anthropic in 2026, 3GW+ in 2027. OpenAI deploying 1GW+ of custom silicon in 2027. Confirmed Meta MTIA "alive and well" and shipping now. Authorized $10B buyback through year-end. Dvol 1.3x average. RSI 52 — plenty of room to run technically.</p>
+  <p class="body-text"><b>TTD +16.8% ($29.39)</b> — The beaten-down adtech name (−82% from ATH) exploded higher on a double catalyst: (1) The Information reported OpenAI is in early discussions with TTD about a strategic ad partnership as the AI company looks to monetize through advertising, and (2) CEO Jeff Green purchased 6M shares at $23-25 range for $151M — the largest insider buy in the company's history. This is a massive signal from the founder that the bottom is in. Dvol 2.9x average, RSI 58.</p>
+  <p class="body-text"><b>CIEN −17.7% ($282.74)</b> — Posted a solid Q1 beat but the guide killed it. FY2026 revenue outlook of "low single-digit growth" landed well below the Street's mid-teens expectations. Management cited cautious enterprise spending and telecom capex delays. The stock had run +15% into the print. This is a classic "sell the guide" setup. Dvol 0.7x.</p>
+  <p class="body-text"><b>DAL −6.9% ($59.40)</b> — No earnings catalyst, pure macro. With WTI ripping 7% today and crude now +40% QTD, every airline's H2 fuel hedge book is underwater. DAL hedges roughly 50% of fuel at $70-75 WTI — they're now $5-10 above that strike. The read-through hit the entire group. RSI 32 (oversold). Dvol 1.2x average.</p>
+  <p class="body-text"><b>WMT −4.4% ($122.25)</b> — The Dow's biggest point drag. New tariff impacts are estimated at $60M+ in H1 per AEO's warning, and WMT is the most exposed to import cost inflation. Consumer spending sentiment deteriorating as gas prices rip — the low-income consumer is the first casualty of an energy shock. RSI 45.</p>
+
+  <div class="callout">
+    <div class="callout-title">PRIVATE CREDIT CONTAGION WATCH</div>
+    <div class="callout-text"><b>BLACKROCK PRIVATE CREDIT: ANOTHER LOAN ZEROED OUT</b> — BLK slashed a ~$25M loan to Infinite Commerce Holdings (an Amazon aggregator) from 100 cents on the dollar to zero in 90 days. This is the third such incident for BlackRock TCP Capital in recent months after the Renovo Home Partners wipeout. The pattern is troubling: loans marked at par suddenly going to zero with no interim warning. BLK shares −2.2%. GS −3.7%, MS −2.8%. Alt managers holding up better but the narrative is building. Watch for: (1) redemption acceleration in BDC space, (2) whether other managers have similar Amazon aggregator exposure, (3) HY OAS — currently at 342bp, approaching the 350bp trigger that our HMM model flags as regime-shift confirmation.</div>
+  </div>
+
+  <div class="section-header">Rates / FX / Commodities</div>
+  <div class="rates-grid">
+    <div class="rate-card">
+      <div class="rate-label">2Y / 10Y</div>
+      <div class="rate-value">3.59% / 4.14%</div>
+      <div class="rate-change pos">+4bp / +5bp</div>
+      <div class="rate-driver">Biggest 4-day 2Y surge since Oct '24. Curve 55bp, steepening on inflation expectations.</div>
+    </div>
+    <div class="rate-card">
+      <div class="rate-label">DXY</div>
+      <div class="rate-value">99.21</div>
+      <div class="rate-change pos">+0.45%</div>
+      <div class="rate-driver">Dollar bid on safe haven + rate repricing. EUR pressure.</div>
+    </div>
+    <div class="rate-card">
+      <div class="rate-label">GOLD</div>
+      <div class="rate-value">$5,067</div>
+      <div class="rate-change neg">−$74 (−1.4%)</div>
+      <div class="rate-driver">Profit-taking after ATH run. Real rate rise pressuring.</div>
+    </div>
+    <div class="rate-card">
+      <div class="rate-label">WTI CRUDE</div>
+      <div class="rate-value">$79.78</div>
+      <div class="rate-change pos">+$5.12 (+6.9%)</div>
+      <div class="rate-driver">Hundreds of ships stuck in Persian Gulf. Iran drone stockpile threat.</div>
+    </div>
+  </div>
+  <p class="body-text">The cross-asset picture is screaming inflationary growth scare. Treasury yields are ripping higher on energy-driven inflation fears — the 2Y posting its biggest 4-day surge since October 2024 as rate traders pull forward their inflation expectations and push out rate cuts. Markets now pricing just one cut in 2026, down from 3-4 just a week ago. The yield curve is steepening (2s10s at 55bp) — a configuration that typically signals rising inflation expectations rather than growth optimism.</p>
+  <p class="body-text"><b>WTI crude</b> at $79.78 (+6.9%) is the session's fulcrum. Reuters reports hundreds of ships remain stuck in the Persian Gulf despite U.S. Navy escort promises, and intelligence assessments suggest Iran has sufficient drone inventory to create havoc in the Gulf shipping lanes for months. This isn't a one-day spike — it's a structural repricing of energy supply risk. <b>Gold</b> pulled back $74 from near-ATH levels as real rates rose, but remains up 17% QTD — the safe-haven bid is intact at the macro level even if today's move is profit-taking. <b>Nat gas</b> (NG1) at $2.96 barely moved — the Iran conflict is an oil story, not a gas story for now, though Korean and Japanese LNG import disruption risk is non-trivial. <b>Silver</b> at $81.80 −2.1% tracking gold's pullback.</p>
+
+  <div class="watch-box">
+    <div class="callout-title">WATCHING INTO THE CLOSE</div>
+    <div class="watch-sub">KEY LEVELS</div>
+    <div class="watch-text"><b>SPX</b>: 6,750 support (Feb 28 low) → 6,700 (200-day MA) | Resistance: 6,845 (5-day MA) → 6,870 (yesterday close)
+<b>NDX</b>: 22,300 support | 22,800 resistance (yesterday close)
+<b>RTY</b>: 2,560 critical — breakdown below triggers mechanical selling in small-cap levered products</div>
+    <div class="watch-sub">CATALYSTS</div>
+    <div class="watch-text"><b>TODAY:</b> Fed Williams speaks 1:15 PM ET • Costco (COST) and Marvell (MRVL) report after close
+<b>TOMORROW:</b> February Nonfarm Payrolls 8:30 AM ET (est: +160K) — the single most important print of the week
+<b>THIS WEEKEND:</b> Iran conflict developments, OPEC+ response, Strait of Hormuz status</div>
+    <div class="watch-sub">SETUPS</div>
+    <div class="watch-text"><b>OVERSOLD:</b> DAL RSI 32, F RSI 32, UAL RSI 34, BSX RSI 30, DHR RSI 31 — airlines oversold but catching a falling knife in an oil shock
+<b>PRIVATE CREDIT WATCH:</b> BLK, OWL, ARES — any additional loan markdowns will accelerate the narrative
+<b>OVERBOUGHT:</b> VLO RSI 79, TRGP RSI 77, LYB RSI 77, CF RSI 73, KMI RSI 74 — energy names extended but momentum is strong</div>
+  </div>
+
+  <div class="bottom-line">
+    <div class="bottom-line-header">Bottom Line</div>
+    <div class="bottom-line-text">The tape is ugly and getting uglier. Yesterday's relief rally was a dead cat bounce — crude ripping back to $80 on structural Hormuz disruption risk has destroyed the "this conflict will be contained" thesis. Airlines are repricing entire fuel hedge books, consumer stocks are pricing in gas-pump inflation, and Treasury yields are surging as rate cut expectations evaporate. The only thing preventing a 2%+ SPX selloff is Broadcom's monster AI quarter and Trade Desk's OpenAI catalyst providing a narrow tech bid. But breadth at 1:3.5 is telling you the real story: this is a market where 3 out of 4 stocks are down and only a handful of AI winners are masking the damage. Tomorrow's payrolls report is the next binary — a hot number cements the "no cuts in 2026" narrative and we test 6,700. Stay defensive, trim cyclical exposure, respect the vol regime change at VIX 24+. Don't chase the AI winners here — they're lifeboats, not leadership.</div>
+  </div>
+
 </div>
 
-<!-- BOTTOM LINE -->
-<div class="bottom-line">
-  <h2>Bottom Line</h2>
-  <p>This is a relief rally, not a pivot. The ISM goldilocks print — strong activity, cooling prices — gave the tape permission to bounce after three days of geopolitical punishment, and the COIN/crypto moonshot is adding juice at the index level. But breadth at 1:1 tells you the rally is hollow beneath the mega-cap surface. Energy's weakness despite $75 crude is a warning sign that the Iran premium is being sold, not bought. The real test comes tonight with <b>AVGO</b> earnings — if Broadcom confirms the AI capex story, tech leadership can extend. If it disappoints, this bounce fades fast. Stay tactical, trade the singles, don't chase the memory rip into the close. Lean slightly long tech, hedge energy longs, keep powder dry for AVGO's reaction.</p>
-</div>
-
-</div>
-
-<!-- FOOTER -->
 <div class="footer">
-  <span>CONFIDENTIAL — FOR INSTITUTIONAL USE ONLY</span>
-  <span>22V RESEARCH TRADING DESK</span>
+  <div class="container">CONFIDENTIAL — FOR INSTITUTIONAL USE ONLY &nbsp;&nbsp;|&nbsp;&nbsp; 22V RESEARCH TRADING DESK</div>
 </div>
 
 </body>

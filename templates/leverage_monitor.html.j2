@@ -117,6 +117,24 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
 {%- set ts = data.timestamp | default('') -%}
 {%- set score_color = score_color_var(composite) -%}
 
+{#- RESOLVED DATA: prefer leverage_monitor.json layer data (Bloomberg) over latest.json (pipeline) #}
+{%- set l5a_d = layers.get('l5a', {}).get('data', {}) -%}
+{%- set l5b_d = layers.get('l5b', {}).get('data', {}) -%}
+{%- set resolved_vix = l5a_d.vix | default(latest.vix.current | default(none)) -%}
+{%- set resolved_ivol = l5a_d.ivol | default(none) -%}
+{%- set resolved_hvol = l5a_d.hvol | default(none) -%}
+{%- set resolved_iv_rank = l5a_d.iv_rank | default(none) -%}
+{%- set resolved_iv_pctl = l5a_d.iv_percentile | default(none) -%}
+{%- set resolved_pc = l5b_d.equity_pc | default(latest.pc_ratio.equity | default(none)) -%}
+{%- set resolved_pc_signal = latest.pc_ratio.signal | default('') -%}
+{%- set resolved_gex_flip = l5b_d.gex_flip | default(latest.gex.flip_point | default(none)) -%}
+{%- set resolved_gex_cw = l5b_d.call_wall | default(latest.gex.call_wall | default(none)) -%}
+{%- set resolved_gex_pw = l5b_d.put_wall | default(latest.gex.put_wall | default(none)) -%}
+{%- set resolved_spx = l5b_d.spx_last | default(l5a_d.spx_last | default(none)) -%}
+{%- set resolved_gamma_regime = l5b_d.gamma_regime | default('UNKNOWN') -%}
+{%- set resolved_skew = l5b_d.cboe_skew | default(latest.skew.cboe_skew | default(none)) -%}
+{%- set resolved_rr = l5b_d.risk_reversal | default(latest.skew.risk_reversal | default(none)) -%}
+
 {#- Format the timestamp for display #}
 {%- if ts -%}
   {%- set ts_display = ts[:10] -%}
@@ -134,17 +152,17 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
     <span style="font-size:10px;color:var(--muted)">22V Trading Desk</span>
   </div>
   <div style="display:flex;align-items:center;gap:16px;margin-top:12px">
-    <div class="mono" style="font-size:48px;font-weight:900;color:{{ score_color }};line-height:1">{{ composite_int }}<span style="font-size:24px;color:var(--muted)">/10</span></div>
+    <div class="mono" style="font-size:48px;font-weight:900;color:{{ score_color }};line-height:1">{{ composite }}<span style="font-size:24px;color:var(--muted)">/10</span></div>
     <div>
       <span class="pill {{ score_pill_class(composite) }}">{{ regime_label | upper }}</span>
       {%- if composite_prev is not none and composite_prev != composite %}
         {%- if composite < composite_prev %}
-      <span class="chg chg-u">&#9660; from {{ composite_prev | round(0, 'floor') | int }}</span>
+      <span class="chg chg-u">&#9660; from {{ composite_prev }}</span>
         {%- elif composite > composite_prev %}
-      <span class="chg chg-d">&#9650; from {{ composite_prev | round(0, 'floor') | int }}</span>
+      <span class="chg chg-d">&#9650; from {{ composite_prev }}</span>
         {%- endif %}
       {%- endif %}
-      <div style="font-size:11px;color:var(--muted);margin-top:6px">{{ ts_display }} <span style="color:{{ score_color }}">{{ data.options_data_timestamp | default('') | truncate(10, true, '') }}</span></div>
+      <div style="font-size:11px;color:var(--muted);margin-top:6px">{{ ts_display }}{% if data.cross_asset.source is defined %} <span style="color:var(--muted)">({{ data.cross_asset.source }})</span>{% endif %}</div>
     </div>
   </div>
   {#- METER BAR: filled segments = composite_int, empty = 10 - composite_int #}
@@ -152,7 +170,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
     {%- for i in range(10) %}
     <div class="m-s"{% if i < composite_int %} style="background:{{ score_color }}"{% endif %}></div>
     {%- endfor %}
-    <span class="mono" style="margin-left:8px;font-size:14px;font-weight:800;color:{{ score_color }}">{{ composite_int }}/10</span>
+    <span class="mono" style="margin-left:8px;font-size:14px;font-weight:800;color:{{ score_color }}">{{ composite }}/10</span>
   </div>
 </div>
 
@@ -248,7 +266,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
   {#- Score Update Alert (if score changed) #}
   {%- if composite_prev is not none and composite_prev != composite %}
   <div class="card glow-a">
-    <div style="font-size:13px;font-weight:700;color:var(--amber);margin-bottom:8px">&#9889; Score Update — {{ composite_prev | round(0, 'floor') | int }} &rarr; {{ composite_int }} ({{ ts_display }})</div>
+    <div style="font-size:13px;font-weight:700;color:var(--amber);margin-bottom:8px">&#9889; Score Update — {{ composite_prev }} &rarr; {{ composite }} ({{ ts_display }})</div>
     <div style="font-size:12px;line-height:1.7">
       {%- for lkey in layer_order %}
         {%- set layer = layers.get(lkey, {}) %}
@@ -271,12 +289,12 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
       <div style="text-align:center;padding:14px 10px;background:{{ pulse_card_bg(turbulence) }};border-radius:8px;border:1px solid {{ pulse_card_border(turbulence) }}">
         <div style="font-size:9px;color:var(--muted);letter-spacing:1px;text-transform:uppercase">Turbulence</div>
         <div class="mono" style="font-size:18px;font-weight:800;color:{{ pulse_card_color(turbulence) }};margin-top:6px">{{ turbulence }}</div>
-        <div style="font-size:9px;color:var(--dim);margin-top:4px">VIX {{ latest.vix.current | default('N/A') }}{% if overrides.gex_manual.last_price is defined %} &bull; SPX {{ overrides.gex_manual.last_price | default('') | string | replace('.0', '') }}{% endif %}</div>
+        <div style="font-size:9px;color:var(--dim);margin-top:4px">VIX {{ resolved_vix | default(latest.vix.current | default('N/A')) }}{% if resolved_spx is not none %} &bull; SPX {{ '%.2f' | format(resolved_spx) }}{% elif overrides.gex_manual.last_price is defined %} &bull; SPX {{ overrides.gex_manual.last_price | default('') | string | replace('.0', '') }}{% endif %}</div>
       </div>
       <div style="text-align:center;padding:14px 10px;background:{{ pulse_card_bg(p_regime) }};border-radius:8px;border:1px solid {{ pulse_card_border(p_regime) }}">
         <div style="font-size:9px;color:var(--muted);letter-spacing:1px;text-transform:uppercase">Regime</div>
         <div class="mono" style="font-size:18px;font-weight:800;color:{{ pulse_card_color(p_regime) }};margin-top:6px">{{ p_regime | replace('_', ' ') }}</div>
-        <div style="font-size:9px;color:var(--dim);margin-top:4px">Score {{ composite_int }}/10</div>
+        <div style="font-size:9px;color:var(--dim);margin-top:4px">Score {{ composite }}/10</div>
       </div>
       <div style="text-align:center;padding:14px 10px;background:{{ pulse_card_bg(synthesis) }};border-radius:8px;border:1px solid {{ pulse_card_border(synthesis) }}">
         <div style="font-size:9px;color:var(--muted);letter-spacing:1px;text-transform:uppercase">Synthesis</div>
@@ -289,46 +307,38 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
     {%- endif %}
   </div>
 
-  {#- REAL-TIME READINGS #}
+  {#- REAL-TIME READINGS — uses resolved_* vars defined in computed variables section above #}
   <div class="card">
     <div style="font-size:14px;font-weight:700;margin-bottom:4px">Real-Time Readings</div>
     <div style="font-size:10px;color:var(--amber);margin-bottom:10px">{{ ts_display }}</div>
     <div class="stats">
       {#- Equity P/C #}
-      {%- set pc_val = latest.pc_ratio.equity | default(none) %}
-      {%- set pc_signal = latest.pc_ratio.signal | default('') %}
       <div class="st">
         <div class="st-l">Equity P/C</div>
-        <div class="st-v{% if pc_signal in ['EXTREME_FEAR', 'FEAR'] %} w{% endif %}">{{ '%.3f' | format(pc_val) if pc_val is not none else 'N/A' }}</div>
-        <div class="st-s{% if pc_signal in ['EXTREME_FEAR', 'FEAR'] %} w{% endif %}">{{ pc_signal | default('N/A') | replace('_', ' ') }}</div>
+        <div class="st-v{% if resolved_pc is not none and resolved_pc > 0.85 %} w{% endif %}">{{ '%.3f' | format(resolved_pc) if resolved_pc is not none else 'N/A' }}</div>
+        <div class="st-s{% if resolved_pc_signal in ['EXTREME_FEAR', 'FEAR'] %} w{% endif %}">{{ resolved_pc_signal | default('N/A') | replace('_', ' ') }}</div>
       </div>
-      {#- GEX #}
-      {%- set gex_data = overrides.gex_manual | default({}) %}
-      {%- set gex_level = latest.gex.level | default('UNKNOWN') %}
-      {%- set gex_flip = gex_data.flip_point | default(latest.gex.flip_point | default(none)) %}
-      {%- set gex_cw = gex_data.call_wall | default(latest.gex.call_wall | default(none)) %}
-      {%- set gex_pw = gex_data.put_wall | default(latest.gex.put_wall | default(none)) %}
+      {#- GEX - use resolved data from leverage_monitor.json first #}
+      {%- set gex_is_positive = resolved_spx is not none and resolved_gex_flip is not none and resolved_spx > resolved_gex_flip %}
       <div class="st">
-        <div class="st-l">GEX{% if gex_data %} ({{ gex_data.source | default('Manual') }}){% endif %}</div>
-        <div class="st-v" style="color:{% if gex_level in ['NEGATIVE', 'DEEP_NEGATIVE'] %}var(--red){% else %}var(--green){% endif %}">
-          {%- if gex_data.last_price is defined and gex_flip is not none %}
-            {%- if gex_data.last_price > gex_flip %}LONG{% else %}SHORT{% endif %}
-          {%- else %}{{ gex_level }}{% endif %}
+        <div class="st-l">GEX (Barchart)</div>
+        <div class="st-v" style="color:{% if gex_is_positive %}var(--green){% else %}var(--red){% endif %}">
+          {%- if resolved_spx is not none and resolved_gex_flip is not none %}
+            {%- if gex_is_positive %}+&gamma;{% if (resolved_spx - resolved_gex_flip) < 20 %} (marginal){% endif %}{% else %}-&gamma;{% endif %}
+          {%- else %}{{ resolved_gamma_regime }}{% endif %}
         </div>
-        <div class="st-s">{% if gex_flip is not none %}Flip {{ gex_flip | int }}{% endif %}{% if gex_cw is not none %} &bull; Walls {{ gex_cw | int }}{% endif %}</div>
+        <div class="st-s">{% if resolved_gex_flip is not none %}Flip {{ '%.0f' | format(resolved_gex_flip) }}{% endif %}{% if resolved_gex_cw is not none %} &bull; Walls {{ resolved_gex_cw | int }}{% endif %}</div>
       </div>
-      {#- VIX #}
-      {%- set vix_val = latest.vix.current | default(none) %}
+      {#- VIX - from leverage_monitor L5A data (Bloomberg) #}
       <div class="st">
         <div class="st-l">VIX</div>
-        <div class="st-v" style="color:{% if vix_val is not none and vix_val > 22 %}var(--red){% elif vix_val is not none and vix_val > 20 %}var(--amber){% else %}var(--green){% endif %}">{{ '%.2f' | format(vix_val) if vix_val is not none else 'N/A' }}</div>
-        <div class="st-s">{% if gex_data.ivol is defined %}IV {{ gex_data.ivol }}%{% endif %}</div>
+        <div class="st-v" style="color:{% if resolved_vix is not none and resolved_vix > 22 %}var(--red){% elif resolved_vix is not none and resolved_vix > 20 %}var(--amber){% else %}var(--green){% endif %}">{{ '%.2f' | format(resolved_vix) if resolved_vix is not none else 'N/A' }}</div>
+        <div class="st-s">{% if resolved_ivol is not none %}IV {{ resolved_ivol }}%{% endif %}</div>
       </div>
       {#- CBOE SKEW #}
-      {%- set skew_val = latest.skew.cboe_skew | default(none) %}
       <div class="st">
         <div class="st-l">CBOE SKEW</div>
-        <div class="st-v">{{ '%.2f' | format(skew_val) if skew_val is not none else 'N/A' }}</div>
+        <div class="st-v">{{ '%.2f' | format(resolved_skew) if resolved_skew is not none else 'N/A' }}</div>
         <div class="st-s">{{ latest.skew.signal | default('N/A') | replace('_', ' ') }}</div>
       </div>
       {#- L3 Financing data if available #}
@@ -371,11 +381,11 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
         <div class="st-s">{% if l3_data.sofr > 4.50 %}Elevated{% else %}Stable{% endif %}</div>
       </div>
       {%- endif %}
-      {%- if gex_data.ivol is defined and gex_data.hvol is defined %}
+      {%- if resolved_ivol is not none and resolved_hvol is not none %}
       <div class="st">
         <div class="st-l">IV / HV</div>
-        <div class="st-v">{{ gex_data.ivol }}% / {{ gex_data.hvol }}%</div>
-        <div class="st-s">IV Rank {{ gex_data.iv_rank | default('N/A') }}%</div>
+        <div class="st-v">{{ resolved_ivol }}% / {{ resolved_hvol }}%</div>
+        <div class="st-s">IV Rank {{ resolved_iv_rank | default('N/A') }}%</div>
       </div>
       {%- endif %}
     </div>
@@ -634,30 +644,34 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
         <div class="mc-s" style="color:{% if pc_equity is not none and pc_equity > 0.85 %}var(--amber){% else %}var(--muted){% endif %};font-weight:700">{% if pc_equity is not none and pc_equity > 0.85 %}+0.50 pts{% else %}0 pts{% endif %}</div>
         <div class="mc-s">Threshold: &gt; 0.85</div>
       </div>
-      {#- GEX #}
-      {%- set gex_is_negative = (latest.gex.level | default('UNKNOWN')) in ['NEGATIVE', 'DEEP_NEGATIVE'] %}
-      <div class="mc" style="border-color:{% if gex_is_negative %}rgba(239,68,68,.25){% elif gex_m.flip_point is defined %}rgba(34,197,94,.25){% else %}rgba(100,116,139,.25){% endif %}">
+      {#- GEX - use resolved data from leverage_monitor.json #}
+      {%- set gex_pos_l5 = resolved_spx is not none and resolved_gex_flip is not none and resolved_spx > resolved_gex_flip %}
+      <div class="mc" style="border-color:{% if not gex_pos_l5 %}rgba(239,68,68,.25){% else %}rgba(34,197,94,.25){% endif %}">
         <div class="mc-l">GEX</div>
-        <div class="mc-v" style="color:{% if gex_is_negative %}var(--red){% elif gex_m.last_price is defined and gex_m.flip_point is defined and gex_m.last_price > gex_m.flip_point %}var(--green){% else %}var(--muted){% endif %}">
-          {%- if gex_m.last_price is defined and gex_m.flip_point is defined %}
-            {%- if gex_m.last_price > gex_m.flip_point %}LONG{% else %}SHORT{% endif %}
-          {%- else %}{{ latest.gex.level | default('N/A') }}{% endif %}
+        <div class="mc-v" style="color:{% if gex_pos_l5 %}var(--green){% elif resolved_spx is not none and resolved_gex_flip is not none %}var(--red){% else %}var(--muted){% endif %}">
+          {%- if resolved_spx is not none and resolved_gex_flip is not none %}
+            {%- if gex_pos_l5 %}+&gamma;{% else %}-&gamma;{% endif %}
+          {%- else %}{{ resolved_gamma_regime }}{% endif %}
         </div>
-        <div class="mc-s" style="color:var(--muted);font-weight:700">{% if gex_is_negative %}+0.25 pts{% else %}0 pts{% endif %}</div>
-        <div class="mc-s">{% if gex_m.flip_point is defined %}Flip {{ gex_m.flip_point | int }}{% endif %}{% if gex_m.last_price is defined %} &bull; SPX {% if gex_m.last_price > (gex_m.flip_point | default(0)) %}above{% else %}below{% endif %}{% endif %}</div>
+        <div class="mc-s" style="color:{% if not gex_pos_l5 %}var(--amber){% else %}var(--green){% endif %};font-weight:700">{% if not gex_pos_l5 %}+0.25 pts{% else %}0 pts{% endif %}</div>
+        <div class="mc-s">{% if resolved_gex_flip is not none %}Flip {{ '%.0f' | format(resolved_gex_flip) }}{% endif %}{% if resolved_spx is not none %} &bull; SPX {% if gex_pos_l5 %}above{% else %}below{% endif %}{% endif %}</div>
       </div>
-      {#- VIX 30d RoC #}
-      {%- set vix_hist = latest.vix.history_30d | default([]) %}
-      {%- if vix_hist | length >= 2 %}
-        {%- set vix_first = vix_hist[0].value | default(0) %}
-        {%- set vix_last = vix_hist[-1].value | default(0) %}
-        {%- if vix_first > 0 %}
-          {%- set vix_roc = ((vix_last - vix_first) / vix_first * 100) | round(0) | int %}
+      {#- VIX 30d RoC - prefer leverage_monitor.json L5B data over pipeline calculation #}
+      {%- if l5b_d.vix_30d_roc_pct is defined %}
+        {%- set vix_roc = l5b_d.vix_30d_roc_pct | round(0) | int %}
+      {%- else %}
+        {%- set vix_hist = latest.vix.history_30d | default([]) %}
+        {%- if vix_hist | length >= 2 %}
+          {%- set vix_first = vix_hist[0].value | default(0) %}
+          {%- set vix_last = vix_hist[-1].value | default(0) %}
+          {%- if vix_first > 0 %}
+            {%- set vix_roc = ((vix_last - vix_first) / vix_first * 100) | round(0) | int %}
+          {%- else %}
+            {%- set vix_roc = 0 %}
+          {%- endif %}
         {%- else %}
           {%- set vix_roc = 0 %}
         {%- endif %}
-      {%- else %}
-        {%- set vix_roc = 0 %}
       {%- endif %}
       <div class="mc" style="border-color:{% if vix_roc > 25 %}rgba(239,68,68,.25){% else %}rgba(100,116,139,.25){% endif %}">
         <div class="mc-l">VIX 30d RoC</div>
@@ -677,26 +691,35 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
     <div style="margin-top:12px;font-size:12px;font-weight:700;color:var(--muted)">Layer 5B Score: <span style="color:var(--amber);font-size:16px" class="mono">{{ '%.2f' | format(l5b.score | default(0)) }} / {{ '%.2f' | format(l5b.max | default(1)) }}</span></div>
   </div>
 
-  {#- Vol Surface Card #}
-  {%- if gex_m %}
+  {#- Vol Surface Card - prefer L5A layer data (Bloomberg) over gex_manual overrides #}
+  {%- set vs_ivol = resolved_ivol | default(gex_m.ivol | default(none)) %}
+  {%- set vs_hvol = resolved_hvol | default(gex_m.hvol | default(none)) %}
+  {%- set vs_iv_rank = resolved_iv_rank | default(gex_m.iv_rank | default(none)) %}
+  {%- set vs_iv_pctl = resolved_iv_pctl | default(gex_m.iv_percentile | default(none)) %}
+  {%- set vs_flip = resolved_gex_flip | default(gex_m.flip_point | default(none)) %}
+  {%- set vs_spx = resolved_spx | default(gex_m.last_price | default(none)) %}
+  {%- set vs_pw = resolved_gex_pw | default(gex_m.put_wall | default(none)) %}
+  {%- set vs_cw = resolved_gex_cw | default(gex_m.call_wall | default(none)) %}
+  {%- set vs_gex_positive = vs_spx is not none and vs_flip is not none and vs_spx > vs_flip %}
+  {%- if vs_ivol is not none or gex_m %}
   <div class="card">
     <div style="font-size:14px;font-weight:700;margin-bottom:10px">Vol Surface</div>
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px">
-      <div class="mc"><div class="mc-l">IV</div><div class="mc-v" style="font-size:20px">{{ gex_m.ivol | default('N/A') }}%</div></div>
-      <div class="mc"><div class="mc-l">HV (30d)</div><div class="mc-v" style="font-size:20px">{{ gex_m.hvol | default('N/A') }}%</div></div>
-      <div class="mc"><div class="mc-l">IV Rank</div><div class="mc-v" style="font-size:20px">{{ gex_m.iv_rank | default('N/A') }}%</div></div>
-      <div class="mc"><div class="mc-l">IV Pctl</div><div class="mc-v" style="font-size:20px">{{ gex_m.iv_percentile | default('N/A') }}%</div></div>
+      <div class="mc"><div class="mc-l">IV</div><div class="mc-v" style="font-size:20px">{{ vs_ivol | default('N/A') }}%</div></div>
+      <div class="mc"><div class="mc-l">HV (30d)</div><div class="mc-v" style="font-size:20px">{{ vs_hvol | default('N/A') }}%</div></div>
+      <div class="mc"><div class="mc-l">IV Rank</div><div class="mc-v" style="font-size:20px">{{ vs_iv_rank | default('N/A') }}%</div></div>
+      <div class="mc"><div class="mc-l">IV Pctl</div><div class="mc-v" style="font-size:20px">{{ vs_iv_pctl | default('N/A') }}%</div></div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:10px">
-      <div class="mc" style="border-color:{% if gex_m.last_price is defined and gex_m.flip_point is defined and gex_m.last_price > gex_m.flip_point %}rgba(34,197,94,.2){% else %}rgba(239,68,68,.2){% endif %}">
+      <div class="mc" style="border-color:{% if vs_gex_positive %}rgba(34,197,94,.2){% else %}rgba(239,68,68,.2){% endif %}">
         <div class="mc-l">GEX Flip</div>
-        <div class="mc-v" style="color:{% if gex_m.last_price is defined and gex_m.flip_point is defined and gex_m.last_price > gex_m.flip_point %}var(--green){% else %}var(--red){% endif %};font-size:20px">{{ gex_m.flip_point | default('N/A') | int if gex_m.flip_point is defined else 'N/A' }}</div>
-        <div class="mc-s">{% if gex_m.last_price is defined and gex_m.flip_point is defined %}SPX {% if gex_m.last_price > gex_m.flip_point %}above{% else %}below{% endif %} &rarr; {% if gex_m.last_price > gex_m.flip_point %}long{% else %}short{% endif %} &gamma;{% endif %}</div>
+        <div class="mc-v" style="color:{% if vs_gex_positive %}var(--green){% else %}var(--red){% endif %};font-size:20px">{{ '%.0f' | format(vs_flip) if vs_flip is not none else 'N/A' }}</div>
+        <div class="mc-s">{% if vs_spx is not none and vs_flip is not none %}SPX {% if vs_gex_positive %}above{% else %}below{% endif %} &rarr; {% if vs_gex_positive %}+&gamma;{% else %}-&gamma;{% endif %}{% endif %}</div>
       </div>
-      <div class="mc"><div class="mc-l">Put Wall</div><div class="mc-v" style="font-size:20px">{{ gex_m.put_wall | default('N/A') | int if gex_m.put_wall is defined else 'N/A' }}</div></div>
-      <div class="mc"><div class="mc-l">Call Wall</div><div class="mc-v" style="font-size:20px">{{ gex_m.call_wall | default('N/A') | int if gex_m.call_wall is defined else 'N/A' }}</div></div>
+      <div class="mc"><div class="mc-l">Put Wall</div><div class="mc-v" style="font-size:20px">{{ vs_pw | default('N/A') | int if vs_pw is defined else 'N/A' }}</div></div>
+      <div class="mc"><div class="mc-l">Call Wall</div><div class="mc-v" style="font-size:20px">{{ vs_cw | default('N/A') | int if vs_cw is defined else 'N/A' }}</div></div>
     </div>
-    <div style="font-size:10px;color:var(--muted);margin-top:6px;text-align:right">Source: {{ gex_m.source | default('Manual') }} &mdash; {{ ts_display }}</div>
+    <div style="font-size:10px;color:var(--muted);margin-top:6px;text-align:right">Source: {% if data.cross_asset.source is defined %}{{ data.cross_asset.source }}{% else %}{{ gex_m.source | default('Manual') }}{% endif %} &mdash; {{ ts_display }}</div>
   </div>
   {%- endif %}
 
@@ -742,15 +765,17 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
           {%- set _ = peak_idx %}
         {%- endif %}
       {%- endfor %}
-      {#- Current dot (last point) #}
+      {#- Current dot (last point) - use resolved_vix (Bloomberg) if available, else pipeline last #}
       {%- set last_vix = vix_30[-1] %}
+      {%- set chart_end_vix = resolved_vix | default(last_vix.value) %}
+      {%- set chart_end_date = ts_display | default(last_vix.date | default('')) %}
       {%- set last_vx = 40 + (vix_n - 1) * vix_step %}
-      {%- set last_vy = 120 - ((last_vix.value - vix_mn) / vix_rng * 100) %}
-      <circle cx="{{ '%.0f' | format(last_vx) }}" cy="{{ '%.0f' | format(last_vy) }}" r="4" fill="{% if last_vix.value > 22 %}var(--red){% elif last_vix.value > 20 %}var(--amber){% else %}var(--green){% endif %}"/>
-      <text x="{{ '%.0f' | format(last_vx - 5) }}" y="{{ '%.0f' | format(last_vy - 7) }}" fill="{% if last_vix.value > 22 %}var(--red){% elif last_vix.value > 20 %}var(--amber){% else %}var(--green){% endif %}" font-size="8" text-anchor="end">{{ '%.2f' | format(last_vix.value) }}</text>
+      {%- set last_vy = 120 - ((chart_end_vix - vix_mn) / vix_rng * 100) %}
+      <circle cx="{{ '%.0f' | format(last_vx) }}" cy="{{ '%.0f' | format(last_vy) }}" r="4" fill="{% if chart_end_vix > 22 %}var(--red){% elif chart_end_vix > 20 %}var(--amber){% else %}var(--green){% endif %}"/>
+      <text x="{{ '%.0f' | format(last_vx - 5) }}" y="{{ '%.0f' | format(last_vy - 7) }}" fill="{% if chart_end_vix > 22 %}var(--red){% elif chart_end_vix > 20 %}var(--amber){% else %}var(--green){% endif %}" font-size="8" text-anchor="end">{{ '%.2f' | format(chart_end_vix) }}</text>
       {#- Date labels #}
       <text x="40" y="130" fill="#64748b" font-size="8">{{ vix_30[0].date | default('') }}</text>
-      <text x="{{ '%.0f' | format(last_vx) }}" y="130" fill="{% if last_vix.value > 22 %}var(--red){% else %}var(--green){% endif %}" font-size="8" text-anchor="end">{{ last_vix.date | default('') }}</text>
+      <text x="{{ '%.0f' | format(last_vx) }}" y="130" fill="{% if chart_end_vix > 22 %}var(--red){% else %}var(--green){% endif %}" font-size="8" text-anchor="end">{{ chart_end_date }}</text>
     </svg>
   </div>
   {%- endif %}

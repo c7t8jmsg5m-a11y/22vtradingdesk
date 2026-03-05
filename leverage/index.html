@@ -207,6 +207,85 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
       <strong>L6:</strong> HIGH events within 30d: FOMC + Dot Plot (14d), Quad Witching OPEX (16d), Quarter-End Rebalancing (27d) | FOMC complicated by oil inflation shock + tariff uncertainty<br>
     </div>
   </div>
+  <div class="card">
+    <div style="font-size:14px;font-weight:700;margin-bottom:4px">Composite Score History</div>
+    <div style="font-size:10px;color:var(--muted);margin-bottom:10px">10 observations &bull; Regime thresholds: 5 (Fragile), 7 (Active Deterioration), 9 (Cascade)</div>
+    <svg viewBox="0 0 620 180" style="width:100%;height:180px">
+      <line x1="40" y1="10" x2="40" y2="160" stroke="#1e293b" stroke-width=".5"/>
+      <line x1="40" y1="160" x2="600" y2="160" stroke="#1e293b" stroke-width=".5"/>
+      <text x="35" y="15" fill="#64748b" font-size="8" text-anchor="end" font-family="JetBrains Mono">10</text>
+      <text x="35" y="88" fill="#64748b" font-size="8" text-anchor="end" font-family="JetBrains Mono">5</text>
+      <text x="35" y="163" fill="#64748b" font-size="8" text-anchor="end" font-family="JetBrains Mono">0</text>
+      <line x1="40" y1="85" x2="600" y2="85" stroke="#f59e0b" stroke-dasharray="4 4" stroke-width=".5"/>
+      <text x="605" y="88" fill="#f59e0b" font-size="7">Fragile</text>
+      <line x1="40" y1="55" x2="600" y2="55" stroke="#ef4444" stroke-dasharray="4 4" stroke-width=".5"/>
+      <text x="605" y="58" fill="#ef4444" font-size="7">Active Det.</text>
+      <line x1="40" y1="25" x2="600" y2="25" stroke="#ff0040" stroke-dasharray="4 4" stroke-width=".5"/>
+      <text x="605" y="28" fill="#ff0040" font-size="7">Cascade</text>
+      <defs><linearGradient id="shg" x1="0" y1="0" x2="0" y2="1"><stop offset="5%" stop-color="#f97316" stop-opacity=".25"/><stop offset="95%" stop-color="#f97316" stop-opacity="0"/></linearGradient></defs>
+      <polygon points="50,70 110,70 170,70 230,70 290,70 350,48 410,62 470,40 530,25 590,48 590,160 50,160" fill="url(#shg)"/>
+      <polyline points="50,70 110,70 170,70 230,70 290,70 350,48 410,62 470,40 530,25 590,48" fill="none" stroke="var(--accent)" stroke-width="2.5"/>
+        <circle cx="50" cy="70" r="3" fill="var(--amber)" stroke="none" stroke-width="0"/>
+        <text x="50" y="62" fill="var(--amber)" font-size="7" text-anchor="middle" font-family="JetBrains Mono" font-weight="400">6.0</text>
+        <circle cx="110" cy="70" r="3" fill="var(--amber)" stroke="none" stroke-width="0"/>
+        <circle cx="170" cy="70" r="3" fill="var(--amber)" stroke="none" stroke-width="0"/>
+        <text x="170" y="62" fill="var(--amber)" font-size="7" text-anchor="middle" font-family="JetBrains Mono" font-weight="400">6.0</text>
+        <circle cx="230" cy="70" r="3" fill="var(--amber)" stroke="none" stroke-width="0"/>
+        <circle cx="290" cy="70" r="3" fill="var(--amber)" stroke="none" stroke-width="0"/>
+        <text x="290" y="62" fill="var(--amber)" font-size="7" text-anchor="middle" font-family="JetBrains Mono" font-weight="400">6.0</text>
+        <circle cx="350" cy="48" r="3" fill="var(--red)" stroke="none" stroke-width="0"/>
+        <circle cx="410" cy="62" r="3" fill="var(--amber)" stroke="none" stroke-width="0"/>
+        <text x="410" y="54" fill="var(--amber)" font-size="7" text-anchor="middle" font-family="JetBrains Mono" font-weight="400">6.5</text>
+        <circle cx="470" cy="40" r="3" fill="var(--red)" stroke="none" stroke-width="0"/>
+        <circle cx="530" cy="25" r="3" fill="var(--crit)" stroke="none" stroke-width="0"/>
+        <text x="530" y="17" fill="var(--crit)" font-size="7" text-anchor="middle" font-family="JetBrains Mono" font-weight="400">9.0</text>
+        <circle cx="590" cy="48" r="5" fill="var(--red)" stroke="#fff" stroke-width="1.5"/>
+        <text x="590" y="40" fill="var(--red)" font-size="9" text-anchor="middle" font-family="JetBrains Mono" font-weight="800">7.5</text>
+      <text x="50" y="175" fill="#64748b" font-size="7" text-anchor="start">02-13</text>
+      <text x="350" y="175" fill="#64748b" font-size="7" text-anchor="middle">02-26</text>
+      <text x="590" y="175" fill="var(--red)" font-size="7" text-anchor="end" font-weight="700">03-04</text>
+    </svg>
+  </div>
+  <div class="card">
+    <div style="font-size:14px;font-weight:700;margin-bottom:4px">L3 Financing Conditions History</div>
+    <div style="font-size:10px;color:var(--muted);margin-bottom:10px">HY OAS (bp, left axis) &bull; L3 Score (right axis) &bull; Trip wire: 350bp</div>
+    <svg viewBox="0 0 620 180" style="width:100%;height:180px">
+      <line x1="40" y1="10" x2="40" y2="160" stroke="#1e293b" stroke-width=".5"/>
+      <line x1="40" y1="160" x2="600" y2="160" stroke="#1e293b" stroke-width=".5"/>
+      <text x="35" y="15" fill="#64748b" font-size="8" text-anchor="end" font-family="JetBrains Mono">360</text>
+      <text x="35" y="88" fill="#64748b" font-size="8" text-anchor="end" font-family="JetBrains Mono">313</text>
+      <text x="35" y="163" fill="#64748b" font-size="8" text-anchor="end" font-family="JetBrains Mono">267</text>
+      <line x1="40" y1="26" x2="600" y2="26" stroke="#ef4444" stroke-dasharray="4 4" stroke-width="1"/>
+      <text x="605" y="29" fill="#ef4444" font-size="7" font-weight="700">350bp TRIP</text>
+      <line x1="40" y1="107" x2="600" y2="107" stroke="#f59e0b" stroke-dasharray="4 4" stroke-width=".5"/>
+      <text x="605" y="110" fill="#f59e0b" font-size="7">300bp</text>
+      <defs><linearGradient id="l3g" x1="0" y1="0" x2="0" y2="1"><stop offset="5%" stop-color="#3b82f6" stop-opacity=".2"/><stop offset="95%" stop-color="#3b82f6" stop-opacity="0"/></linearGradient></defs>
+      <polygon points="50,115 110,116 170,129 230,115 290,136 350,126 410,129 470,112 530,112 590,137 590,160 50,160" fill="url(#l3g)"/>
+      <polyline points="50,115 110,116 170,129 230,115 290,136 350,126 410,129 470,112 530,112 590,137" fill="none" stroke="#3b82f6" stroke-width="2"/>
+        <circle cx="50" cy="115" r="3" fill="var(--green)" stroke="none" stroke-width="0"/>
+        <text x="50" y="107" fill="#3b82f6" font-size="7" text-anchor="middle" font-family="JetBrains Mono" font-weight="400">295</text>
+        <circle cx="110" cy="116" r="3" fill="var(--green)" stroke="none" stroke-width="0"/>
+        <circle cx="170" cy="129" r="3" fill="var(--green)" stroke="none" stroke-width="0"/>
+        <circle cx="230" cy="115" r="3" fill="var(--green)" stroke="none" stroke-width="0"/>
+        <text x="230" y="107" fill="#3b82f6" font-size="7" text-anchor="middle" font-family="JetBrains Mono" font-weight="400">295</text>
+        <circle cx="290" cy="136" r="3" fill="var(--green)" stroke="none" stroke-width="0"/>
+        <circle cx="350" cy="126" r="3" fill="var(--green)" stroke="none" stroke-width="0"/>
+        <circle cx="410" cy="129" r="3" fill="var(--green)" stroke="none" stroke-width="0"/>
+        <text x="410" y="121" fill="#3b82f6" font-size="7" text-anchor="middle" font-family="JetBrains Mono" font-weight="400">286</text>
+        <circle cx="470" cy="112" r="3" fill="var(--amber)" stroke="none" stroke-width="0"/>
+        <circle cx="530" cy="112" r="3" fill="var(--amber)" stroke="none" stroke-width="0"/>
+        <circle cx="590" cy="137" r="5" fill="var(--green)" stroke="#fff" stroke-width="1.5"/>
+        <text x="590" y="129" fill="#3b82f6" font-size="9" text-anchor="middle" font-family="JetBrains Mono" font-weight="800">281</text>
+      <text x="50" y="175" fill="#64748b" font-size="7" text-anchor="start">02-13</text>
+      <text x="590" y="175" fill="var(--green)" font-size="7" text-anchor="end" font-weight="700">03-04</text>
+    </svg>
+    <div style="display:flex;gap:16px;margin-top:8px;font-size:10px">
+      <span style="color:#3b82f6">&mdash; HY OAS (bp)</span>
+      <span style="color:var(--green)">&bull; L3 = 0 (Loose)</span>
+      <span style="color:var(--amber)">&bull; L3 &gt; 0 (Tightening)</span>
+      <span style="color:var(--red)">--- 350bp Trip Wire</span>
+    </div>
+  </div>
   <div class="card" style="border-color:rgba(245,158,11,.3)">
     <div style="font-size:14px;font-weight:700;margin-bottom:12px;color:var(--amber)">Real-Time Pulse</div>
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:14px">

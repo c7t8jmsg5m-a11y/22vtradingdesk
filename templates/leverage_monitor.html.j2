@@ -334,73 +334,6 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
   </div>
   {%- endif %}
 
-  {#- L3 FINANCING HISTORY CHART (HY OAS + Score) #}
-  {%- set l3h = data.l3_history | default([]) %}
-  {%- if l3h | length > 2 %}
-  <div class="card">
-    <div style="font-size:14px;font-weight:700;margin-bottom:4px">L3 Financing Conditions History</div>
-    <div style="font-size:10px;color:var(--muted);margin-bottom:10px">HY OAS (bp, left axis) &bull; L3 Score (right axis) &bull; Trip wire: 350bp</div>
-    {%- set l3n = l3h | length %}
-    {%- set l3step = 540.0 / (l3n - 1) if l3n > 1 else 540 %}
-    {#- Compute min/max for HY OAS scaling #}
-    {%- set hy_vals = [] %}
-    {%- for h in l3h %}
-      {%- if hy_vals.append(h.hy_oas | default(280)) %}{% endif %}
-    {%- endfor %}
-    {%- set hy_mn = (hy_vals | min) * 0.95 %}
-    {%- set hy_mx = max((hy_vals | max) * 1.05, 360) %}
-    {%- set hy_rng = hy_mx - hy_mn if hy_mx > hy_mn else 1 %}
-    <svg viewBox="0 0 620 180" style="width:100%;height:180px">
-      <line x1="40" y1="10" x2="40" y2="160" stroke="#1e293b" stroke-width=".5"/>
-      <line x1="40" y1="160" x2="600" y2="160" stroke="#1e293b" stroke-width=".5"/>
-      {#- Y axis labels for HY OAS #}
-      <text x="35" y="15" fill="#64748b" font-size="8" text-anchor="end" font-family="JetBrains Mono">{{ '%.0f' | format(hy_mx) }}</text>
-      <text x="35" y="88" fill="#64748b" font-size="8" text-anchor="end" font-family="JetBrains Mono">{{ '%.0f' | format((hy_mn + hy_mx) / 2) }}</text>
-      <text x="35" y="163" fill="#64748b" font-size="8" text-anchor="end" font-family="JetBrains Mono">{{ '%.0f' | format(hy_mn) }}</text>
-      {#- 350bp trip wire #}
-      {%- set y350 = 160 - ((350 - hy_mn) / hy_rng) * 150 %}
-      {%- if y350 > 5 and y350 < 165 %}
-      <line x1="40" y1="{{ '%.0f' | format(y350) }}" x2="600" y2="{{ '%.0f' | format(y350) }}" stroke="#ef4444" stroke-dasharray="4 4" stroke-width="1"/>
-      <text x="605" y="{{ '%.0f' | format(y350 + 3) }}" fill="#ef4444" font-size="7" font-weight="700">350bp TRIP</text>
-      {%- endif %}
-      {#- 300bp warning #}
-      {%- set y300 = 160 - ((300 - hy_mn) / hy_rng) * 150 %}
-      {%- if y300 > 5 and y300 < 165 %}
-      <line x1="40" y1="{{ '%.0f' | format(y300) }}" x2="600" y2="{{ '%.0f' | format(y300) }}" stroke="#f59e0b" stroke-dasharray="4 4" stroke-width=".5"/>
-      <text x="605" y="{{ '%.0f' | format(y300 + 3) }}" fill="#f59e0b" font-size="7">300bp</text>
-      {%- endif %}
-      {#- HY OAS area fill #}
-      <defs><linearGradient id="l3g" x1="0" y1="0" x2="0" y2="1"><stop offset="5%" stop-color="#3b82f6" stop-opacity=".2"/><stop offset="95%" stop-color="#3b82f6" stop-opacity="0"/></linearGradient></defs>
-      {%- set l3pts = [] %}
-      {%- for h in l3h %}
-        {%- set hx = 50 + loop.index0 * l3step %}
-        {%- set hy = 160 - ((h.hy_oas | default(280) - hy_mn) / hy_rng) * 150 %}
-        {%- if l3pts.append(('%.0f,%.0f' | format(hx, hy))) %}{% endif %}
-      {%- endfor %}
-      <polygon points="{{ l3pts | join(' ') }} {{ '%.0f' | format(50 + (l3n - 1) * l3step) }},160 50,160" fill="url(#l3g)"/>
-      <polyline points="{{ l3pts | join(' ') }}" fill="none" stroke="#3b82f6" stroke-width="2"/>
-      {#- Data points with L3 score coloring #}
-      {%- for h in l3h %}
-        {%- set hx = 50 + loop.index0 * l3step %}
-        {%- set hy = 160 - ((h.hy_oas | default(280) - hy_mn) / hy_rng) * 150 %}
-        <circle cx="{{ '%.0f' | format(hx) }}" cy="{{ '%.0f' | format(hy) }}" r="{% if loop.last %}5{% else %}3{% endif %}" fill="{% if h.score > 0 %}var(--amber){% else %}var(--green){% endif %}" stroke="{% if loop.last %}#fff{% else %}none{% endif %}" stroke-width="{% if loop.last %}1.5{% else %}0{% endif %}"/>
-        {%- if loop.last or loop.index0 % 3 == 0 %}
-        <text x="{{ '%.0f' | format(hx) }}" y="{{ '%.0f' | format(hy - 8) }}" fill="{% if h.hy_oas > 300 %}var(--red){% else %}#3b82f6{% endif %}" font-size="{% if loop.last %}9{% else %}7{% endif %}" text-anchor="middle" font-family="JetBrains Mono" font-weight="{% if loop.last %}800{% else %}400{% endif %}">{{ h.hy_oas }}</text>
-        {%- endif %}
-      {%- endfor %}
-      {#- Date labels #}
-      <text x="50" y="175" fill="#64748b" font-size="7" text-anchor="start">{{ l3h[0].date[5:] }}</text>
-      <text x="{{ '%.0f' | format(50 + (l3n - 1) * l3step) }}" y="175" fill="{% if l3h[-1].score > 0 %}var(--amber){% else %}var(--green){% endif %}" font-size="7" text-anchor="end" font-weight="700">{{ l3h[-1].date[5:] }}</text>
-    </svg>
-    <div style="display:flex;gap:16px;margin-top:8px;font-size:10px">
-      <span style="color:#3b82f6">&mdash; HY OAS (bp)</span>
-      <span style="color:var(--green)">&bull; L3 = 0 (Loose)</span>
-      <span style="color:var(--amber)">&bull; L3 &gt; 0 (Tightening)</span>
-      <span style="color:var(--red)">--- 350bp Trip Wire</span>
-    </div>
-  </div>
-  {%- endif %}
-
   {#- REAL-TIME PULSE #}
   {%- set turbulence = pulse.turbulence | default('UNKNOWN') %}
   {%- set p_regime = pulse.regime | default('UNKNOWN') %}
@@ -703,6 +636,66 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
     </div>
     <div class="al al-o" style="margin-top:12px">TRIP WIRES: HY OAS &gt; 350bp &bull; NFCI &gt; -0.30 &bull; SOFR &gt; 4.50% &bull; PB margin hikes &bull; GS FCI &rarr; &ldquo;tightening&rdquo;</div>
   </div>
+
+  {#- L3 FINANCING HISTORY CHART (HY OAS + Score) #}
+  {%- set l3h = data.l3_history | default([]) %}
+  {%- if l3h | length > 2 %}
+  <div class="card">
+    <div style="font-size:14px;font-weight:700;margin-bottom:4px">HY OAS History</div>
+    <div style="font-size:10px;color:var(--muted);margin-bottom:10px">HY OAS (bp) &bull; Dots colored by L3 score &bull; Trip wire: 350bp</div>
+    {%- set l3n = l3h | length %}
+    {%- set l3step = 540.0 / (l3n - 1) if l3n > 1 else 540 %}
+    {%- set hy_vals = [] %}
+    {%- for h in l3h %}
+      {%- if hy_vals.append(h.hy_oas | default(280)) %}{% endif %}
+    {%- endfor %}
+    {%- set hy_mn = (hy_vals | min) * 0.95 %}
+    {%- set hy_mx = max((hy_vals | max) * 1.05, 360) %}
+    {%- set hy_rng = hy_mx - hy_mn if hy_mx > hy_mn else 1 %}
+    <svg viewBox="0 0 620 180" style="width:100%;height:180px">
+      <line x1="40" y1="10" x2="40" y2="160" stroke="#1e293b" stroke-width=".5"/>
+      <line x1="40" y1="160" x2="600" y2="160" stroke="#1e293b" stroke-width=".5"/>
+      <text x="35" y="15" fill="#64748b" font-size="8" text-anchor="end" font-family="JetBrains Mono">{{ '%.0f' | format(hy_mx) }}</text>
+      <text x="35" y="88" fill="#64748b" font-size="8" text-anchor="end" font-family="JetBrains Mono">{{ '%.0f' | format((hy_mn + hy_mx) / 2) }}</text>
+      <text x="35" y="163" fill="#64748b" font-size="8" text-anchor="end" font-family="JetBrains Mono">{{ '%.0f' | format(hy_mn) }}</text>
+      {%- set y350 = 160 - ((350 - hy_mn) / hy_rng) * 150 %}
+      {%- if y350 > 5 and y350 < 165 %}
+      <line x1="40" y1="{{ '%.0f' | format(y350) }}" x2="600" y2="{{ '%.0f' | format(y350) }}" stroke="#ef4444" stroke-dasharray="4 4" stroke-width="1"/>
+      <text x="605" y="{{ '%.0f' | format(y350 + 3) }}" fill="#ef4444" font-size="7" font-weight="700">350bp TRIP</text>
+      {%- endif %}
+      {%- set y300 = 160 - ((300 - hy_mn) / hy_rng) * 150 %}
+      {%- if y300 > 5 and y300 < 165 %}
+      <line x1="40" y1="{{ '%.0f' | format(y300) }}" x2="600" y2="{{ '%.0f' | format(y300) }}" stroke="#f59e0b" stroke-dasharray="4 4" stroke-width=".5"/>
+      <text x="605" y="{{ '%.0f' | format(y300 + 3) }}" fill="#f59e0b" font-size="7">300bp</text>
+      {%- endif %}
+      <defs><linearGradient id="l3g" x1="0" y1="0" x2="0" y2="1"><stop offset="5%" stop-color="#3b82f6" stop-opacity=".2"/><stop offset="95%" stop-color="#3b82f6" stop-opacity="0"/></linearGradient></defs>
+      {%- set l3pts = [] %}
+      {%- for h in l3h %}
+        {%- set hx = 50 + loop.index0 * l3step %}
+        {%- set hy = 160 - ((h.hy_oas | default(280) - hy_mn) / hy_rng) * 150 %}
+        {%- if l3pts.append(('%.0f,%.0f' | format(hx, hy))) %}{% endif %}
+      {%- endfor %}
+      <polygon points="{{ l3pts | join(' ') }} {{ '%.0f' | format(50 + (l3n - 1) * l3step) }},160 50,160" fill="url(#l3g)"/>
+      <polyline points="{{ l3pts | join(' ') }}" fill="none" stroke="#3b82f6" stroke-width="2"/>
+      {%- for h in l3h %}
+        {%- set hx = 50 + loop.index0 * l3step %}
+        {%- set hy = 160 - ((h.hy_oas | default(280) - hy_mn) / hy_rng) * 150 %}
+        <circle cx="{{ '%.0f' | format(hx) }}" cy="{{ '%.0f' | format(hy) }}" r="{% if loop.last %}5{% else %}3{% endif %}" fill="{% if h.score > 0 %}var(--amber){% else %}var(--green){% endif %}" stroke="{% if loop.last %}#fff{% else %}none{% endif %}" stroke-width="{% if loop.last %}1.5{% else %}0{% endif %}"/>
+        {%- if loop.last or loop.index0 % 3 == 0 %}
+        <text x="{{ '%.0f' | format(hx) }}" y="{{ '%.0f' | format(hy - 8) }}" fill="{% if h.hy_oas > 300 %}var(--red){% else %}#3b82f6{% endif %}" font-size="{% if loop.last %}9{% else %}7{% endif %}" text-anchor="middle" font-family="JetBrains Mono" font-weight="{% if loop.last %}800{% else %}400{% endif %}">{{ h.hy_oas }}</text>
+        {%- endif %}
+      {%- endfor %}
+      <text x="50" y="175" fill="#64748b" font-size="7" text-anchor="start">{{ l3h[0].date[5:] }}</text>
+      <text x="{{ '%.0f' | format(50 + (l3n - 1) * l3step) }}" y="175" fill="{% if l3h[-1].score > 0 %}var(--amber){% else %}var(--green){% endif %}" font-size="7" text-anchor="end" font-weight="700">{{ l3h[-1].date[5:] }}</text>
+    </svg>
+    <div style="display:flex;gap:16px;margin-top:8px;font-size:10px">
+      <span style="color:#3b82f6">&mdash; HY OAS (bp)</span>
+      <span style="color:var(--green)">&bull; L3 = 0 (Loose)</span>
+      <span style="color:var(--amber)">&bull; L3 &gt; 0 (Tightening)</span>
+      <span style="color:var(--red)">--- 350bp Trip Wire</span>
+    </div>
+  </div>
+  {%- endif %}
 </div>
 
 {# ============================================================

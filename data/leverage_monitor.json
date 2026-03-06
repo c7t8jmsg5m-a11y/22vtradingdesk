@@ -22,19 +22,58 @@
         "finra_margin_date": "Jan 2026",
         "finra_margin_streak": "8th consecutive record high",
         "margin_history": [
-          {"date": "2025-01-01", "value_bn": 937.3},
-          {"date": "2025-02-01", "value_bn": 918.1},
-          {"date": "2025-03-01", "value_bn": 880.3},
-          {"date": "2025-04-01", "value_bn": 850.6},
-          {"date": "2025-05-01", "value_bn": 921.0},
-          {"date": "2025-06-01", "value_bn": 1008.0},
-          {"date": "2025-07-01", "value_bn": 1022.5},
-          {"date": "2025-08-01", "value_bn": 1059.7},
-          {"date": "2025-09-01", "value_bn": 1126.5},
-          {"date": "2025-10-01", "value_bn": 1183.7},
-          {"date": "2025-11-01", "value_bn": 1214.3},
-          {"date": "2025-12-01", "value_bn": 1225.6},
-          {"date": "2026-01-01", "value_bn": 1279.0}
+          {
+            "date": "2025-01-01",
+            "value_bn": 937.3
+          },
+          {
+            "date": "2025-02-01",
+            "value_bn": 918.1
+          },
+          {
+            "date": "2025-03-01",
+            "value_bn": 880.3
+          },
+          {
+            "date": "2025-04-01",
+            "value_bn": 850.6
+          },
+          {
+            "date": "2025-05-01",
+            "value_bn": 921.0
+          },
+          {
+            "date": "2025-06-01",
+            "value_bn": 1008.0
+          },
+          {
+            "date": "2025-07-01",
+            "value_bn": 1022.5
+          },
+          {
+            "date": "2025-08-01",
+            "value_bn": 1059.7
+          },
+          {
+            "date": "2025-09-01",
+            "value_bn": 1126.5
+          },
+          {
+            "date": "2025-10-01",
+            "value_bn": 1183.7
+          },
+          {
+            "date": "2025-11-01",
+            "value_bn": 1214.3
+          },
+          {
+            "date": "2025-12-01",
+            "value_bn": 1225.6
+          },
+          {
+            "date": "2026-01-01",
+            "value_bn": 1279.0
+          }
         ],
         "margin_yoy_pct": 36.5,
         "margin_mom_pct": 4.4,
@@ -46,13 +85,13 @@
       "score": 2,
       "max": 2,
       "label": "Momentum",
-      "details": "Margin YoY +36.5% (>20% threshold) | Debt/GDP 4.06% ALL-TIME HIGH above 3.5% threshold | SPX YoY +15.5% — leverage growing 2.4x faster than the market",
+      "details": "Margin YoY +36.5% (>20% threshold) | Debt/GDP 4.06% ALL-TIME HIGH above 3.5% threshold | SPX YoY +15.5% \u2014 leverage growing 2.4x faster than the market",
       "data": {
         "margin_yoy_pct": 36.5,
         "debt_gdp_pct": 4.06,
         "spx_yoy_pct": 15.5,
         "leverage_gap": 21.0,
-        "notes": "Leverage gap (margin YoY minus SPX YoY) = 21.0pp — extreme divergence"
+        "notes": "Leverage gap (margin YoY minus SPX YoY) = 21.0pp \u2014 extreme divergence"
       }
     },
     "l3": {
@@ -73,7 +112,11 @@
         "sofr": 3.66,
         "usdjpy": 157.77,
         "signal": "EARLY_TIGHTENING",
-        "notes": "Key shift: NFCI has tightened 3.9bps over past month (from -0.5670 to -0.5236). HY OAS has widened 32bp from Jan trough. CCC widening even more (+67bp from Jan trough). Not yet red but direction has changed — scoring 0.5 for early tightening signal."
+        "notes": "Key shift: NFCI has tightened 3.9bps over past month (from -0.5670 to -0.5236). HY OAS has widened 32bp from Jan trough. CCC widening even more (+67bp from Jan trough). Not yet red but direction has changed \u2014 scoring 0.5 for early tightening signal.",
+        "hy_oas_prev": 2.81,
+        "nfci_3mo_ago": -0.51,
+        "nfci_as_of": "2026-03-06",
+        "sofr_prev": 3.67
       }
     },
     "l4": {
@@ -88,20 +131,103 @@
         "semis_net_exposure": "5yr_high",
         "ai_infra_pct_spx": 21.4,
         "crowding_themes": [
-          {"name": "Mag 7 % of S&P 500", "pct": 95, "detail": "~42.1% of SPX market cap ($21,036B)"},
-          {"name": "AI Infra Concentration", "pct": 95, "detail": "~21.4% of SPX ($10,707B across 10 names)"},
-          {"name": "NVDA Single-Stock Weight", "pct": 95, "detail": "~9.5% of SPX ($4,761B)"},
-          {"name": "Semis Net Exposure", "pct": 95, "detail": "5yr high — max concentration"},
-          {"name": "Multistrat Leverage", "pct": 92, "detail": "645% gross — extreme"}
+          {
+            "name": "Mag 7 % of S&P 500",
+            "pct": 95,
+            "detail": "~42.1% of SPX market cap ($21,036B)"
+          },
+          {
+            "name": "AI Infra Concentration",
+            "pct": 95,
+            "detail": "~21.4% of SPX ($10,707B across 10 names)"
+          },
+          {
+            "name": "NVDA Single-Stock Weight",
+            "pct": 95,
+            "detail": "~9.5% of SPX ($4,761B)"
+          },
+          {
+            "name": "Semis Net Exposure",
+            "pct": 95,
+            "detail": "5yr high \u2014 max concentration"
+          },
+          {
+            "name": "Multistrat Leverage",
+            "pct": 92,
+            "detail": "645% gross \u2014 extreme"
+          }
         ],
-        "notes": "GS Q1 2026 outlook confirms Mag7 ~19% of total US HF net exposure (down from 21% peak but still elevated). Semis net at 5yr high. Software net at 5yr LOW — rotation within tech, not out of tech."
+        "notes": "GS Q1 2026 outlook confirms Mag7 ~19% of total US HF net exposure (down from 21% peak but still elevated). Semis net at 5yr high. Software net at 5yr LOW \u2014 rotation within tech, not out of tech.",
+        "themes": [
+          {
+            "name": "Mag 7 % of S&P 500",
+            "pct": 95,
+            "detail": "~42.1% of SPX market cap ($21,036B)"
+          },
+          {
+            "name": "AI Infra Concentration",
+            "pct": 95,
+            "detail": "~21.4% of SPX ($10,707B across 10 names)"
+          },
+          {
+            "name": "NVDA Single-Stock Weight",
+            "pct": 95,
+            "detail": "~9.5% of SPX ($4,761B)"
+          },
+          {
+            "name": "Semis Net Exposure",
+            "pct": 95,
+            "detail": "5yr high \u2014 max concentration"
+          },
+          {
+            "name": "Multistrat Leverage",
+            "pct": 92,
+            "detail": "645% gross \u2014 extreme"
+          }
+        ],
+        "headline": "AI infra cluster + Mag7 remains elevated \u2014 Semis at 5yr high",
+        "filing_quarter": "2026-Q1",
+        "mag7_concentration": {
+          "total_bn": 21035.5,
+          "pct_spx": 42.1,
+          "holdings": {
+            "NVDA": {
+              "market_cap_bn": 4761.3,
+              "name": "NVIDIA Corporation"
+            },
+            "AAPL": {
+              "market_cap_bn": 4030.6,
+              "name": "Apple Inc."
+            },
+            "GOOGL": {
+              "market_cap_bn": 3785.2,
+              "name": "Alphabet Inc."
+            },
+            "MSFT": {
+              "market_cap_bn": 2977.4,
+              "name": "Microsoft Corporation"
+            },
+            "AMZN": {
+              "market_cap_bn": 2261.2,
+              "name": "Amazon.com, Inc."
+            },
+            "META": {
+              "market_cap_bn": 1653.5,
+              "name": "Meta Platforms, Inc."
+            },
+            "TSLA": {
+              "market_cap_bn": 1566.3,
+              "name": "Tesla, Inc."
+            }
+          }
+        }
       }
     },
     "l5a": {
       "score": 1.0,
       "max": 1.0,
       "label": "Vol Structure",
-      "details": "VIX 26.77 (+12.72% today, +79% YTD) WELL above 22 threshold | VVIX 125.68 (+8.41%) above 110 threshold | IV 21.45% vs HV 11.81% — implied nearly 2x realized | IV Rank 33.81%, IV Percentile 92% | VIX term structure flattening",
+      "details": "VIX 26.77 (+12.72% today, +79% YTD) WELL above 22 threshold | VVIX 125.68 (+8.41%) above 110 threshold | IV 21.45% vs HV 11.81% \u2014 implied nearly 2x realized | IV Rank 33.81%, IV Percentile 92% | VIX term structure flattening",
       "data": {
         "vix": 26.77,
         "vix_chg": 3.02,
@@ -116,14 +242,14 @@
         "hv": 11.81,
         "iv_rank": 33.81,
         "iv_percentile": 92,
-        "notes": "CRITICAL: VIX has surged from 16.15 on 1/26 to 26.77 today — a 66% move in ~6 weeks. VVIX above 110 signals vol-of-vol regime shift. IV/HV ratio near 2x means the market is pricing far more risk than has been realized — protective demand is extreme."
+        "notes": "CRITICAL: VIX has surged from 16.15 on 1/26 to 26.77 today \u2014 a 66% move in ~6 weeks. VVIX above 110 signals vol-of-vol regime shift. IV/HV ratio near 2x means the market is pricing far more risk than has been realized \u2014 protective demand is extreme."
       }
     },
     "l5b": {
       "score": 1.0,
       "max": 1.0,
       "label": "Options Sentiment",
-      "details": "Equity P/C 1.187 (EXTREME FEAR, well above 0.85) | 25-delta risk reversal -8.01 (at -8 threshold) | GEX: SPX 6747 BELOW flip 6894 = NEGATIVE GAMMA | Put wall 7000 / Call wall 7000 — both far above spot",
+      "details": "Equity P/C 1.187 (EXTREME FEAR, well above 0.85) | 25-delta risk reversal -8.01 (at -8 threshold) | GEX: SPX 6747 BELOW flip 6894 = NEGATIVE GAMMA | Put wall 7000 / Call wall 7000 \u2014 both far above spot",
       "data": {
         "pc_ratio": 1.187,
         "pc_signal": "EXTREME_FEAR",
@@ -135,7 +261,7 @@
         "spx_last": 6746.77,
         "spx_below_flip": true,
         "gamma_regime": "NEGATIVE",
-        "notes": "SPX is 147 pts below the gamma flip point — deep in negative gamma territory. Dealers are SHORT gamma, meaning they must SELL INTO WEAKNESS and BUY INTO STRENGTH, amplifying moves in both directions. With P/C at 1.19 and risk reversal at -8.01, protection demand is extreme. The 7000 put/call wall is 253 pts above spot — no nearby support from options positioning."
+        "notes": "SPX is 147 pts below the gamma flip point \u2014 deep in negative gamma territory. Dealers are SHORT gamma, meaning they must SELL INTO WEAKNESS and BUY INTO STRENGTH, amplifying moves in both directions. With P/C at 1.19 and risk reversal at -8.01, protection demand is extreme. The 7000 put/call wall is 253 pts above spot \u2014 no nearby support from options positioning."
       }
     },
     "l6": {
@@ -145,14 +271,82 @@
       "details": "FOMC + Dot Plot 3/18 (12 days) | Quad Witching OPEX 3/20 (14 days) | Quarter-End Rebalancing 3/31 (25 days) | THREE HIGH-severity events clustered in 25-day window",
       "data": {
         "events": [
-          {"date": "2026-03-18", "name": "FOMC Meeting + Dot Plot", "severity": "HIGH", "days_away": 12},
-          {"date": "2026-03-20", "name": "Quad Witching OPEX", "severity": "HIGH", "days_away": 14},
-          {"date": "2026-03-31", "name": "Quarter-End Rebalancing", "severity": "HIGH", "days_away": 25},
-          {"date": "2026-04-02", "name": "Treasury Refunding Announcement", "severity": "MED", "days_away": 27},
-          {"date": "2026-04-15", "name": "Estimated Tax Payments", "severity": "MED", "days_away": 40},
-          {"date": "2026-05-01", "name": "Powell Term Ends", "severity": "HIGH", "days_away": 56}
+          {
+            "date": "2026-03-18",
+            "name": "FOMC Meeting + Dot Plot",
+            "severity": "HIGH",
+            "days_away": 12
+          },
+          {
+            "date": "2026-03-20",
+            "name": "Quad Witching OPEX",
+            "severity": "HIGH",
+            "days_away": 14
+          },
+          {
+            "date": "2026-03-31",
+            "name": "Quarter-End Rebalancing",
+            "severity": "HIGH",
+            "days_away": 25
+          },
+          {
+            "date": "2026-04-02",
+            "name": "Treasury Refunding Announcement",
+            "severity": "MED",
+            "days_away": 27
+          },
+          {
+            "date": "2026-04-15",
+            "name": "Estimated Tax Payments",
+            "severity": "MED",
+            "days_away": 40
+          },
+          {
+            "date": "2026-05-01",
+            "name": "Powell Term Ends",
+            "severity": "HIGH",
+            "days_away": 56
+          }
         ],
-        "notes": "FOMC + Quad Witching back-to-back is the highest-risk calendar cluster of the year. In negative gamma with elevated leverage, the forced delta hedging around OPEX could amplify any directional move from the Fed's dot plot."
+        "notes": "FOMC + Quad Witching back-to-back is the highest-risk calendar cluster of the year. In negative gamma with elevated leverage, the forced delta hedging around OPEX could amplify any directional move from the Fed's dot plot.",
+        "all_events": [
+          {
+            "date": "2026-03-18",
+            "name": "FOMC Meeting + Dot Plot",
+            "severity": "HIGH",
+            "days_away": 12
+          },
+          {
+            "date": "2026-03-20",
+            "name": "Quad Witching OPEX",
+            "severity": "HIGH",
+            "days_away": 14
+          },
+          {
+            "date": "2026-03-31",
+            "name": "Quarter-End Rebalancing",
+            "severity": "HIGH",
+            "days_away": 25
+          },
+          {
+            "date": "2026-04-02",
+            "name": "Treasury Refunding Announcement",
+            "severity": "MED",
+            "days_away": 27
+          },
+          {
+            "date": "2026-04-15",
+            "name": "Estimated Tax Payments",
+            "severity": "MED",
+            "days_away": 40
+          },
+          {
+            "date": "2026-05-01",
+            "name": "Powell Term Ends",
+            "severity": "HIGH",
+            "days_away": 56
+          }
+        ]
       }
     }
   },
@@ -165,7 +359,7 @@
       "spx_50dma": 6863,
       "spx_200dma": 6897,
       "spx_current": 6753,
-      "cross_asset": "Gold +1.21%, Treasuries bid (10Y -0.56%), USD -0.33%, RTY -2.42% — classic risk-off rotation"
+      "cross_asset": "Gold +1.21%, Treasuries bid (10Y -0.56%), USD -0.33%, RTY -2.42% \u2014 classic risk-off rotation"
     },
     "regime_estimate": {
       "s1_calm": 5,
@@ -173,27 +367,194 @@
       "s3_stress_onset": 60,
       "s4_active_deleveraging": 20,
       "dominant": "S3_STRESS_ONSET",
-      "transition_alert": "S3→S4 probability rising. VIX acceleration + negative gamma + calendar cluster = elevated transition risk."
+      "transition_alert": "S3\u2192S4 probability rising. VIX acceleration + negative gamma + calendar cluster = elevated transition risk."
     },
-    "synthesis": "TAPE CONFIRMING — Real-time stress is accelerating and aligning with the structural leverage read. SPX below both 50d and 200d MA, VIX surging +79% YTD, deep negative gamma, with FOMC+OPEX cluster in 12 days. Defensive positioning warranted.",
+    "synthesis": "TAPE CONFIRMING \u2014 Real-time stress is accelerating and aligning with the structural leverage read. SPX below both 50d and 200d MA, VIX surging +79% YTD, deep negative gamma, with FOMC+OPEX cluster in 12 days. Defensive positioning warranted.",
     "framing": "TAPE_CONFIRMING"
   },
   "divergence_alert": {
     "active": false,
     "type": null,
-    "notes": "No divergence — Layer 5 options fear (2.0/2.0) is now CONFIRMED by Layer 3 early tightening (0.5) and real-time tape stress. This is alignment, not divergence. The prior 'Options Leading' divergence from 2/26-3/2 has resolved: structural data is catching up to what options were signaling."
+    "notes": "No divergence \u2014 Layer 5 options fear (2.0/2.0) is now CONFIRMED by Layer 3 early tightening (0.5) and real-time tape stress. This is alignment, not divergence. The prior 'Options Leading' divergence from 2/26-3/2 has resolved: structural data is catching up to what options were signaling."
   },
   "score_history": [
-    {"date": "2026-02-13", "score": 6.0, "regime": "Fragile Equilibrium", "note": "Baseline post-DeepSeek recovery"},
-    {"date": "2026-02-17", "score": 6.0, "regime": "Fragile Equilibrium", "note": "Stable — financing loose, vol suppressed"},
-    {"date": "2026-02-20", "score": 6.0, "regime": "Fragile Equilibrium", "note": "Steady state"},
-    {"date": "2026-02-23", "score": 6.0, "regime": "Fragile Equilibrium", "note": "Pipeline calibrated"},
-    {"date": "2026-02-25", "score": 6.0, "regime": "Fragile Equilibrium", "note": "Full site audit — clean"},
-    {"date": "2026-02-26", "score": 7.5, "regime": "Active Deterioration", "note": "SPX below gamma flip, VIX surging"},
-    {"date": "2026-02-27", "score": 6.5, "regime": "Fragile Equilibrium", "note": "VIX retreated intraday"},
-    {"date": "2026-03-02", "score": 8.0, "regime": "Active Deterioration", "note": "Iran strikes, oil +5%, VIX 21.54"},
-    {"date": "2026-03-03", "score": 9.0, "regime": "Cascade Imminent", "note": "VIX 23.81, SPX -1.18%, Hormuz threat"},
-    {"date": "2026-03-04", "score": 7.5, "regime": "Active Deterioration", "note": "Bessent escort offer, VIX -11%, HY -16bp"},
-    {"date": "2026-03-06", "score": 8.5, "regime": "Active Deterioration", "note": "VIX 26.77 (+12.7%), VVIX 125.68, SPX 6753 below 50d/200d MA, deep negative gamma"}
-  ]
+    {
+      "date": "2026-02-13",
+      "score": 6.0,
+      "regime": "Fragile Equilibrium",
+      "note": "Baseline post-DeepSeek recovery"
+    },
+    {
+      "date": "2026-02-17",
+      "score": 6.0,
+      "regime": "Fragile Equilibrium",
+      "note": "Stable \u2014 financing loose, vol suppressed"
+    },
+    {
+      "date": "2026-02-20",
+      "score": 6.0,
+      "regime": "Fragile Equilibrium",
+      "note": "Steady state"
+    },
+    {
+      "date": "2026-02-23",
+      "score": 6.0,
+      "regime": "Fragile Equilibrium",
+      "note": "Pipeline calibrated"
+    },
+    {
+      "date": "2026-02-25",
+      "score": 6.0,
+      "regime": "Fragile Equilibrium",
+      "note": "Full site audit \u2014 clean"
+    },
+    {
+      "date": "2026-02-26",
+      "score": 7.5,
+      "regime": "Active Deterioration",
+      "note": "SPX below gamma flip, VIX surging"
+    },
+    {
+      "date": "2026-02-27",
+      "score": 6.5,
+      "regime": "Fragile Equilibrium",
+      "note": "VIX retreated intraday"
+    },
+    {
+      "date": "2026-03-02",
+      "score": 8.0,
+      "regime": "Active Deterioration",
+      "note": "Iran strikes, oil +5%, VIX 21.54"
+    },
+    {
+      "date": "2026-03-03",
+      "score": 9.0,
+      "regime": "Cascade Imminent",
+      "note": "VIX 23.81, SPX -1.18%, Hormuz threat"
+    },
+    {
+      "date": "2026-03-04",
+      "score": 7.5,
+      "regime": "Active Deterioration",
+      "note": "Bessent escort offer, VIX -11%, HY -16bp"
+    },
+    {
+      "date": "2026-03-06",
+      "score": 8.5,
+      "regime": "Active Deterioration",
+      "note": "VIX 26.77 (+12.7%), VVIX 125.68, SPX 6753 below 50d/200d MA, deep negative gamma"
+    }
+  ],
+  "cross_asset": {
+    "source": "Bloomberg Terminal + Pipeline",
+    "spx": 6753.0,
+    "vix": 26.77,
+    "dxy": 98.991,
+    "ust10y": 4.1131,
+    "ust2y": 3.5274,
+    "gold": 5143.55,
+    "oil_wti": 92.21,
+    "rty": 2523.094,
+    "hyg": "HY OAS 2.97%"
+  },
+  "cascade": {
+    "multiplier_effects": [
+      "L1 (max leverage) + L3 (early tightening) = Minsky moment risk RISING",
+      "L4 (Mag7 crowded) + L5 (negative gamma) = Amplified unwind if one name breaks",
+      "L5 (VIX surging) + L6 (FOMC+OPEX in 12 days) = Timing convergence"
+    ]
+  },
+  "commentary": null,
+  "alerts": [
+    {
+      "type": "SCORE_UPGRADE",
+      "message": "Composite upgraded 7.5 \u2192 8.5 \u2014 VIX acceleration + VVIX breakout",
+      "severity": "critical"
+    },
+    {
+      "type": "NEGATIVE_GAMMA",
+      "message": "SPX 147pts below gamma flip \u2014 dealer hedging AMPLIFYING moves",
+      "severity": "critical"
+    },
+    {
+      "type": "CALENDAR_CLUSTER",
+      "message": "FOMC + Quad Witching in 12-14 days \u2014 highest risk window of Q1",
+      "severity": "warning"
+    },
+    {
+      "type": "BELOW_KEY_MA",
+      "message": "SPX below BOTH 50d (6863) and 200d (6897) moving averages",
+      "severity": "warning"
+    }
+  ],
+  "l3_history": {
+    "nfci": [
+      {
+        "date": "2025-12-26",
+        "value": -0.5402
+      },
+      {
+        "date": "2026-01-02",
+        "value": -0.5495
+      },
+      {
+        "date": "2026-01-09",
+        "value": -0.558
+      },
+      {
+        "date": "2026-01-16",
+        "value": -0.5633
+      },
+      {
+        "date": "2026-01-23",
+        "value": -0.5661
+      },
+      {
+        "date": "2026-01-30",
+        "value": -0.5668
+      },
+      {
+        "date": "2026-02-06",
+        "value": -0.567
+      },
+      {
+        "date": "2026-02-13",
+        "value": -0.5654
+      },
+      {
+        "date": "2026-02-20",
+        "value": -0.5629
+      },
+      {
+        "date": "2026-03-06",
+        "value": -0.5236
+      }
+    ],
+    "hy_oas": [
+      {
+        "date": "2026-01-16",
+        "value": 2.65
+      },
+      {
+        "date": "2026-01-30",
+        "value": 2.8
+      },
+      {
+        "date": "2026-02-05",
+        "value": 2.97
+      },
+      {
+        "date": "2026-02-13",
+        "value": 2.95
+      },
+      {
+        "date": "2026-02-24",
+        "value": 2.97
+      },
+      {
+        "date": "2026-03-06",
+        "value": 2.97
+      }
+    ]
+  }
 }

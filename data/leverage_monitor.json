@@ -351,7 +351,11 @@
     }
   },
   "real_time_pulse": {
-    "turbulence": {
+    "turbulence": "ELEVATED",
+    "regime": "STRESS_ONSET",
+    "synthesis": "TAPE CONFIRMING",
+    "synthesis_note": "Stress accelerating \u2014 defensive positioning warranted",
+    "turbulence_detail": {
       "level": "ELEVATED",
       "vix": 26.77,
       "vix_term_structure": "flattening_toward_backwardation",
@@ -361,16 +365,14 @@
       "spx_current": 6753,
       "cross_asset": "Gold +1.21%, Treasuries bid (10Y -0.56%), USD -0.33%, RTY -2.42% \u2014 classic risk-off rotation"
     },
-    "regime_estimate": {
+    "regime_detail": {
       "s1_calm": 5,
       "s2_fragile": 15,
       "s3_stress_onset": 60,
       "s4_active_deleveraging": 20,
       "dominant": "S3_STRESS_ONSET",
       "transition_alert": "S3\u2192S4 probability rising. VIX acceleration + negative gamma + calendar cluster = elevated transition risk."
-    },
-    "synthesis": "TAPE CONFIRMING \u2014 Real-time stress is accelerating and aligning with the structural leverage read. SPX below both 50d and 200d MA, VIX surging +79% YTD, deep negative gamma, with FOMC+OPEX cluster in 12 days. Defensive positioning warranted.",
-    "framing": "TAPE_CONFIRMING"
+    }
   },
   "divergence_alert": {
     "active": false,

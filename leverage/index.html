@@ -78,11 +78,11 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
     <span style="font-size:10px;color:var(--muted)">22V Trading Desk</span>
   </div>
   <div style="display:flex;align-items:center;gap:16px;margin-top:12px">
-    <div class="mono" style="font-size:48px;font-weight:900;color:var(--red);line-height:1">7.5<span style="font-size:24px;color:var(--muted)">/10</span></div>
+    <div class="mono" style="font-size:48px;font-weight:900;color:var(--red);line-height:1">8.5<span style="font-size:24px;color:var(--muted)">/10</span></div>
     <div>
       <span class="pill p-r">ACTIVE DETERIORATION</span>
-      <span class="chg chg-u">&#9660; from 9.0</span>
-      <div style="font-size:11px;color:var(--muted);margin-top:6px">2026-03-04 <span style="color:var(--muted)">(Bloomberg Terminal)</span></div>
+      <span class="chg chg-d">&#9650; from 7.5</span>
+      <div style="font-size:11px;color:var(--muted);margin-top:6px">2026-03-06 <span style="color:var(--muted)">(Bloomberg Terminal + Pipeline)</span></div>
     </div>
   </div>
   <div class="meter">
@@ -93,22 +93,14 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
     <div class="m-s" style="background:var(--red)"></div>
     <div class="m-s" style="background:var(--red)"></div>
     <div class="m-s" style="background:var(--red)"></div>
+    <div class="m-s" style="background:var(--red)"></div>
     <div class="m-s"></div>
     <div class="m-s"></div>
-    <div class="m-s"></div>
-    <span class="mono" style="margin-left:8px;font-size:14px;font-weight:800;color:var(--red)">7.5/10</span>
+    <span class="mono" style="margin-left:8px;font-size:14px;font-weight:800;color:var(--red)">8.5/10</span>
   </div>
 </div>
 
 
-<div class="card" style="border-color:rgba(249,115,22,.35);border-left:3px solid var(--accent);margin-bottom:16px">
-  <div style="font-size:11px;font-weight:700;letter-spacing:1px;color:var(--accent);margin-bottom:4px">&#9888; SCORE_DOWNGRADE</div>
-  <div style="font-size:12px;line-height:1.7">
-    <strong style="color:var(--amber)">Key tension:</strong> Structural leverage still at historical extremes (L1=2, L2=2) but acute stress decompressed sharply. SPX reclaimed gamma flip by 3.68pts -- marginal positive gamma. Options sentiment still extreme fear (P/C 1.19) despite rally..
-    Financing direction: <strong style="color:var(--red)">loosening (HY OAS 281bp down from 297bp, MOVE -10%, NFCI improved)</strong>.
-    <strong style="color:var(--red)">Composite downgraded 9.0 -> 7.5. Single-day de-escalation driven by Bessent Persian Gulf escort offer + strong ADP + oil retreat. L3 (financing) flipped from early tightening to loosening (HY -16bp, MOVE -10%). L5A lost 0.5pts as VIX dropped below 22. But the 'all clear' is NOT here: leverage at record highs (L1-L2 maxed), concentration extreme (L4=1), options still pricing fear (L5B=1.0), and calendar loaded (L6=1). This is a relief rally within Active Deterioration, not a regime change. If Iran escalates or Hormuz closes, the loaded leverage snaps back instantly..</strong>
-  </div>
-</div>
 
 
 <div class="tabs" id="tabs"></div>
@@ -121,7 +113,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
       <div style="flex:1">
         <div class="ln">L1: Leverage Levels <span style="font-size:10px;color:var(--red);font-weight:800">2/2</span>
         </div>
-        <div class="ld">Margin $1279.0B above $1T record (Jun 2025) | HF gross: GS 285%, JPM 298%</div>
+        <div class="ld">Margin $1279.0B (8th consecutive record) | HF gross: GS 285%, JPM 298% (99th pctile MS) | Multistrat 645% | Debt/GDP 4.06% (ALL-TIME HIGH)</div>
       </div>
       <div class="dots">
         <div class="dot" style="background:var(--red)"></div>
@@ -132,7 +124,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
       <div style="flex:1">
         <div class="ln">L2: Momentum <span style="font-size:10px;color:var(--red);font-weight:800">2/2</span>
         </div>
-        <div class="ld">Margin YoY +36.5% (>20% threshold) | Debt/GDP 4.06% above 3.5% threshold</div>
+        <div class="ld">Margin YoY +36.5% (>20% threshold) | Debt/GDP 4.06% ALL-TIME HIGH above 3.5% threshold | SPX YoY +15.5% — leverage growing 2.4x faster than the market</div>
       </div>
       <div class="dots">
         <div class="dot" style="background:var(--red)"></div>
@@ -141,9 +133,9 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
     </div>
     <div class="lr">
       <div style="flex:1">
-        <div class="ln">L3: Financing <span style="font-size:10px;color:var(--green);font-weight:800">0/2</span>
+        <div class="ln">L3: Financing <span style="font-size:10px;color:var(--amber);font-weight:800">0.5/2</span>
         </div>
-        <div class="ld">HY OAS 281bp (tightened 16bp from 297bp on 3/3) | MOVE 70.03 (collapsed -9.93% in 1 session) | NFCI -0.5236 (loosened from -0.5629) | SOFR 3.67 (down 4bp) | Financing conditions LOOSENING -- no tightening signal</div>
+        <div class="ld">NFCI -0.5236 (tightening from -0.5629 on 2/20) | HY OAS 2.97% (widening from 2.65% trough in Jan) | CCC OAS 9.15% (widened from 8.38 trough) | MOVE 74.53 (+6.43%) | SOFR 3.66 (stable) | Conditions still overall loose BUT credit spreads widening and NFCI tightening at margin</div>
       </div>
       <div class="dots">
         <div class="dot" style="background:var(--dim)"></div>
@@ -154,7 +146,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
       <div style="flex:1">
         <div class="ln">L4: Crowding <span style="font-size:10px;color:var(--red);font-weight:800">1/1</span>
         </div>
-        <div class="ld">High concentration: AI Infra Concentration, Mag 7 % of HF Net, Semis Net Exposure, Multistrat Leverage | AI infra cluster + Mag7 rotation confirmed by Q4 13Fs</div>
+        <div class="ld">Mag 7 = 42.1% of SPX ($21T) | NVDA alone 9.5% ($4.76T) | Semis net exposure at 5yr high | AI infra 21.4% of SPX across 10 names</div>
       </div>
       <div class="dots">
         <div class="dot" style="background:var(--red)"></div>
@@ -163,20 +155,20 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
     </div>
     <div class="lr">
       <div style="flex:1">
-        <div class="ln">L5A: Vol Structure <span style="font-size:10px;color:var(--amber);font-weight:800">0.5/1</span>
+        <div class="ln">L5A: Vol Structure <span style="font-size:10px;color:var(--red);font-weight:800">1.0/1.0</span>
         </div>
-        <div class="ld">VIX 21.15 (down from 23.81, BELOW 22 trigger) = 0 | IV 16.70% > HV 11.88% (implied still above realized) = +0.5 | IV Rank 18.93%, IV Percentile 76% -- vol premium persists but VIX has mean-reverted | SPX 6,869.50 reclaimed above 50d MA est ~6,880</div>
+        <div class="ld">VIX 26.77 (+12.72% today, +79% YTD) WELL above 22 threshold | VVIX 125.68 (+8.41%) above 110 threshold | IV 21.45% vs HV 11.81% — implied nearly 2x realized | IV Rank 33.81%, IV Percentile 92% | VIX term structure flattening</div>
       </div>
       <div class="dots">
-        <div class="dot" style="background:var(--amber)"></div>
-        <div class="dot" style="background:var(--dim)"></div>
+        <div class="dot" style="background:var(--red)"></div>
+        <div class="dot" style="background:var(--red)"></div>
       </div>
     </div>
     <div class="lr">
       <div style="flex:1">
-        <div class="ln">L5B: Options Sentiment <span style="font-size:10px;color:var(--red);font-weight:800">1.0/1</span> <span style="font-size:9px;padding:1px 6px;border-radius:3px;background:rgba(239,68,68,.1);color:var(--red);font-weight:700;margin-left:4px">PIPELINE + BARCHART</span>
+        <div class="ln">L5B: Options Sentiment <span style="font-size:10px;color:var(--red);font-weight:800">1.0/1.0</span> <span style="font-size:9px;padding:1px 6px;border-radius:3px;background:rgba(239,68,68,.1);color:var(--red);font-weight:700;margin-left:4px">PIPELINE + BARCHART</span>
         </div>
-        <div class="ld">P/C 1.19 EXTREME FEAR + RR -8.01 = +0.5 | SPX 6,869.50 barely ABOVE gamma flip 6,865.82 -- just crossed back to positive gamma | VIX 30d RoC +31% (16.15->21.15) still > 25% threshold = +0.5 | GEX flip reclaim is key development -- if holds, dealer hedging shifts from amplifier to damper</div>
+        <div class="ld">Equity P/C 1.187 (EXTREME FEAR, well above 0.85) | 25-delta risk reversal -8.01 (at -8 threshold) | GEX: SPX 6747 BELOW flip 6894 = NEGATIVE GAMMA | Put wall 7000 / Call wall 7000 — both far above spot</div>
       </div>
       <div class="dots">
         <div class="dot" style="background:var(--red)"></div>
@@ -187,7 +179,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
       <div style="flex:1">
         <div class="ln">L6: Calendar <span style="font-size:10px;color:var(--red);font-weight:800">1/1</span>
         </div>
-        <div class="ld">HIGH events within 30d: FOMC + Dot Plot (14d), Quad Witching OPEX (16d), Quarter-End Rebalancing (27d) | FOMC complicated by oil inflation shock + tariff uncertainty</div>
+        <div class="ld">FOMC + Dot Plot 3/18 (12 days) | Quad Witching OPEX 3/20 (14 days) | Quarter-End Rebalancing 3/31 (25 days) | THREE HIGH-severity events clustered in 25-day window</div>
       </div>
       <div class="dots">
         <div class="dot" style="background:var(--red)"></div>
@@ -196,20 +188,20 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
     </div>
   </div>
   <div class="card glow-a">
-    <div style="font-size:13px;font-weight:700;color:var(--amber);margin-bottom:8px">&#9889; Score Update — 9.0 &rarr; 7.5 (2026-03-04)</div>
+    <div style="font-size:13px;font-weight:700;color:var(--amber);margin-bottom:8px">&#9889; Score Update — 7.5 &rarr; 8.5 (2026-03-06)</div>
     <div style="font-size:12px;line-height:1.7">
-      <strong>L1:</strong> Margin $1279.0B above $1T record (Jun 2025) | HF gross: GS 285%, JPM 298%<br>
-      <strong>L2:</strong> Margin YoY +36.5% (>20% threshold) | Debt/GDP 4.06% above 3.5% threshold<br>
-      <strong>L3:</strong> HY OAS 281bp (tightened 16bp from 297bp on 3/3) | MOVE 70.03 (collapsed -9.93% in 1 session) | NFCI -0.5236 (loosened from -0.5629) | SOFR 3.67 (down 4bp) | Financing conditions LOOSENING -- no tightening signal<br>
-      <strong>L4:</strong> High concentration: AI Infra Concentration, Mag 7 % of HF Net, Semis Net Exposure, Multistrat Leverage | AI infra cluster + Mag7 rotation confirmed by Q4 13Fs<br>
-      <strong>L5A:</strong> VIX 21.15 (down from 23.81, BELOW 22 trigger) = 0 | IV 16.70% > HV 11.88% (implied still above realized) = +0.5 | IV Rank 18.93%, IV Percentile 76% -- vol premium persists but VIX has mean-reverted | SPX 6,869.50 reclaimed above 50d MA est ~6,880<br>
-      <strong>L5B:</strong> P/C 1.19 EXTREME FEAR + RR -8.01 = +0.5 | SPX 6,869.50 barely ABOVE gamma flip 6,865.82 -- just crossed back to positive gamma | VIX 30d RoC +31% (16.15->21.15) still > 25% threshold = +0.5 | GEX flip reclaim is key development -- if holds, dealer hedging shifts from amplifier to damper<br>
-      <strong>L6:</strong> HIGH events within 30d: FOMC + Dot Plot (14d), Quad Witching OPEX (16d), Quarter-End Rebalancing (27d) | FOMC complicated by oil inflation shock + tariff uncertainty<br>
+      <strong>L1:</strong> Margin $1279.0B (8th consecutive record) | HF gross: GS 285%, JPM 298% (99th pctile MS) | Multistrat 645% | Debt/GDP 4.06% (ALL-TIME HIGH)<br>
+      <strong>L2:</strong> Margin YoY +36.5% (>20% threshold) | Debt/GDP 4.06% ALL-TIME HIGH above 3.5% threshold | SPX YoY +15.5% — leverage growing 2.4x faster than the market<br>
+      <strong>L3:</strong> NFCI -0.5236 (tightening from -0.5629 on 2/20) | HY OAS 2.97% (widening from 2.65% trough in Jan) | CCC OAS 9.15% (widened from 8.38 trough) | MOVE 74.53 (+6.43%) | SOFR 3.66 (stable) | Conditions still overall loose BUT credit spreads widening and NFCI tightening at margin<br>
+      <strong>L4:</strong> Mag 7 = 42.1% of SPX ($21T) | NVDA alone 9.5% ($4.76T) | Semis net exposure at 5yr high | AI infra 21.4% of SPX across 10 names<br>
+      <strong>L5A:</strong> VIX 26.77 (+12.72% today, +79% YTD) WELL above 22 threshold | VVIX 125.68 (+8.41%) above 110 threshold | IV 21.45% vs HV 11.81% — implied nearly 2x realized | IV Rank 33.81%, IV Percentile 92% | VIX term structure flattening<br>
+      <strong>L5B:</strong> Equity P/C 1.187 (EXTREME FEAR, well above 0.85) | 25-delta risk reversal -8.01 (at -8 threshold) | GEX: SPX 6747 BELOW flip 6894 = NEGATIVE GAMMA | Put wall 7000 / Call wall 7000 — both far above spot<br>
+      <strong>L6:</strong> FOMC + Dot Plot 3/18 (12 days) | Quad Witching OPEX 3/20 (14 days) | Quarter-End Rebalancing 3/31 (25 days) | THREE HIGH-severity events clustered in 25-day window<br>
     </div>
   </div>
   <div class="card">
     <div style="font-size:14px;font-weight:700;margin-bottom:4px">Composite Score History</div>
-    <div style="font-size:10px;color:var(--muted);margin-bottom:10px">10 observations &bull; Regime thresholds: 5 (Fragile), 7 (Active Deterioration), 9 (Cascade)</div>
+    <div style="font-size:10px;color:var(--muted);margin-bottom:10px">11 observations &bull; Regime thresholds: 5 (Fragile), 7 (Active Deterioration), 9 (Cascade)</div>
     <svg viewBox="0 0 620 180" style="width:100%;height:180px">
       <line x1="40" y1="10" x2="40" y2="160" stroke="#1e293b" stroke-width=".5"/>
       <line x1="40" y1="160" x2="600" y2="160" stroke="#1e293b" stroke-width=".5"/>
@@ -223,27 +215,28 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
       <line x1="40" y1="25" x2="600" y2="25" stroke="#ff0040" stroke-dasharray="4 4" stroke-width=".5"/>
       <text x="605" y="28" fill="#ff0040" font-size="7">Cascade</text>
       <defs><linearGradient id="shg" x1="0" y1="0" x2="0" y2="1"><stop offset="5%" stop-color="#f97316" stop-opacity=".25"/><stop offset="95%" stop-color="#f97316" stop-opacity="0"/></linearGradient></defs>
-      <polygon points="50,70 110,70 170,70 230,70 290,70 350,48 410,62 470,40 530,25 590,48 590,160 50,160" fill="url(#shg)"/>
-      <polyline points="50,70 110,70 170,70 230,70 290,70 350,48 410,62 470,40 530,25 590,48" fill="none" stroke="var(--accent)" stroke-width="2.5"/>
+      <polygon points="50,70 104,70 158,70 212,70 266,70 320,48 374,62 428,40 482,25 536,48 590,32 590,160 50,160" fill="url(#shg)"/>
+      <polyline points="50,70 104,70 158,70 212,70 266,70 320,48 374,62 428,40 482,25 536,48 590,32" fill="none" stroke="var(--accent)" stroke-width="2.5"/>
         <circle cx="50" cy="70" r="3" fill="var(--amber)" stroke="none" stroke-width="0"/>
         <text x="50" y="62" fill="var(--amber)" font-size="7" text-anchor="middle" font-family="JetBrains Mono" font-weight="400">6.0</text>
-        <circle cx="110" cy="70" r="3" fill="var(--amber)" stroke="none" stroke-width="0"/>
-        <circle cx="170" cy="70" r="3" fill="var(--amber)" stroke="none" stroke-width="0"/>
-        <text x="170" y="62" fill="var(--amber)" font-size="7" text-anchor="middle" font-family="JetBrains Mono" font-weight="400">6.0</text>
-        <circle cx="230" cy="70" r="3" fill="var(--amber)" stroke="none" stroke-width="0"/>
-        <circle cx="290" cy="70" r="3" fill="var(--amber)" stroke="none" stroke-width="0"/>
-        <text x="290" y="62" fill="var(--amber)" font-size="7" text-anchor="middle" font-family="JetBrains Mono" font-weight="400">6.0</text>
-        <circle cx="350" cy="48" r="3" fill="var(--red)" stroke="none" stroke-width="0"/>
-        <circle cx="410" cy="62" r="3" fill="var(--amber)" stroke="none" stroke-width="0"/>
-        <text x="410" y="54" fill="var(--amber)" font-size="7" text-anchor="middle" font-family="JetBrains Mono" font-weight="400">6.5</text>
-        <circle cx="470" cy="40" r="3" fill="var(--red)" stroke="none" stroke-width="0"/>
-        <circle cx="530" cy="25" r="3" fill="var(--crit)" stroke="none" stroke-width="0"/>
-        <text x="530" y="17" fill="var(--crit)" font-size="7" text-anchor="middle" font-family="JetBrains Mono" font-weight="400">9.0</text>
-        <circle cx="590" cy="48" r="5" fill="var(--red)" stroke="#fff" stroke-width="1.5"/>
-        <text x="590" y="40" fill="var(--red)" font-size="9" text-anchor="middle" font-family="JetBrains Mono" font-weight="800">7.5</text>
+        <circle cx="104" cy="70" r="3" fill="var(--amber)" stroke="none" stroke-width="0"/>
+        <circle cx="158" cy="70" r="3" fill="var(--amber)" stroke="none" stroke-width="0"/>
+        <text x="158" y="62" fill="var(--amber)" font-size="7" text-anchor="middle" font-family="JetBrains Mono" font-weight="400">6.0</text>
+        <circle cx="212" cy="70" r="3" fill="var(--amber)" stroke="none" stroke-width="0"/>
+        <circle cx="266" cy="70" r="3" fill="var(--amber)" stroke="none" stroke-width="0"/>
+        <text x="266" y="62" fill="var(--amber)" font-size="7" text-anchor="middle" font-family="JetBrains Mono" font-weight="400">6.0</text>
+        <circle cx="320" cy="48" r="3" fill="var(--red)" stroke="none" stroke-width="0"/>
+        <circle cx="374" cy="62" r="3" fill="var(--amber)" stroke="none" stroke-width="0"/>
+        <text x="374" y="54" fill="var(--amber)" font-size="7" text-anchor="middle" font-family="JetBrains Mono" font-weight="400">6.5</text>
+        <circle cx="428" cy="40" r="3" fill="var(--red)" stroke="none" stroke-width="0"/>
+        <circle cx="482" cy="25" r="3" fill="var(--crit)" stroke="none" stroke-width="0"/>
+        <text x="482" y="17" fill="var(--crit)" font-size="7" text-anchor="middle" font-family="JetBrains Mono" font-weight="400">9.0</text>
+        <circle cx="536" cy="48" r="3" fill="var(--red)" stroke="none" stroke-width="0"/>
+        <circle cx="590" cy="32" r="5" fill="var(--red)" stroke="#fff" stroke-width="1.5"/>
+        <text x="590" y="24" fill="var(--red)" font-size="9" text-anchor="middle" font-family="JetBrains Mono" font-weight="800">8.5</text>
       <text x="50" y="175" fill="#64748b" font-size="7" text-anchor="start">02-13</text>
-      <text x="350" y="175" fill="#64748b" font-size="7" text-anchor="middle">02-26</text>
-      <text x="590" y="175" fill="var(--red)" font-size="7" text-anchor="end" font-weight="700">03-04</text>
+      <text x="320" y="175" fill="#64748b" font-size="7" text-anchor="middle">02-26</text>
+      <text x="590" y="175" fill="var(--red)" font-size="7" text-anchor="end" font-weight="700">03-06</text>
     </svg>
   </div>
   <div class="card" style="border-color:rgba(245,158,11,.3)">
@@ -251,25 +244,24 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:14px">
       <div style="text-align:center;padding:14px 10px;background:rgba(245,158,11,.06);border-radius:8px;border:1px solid rgba(245,158,11,.15)">
         <div style="font-size:9px;color:var(--muted);letter-spacing:1px;text-transform:uppercase">Turbulence</div>
-        <div class="mono" style="font-size:18px;font-weight:800;color:var(--amber);margin-top:6px">MODERATE</div>
-        <div style="font-size:9px;color:var(--dim);margin-top:4px">VIX 21.15 &bull; SPX 6869.50</div>
+        <div class="mono" style="font-size:18px;font-weight:800;color:var(--amber);margin-top:6px">{'level': 'ELEVATED', 'vix': 26.77, 'vix_term_structure': 'flattening_toward_backwardation', 'spx_vs_50dma': 'BELOW', 'spx_50dma': 6863, 'spx_200dma': 6897, 'spx_current': 6753, 'cross_asset': 'Gold +1.21%, Treasuries bid (10Y -0.56%), USD -0.33%, RTY -2.42% — classic risk-off rotation'}</div>
+        <div style="font-size:9px;color:var(--dim);margin-top:4px">VIX 26.77 &bull; SPX 6746.77</div>
       </div>
       <div style="text-align:center;padding:14px 10px;background:rgba(245,158,11,.06);border-radius:8px;border:1px solid rgba(245,158,11,.15)">
         <div style="font-size:9px;color:var(--muted);letter-spacing:1px;text-transform:uppercase">Regime</div>
-        <div class="mono" style="font-size:18px;font-weight:800;color:var(--amber);margin-top:6px">FRAGILE EQUILIBRIUM</div>
-        <div style="font-size:9px;color:var(--dim);margin-top:4px">Score 7.5/10</div>
+        <div class="mono" style="font-size:18px;font-weight:800;color:var(--amber);margin-top:6px">UNKNOWN</div>
+        <div style="font-size:9px;color:var(--dim);margin-top:4px">Score 8.5/10</div>
       </div>
       <div style="text-align:center;padding:14px 10px;background:rgba(245,158,11,.06);border-radius:8px;border:1px solid rgba(245,158,11,.15)">
         <div style="font-size:9px;color:var(--muted);letter-spacing:1px;text-transform:uppercase">Synthesis</div>
-        <div class="mono" style="font-size:14px;font-weight:700;color:var(--amber);margin-top:6px">TAPE DIVERGING (CALM SURFACE)</div>
-        <div style="font-size:9px;color:var(--dim);margin-top:4px">Score downgraded 9.0 -> 7.5. Sharp relief rally -- VIX -11%, MOVE -10%, HY -16bp, SPX reclaimed gamma flip. But structural leverage (L1-L2) unchanged at max, and P/C still screaming fear (1.19). Classic 'eye of the storm' setup -- the catalyst (Iran/Hormuz) hasn't resolved, only the acute vol has compressed. FOMC + quad witch in 2 weeks is the next pressure test. KEY LEVELS: HY OAS 350bp and VIX backwardation remain the two confirmation triggers for regime shift to Cascade Imminent.</div>
+        <div class="mono" style="font-size:14px;font-weight:700;color:var(--amber);margin-top:6px">TAPE CONFIRMING — Real-time stress is accelerating and aligning with the structural leverage read. SPX below both 50d and 200d MA, VIX surging +79% YTD, deep negative gamma, with FOMC+OPEX cluster in 12 days. Defensive positioning warranted.</div>
+        <div style="font-size:9px;color:var(--dim);margin-top:4px"></div>
       </div>
     </div>
-    <div style="font-size:11px;color:var(--amber);font-weight:600;font-style:italic;line-height:1.6;padding:10px 14px;background:rgba(245,158,11,.05);border-radius:8px">Composite downgraded 9.0 -> 7.5. Single-day de-escalation driven by Bessent Persian Gulf escort offer + strong ADP + oil retreat. L3 (financing) flipped from early tightening to loosening (HY -16bp, MOVE -10%). L5A lost 0.5pts as VIX dropped below 22. But the 'all clear' is NOT here: leverage at record highs (L1-L2 maxed), concentration extreme (L4=1), options still pricing fear (L5B=1.0), and calendar loaded (L6=1). This is a relief rally within Active Deterioration, not a regime change. If Iran escalates or Hormuz closes, the loaded leverage snaps back instantly.. Structural leverage still at historical extremes (L1=2, L2=2) but acute stress decompressed sharply. SPX reclaimed gamma flip by 3.68pts -- marginal positive gamma. Options sentiment still extreme fear (P/C 1.19) despite rally.</div>
   </div>
   <div class="card">
     <div style="font-size:14px;font-weight:700;margin-bottom:4px">Real-Time Readings</div>
-    <div style="font-size:10px;color:var(--amber);margin-bottom:10px">2026-03-04</div>
+    <div style="font-size:10px;color:var(--amber);margin-bottom:10px">2026-03-06</div>
     <div class="stats">
       <div class="st">
         <div class="st-l">Equity P/C</div>
@@ -278,14 +270,14 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
       </div>
       <div class="st">
         <div class="st-l">GEX (Barchart)</div>
-        <div class="st-v" style="color:var(--green)">+&gamma; (marginal)
+        <div class="st-v" style="color:var(--red)">-&gamma;
         </div>
-        <div class="st-s">Flip 6866 &bull; Walls 7000</div>
+        <div class="st-s">Flip 6894 &bull; Walls 7000</div>
       </div>
       <div class="st">
         <div class="st-l">VIX</div>
-        <div class="st-v" style="color:var(--amber)">21.15</div>
-        <div class="st-s">IV 16.7%</div>
+        <div class="st-v" style="color:var(--red)">26.77</div>
+        <div class="st-s"></div>
       </div>
       <div class="st">
         <div class="st-l">CBOE SKEW</div>
@@ -294,8 +286,8 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
       </div>
       <div class="st">
         <div class="st-l">HY OAS</div>
-        <div class="st-v" style="color:var(--green)">281bp</div>
-        <div class="st-s">Tighter from 297</div>
+        <div class="st-v" style="color:var(--green)">2.97bp</div>
+        <div class="st-s">Wider from 2.81</div>
       </div>
       <div class="st">
         <div class="st-l">NFCI</div>
@@ -314,13 +306,8 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
       </div>
       <div class="st">
         <div class="st-l">SOFR</div>
-        <div class="st-v">3.67%</div>
+        <div class="st-v">3.66%</div>
         <div class="st-s">Stable</div>
-      </div>
-      <div class="st">
-        <div class="st-l">IV / HV</div>
-        <div class="st-v">16.7% / 11.88%</div>
-        <div class="st-s">IV Rank 18.93%</div>
       </div>
     </div>
   </div>
@@ -394,7 +381,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
   <div class="card">
     <div style="font-size:14px;font-weight:700;margin-bottom:4px">Leverage Gap (Margin YoY &minus; SPX YoY)</div>
     <div style="font-size:11px;color:var(--muted);margin-bottom:14px">
-      Current: +21.0pp. 
+      Current: +21.0pp. Leverage gap (margin YoY minus SPX YoY) = 21.0pp — extreme divergence
     </div>
     <div class="bch" id="gc"></div>
     <div class="stats" style="margin-top:14px">
@@ -408,17 +395,17 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
 
 
 <div class="pnl" id="p3">
-  <div class="card" style="border-left:3px solid var(--green)">
+  <div class="card" style="border-left:3px solid var(--amber)">
     <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
-      <div style="width:10px;height:10px;border-radius:5px;background:var(--green)"></div>
-      <span style="font-size:14px;font-weight:700">Financing: THE KEY LAYER &mdash; Actively Loosening</span>
+      <div style="width:10px;height:10px;border-radius:5px;background:var(--amber)"></div>
+      <span style="font-size:14px;font-weight:700">Financing: THE KEY LAYER &mdash; Mixed</span>
     </div>
     <div style="font-size:12px;line-height:1.7;margin-bottom:16px">
-      <strong style="color:var(--green)">Financing conditions are easing, not tightening.</strong>
-      NFCI moved from -0.510 &rarr; -0.524 (2026-03-04).
-      HY OAS tightened from 297&rarr;281bp.
-      SOFR eased to 3.67%.
-      <strong style="color:var(--amber)">This is the key layer keeping the composite at 7 instead of 8-10. If HY &gt; 350bp or NFCI &gt; -0.30, score jumps to 8-10 (Active Deterioration &rarr; Cascade).</strong>
+      <strong style="color:var(--amber)">Financing conditions are mixed.</strong>
+      NFCI moved from -0.510 &rarr; -0.524 (2026-03-06).
+      HY OAS widened from 2.81&rarr;2.97bp.
+      SOFR eased to 3.66%.
+      <strong style="color:var(--amber)">This is the key layer keeping the composite at 8 instead of 8-10. If HY &gt; 350bp or NFCI &gt; -0.30, score jumps to 8-10 (Active Deterioration &rarr; Cascade).</strong>
     </div>
     <div class="stats">
       <div class="st">
@@ -428,61 +415,21 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
       </div>
       <div class="st">
         <div class="st-l">HY OAS</div>
-        <div class="st-v" style="color:var(--green)">281bp</div>
-        <div class="st-s">Tighter from 297</div>
+        <div class="st-v" style="color:var(--green)">2.97bp</div>
+        <div class="st-s">Wider from 2.81</div>
       </div>
       <div class="st">
         <div class="st-l">GS FCI</div>
-        <div class="st-v" style="color:var(--green)">Loose</div>
-        <div class="st-s">Rate cuts + end of QT</div>
+        <div class="st-v" style="color:var(--red)">Mixed</div>
+        <div class="st-s">Conditions shifting</div>
       </div>
       <div class="st">
         <div class="st-l">SOFR</div>
-        <div class="st-v">3.67%</div>
+        <div class="st-v">3.66%</div>
         <div class="st-s">Stable</div>
       </div>
     </div>
     <div class="al al-o" style="margin-top:12px">TRIP WIRES: HY OAS &gt; 350bp &bull; NFCI &gt; -0.30 &bull; SOFR &gt; 4.50% &bull; PB margin hikes &bull; GS FCI &rarr; &ldquo;tightening&rdquo;</div>
-  </div>
-  <div class="card">
-    <div style="font-size:14px;font-weight:700;margin-bottom:4px">HY OAS History</div>
-    <div style="font-size:10px;color:var(--muted);margin-bottom:10px">HY OAS (bp) &bull; Dots colored by L3 score &bull; Trip wire: 350bp</div>
-    <svg viewBox="0 0 620 180" style="width:100%;height:180px">
-      <line x1="40" y1="10" x2="40" y2="160" stroke="#1e293b" stroke-width=".5"/>
-      <line x1="40" y1="160" x2="600" y2="160" stroke="#1e293b" stroke-width=".5"/>
-      <text x="35" y="15" fill="#64748b" font-size="8" text-anchor="end" font-family="JetBrains Mono">360</text>
-      <text x="35" y="88" fill="#64748b" font-size="8" text-anchor="end" font-family="JetBrains Mono">313</text>
-      <text x="35" y="163" fill="#64748b" font-size="8" text-anchor="end" font-family="JetBrains Mono">267</text>
-      <line x1="40" y1="26" x2="600" y2="26" stroke="#ef4444" stroke-dasharray="4 4" stroke-width="1"/>
-      <text x="605" y="29" fill="#ef4444" font-size="7" font-weight="700">350bp TRIP</text>
-      <line x1="40" y1="107" x2="600" y2="107" stroke="#f59e0b" stroke-dasharray="4 4" stroke-width=".5"/>
-      <text x="605" y="110" fill="#f59e0b" font-size="7">300bp</text>
-      <defs><linearGradient id="l3g" x1="0" y1="0" x2="0" y2="1"><stop offset="5%" stop-color="#3b82f6" stop-opacity=".2"/><stop offset="95%" stop-color="#3b82f6" stop-opacity="0"/></linearGradient></defs>
-      <polygon points="50,115 110,116 170,129 230,115 290,136 350,126 410,129 470,112 530,112 590,137 590,160 50,160" fill="url(#l3g)"/>
-      <polyline points="50,115 110,116 170,129 230,115 290,136 350,126 410,129 470,112 530,112 590,137" fill="none" stroke="#3b82f6" stroke-width="2"/>
-        <circle cx="50" cy="115" r="3" fill="var(--green)" stroke="none" stroke-width="0"/>
-        <text x="50" y="107" fill="#3b82f6" font-size="7" text-anchor="middle" font-family="JetBrains Mono" font-weight="400">295</text>
-        <circle cx="110" cy="116" r="3" fill="var(--green)" stroke="none" stroke-width="0"/>
-        <circle cx="170" cy="129" r="3" fill="var(--green)" stroke="none" stroke-width="0"/>
-        <circle cx="230" cy="115" r="3" fill="var(--green)" stroke="none" stroke-width="0"/>
-        <text x="230" y="107" fill="#3b82f6" font-size="7" text-anchor="middle" font-family="JetBrains Mono" font-weight="400">295</text>
-        <circle cx="290" cy="136" r="3" fill="var(--green)" stroke="none" stroke-width="0"/>
-        <circle cx="350" cy="126" r="3" fill="var(--green)" stroke="none" stroke-width="0"/>
-        <circle cx="410" cy="129" r="3" fill="var(--green)" stroke="none" stroke-width="0"/>
-        <text x="410" y="121" fill="#3b82f6" font-size="7" text-anchor="middle" font-family="JetBrains Mono" font-weight="400">286</text>
-        <circle cx="470" cy="112" r="3" fill="var(--amber)" stroke="none" stroke-width="0"/>
-        <circle cx="530" cy="112" r="3" fill="var(--amber)" stroke="none" stroke-width="0"/>
-        <circle cx="590" cy="137" r="5" fill="var(--green)" stroke="#fff" stroke-width="1.5"/>
-        <text x="590" y="129" fill="#3b82f6" font-size="9" text-anchor="middle" font-family="JetBrains Mono" font-weight="800">281</text>
-      <text x="50" y="175" fill="#64748b" font-size="7" text-anchor="start">02-13</text>
-      <text x="590" y="175" fill="var(--green)" font-size="7" text-anchor="end" font-weight="700">03-04</text>
-    </svg>
-    <div style="display:flex;gap:16px;margin-top:8px;font-size:10px">
-      <span style="color:#3b82f6">&mdash; HY OAS (bp)</span>
-      <span style="color:var(--green)">&bull; L3 = 0 (Loose)</span>
-      <span style="color:var(--amber)">&bull; L3 &gt; 0 (Tightening)</span>
-      <span style="color:var(--red)">--- 350bp Trip Wire</span>
-    </div>
   </div>
 </div>
 
@@ -493,8 +440,8 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
     <div id="cb"></div>
   </div>
   <div class="card glow-a">
-    <div style="font-size:13px;font-weight:700;color:var(--amber);margin-bottom:8px">&#9889; AI infra cluster + Mag7 rotation confirmed by Q4 13Fs <span style="font-size:10px;color:var(--muted)">(2026-Q1)</span></div>
-    <div style="font-size:12px;line-height:1.7">Druckenmiller pivoting to equal-weight (RSP)</div>
+    <div style="font-size:13px;font-weight:700;color:var(--amber);margin-bottom:8px">&#9889; AI infra cluster + Mag7 remains elevated — Semis at 5yr high <span style="font-size:10px;color:var(--muted)">(2026-Q1)</span></div>
+    <div style="font-size:12px;line-height:1.7">GS Q1 2026 outlook confirms Mag7 ~19% of total US HF net exposure (down from 21% peak but still elevated). Semis net at 5yr high. Software net at 5yr LOW — rotation within tech, not out of tech.</div>
   </div>
   <div class="card">
     <div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:10px">MAG-7 MARKET CAP CONCENTRATION</div>
@@ -515,7 +462,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
       </div>
       <span class="pill p-r">EXTREME FEAR</span>
     </div>
-    <div style="font-size:10px;color:var(--muted);margin-bottom:14px">2026-03-04</div>
+    <div style="font-size:10px;color:var(--muted);margin-bottom:14px">2026-03-06</div>
     <div class="g4">
       <div class="mc" style="border-color:rgba(239,68,68,.25)">
         <div class="mc-l">Equity P/C</div>
@@ -523,16 +470,16 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
         <div class="mc-s" style="color:var(--amber);font-weight:700">+0.50 pts</div>
         <div class="mc-s">Threshold: &gt; 0.85</div>
       </div>
-      <div class="mc" style="border-color:rgba(34,197,94,.25)">
+      <div class="mc" style="border-color:rgba(239,68,68,.25)">
         <div class="mc-l">GEX</div>
-        <div class="mc-v" style="color:var(--green)">+&gamma;
+        <div class="mc-v" style="color:var(--red)">-&gamma;
         </div>
-        <div class="mc-s" style="color:var(--green);font-weight:700">0 pts</div>
-        <div class="mc-s">Flip 6866 &bull; SPX above</div>
+        <div class="mc-s" style="color:var(--amber);font-weight:700">+0.25 pts</div>
+        <div class="mc-s">Flip 6894 &bull; SPX below</div>
       </div>
       <div class="mc" style="border-color:rgba(239,68,68,.25)">
         <div class="mc-l">VIX 30d RoC</div>
-        <div class="mc-v" style="color:var(--red)">+31%</div>
+        <div class="mc-v" style="color:var(--red)">+33%</div>
         <div class="mc-s" style="color:var(--amber);font-weight:700">+0.25 pts</div>
         <div class="mc-s">Threshold: &gt; 25%</div>
       </div>
@@ -548,21 +495,21 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
   <div class="card">
     <div style="font-size:14px;font-weight:700;margin-bottom:10px">Vol Surface</div>
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px">
-      <div class="mc"><div class="mc-l">IV</div><div class="mc-v" style="font-size:20px">16.7%</div></div>
-      <div class="mc"><div class="mc-l">HV (30d)</div><div class="mc-v" style="font-size:20px">11.88%</div></div>
-      <div class="mc"><div class="mc-l">IV Rank</div><div class="mc-v" style="font-size:20px">18.93%</div></div>
-      <div class="mc"><div class="mc-l">IV Pctl</div><div class="mc-v" style="font-size:20px">76.0%</div></div>
+      <div class="mc"><div class="mc-l">IV</div><div class="mc-v" style="font-size:20px">None%</div></div>
+      <div class="mc"><div class="mc-l">HV (30d)</div><div class="mc-v" style="font-size:20px">None%</div></div>
+      <div class="mc"><div class="mc-l">IV Rank</div><div class="mc-v" style="font-size:20px">33.81%</div></div>
+      <div class="mc"><div class="mc-l">IV Pctl</div><div class="mc-v" style="font-size:20px">92%</div></div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:10px">
-      <div class="mc" style="border-color:rgba(34,197,94,.2)">
+      <div class="mc" style="border-color:rgba(239,68,68,.2)">
         <div class="mc-l">GEX Flip</div>
-        <div class="mc-v" style="color:var(--green);font-size:20px">6866</div>
-        <div class="mc-s">SPX above &rarr; +&gamma;</div>
+        <div class="mc-v" style="color:var(--red);font-size:20px">6894</div>
+        <div class="mc-s">SPX below &rarr; -&gamma;</div>
       </div>
       <div class="mc"><div class="mc-l">Put Wall</div><div class="mc-v" style="font-size:20px">7000</div></div>
       <div class="mc"><div class="mc-l">Call Wall</div><div class="mc-v" style="font-size:20px">7000</div></div>
     </div>
-    <div style="font-size:10px;color:var(--muted);margin-top:6px;text-align:right">Source: Bloomberg Terminal &mdash; 2026-03-04</div>
+    <div style="font-size:10px;color:var(--muted);margin-top:6px;text-align:right">Source: Bloomberg Terminal + Pipeline &mdash; 2026-03-06</div>
   </div>
   <div class="card">
     <div style="font-size:14px;font-weight:700;margin-bottom:4px">VIX 30-Day Trend</div>
@@ -571,10 +518,10 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
       <line x1="30" y1="61" x2="590" y2="61" stroke="#f59e0b" stroke-dasharray="4 4" stroke-width=".5"/>
       <text x="595" y="64" fill="#f59e0b" font-size="8">20</text>
       <polyline points="40,105 63,103 87,103 110,97 134,90 157,103 181,84 204,76 228,40 251,56 275,91 298,86 322,88 345,51 369,54 392,57 416,65 439,58 463,71 486,49 510,66 533,85 557,61 580,43" fill="none" stroke="var(--accent)" stroke-width="2"/>
-      <circle cx="580" cy="47" r="4" fill="var(--amber)"/>
-      <text x="575" y="40" fill="var(--amber)" font-size="8" text-anchor="end">21.15</text>
+      <circle cx="580" cy="-18" r="4" fill="var(--red)"/>
+      <text x="575" y="-25" fill="var(--red)" font-size="8" text-anchor="end">26.77</text>
       <text x="40" y="130" fill="#64748b" font-size="8">2026-01-26</text>
-      <text x="580" y="130" fill="var(--green)" font-size="8" text-anchor="end">2026-03-04</text>
+      <text x="580" y="130" fill="var(--red)" font-size="8" text-anchor="end">2026-03-06</text>
     </svg>
   </div>
 </div>
@@ -629,47 +576,11 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
       </div>
     </div>
     <div class="er">
-      <div class="ed">2026-04-17</div>
-      <div>
-        <div style="display:flex;align-items:center;gap:8px">
-          <span class="et">Monthly OPEX</span>
-          <span class="pill p-a">MED</span>
-        </div>
-      </div>
-    </div>
-    <div class="er">
-      <div class="ed">2026-04-29</div>
-      <div>
-        <div style="display:flex;align-items:center;gap:8px">
-          <span class="et">FOMC Meeting</span>
-          <span class="pill p-a">MED</span>
-        </div>
-      </div>
-    </div>
-    <div class="er">
       <div class="ed" style="color:var(--red)">2026-05-01</div>
       <div>
         <div style="display:flex;align-items:center;gap:8px">
           <span class="et">Powell Term Ends</span>
           <span class="pill p-r">HIGH</span>
-        </div>
-      </div>
-    </div>
-    <div class="er">
-      <div class="ed">2026-05-06</div>
-      <div>
-        <div style="display:flex;align-items:center;gap:8px">
-          <span class="et">Treasury Refunding Announcement</span>
-          <span class="pill p-a">MED</span>
-        </div>
-      </div>
-    </div>
-    <div class="er">
-      <div class="ed">2026-05-15</div>
-      <div>
-        <div style="display:flex;align-items:center;gap:8px">
-          <span class="et">Monthly OPEX</span>
-          <span class="pill p-a">MED</span>
         </div>
       </div>
     </div>
@@ -682,12 +593,12 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
   <div class="card glow-a">
     <div style="font-size:14px;font-weight:700;margin-bottom:14px;color:var(--amber)">Cascade Vulnerability Chain</div>
     <div class="cs">
-      <div class="cn h">1</div>
-      <span class="ct h">Margin calls</span><span class="ca">&rarr;</span>
+      <div class="cn">1</div>
+      <span class="ct">Margin calls</span><span class="ca">&rarr;</span>
     </div>
     <div class="cs">
-      <div class="cn h">2</div>
-      <span class="ct h">Forced selling</span><span class="ca">&rarr;</span>
+      <div class="cn">2</div>
+      <span class="ct">Forced selling</span><span class="ca">&rarr;</span>
     </div>
     <div class="cs">
       <div class="cn">3</div>
@@ -712,15 +623,30 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
     <div style="margin-top:16px;padding:12px;background:var(--card);border-radius:6px;border:1px solid rgba(245,158,11,.27)">
       <div style="display:flex;justify-content:space-between;margin-bottom:8px">
         <span style="font-size:11px;font-weight:700;color:var(--muted)">ACTIVATION PROBABILITY</span>
-        <span class="pill p-a">MODERATE-HIGH &mdash; STEPS 1-2 PRE-LOADED</span>
+        <span class="pill p-g">UNKNOWN</span>
       </div>
-      <div style="font-size:12px;line-height:1.7">Step 1 ACTIVE: Record leverage loaded | Step 2 ACTIVE: Momentum accelerating | Step 3 PAUSED: SPX reclaimed gamma flip (6869 vs 6866), VIX retreated below 22, MOVE collapsed -10% | Step 4 BLOCKED: Financing loosening -- HY tightened 16bp, NFCI improved | Step 5 BLOCKED: No forced selling</div>
+      <div style="font-size:12px;line-height:1.7">Cascade analysis unavailable.</div>
+    </div>
+  </div>
+  <div class="card">
+    <div style="font-size:14px;font-weight:700;margin-bottom:14px">Active Alerts</div>
+    <div class="al al-r" style="margin-bottom:8px">
+      <strong>SCORE UPGRADE:</strong> Composite upgraded 7.5 → 8.5 — VIX acceleration + VVIX breakout
+    </div>
+    <div class="al al-r" style="margin-bottom:8px">
+      <strong>NEGATIVE GAMMA:</strong> SPX 147pts below gamma flip — dealer hedging AMPLIFYING moves
+    </div>
+    <div class="al al-o" style="margin-bottom:8px">
+      <strong>CALENDAR CLUSTER:</strong> FOMC + Quad Witching in 12-14 days — highest risk window of Q1
+    </div>
+    <div class="al al-o" style="margin-bottom:8px">
+      <strong>BELOW KEY MA:</strong> SPX below BOTH 50d (6863) and 200d (6897) moving averages
     </div>
   </div>
 </div>
 
 
-<div class="foot">Sources: FINRA, OFR Form PF, GS/JPM/MS Prime, Chicago Fed NFCI, HY OAS, SOFR, Bloomberg OVME, Barchart GEX, Pipeline. Not investment advice. Maguire Leverage Monitor &mdash; 22V Trading Desk. Updated 2026-03-04.</div>
+<div class="foot">Sources: FINRA, OFR Form PF, GS/JPM/MS Prime, Chicago Fed NFCI, HY OAS, SOFR, Bloomberg OVME, Barchart GEX, Pipeline. Not investment advice. Maguire Leverage Monitor &mdash; 22V Trading Desk. Updated 2026-03-06.</div>
 </div>
 
 
@@ -756,11 +682,10 @@ T.forEach(function(t,i){var b=document.createElement("button");b.className="tab"
 })();
 (function(){
   var d=[
-    {n:"AI Infra Concentration",p:90,t:"MU, LRCX, NOW, Korean semis — multiple PMs",c:"var(--red)"},
-    {n:"Mag 7 % of HF Net",p:85,t:"~19% — near 21% peak, rotation underway",c:"var(--red)"},
+    {n:"Mag 7 % of S&P 500",p:95,t:"~42.1% of SPX market cap ($21,036B)",c:"var(--red)"},
+    {n:"AI Infra Concentration",p:95,t:"~21.4% of SPX ($10,707B across 10 names)",c:"var(--red)"},
+    {n:"NVDA Single-Stock Weight",p:95,t:"~9.5% of SPX ($4,761B)",c:"var(--red)"},
     {n:"Semis Net Exposure",p:95,t:"5yr high — max concentration",c:"var(--red)"},
-    {n:"Crypto ETF Exposure",p:30,t:"Down 28% Q3→Q4 — derisking",c:"var(--green)"},
-    {n:"Equal-Weight Pivot",p:40,t:"Druckenmiller RSP — breadth play",c:"var(--green)"},
     {n:"Multistrat Leverage",p:92,t:"645% gross — extreme",c:"var(--red)"}
     ,{n:"Mag-7 % of SPX",p:84,t:"42.1% of S&P 500",c:"var(--red)"}
   ],e=document.getElementById("cb");

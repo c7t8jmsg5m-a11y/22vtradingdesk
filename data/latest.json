@@ -17,11 +17,11 @@
   },
   "gex": {
     "estimate_bn": null,
-    "level": "UNKNOWN",
-    "flip_point": 6884.91,
+    "level": "DEEP_NEGATIVE",
+    "flip_point": 6894.32,
     "call_wall": 7000.0,
     "put_wall": 7000.0,
-    "last_price": 6876.35,
+    "last_price": 6746.77,
     "history_5d": []
   },
   "skew": {
@@ -603,8 +603,8 @@
     ]
   },
   "vix": {
-    "current": 21.54,
-    "change": 1.68,
+    "current": 26.77,
+    "change": 3.02,
     "history_30d": [
       {
         "date": "2026-01-26",
@@ -711,7 +711,7 @@
   },
   "financing": {
     "nfci": {
-      "current": -0.5629,
+      "current": -0.5236,
       "prev": -0.5654,
       "change": 0.0024,
       "as_of": "2026-02-20",

@@ -486,9 +486,17 @@
       "L4 (Mag7 42.1% concentration) + L5 (GEX 623pts below flip) = Amplified unwind ON \u2014 one Mag7 miss triggers cascade",
       "L5 (VIX 31.86 + backwardation + VVIX 140.44) + L6 (FOMC 9 days + quad witching 11 days) = Timing convergence IMMINENT",
       "NEW: GS PB confirms momentum 4\u03c3 drawdown Mar 7/10 \u2014 FORCED DELEVERAGING IS NO LONGER HYPOTHETICAL, IT IS HAPPENING"
-    ]
+    ],
+    "narrative": "CONFIRMED ACTIVE: Goldman Sachs prime brokerage data shows March 7 and March 10 produced the worst two-day stretch of hedge fund performance in years. The momentum factor experienced a 4+ standard deviation drawdown, triggering forced derisking across systematic, multi-strategy, and equity long/short books. This is the transmission mechanism in action: margin calls \u2192 forced selling \u2192 dealer gamma hedging amplification (SPX 623pts below GEX flip) \u2192 leveraged ETF rebalancing ($249B notional) \u2192 further forced selling. VIX backwardation + VVIX at 140.44 = dealers in crisis hedging mode. FOMC (Mar 18) and Quad Witching (Mar 20) create a timing convergence that could accelerate the cascade if the Fed fails to signal accommodation.",
+    "activation_probability": "HIGH",
+    "steps_active": 3
   },
-  "commentary": null,
+  "commentary": {
+    "headline_type": "ACTIVE_STRESS",
+    "key_tension": "GS Prime Brokerage confirms March 7/10 as worst 2-day stretch of hedge fund performance in years \u2014 momentum factor 4+ standard deviation drawdown triggered forced derisking across multiple HF strategies (\"multistrat-mageddon\"). Forced deleveraging is no longer a risk scenario \u2014 it is happening in real time",
+    "l3_direction": "tightening",
+    "bottom_line": "Cascade Imminent (9.0/10). All-time high structural leverage ($1.28T margin, HF gross at record) now meeting confirmed forced selling, VIX 31.86 in backwardation, VVIX 140.44, and SPX 623pts below GEX flip in deepest negative gamma of the cycle. FOMC + Quad Witching in 9-11 days overlapping active deleveraging"
+  },
   "alerts": [
     {
       "type": "SCORE_UPGRADE",

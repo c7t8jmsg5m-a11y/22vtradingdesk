@@ -3,759 +3,301 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>22V Midday Trading Recap — March 6, 2026</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>22V Midday Trading Recap — March 9, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
-:root {
-  --cream: #FAF7F2;
-  --dark: #1A1A1A;
-  --dark-bg: #2D2D2D;
-  --header-bar: #3D3D3D;
-  --orange: #E4762D;
-  --red: #C0392B;
-  --green: #27AE60;
-  --gray: #666666;
-  --light-gray: #F5F5F5;
-  --warm-red: #8B0000;
-  --border-red: #C0392B;
-}
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body {
-  background: var(--cream);
-  color: var(--dark);
-  font-family: 'Source Sans 3', sans-serif;
-  font-size: 15px;
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-}
-.container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#FAF7F2; color:#1A1A1A; font-family:'Source Sans 3',sans-serif; line-height:1.5; }
+  .container { max-width:900px; margin:0 auto; padding:20px 32px; }
 
-/* HEADER */
-.header-block {
-  background: var(--dark-bg);
-  padding: 18px 0 14px;
-  text-align: center;
-}
-.header-block .label {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 3px;
-  color: rgba(255,255,255,0.5);
-  text-transform: uppercase;
-}
-.header-block .brand {
-  font-family: 'Playfair Display', serif;
-  font-size: 22px;
-  font-weight: 700;
-  color: #fff;
-  margin: 4px 0 2px;
-}
-.header-block .brand span { color: var(--orange); }
-.header-block .title {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 4px;
-  color: var(--orange);
-  text-transform: uppercase;
-}
+  /* Header */
+  .top-bar { background:#2D2D2D; color:#999; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:2px; padding:8px 20px; display:flex; justify-content:space-between; align-items:center; }
+  .top-bar .brand { color:#E4762D; font-weight:700; font-size:11px; }
+  .header-block { background:#1A1A1A; color:#FAF7F2; padding:14px 20px; }
+  .header-block .inst { font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:3px; color:#888; margin-bottom:2px; }
+  .header-block .title { font-family:'Playfair Display',serif; font-size:20px; font-weight:700; color:#E4762D; }
+  .date-bar { background:#3D3D3D; color:#BBB; font-family:'JetBrains Mono',monospace; font-size:10px; padding:6px 20px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:4px; }
 
-/* DATE BAR */
-.date-bar {
-  background: var(--header-bar);
-  padding: 8px 0;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10.5px;
-  color: rgba(255,255,255,0.7);
-  letter-spacing: 0.5px;
-}
-.date-bar .inner {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 24px;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 8px;
-}
+  /* Headline */
+  .headline { font-family:'Playfair Display',serif; font-size:28px; font-weight:900; color:#1A1A1A; line-height:1.15; margin:24px 0 10px; }
+  .subhead { font-family:'Source Sans 3',serif; font-style:italic; font-size:14px; color:#444; line-height:1.5; margin-bottom:20px; }
+  .subhead b { color:#1A1A1A; }
 
-/* HEADLINE */
-.headline {
-  padding: 32px 0 8px;
-}
-.headline h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 32px;
-  font-weight: 900;
-  line-height: 1.15;
-  color: var(--dark);
-}
+  /* Index bar */
+  .index-bar { display:grid; grid-template-columns:repeat(6,1fr); gap:8px; margin:16px 0 24px; }
+  .idx-card { background:#fff; border:1px solid #e0ddd8; border-radius:4px; padding:10px 8px; text-align:center; }
+  .idx-label { font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:1px; color:#888; text-transform:uppercase; }
+  .idx-value { font-size:20px; font-weight:700; margin:2px 0; }
+  .idx-change { font-size:11px; font-weight:600; }
+  .red { color:#C0392B; } .green { color:#27AE60; }
 
-/* LEDE */
-.lede {
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
-  font-size: 15.5px;
-  line-height: 1.55;
-  color: #444;
-  padding-bottom: 24px;
-  border-bottom: 1px solid #ddd;
-}
-.lede strong { font-style: normal; font-weight: 700; color: var(--dark); }
+  /* Section headers */
+  .section-hdr { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:3px; color:#888; border-bottom:1px solid #ccc; padding-bottom:4px; margin:28px 0 12px; text-transform:uppercase; }
 
-/* INDEX SNAPSHOT */
-.index-bar {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 12px;
-  padding: 20px 0;
-  border-bottom: 1px solid #ddd;
-}
-.index-card {
-  text-align: center;
-  padding: 10px 4px;
-  background: #fff;
-  border-radius: 6px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
-}
-.index-card .name {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  color: var(--gray);
-  text-transform: uppercase;
-}
-.index-card .value {
-  font-family: 'Source Sans 3', sans-serif;
-  font-size: 22px;
-  font-weight: 700;
-  margin: 2px 0;
-}
-.index-card .change {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  font-weight: 500;
-}
-.neg { color: var(--red); }
-.pos { color: var(--green); }
+  /* Prose */
+  .prose { font-size:14px; line-height:1.65; margin-bottom:14px; color:#333; }
+  .prose b { color:#1A1A1A; }
 
-/* SECTION HEADERS */
-.section-header {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 3px;
-  color: var(--gray);
-  text-transform: uppercase;
-  padding: 24px 0 10px;
-  border-bottom: 1px solid #eee;
-  margin-bottom: 14px;
-}
+  /* Callout box */
+  .callout { background:#FFF8F6; border-left:4px solid #C0392B; padding:14px 18px; margin:16px 0; border-radius:0 4px 4px 0; }
+  .callout-title { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:2px; color:#C0392B; margin-bottom:6px; font-weight:700; }
+  .callout p { font-size:13px; line-height:1.55; color:#444; }
 
-/* PROSE */
-.prose {
-  font-size: 14.5px;
-  line-height: 1.65;
-  color: #333;
-  margin-bottom: 18px;
-}
-.prose strong { color: var(--dark); }
+  /* Pull quote */
+  .pull-quote { font-family:'Playfair Display',serif; font-style:italic; font-size:18px; color:#8B0000; padding:16px 20px; border-left:3px solid #C0392B; margin:20px 0; line-height:1.4; }
 
-/* CALLOUT BOX */
-.callout {
-  background: #FFF8F6;
-  border-left: 4px solid var(--border-red);
-  padding: 14px 18px;
-  margin: 18px 0;
-  border-radius: 0 6px 6px 0;
-}
-.callout .callout-title {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  color: var(--warm-red);
-  text-transform: uppercase;
-  margin-bottom: 6px;
-}
-.callout p {
-  font-size: 13.5px;
-  line-height: 1.55;
-  color: #444;
-}
+  /* Tables */
+  table { width:100%; border-collapse:collapse; font-size:13px; margin:8px 0 20px; }
+  th { font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:1px; color:#888; text-align:left; border-bottom:1px solid #999; padding:6px 8px; text-transform:uppercase; }
+  td { padding:6px 8px; border-bottom:1px solid #eee; }
+  tr:nth-child(even) { background:#F9F7F3; }
+  .tbl-pct { text-align:right; font-weight:600; font-family:'JetBrains Mono',monospace; }
+  .notable { text-align:right; font-size:12px; }
 
-/* PULL QUOTE */
-.pull-quote {
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
-  font-size: 20px;
-  line-height: 1.45;
-  color: var(--warm-red);
-  padding: 20px 24px;
-  margin: 24px 0;
-  border-left: 4px solid var(--warm-red);
-  background: rgba(139,0,0,0.03);
-  border-radius: 0 6px 6px 0;
-}
+  /* Winners/Losers boxes */
+  .wl-box { background:#fff; border:1px solid #e0ddd8; border-radius:4px; margin:12px 0; overflow:hidden; }
+  .wl-header { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:2px; padding:8px 14px; font-weight:700; }
+  .wl-header.win { background:#EAF7EF; color:#27AE60; }
+  .wl-header.lose { background:#FDECEC; color:#C0392B; }
+  .wl-row { display:flex; justify-content:space-between; padding:6px 14px; font-size:13px; border-bottom:1px solid #f0ede8; }
+  .wl-row:last-child { border-bottom:none; }
+  .wl-ticker { font-family:'JetBrains Mono',monospace; font-weight:700; min-width:55px; }
+  .wl-catalyst { flex:1; color:#666; padding:0 12px; font-size:12px; }
+  .wl-pct { font-family:'JetBrains Mono',monospace; font-weight:700; min-width:70px; text-align:right; }
 
-/* SECTOR TABLE */
-.sector-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 13px;
-  margin-bottom: 20px;
-}
-.sector-table th {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  color: var(--gray);
-  text-transform: uppercase;
-  text-align: left;
-  padding: 8px 10px;
-  border-bottom: 1px solid #ccc;
-}
-.sector-table th:nth-child(2),
-.sector-table th:nth-child(3) { text-align: center; }
-.sector-table th:nth-child(4) { text-align: right; }
-.sector-table td {
-  padding: 8px 10px;
-  border-bottom: 1px solid #eee;
-  font-family: 'Source Sans 3', sans-serif;
-}
-.sector-table td:nth-child(2) { text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; }
-.sector-table td:nth-child(3) { text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--gray); }
-.sector-table td:nth-child(4) { text-align: right; font-family: 'JetBrains Mono', monospace; font-size: 11px; }
-.sector-table tr:nth-child(even) { background: var(--light-gray); }
+  /* Cross-asset cards */
+  .xa-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin:12px 0; }
+  .xa-card { background:#fff; border:1px solid #e0ddd8; border-radius:4px; padding:10px; }
+  .xa-label { font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:1px; color:#888; }
+  .xa-val { font-size:18px; font-weight:700; margin:2px 0; }
+  .xa-chg { font-size:11px; font-weight:600; }
+  .xa-note { font-size:10px; color:#888; margin-top:2px; }
 
-/* WINNERS/LOSERS */
-.wl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 18px 0; }
-.wl-box {
-  background: #fff;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-}
-.wl-box .wl-header {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  padding: 10px 14px;
-  color: #fff;
-}
-.wl-box.winners .wl-header { background: var(--green); }
-.wl-box.losers .wl-header { background: var(--red); }
-.wl-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 7px 14px;
-  font-size: 12.5px;
-  border-bottom: 1px solid #f0f0f0;
-}
-.wl-row:last-child { border-bottom: none; }
-.wl-ticker {
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: 600;
-  font-size: 12px;
-  min-width: 48px;
-}
-.wl-catalyst {
-  flex: 1;
-  padding: 0 8px;
-  font-size: 11px;
-  color: var(--gray);
-}
-.wl-pct {
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: 600;
-  font-size: 12px;
-}
+  /* Bottom line */
+  .bottom-line { background:#1A1A1A; color:#FAF7F2; padding:20px 24px; border-radius:4px; margin:24px 0; }
+  .bl-title { font-family:'Playfair Display',serif; font-size:18px; font-weight:700; color:#E4762D; margin-bottom:10px; }
+  .bl-text { font-size:14px; line-height:1.65; color:#ccc; }
 
-/* CROSS ASSET CARDS */
-.xa-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 16px 0; }
-.xa-card {
-  background: #fff;
-  border-radius: 6px;
-  padding: 12px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
-  text-align: center;
-}
-.xa-card .xa-label {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  color: var(--gray);
-  text-transform: uppercase;
-}
-.xa-card .xa-value {
-  font-size: 20px;
-  font-weight: 700;
-  margin: 4px 0;
-}
-.xa-card .xa-change {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  font-weight: 500;
-}
-.xa-card .xa-note {
-  font-size: 10px;
-  color: var(--gray);
-  margin-top: 4px;
-}
+  /* Footer */
+  .footer { font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:2px; color:#999; text-align:center; padding:16px 0; border-top:1px solid #ddd; margin-top:20px; }
 
-/* WATCHING INTO CLOSE */
-.watch-box {
-  background: #fff;
-  border: 2px solid var(--dark-bg);
-  border-radius: 8px;
-  padding: 20px;
-  margin: 20px 0;
-}
-.watch-box h3 {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  color: var(--dark);
-  text-transform: uppercase;
-  margin: 14px 0 6px;
-}
-.watch-box h3:first-child { margin-top: 0; }
-.watch-box p, .watch-box ul {
-  font-size: 13px;
-  line-height: 1.5;
-  color: #444;
-}
-.watch-list {
-  list-style: none;
-  padding: 0;
-}
-.watch-list li {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11.5px;
-  padding: 3px 0;
-  color: #444;
-}
+  /* Watch box */
+  .watch-box { background:#fff; border:2px solid #2D2D2D; border-radius:4px; padding:18px 20px; margin:20px 0; }
+  .watch-title { font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:2px; color:#1A1A1A; font-weight:700; margin-bottom:12px; }
+  .watch-section { margin-bottom:10px; }
+  .watch-section-title { font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:1.5px; color:#E4762D; font-weight:700; margin-bottom:4px; }
+  .watch-section p { font-size:13px; color:#444; line-height:1.5; }
 
-/* BOTTOM LINE */
-.bottom-line {
-  background: var(--dark-bg);
-  color: #fff;
-  padding: 24px;
-  border-radius: 8px;
-  margin: 24px 0;
-}
-.bottom-line .bl-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 12px;
-  color: var(--orange);
-}
-.bottom-line p {
-  font-size: 14.5px;
-  line-height: 1.65;
-  color: rgba(255,255,255,0.9);
-}
-
-/* FOOTER */
-.footer {
-  padding: 16px 0;
-  text-align: center;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 9px;
-  letter-spacing: 2px;
-  color: var(--gray);
-  text-transform: uppercase;
-  border-top: 1px solid #ddd;
-  margin-top: 12px;
-}
-
-@media (max-width: 700px) {
-  .index-bar { grid-template-columns: repeat(3, 1fr); }
-  .wl-grid { grid-template-columns: 1fr; }
-  .xa-grid { grid-template-columns: repeat(2, 1fr); }
-  .headline h1 { font-size: 24px; }
-  .date-bar .inner { flex-direction: column; align-items: center; gap: 4px; }
-}
+  @media (max-width:700px) {
+    .index-bar { grid-template-columns:repeat(3,1fr); }
+    .xa-grid { grid-template-columns:repeat(2,1fr); }
+    .headline { font-size:22px; }
+  }
 </style>
 </head>
 <body>
-
-<!-- HEADER BLOCK -->
-<div class="header-block">
-  <div class="label">Institutional Trading Intelligence</div>
-  <div class="brand">22V <span>Research</span></div>
-  <div class="title">Midday Trading Recap</div>
+<div class="top-bar">
+  <span class="brand">22V RESEARCH</span>
+  <span>INSTITUTIONAL TRADING INTELLIGENCE</span>
 </div>
-
-<!-- DATE BAR -->
+<div class="header-block">
+  <div class="inst">TRADING DESK</div>
+  <div class="title">MIDDAY TRADING RECAP</div>
+</div>
 <div class="date-bar">
-  <div class="inner">
-    <span>FRIDAY, MARCH 6, 2026</span>
-    <span>12:45 PM ET &bull; NFP &minus;92K MISS &bull; IRAN/OIL ESCALATION</span>
-    <span>ORCL EARNINGS MON &bull; VIX 26.49</span>
-  </div>
+  <span>MONDAY, MARCH 9, 2026</span>
+  <span>12:45 PM ET &bull; CPI WEDNESDAY 8:30 AM</span>
+  <span>ORCL 3/12 • HPE AFTER CLOSE • FED SPEAKERS</span>
 </div>
 
 <div class="container">
 
-<!-- HEADLINE -->
-<div class="headline">
-  <h1>NFP Shock Meets Private Credit Contagion; Energy Sole Refuge as Alt Managers Crater</h1>
-</div>
-
-<!-- LEDE -->
-<div class="lede">
-  Non-farm payrolls printed &minus;92K — the first negative jobs number since 2020 — sending equities into a broad risk-off spiral that collided head-on with the private credit meltdown. <strong>BLK</strong> &minus;6.9% after gating withdrawals from its $26B HPS lending fund. <strong>ARES</strong> &minus;4.8%, <strong>BX</strong> &minus;3.3%, and the entire alt manager complex in freefall. <strong>MRVL</strong> bucked the tape post-earnings (+15% pre-mkt) but faded. Energy names — <strong>CF</strong> +5.4%, <strong>OXY</strong> +1.9% — the only green on the screen as crude pushes toward $90 on Iran/Strait of Hormuz disruption.
-</div>
+<div class="headline">Iran Oil Shock Hammers Tape; Semis Buck Selloff as Crude Tops $100</div>
+<div class="subhead"><b>LYV</b> +5.7% on DoJ antitrust settlement, <b>SNDK</b> +7.8% and <b>AVGO</b> +4.2% lead memory/AI rally, <b>DOW</b> +6.4% on RBC upgrade with Middle East chemical margin upside. On the flip side, travel crushed — <b>CCL</b> −2.9%, <b>UAL</b> −2.6%, <b>DAL</b> −0.9% on $100 crude. Financials broadly weak with <b>WFC</b> −3.4%, <b>BAC</b> −2.8%, <b>JPM</b> −1.6%.</div>
 
 <!-- INDEX SNAPSHOT -->
 <div class="index-bar">
-  <div class="index-card">
-    <div class="name">S&P 500</div>
-    <div class="value neg">6,753</div>
-    <div class="change neg">&minus;1.14%</div>
+  <div class="idx-card">
+    <div class="idx-label">S&P 500</div>
+    <div class="idx-value red">6,724.59</div>
+    <div class="idx-change red">-15.43 (-0.23%)</div>
   </div>
-  <div class="index-card">
-    <div class="name">Nasdaq</div>
-    <div class="value neg">22,523</div>
-    <div class="change neg">&minus;1.00%</div>
+  <div class="idx-card">
+    <div class="idx-label">NASDAQ</div>
+    <div class="idx-value green">22,422.46</div>
+    <div class="idx-change green">+34.78 (+0.16%)</div>
   </div>
-  <div class="index-card">
-    <div class="name">Dow</div>
-    <div class="value neg">47,367</div>
-    <div class="change neg">&minus;1.23%</div>
+  <div class="idx-card">
+    <div class="idx-label">DOW</div>
+    <div class="idx-value red">47,199.44</div>
+    <div class="idx-change red">-302.11 (-0.64%)</div>
   </div>
-  <div class="index-card">
-    <div class="name">Russell</div>
-    <div class="value neg">2,528</div>
-    <div class="change neg">&minus;2.23%</div>
+  <div class="idx-card">
+    <div class="idx-label">RUSSELL</div>
+    <div class="idx-value red">2,497.23</div>
+    <div class="idx-change red">-28.07 (-1.11%)</div>
   </div>
-  <div class="index-card">
-    <div class="name">VIX</div>
-    <div class="value neg">26.49</div>
-    <div class="change neg">+2.74</div>
+  <div class="idx-card">
+    <div class="idx-label">VIX</div>
+    <div class="idx-value red">26.83</div>
+    <div class="idx-change red">+35.10% MTD</div>
   </div>
-  <div class="index-card">
-    <div class="name">10Y</div>
-    <div class="value neg">4.121</div>
-    <div class="change neg">&minus;2bp</div>
+  <div class="idx-card">
+    <div class="idx-label">10Y UST</div>
+    <div class="idx-value red">4.1228</div>
+    <div class="idx-change red">+4.71bp</div>
   </div>
 </div>
 
 <!-- MARKET OVERVIEW -->
-<div class="section-header">Market Overview</div>
+<div class="section-hdr">Market Overview</div>
+<p class="prose"><b>SPX</b> is trading at 6,724, well off overnight lows near 6,600 but still grinding lower as crude oil topped $100 for the first time since 2022. The tape opened down 1.5%+ across the board and has staged a meaningful intraday recovery — the Dow was down nearly 900 points at its lows — but the bounce is being carried almost entirely by semis and energy. <b>SPX</b> broke below 6,800 support last week and is now testing the 6,700 handle; the next real support band is 6,600, which coincides with the November lows. The 5-day SMA at 6,730 is acting as overhead resistance.</p>
 
-<p class="prose">
-  <strong>SPX</strong> opened gap-down on the NFP disaster and never found a bid. The index broke below 6,800 inside the first five minutes and is now testing 6,753 — below the 5-day SMA and approaching the March 3 low. The character of this tape is distribution: heavy, relentless, and broad-based. There is no dip-buying. <strong>NDX</strong> is holding up slightly better — down ~1% — thanks to relative strength in <strong>AVGO</strong> +1.8% (MRVL halo), <strong>ORCL</strong> +2%, and <strong>PLTR</strong> +2.5%, but the megacap bid is thin and unconvincing with <strong>AAPL</strong> &minus;1.4%, <strong>AMZN</strong> &minus;1.6%, and <strong>MSFT</strong> &minus;0.7%.
-</p>
+<p class="prose"><b>NDX</b> is the relative outperformer, clinging to green territory thanks to a fierce bid in memory and AI names. <b>AVGO</b> +4.2%, <b>SNDK</b> +7.8%, <b>MU</b> +2.7%, <b>KLAC</b> +3.9%, and <b>LRCX</b> +3.0% are dragging the index higher despite broad weakness in software — <b>CSCO</b> −3.3%, <b>ORCL</b> −2.3%, <b>CRM</b> −2.0%. The semi rally is a function of the memory shortage thesis intensifying as Korean fabs face rising energy costs, not a broad risk-on signal.</p>
 
-<p class="prose">
-  <strong>DJIA</strong> is the worst house on the block, dragged down by <strong>GS</strong> &minus;3.4%, <strong>AXP</strong> &minus;2.1%, and <strong>CAT</strong> &minus;2.1% — the banks and cyclicals taking the brunt of the NFP+private credit double shot. <strong>RTY</strong> &minus;2.2% is the loudest alarm: small caps are getting destroyed as the labor market crack threatens the domestic economy story these names need. Volume is running heavy on down-names, lighter on the few green prints. This is not capitulation — it's controlled, methodical selling.
-</p>
-
-<p class="prose">
-  Two colliding macro forces are driving this session: (1) the labor market shock — a &minus;92K NFP print shreds the soft-landing narrative and traps the Fed between inflation from $90 oil and a weakening job market; (2) the private credit contagion spreading from <strong>BLK</strong>'s HPS fund withdrawal gate to the entire alt manager complex. These are not independent events — they feed on each other. A weaker economy means more private credit defaults, which means more redemptions, which means more forced selling.
-</p>
+<p class="prose"><b>DJIA</b> at 47,199 is lagging badly, weighed by <b>BA</b> −2.9%, <b>MMM</b> −2.8%, and bank weakness across <b>JPM</b> −1.6%, <b>GS</b> −1.0%. Only four Dow components are green: <b>CVX</b>, <b>PG</b>, <b>NVDA</b>, <b>JNJ</b>. <b>RTY</b> at 2,497 is the worst major index, −1.11%, confirming that economically sensitive small caps are pricing stagflation risk — higher costs plus slower growth is a toxic combination for the Russell.</p>
 
 <!-- BREADTH CHECK -->
 <div class="callout">
-  <div class="callout-title">Breadth Check</div>
-  <p>~91 advancers vs ~412 decliners across the S&P 500 — a brutal 1:4.5 ratio. The only pockets of green: Energy (16 adv), select ag/fertilizer names (<strong>CF</strong>, <strong>BG</strong>), and a handful of cloud/software names catching post-earnings bids (<strong>NOW</strong>, <strong>ORCL</strong>, <strong>PLTR</strong>). This is the broadest selling pressure since the initial Iran escalation in late February.</p>
+  <div class="callout-title">BREADTH CHECK</div>
+  <p>~117 advancers vs ~386 decliners in the S&P 500 — a 1:3.3 ratio. Energy is the only green sector. Markets have recovered sharply off overnight lows but participation is razor-thin. The bounce is a semi story, not a broad tape story. Volume running light relative to 20-day averages outside of energy and memory names.</p>
 </div>
 
 <!-- VIX COMMENTARY -->
-<div class="section-header">Volatility</div>
-<p class="prose">
-  <strong>VIX</strong> 26.49, up +2.74 on the session (+11.5% intraday), now up 77% YTD and 28% WTD. The fear gauge is breaking out of the 20–24 range it held all week and pushing toward the 28–30 zone that typically coincides with forced-selling cascades. The term structure is flattening — front-month vol catching up to longer-dated — a signal that hedgers are scrambling for near-term protection.
-</p>
+<div class="section-hdr">Volatility</div>
+<p class="prose"><b>VIX</b> at 26.83 is up +35% month-to-date and +79% year-to-date — Iran has repriced the entire vol surface. Intraday, VIX has actually pulled back from morning highs above 31 as SPX recovered. The oil VIX (OVX) is above 100 for the first time since April 2020. Term structure is in steep backwardation, signaling acute near-term stress. Vol sellers are standing aside.</p>
 
-<!-- SECTOR PERFORMANCE -->
-<div class="section-header">Sector Performance</div>
-
-<table class="sector-table">
-  <thead>
-    <tr>
-      <th>Sector</th>
-      <th>Avg</th>
-      <th>Adv / Dec</th>
-      <th>Notable</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Energy</td>
-      <td class="pos">+0.27%</td>
-      <td>16 / 7</td>
-      <td><span class="pos">OXY +1.9%</span></td>
-    </tr>
-    <tr>
-      <td>Utilities</td>
-      <td class="neg">&minus;0.47%</td>
-      <td>7 / 24</td>
-      <td><span class="neg">VST &minus;3.2%</span></td>
-    </tr>
-    <tr>
-      <td>Technology</td>
-      <td class="neg">&minus;0.81%</td>
-      <td>18 / 43</td>
-      <td><span class="neg">TER &minus;6.0%</span></td>
-    </tr>
-    <tr>
-      <td>Comm Services</td>
-      <td class="neg">&minus;0.82%</td>
-      <td>11 / 29</td>
-      <td><span class="neg">GLW &minus;5.1%</span></td>
-    </tr>
-    <tr>
-      <td>HC &amp; Staples</td>
-      <td class="neg">&minus;1.29%</td>
-      <td>14 / 91</td>
-      <td><span class="neg">MRNA &minus;7.2%</span></td>
-    </tr>
-    <tr>
-      <td>Materials</td>
-      <td class="neg">&minus;1.60%</td>
-      <td>3 / 15</td>
-      <td><span class="pos">CF +5.4%</span></td>
-    </tr>
-    <tr>
-      <td>Financials</td>
-      <td class="neg">&minus;1.94%</td>
-      <td>9 / 86</td>
-      <td><span class="neg">BLK &minus;6.9%</span></td>
-    </tr>
-    <tr>
-      <td>Cons Discretionary</td>
-      <td class="neg">&minus;2.09%</td>
-      <td>5 / 51</td>
-      <td><span class="neg">LUV &minus;6.2%</span></td>
-    </tr>
-    <tr>
-      <td>Industrials</td>
-      <td class="neg">&minus;2.12%</td>
-      <td>8 / 66</td>
-      <td><span class="neg">ODFL &minus;7.9%</span></td>
-    </tr>
-  </tbody>
+<!-- SECTOR TABLE -->
+<div class="section-hdr">Sector Performance</div>
+<table>
+  <tr><th>SECTOR</th><th>AVG</th><th>ADV/DEC</th><th class="notable">NOTABLE</th></tr>
+  <tr><td>Energy</td><td class="tbl-pct green">+0.31%</td><td style="text-align:center">14/9</td><td class="notable">TPL +2.8%</td></tr>
+  <tr><td>Technology</td><td class="tbl-pct red">-0.20%</td><td style="text-align:center">21/40</td><td class="notable">SNDK +7.8%</td></tr>
+  <tr><td>Basic Materials</td><td class="tbl-pct red">-0.45%</td><td style="text-align:center">7/11</td><td class="notable">DOW +6.4%</td></tr>
+  <tr><td>Utilities</td><td class="tbl-pct red">-0.50%</td><td style="text-align:center">6/25</td><td class="notable">VST +1.0%</td></tr>
+  <tr><td>Health Care / Cons NC</td><td class="tbl-pct red">-0.54%</td><td style="text-align:center">36/69</td><td class="notable">PWR +4.0%</td></tr>
+  <tr><td>Industrials</td><td class="tbl-pct red">-1.19%</td><td style="text-align:center">12/62</td><td class="notable">GEV +3.8%</td></tr>
+  <tr><td>Communications</td><td class="tbl-pct red">-1.27%</td><td style="text-align:center">8/32</td><td class="notable">CIEN +5.5%</td></tr>
+  <tr><td>Cons. Cyclical</td><td class="tbl-pct red">-1.47%</td><td style="text-align:center">7/49</td><td class="notable">LYV +5.7%</td></tr>
+  <tr><td>Financials</td><td class="tbl-pct red">-1.76%</td><td style="text-align:center">6/89</td><td class="notable">WELL +1.3%</td></tr>
 </table>
 
 <!-- PULL QUOTE -->
-<div class="pull-quote">
-  "Negative payrolls, gated private credit funds, $90 crude — three body problems don't have clean solutions. Energy long, everything else defensive, and don't fight the tape."
-</div>
+<div class="pull-quote">"Iran reprices everything — crude at $100 is a stagflation accelerant. Semis catching a bid on memory tightness but the tape is 1:3 down. Stay defensive, hedge energy longs against consumer shorts."</div>
 
 <!-- SECTOR NARRATIVES -->
-<div class="section-header">Sector Narratives</div>
+<div class="section-hdr">Sector Narratives</div>
+<p class="prose"><b>Semiconductors</b> are the story within the story. While the broad market reels from the oil shock, memory names are ripping higher on a supply tightening thesis — Korean NAND/DRAM fabs face rising energy costs that could curtail production, while AI datacenter demand remains insatiable. <b>SNDK</b> +7.8% leads the charge, followed by <b>WDC</b> +4.9%, <b>AVGO</b> +4.2%, <b>KLAC</b> +3.9%, <b>LRCX</b> +3.0%, <b>MU</b> +2.7%. Equipment names <b>TER</b> +5.8% also bid. This is a genuine fundamental catalyst — memory pricing power is the one corner of tech that benefits from the energy crisis.</p>
 
-<p class="prose">
-  <strong>Financials</strong> are the epicenter. <strong>BLK</strong> &minus;6.9% after Bloomberg reported its $26B HPS Corporate Lending Fund capped withdrawals at 5% following $1.2B in Q1 redemption requests (9.3% of NAV). This is the third major private credit gate in two weeks — <strong>BX</strong> raised its limit to 7% earlier this week and injected $400M of house money. <strong>ARES</strong> &minus;4.8%, <strong>APO</strong> &minus;2.0%, <strong>BXP</strong> &minus;4.3%, <strong>IVZ</strong> &minus;5.3%. The private credit contagion is now a full-blown sector event. Banks aren't spared: <strong>BAC</strong> &minus;3.1%, <strong>C</strong> &minus;2.8%, <strong>AXP</strong> &minus;2.1% on NFP-driven recession fears piling onto the credit story.
-</p>
+<p class="prose"><b>Energy</b> is the only positive sector, but the moves are surprisingly measured given crude's explosion to $100. <b>TPL</b> +2.8% leads as a pure-play Permian royalty. <b>OXY</b> +2.0%, <b>DVN</b> +1.7%, <b>FANG</b> +1.7%, and <b>EOG</b> +1.5% are all bid on production upside. Refiners are mixed — <b>VLO</b> −3.3% is getting hit on crack spread compression fears as demand destruction kicks in. The E&P vs. refiner divergence tells you the market is pricing supply disruption, not demand strength.</p>
 
-<p class="prose">
-  <strong>Energy</strong> is the sole sanctuary. Crude is pushing toward $90 as Persian Gulf tanker operators avoid the Strait of Hormuz and OPEC producers cut output. Fertilizer and ag chemicals are the biggest beneficiaries of the disruption theme: <strong>CF</strong> +5.4% on 1.7x avg vol — QatarEnergy's natural gas production shutdown is directly bullish for North American nitrogen producers. <strong>BG</strong> +2.4% on the ag supply chain read-through. <strong>OXY</strong> +1.9%, <strong>APA</strong> +1.5%, <strong>EOG</strong> +1.0%, <strong>BKR</strong> +0.4%. If the Strait stays disrupted, $100 crude is not a fantasy — it's a base case.
-</p>
+<p class="prose"><b>Financials</b> are the worst sector at −1.76% average. Banks are getting crushed across the board: <b>WFC</b> −3.4%, <b>PFG</b> −3.5%, <b>MET</b> −3.3%, <b>AJG</b> −3.5%, <b>SPG</b> −3.1%. The selloff reflects three fears: (1) credit quality deterioration as higher energy costs squeeze borrowers, (2) private credit contagion after Jefferies was downgraded by Morgan Stanley on exposure to defaults, and (3) higher-for-longer rates crushing the fee income recovery story. Alt managers also hit — <b>BEN</b> −4.7%, <b>APO</b> −2.4%, <b>ARES</b> −1.9%, <b>KKR</b> −2.2%.</p>
 
-<p class="prose">
-  <strong>Industrials</strong> are the worst-performing sector. <strong>ODFL</strong> &minus;7.9% leads on the downside — the freight recession continues to deepen with LTL volumes in secular decline. <strong>CARR</strong> &minus;3.5%, <strong>BLDR</strong> &minus;3.2%, <strong>CAT</strong> &minus;2.1% — the entire capex/construction chain is under pressure from both the labor market data and rising input costs from crude. Transportation names are signaling recession: <strong>JBHT</strong> &minus;5.4%, <strong>UPS</strong> &minus;3.0%.
-</p>
-
-<!-- WINNERS / LOSERS -->
-<div class="wl-grid">
-  <div class="wl-box winners">
-    <div class="wl-header">Top Winners</div>
-    <div class="wl-row">
-      <span class="wl-ticker">CF</span>
-      <span class="wl-catalyst">Iran/Hormuz gas disruption, fertilizer demand</span>
-      <span class="wl-pct pos">+5.4%</span>
-    </div>
-    <div class="wl-row">
-      <span class="wl-ticker">KR</span>
-      <span class="wl-catalyst">Defensive staples bid, food inflation</span>
-      <span class="wl-pct pos">+4.0%</span>
-    </div>
-    <div class="wl-row">
-      <span class="wl-ticker">NOW</span>
-      <span class="wl-catalyst">Software quality flight, enterprise AI</span>
-      <span class="wl-pct pos">+2.5%</span>
-    </div>
-    <div class="wl-row">
-      <span class="wl-ticker">PLTR</span>
-      <span class="wl-catalyst">Defense/AI spending thesis intact</span>
-      <span class="wl-pct pos">+2.5%</span>
-    </div>
-    <div class="wl-row">
-      <span class="wl-ticker">BG</span>
-      <span class="wl-catalyst">Ag supply chain disruption play</span>
-      <span class="wl-pct pos">+2.4%</span>
-    </div>
-    <div class="wl-row">
-      <span class="wl-ticker">ORCL</span>
-      <span class="wl-catalyst">Cloud/AI spend, pre-earnings strength</span>
-      <span class="wl-pct pos">+2.0%</span>
-    </div>
-    <div class="wl-row">
-      <span class="wl-ticker">AVGO</span>
-      <span class="wl-catalyst">MRVL AI silicon halo, custom ASIC demand</span>
-      <span class="wl-pct pos">+1.8%</span>
-    </div>
-  </div>
-
-  <div class="wl-box losers">
-    <div class="wl-header">Top Losers</div>
-    <div class="wl-row">
-      <span class="wl-ticker">ODFL</span>
-      <span class="wl-catalyst">Freight recession deepens, LTL vol decline</span>
-      <span class="wl-pct neg">&minus;7.9%</span>
-    </div>
-    <div class="wl-row">
-      <span class="wl-ticker">MRNA</span>
-      <span class="wl-catalyst">Pipeline uncertainty, biotech risk-off</span>
-      <span class="wl-pct neg">&minus;7.2%</span>
-    </div>
-    <div class="wl-row">
-      <span class="wl-ticker">BLK</span>
-      <span class="wl-catalyst">HPS fund gates withdrawals, pvt credit fear</span>
-      <span class="wl-pct neg">&minus;6.9%</span>
-    </div>
-    <div class="wl-row">
-      <span class="wl-ticker">LUV</span>
-      <span class="wl-catalyst">Jet fuel costs + consumer weakness</span>
-      <span class="wl-pct neg">&minus;6.2%</span>
-    </div>
-    <div class="wl-row">
-      <span class="wl-ticker">TER</span>
-      <span class="wl-catalyst">Semis testing capex fears, cycle concern</span>
-      <span class="wl-pct neg">&minus;6.0%</span>
-    </div>
-    <div class="wl-row">
-      <span class="wl-ticker">GNRC</span>
-      <span class="wl-catalyst">Resi construction slowdown read-through</span>
-      <span class="wl-pct neg">&minus;5.8%</span>
-    </div>
-    <div class="wl-row">
-      <span class="wl-ticker">NCLH</span>
-      <span class="wl-catalyst">Consumer discretionary sell, cruise weakness</span>
-      <span class="wl-pct neg">&minus;5.4%</span>
-    </div>
-  </div>
+<!-- WINNERS TABLE -->
+<div class="wl-box">
+  <div class="wl-header win">TOP WINNERS</div>
+  <div class="wl-row"><span class="wl-ticker">SNDK</span><span class="wl-catalyst">Memory tightness + AI storage demand</span><span class="wl-pct green">+7.81%</span></div>
+  <div class="wl-row"><span class="wl-ticker">DOW</span><span class="wl-catalyst">RBC upgrade, ME chemical margin upside</span><span class="wl-pct green">+6.45%</span></div>
+  <div class="wl-row"><span class="wl-ticker">TER</span><span class="wl-catalyst">Semi equipment strength, test demand</span><span class="wl-pct green">+5.80%</span></div>
+  <div class="wl-row"><span class="wl-ticker">LYV</span><span class="wl-catalyst">DoJ antitrust settlement, avoids breakup</span><span class="wl-pct green">+5.70%</span></div>
+  <div class="wl-row"><span class="wl-ticker">CIEN</span><span class="wl-catalyst">Networking demand, AI buildout read-thru</span><span class="wl-pct green">+5.50%</span></div>
+  <div class="wl-row"><span class="wl-ticker">WDC</span><span class="wl-catalyst">Memory shortage thesis, NAND pricing</span><span class="wl-pct green">+4.90%</span></div>
+  <div class="wl-row"><span class="wl-ticker">AVGO</span><span class="wl-catalyst">AI rev guidance, $100B TAM narrative</span><span class="wl-pct green">+4.22%</span></div>
 </div>
 
-<!-- KEY SINGLE STOCK NARRATIVES -->
-<div class="section-header">Key Single-Stock Narratives</div>
+<!-- LOSERS TABLE -->
+<div class="wl-box">
+  <div class="wl-header lose">TOP LOSERS</div>
+  <div class="wl-row"><span class="wl-ticker">PSKY</span><span class="wl-catalyst">Airline/travel exposure to crude spike</span><span class="wl-pct red">-6.30%</span></div>
+  <div class="wl-row"><span class="wl-ticker">SW</span><span class="wl-catalyst">Industrial packaging, tariff + oil cost</span><span class="wl-pct red">-5.44%</span></div>
+  <div class="wl-row"><span class="wl-ticker">EXPE</span><span class="wl-catalyst">Travel demand fears on $100 oil</span><span class="wl-pct red">-5.14%</span></div>
+  <div class="wl-row"><span class="wl-ticker">IP</span><span class="wl-catalyst">Packaging industrial weakness</span><span class="wl-pct red">-5.14%</span></div>
+  <div class="wl-row"><span class="wl-ticker">UPS</span><span class="wl-catalyst">Transport/fuel cost squeeze</span><span class="wl-pct red">-4.73%</span></div>
+  <div class="wl-row"><span class="wl-ticker">BEN</span><span class="wl-catalyst">AUM outflows, risk-off in alts</span><span class="wl-pct red">-4.73%</span></div>
+  <div class="wl-row"><span class="wl-ticker">LEN</span><span class="wl-catalyst">Homebuilder, rates + consumer squeeze</span><span class="wl-pct red">-4.14%</span></div>
+</div>
 
-<p class="prose">
-  <strong>BLK &minus;6.9% ($964)</strong> — The private credit contagion story reached a new chapter this morning. BlackRock's $26B HPS Corporate Lending Fund received $1.2B in Q1 redemption requests — 9.3% of NAV — and capped repurchases at 5%, distributing $620M before shutting the gate. This comes days after the company wrote a private loan to Infinite Commerce Holdings down from 100 cents to zero in just three months. JP Morgan and Evercore both trimmed PTs. The stock is now RSI 26.7 — oversold, but the fundamental story is still deteriorating. Watch for second-order effects in CLO markets and bank lending to the alt manager complex. The read-through to <strong>ARES</strong> (&minus;4.8%), <strong>BX</strong> (&minus;3.3%), <strong>APO</strong> (&minus;2.0%), <strong>KKR</strong> (&minus;2.7%) is direct and unmistakable.
-</p>
+<!-- SINGLE STOCK NARRATIVES -->
+<div class="section-hdr">Key Single-Stock Narratives</div>
+<p class="prose"><b>SNDK +7.81%</b> — SanDisk is leading the tape on the memory tightness thesis. Korean fab energy costs are rising sharply with crude at $100, and the market is repricing NAND supply constraints just as AI datacenter buildout demands more storage. RSI at 50 from oversold levels suggests this is early innings of the move. Volume running at 0.7x the 30-day average, so this is more institutional repricing than retail FOMO.</p>
 
-<p class="prose">
-  <strong>CF +5.4% ($117)</strong> — The Iran/Strait of Hormuz supply disruption has a direct line to nitrogen fertilizer. QatarEnergy temporarily shut natural gas production, and CF is the primary North American beneficiary given its natural gas-to-ammonia business model. Q4 revenue was up 23% YoY to $1.87B (beat by $90M), EPS $2.59 vs $2.53 est. Barclays raised PT to $120 this week with an OW rating. RSI 79.3 — technically overbought but this is a fundamentally driven move with real supply disruption behind it. Vol running 1.7x avg. The ag/chem complex is working: <strong>BG</strong> +2.4%, <strong>LYB</strong> +1.6%.
-</p>
+<p class="prose"><b>LYV +5.70%</b> — Live Nation settled its DoJ antitrust case, avoiding the existential risk of a forced Ticketmaster breakup. The deal requires divesting 13 amphitheaters, opening parts of its ticketing platform to competitors, and capping exclusivity contracts at 4 years. Shares hit $170 in premarket before pulling back. NY AG Letitia James and 26 other states are continuing their own lawsuit, so legal risk isn't fully resolved, but the federal overhang is cleared. Volume running 1.2x average.</p>
 
-<p class="prose">
-  <strong>MRVL (pre-mkt +10-15%, live TBD)</strong> — Marvell reported record Q4 revenue of $2.22B (+22% YoY) with non-GAAP EPS of $0.80 (in-line). Data center segment hit $1.65B, with custom AI ASIC revenue surging from near-zero to $1.5B in one fiscal year. The kicker was the Q1 guide: $2.4B midpoint, 5.2% above Street. Full-year fiscal 2026 revenue was $8.2B, growing 42% YoY. Analysts from JPM and BofA raised PTs as high as $135. The stock gapped up 10-15% pre-mkt but is likely fading into the broader tape weakness. <strong>AVGO</strong> +1.8% catching the halo as the custom silicon narrative strengthens.
-</p>
+<p class="prose"><b>DOW +6.45%</b> — Dow Inc. surging after an RBC Capital upgrade citing margin upside opportunities from Middle East disruptions. The chemical giant benefits from higher feedstock pricing power in a supply-constrained environment. RSI hit 71, entering overbought territory. Volume at 1.0x average — broad participation on the move.</p>
 
-<p class="prose">
-  <strong>ODFL &minus;7.9% ($194)</strong> — The worst S&P performer today is a read on the real economy. The freight recession that began in 2024 is deepening as the NFP miss confirms what trucking volumes have been signaling for months: the domestic economy is slowing faster than consensus expects. LTL tons per day were already declining 9% in Q3, and today's move suggests the market is repricing for an even worse Q1. Analyst consensus is a Hold with a $184 PT. The transportation sector is a canary: <strong>JBHT</strong> &minus;5.4%, <strong>UPS</strong> &minus;3.0%.
-</p>
+<p class="prose"><b>AVGO +4.22%</b> — Broadcom continues its post-earnings momentum, with the AI semiconductor thesis now turbocharged by memory supply concerns. CEO recently outlined a $100B AI TAM. The stock has rallied from $317 to $344 intraday. Semi equipment names <b>KLAC</b> +3.9%, <b>LRCX</b> +3.0%, and <b>TER</b> +5.8% are riding the same wave.</p>
 
-<!-- PRIVATE CREDIT CONTAGION CALLOUT -->
+<p class="prose"><b>UPS −4.73%</b> — United Parcel Service is getting hammered on the fuel cost squeeze. With diesel prices spiking alongside crude, transport margins face direct compression. RSI at 25 is deeply oversold but the fundamental headwind is real — $100 oil is a margin killer for logistics. <b>FDX</b> −1.7% seeing similar pressure. Dow Transports are on track for their worst 3-day slide since the April 2025 Liberation Day selloff.</p>
+
+<p class="prose"><b>LEN −4.14%</b> — Lennar and the homebuilders are getting crushed as the rates + oil combination is toxic for housing. RSI at 25 is deeply oversold. <b>DHI</b> −2.7%, <b>PHM</b> −3.4%, <b>NVR</b> −2.8% all hitting new lows. The 10Y pushing higher on inflation fears removes any hope of mortgage rate relief.</p>
+
+<!-- IRAN OIL SHOCK CALLOUT -->
 <div class="callout">
-  <div class="callout-title">Private Credit Contagion — Spreading</div>
-  <p>
-    Three fund-level gate events in two weeks: Blue Owl replaced client redemptions with promised payouts, Blackstone raised its withdrawal limit to 7% and injected $400M, and now BlackRock's HPS fund has capped at 5%. The structural mismatch — illiquid private loans, semi-liquid investor access — is being stress-tested in real time. The question is whether this remains an orderly repricing or cascades into forced selling. Watch the BDC index, high-yield spreads, and any further write-downs on private credit portfolios.
-  </p>
+  <div class="callout-title">IRAN OIL SHOCK — WEEK 2</div>
+  <p>WTI crude topped $100 overnight after Kuwait, UAE, Bahrain, and Saudi Arabia all announced production cuts as the Strait of Hormuz blockade fills storage to capacity. Iraqi production has collapsed 70% from 4.3M bpd to 1.3M bpd. Brent briefly hit $120. Gas prices at $3.48/gal nationally, up 17% since strikes began. Morgan Stanley warns crude could surge "well above $130" if Hormuz flows stay depressed. This is a stagflation accelerant — CPI on Wednesday won't capture the full effect yet, but the bond market is already repricing. Second-order effects: airlines, cruise lines, logistics, and consumer discretionary facing direct margin destruction. Defense names bid — <b>LMT</b>, <b>NOC</b>, <b>RTX</b> all green.</p>
 </div>
 
-<!-- RATES / FX / COMMODITIES -->
-<div class="section-header">Rates / FX / Commodities</div>
-
+<!-- RATES/FX/COMMODITIES -->
+<div class="section-hdr">Rates / FX / Commodities</div>
 <div class="xa-grid">
   <div class="xa-card">
     <div class="xa-label">2Y / 10Y</div>
-    <div class="xa-value neg">3.54 / 4.12</div>
-    <div class="xa-change neg">10Y &minus;2bp</div>
-    <div class="xa-note">Curve 58bp, flattening</div>
+    <div class="xa-val red">3.58 / 4.12</div>
+    <div class="xa-chg red">+0.47% / -0.37%</div>
+    <div class="xa-note">Curve −54bp, 2Y leading</div>
   </div>
   <div class="xa-card">
     <div class="xa-label">DXY</div>
-    <div class="xa-value neg">98.98</div>
-    <div class="xa-change neg">&minus;0.34%</div>
-    <div class="xa-note">Dollar weak on NFP</div>
+    <div class="xa-val green">99.06</div>
+    <div class="xa-chg green">+0.07%</div>
+    <div class="xa-note">Dollar bid on haven flows</div>
   </div>
   <div class="xa-card">
-    <div class="xa-label">Gold</div>
-    <div class="xa-value pos">$5,140</div>
-    <div class="xa-change pos">+1.15%</div>
-    <div class="xa-note">Risk-off bid, near ATH</div>
+    <div class="xa-label">GOLD</div>
+    <div class="xa-val red">$5,104</div>
+    <div class="xa-chg red">-67.37 (-1.30%)</div>
+    <div class="xa-note">Profit-taking after ATH run</div>
   </div>
   <div class="xa-card">
-    <div class="xa-label">WTI Crude</div>
-    <div class="xa-value pos">$90.26</div>
-    <div class="xa-change pos">+11.4%</div>
-    <div class="xa-note">Iran/Hormuz escalation</div>
+    <div class="xa-label">WTI CRUDE</div>
+    <div class="xa-val green">$93.91</div>
+    <div class="xa-chg green">+3.31% (was $120 overnight)</div>
+    <div class="xa-note">Strait of Hormuz blockade</div>
   </div>
 </div>
 
-<p class="prose">
-  The cross-asset picture is a textbook stagflation setup. Treasury yields are barely moving despite a &minus;92K NFP print — the 10Y at 4.12 is refusing to rally because crude at $90 keeps inflation expectations anchored high. The Fed is trapped: cut rates into $90 oil and you reignite inflation; hold rates and the labor market deteriorates further. <strong>Gold</strong> at $5,140 (+1.15%) is the tell — real rates compression and geopolitical risk-off are both pushing the metal toward ATH. <strong>DXY</strong> weaker at 98.98 on the NFP miss, which is adding fuel to commodity prices. <strong>Nat gas</strong> (NG1) $3.18 +6.0% on the QatarEnergy production shutdown. Silver $183.79 +1.9%, copper $576 +0.7% — broad commodity strength on supply disruption.
-</p>
-
-<p class="prose">
-  The equity-to-commodity read-through is clear: if crude stays above $85, margin pressure accelerates across airlines (<strong>LUV</strong> &minus;6.2%), cruise lines (<strong>NCLH</strong> &minus;5.4%, <strong>CCL</strong> &minus;5.3%), and anything with a fuel input. Meanwhile, the energy complex and ag/fertilizer names benefit directly. This is a scarcity trade — long physical bottlenecks, short the leveraged consumer.
-</p>
+<p class="prose">The cross-asset picture is screaming stagflation. The 2Y yield is rising (+0.47%) as the market prices out any near-term Fed cuts — September is now the earliest expectation. The 10Y is up 4.7bp as inflation expectations ratchet higher. The 2Y/10Y spread at −54bp is deeply inverted and getting worse, which historically precedes recessions. <b>Gold</b> at $5,104 is actually down 1.3% today on profit-taking after a massive run to all-time highs — but the bid under gold is structural and any dip will be bought. <b>Silver</b> at $84.59 is flat. <b>DXY</b> at 99.06 is firming modestly as dollar haven flows compete with the inflationary impulse. The nat gas story is important here — <b>NG1</b> at $3.10 is up 8.5% month-to-date as the U.S. becomes the marginal energy supplier to a world short of Gulf crude.</p>
 
 <!-- WATCHING INTO THE CLOSE -->
 <div class="watch-box">
-  <div class="callout-title" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 2px; color: var(--dark); text-transform: uppercase; margin-bottom: 12px;">Watching Into the Close</div>
+  <div class="watch-title">&#9664; WATCHING INTO THE CLOSE</div>
 
-  <h3>Key Levels</h3>
-  <ul class="watch-list">
-    <li>SPX 6,700 support (Feb low) — 6,830 resistance (yesterday close)</li>
-    <li>NDX 22,400 support — 22,750 resistance</li>
-    <li>RTY 2,500 pivot — break below = recession trade accelerates</li>
-    <li>VIX 28 = forced selling threshold for vol-targeting strategies</li>
-  </ul>
+  <div class="watch-section">
+    <div class="watch-section-title">KEY LEVELS</div>
+    <p><b>SPX</b>: 6,700 support (testing now), 6,600 next major support (Nov lows). <b>NDX</b>: 22,400 pivot, held today on semi strength. <b>RTY</b>: 2,480 critical — a break below opens 2,400.</p>
+  </div>
 
-  <h3>Catalysts</h3>
-  <ul class="watch-list">
-    <li>No major data remainder of today — weekend risk premium building</li>
-    <li>ORCL earnings Monday pre-mkt (cloud/AI read)</li>
-    <li>Iran/US diplomatic status — any escalation = $100 crude</li>
-    <li>Private credit fund flow data — more gates possible over weekend</li>
-  </ul>
+  <div class="watch-section">
+    <div class="watch-section-title">CATALYSTS</div>
+    <p><b>HPE</b> earnings after close tonight. <b>CPI</b> Wednesday 8:30 AM — won't yet reflect oil shock but sets the tone. <b>Oracle</b> (ORCL) Wednesday after close. <b>Adobe</b> (ADBE) Thursday. <b>PCE</b> Friday. Fed speakers throughout the week. Any Iran/Hormuz headline moves crude $5-10 in minutes.</p>
+  </div>
 
-  <h3>Setups</h3>
-  <ul class="watch-list">
-    <li>OVERSOLD: MTD (RSI 21), CRH (26), BLDR (27), BLK (27), DHR (27), MCHP (27), PPG (27)</li>
-    <li>OVERBOUGHT: CF (RSI 79), LYB (77), EOG (75), TPL (73), TRGP (73)</li>
-    <li>PVT CREDIT WATCH: BLK, ARES, BX, APO, OWL, KKR — more gates = cascade risk</li>
-  </ul>
+  <div class="watch-section">
+    <div class="watch-section-title">SETUPS</div>
+    <p><b>Oversold</b>: MTD RSI 21, BLK RSI 24, MCHP RSI 24, UPS RSI 25, LEN RSI 25, BXP RSI 25 — 43 names below RSI 30. Don't knife-catch until crude stabilizes. <b>Overbought</b>: CF RSI 80, LYB RSI 79, TPL RSI 76, EOG RSI 76, OXY RSI 73 — energy stretched but trend is your friend in war. <b>Watch</b>: Private credit contagion — Jefferies downgrade on default exposure is canary-in-coal-mine for alt managers.</p>
+  </div>
 </div>
 
 <!-- BOTTOM LINE -->
 <div class="bottom-line">
   <div class="bl-title">Bottom Line</div>
-  <p>
-    This is a tape that's telling you the soft landing is over. A &minus;92K NFP print is not noise — it's the labor market cracking under the weight of AI-driven white-collar displacement and a geopolitical supply shock that's keeping input costs elevated. The private credit contagion adds a financial stress vector that didn't exist a month ago: three funds gated in two weeks, and the illiquidity mismatch has not been resolved. The Fed is frozen. Oil at $90 prevents cuts; a weakening labor market prevents hikes. Energy is the only trade that's working — <strong>CF</strong>, <strong>OXY</strong>, <strong>EOG</strong> — and it's working because the supply disruption is real, not speculative. Stay defensive, own physical scarcity, and don't try to catch the falling knife in financials or cyclicals. The weekend risk premium is building and there is no catalyst for a reversal.
-  </p>
+  <div class="bl-text">This is a war tape. The Iran-driven oil shock is repricing the entire macro landscape from "goldilocks disinflation" to "stagflation risk" — and the market hasn't fully adjusted yet. Today's recovery off overnight lows is encouraging but deceptive; it's being carried by 20 semiconductor names while 386 stocks are red. The breadth at 1:3.3 is terrible. CPI on Wednesday is the next binary catalyst, but the real variable is the Strait of Hormuz — every headline moves crude $5-10. With 43 names below RSI 30 and the VIX at 27, there will be opportunities on the other side of this, but we are not there yet. Stay defensive, hedge energy longs against consumer/transport shorts, and don't chase the semi rally without stops. Cash is a position.</div>
 </div>
 
-</div><!-- /container -->
-
-<!-- FOOTER -->
 <div class="footer">
-  Confidential — For Institutional Use Only &nbsp;&nbsp;&nbsp;&nbsp; 22V Research Trading Desk
+  CONFIDENTIAL &mdash; FOR INSTITUTIONAL USE ONLY &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 22V RESEARCH TRADING DESK
 </div>
 
+</div>
 </body>
 </html>

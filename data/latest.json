@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-02T15:19:00.000000",
+  "timestamp": "2026-03-09T09:45:00.000000",
   "source_tier": "free",
   "pc_ratio": {
     "equity": 1.187,
@@ -18,10 +18,10 @@
   "gex": {
     "estimate_bn": null,
     "level": "DEEP_NEGATIVE",
-    "flip_point": 6894.32,
-    "call_wall": 7000.0,
-    "put_wall": 7000.0,
-    "last_price": 6746.77,
+    "flip_point": 7363.35,
+    "call_wall": 6900.0,
+    "put_wall": 6900.0,
+    "last_price": 6740.02,
     "history_5d": []
   },
   "skew": {
@@ -603,8 +603,8 @@
     ]
   },
   "vix": {
-    "current": 26.77,
-    "change": 3.02,
+    "current": 31.86,
+    "change": 2.37,
     "history_30d": [
       {
         "date": "2026-01-26",

@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-03-06T13:30:00.000000",
-  "composite_score": 8.5,
-  "composite_prev": 7.5,
-  "regime": "ACTIVE_DETERIORATION",
-  "regime_label": "Active Deterioration",
+  "timestamp": "2026-03-09T09:45:00.000000",
+  "composite_score": 9.0,
+  "composite_prev": 8.5,
+  "regime": "CASCADE_IMMINENT",
+  "regime_label": "Cascade Imminent",
   "layers": {
     "l1": {
       "score": 2,
       "max": 2,
       "label": "Leverage Levels",
-      "details": "Margin $1279.0B (8th consecutive record) | HF gross: GS 285%, JPM 298% (99th pctile MS) | Multistrat 645% | Debt/GDP 4.06% (ALL-TIME HIGH)",
+      "details": "Margin $1279.0B (8th consecutive record) | HF gross: record by end-2025, GS PB 3rd straight year record | Multistrat 645% | Debt/GDP 4.06% (ALL-TIME HIGH, exceeds Dot-Com) | Leveraged ETFs $249B",
       "data": {
         "updated": "2026-03-06",
         "hf_gross_gs": 285,
@@ -85,7 +85,7 @@
       "score": 2,
       "max": 2,
       "label": "Momentum",
-      "details": "Margin YoY +36.5% (>20% threshold) | Debt/GDP 4.06% ALL-TIME HIGH above 3.5% threshold | SPX YoY +15.5% \u2014 leverage growing 2.4x faster than the market",
+      "details": "Margin YoY +36.5% (>20% threshold) | Debt/GDP 4.06% ALL-TIME HIGH above 3.5% threshold | SPX YoY ~+12% \u2014 leverage growing 3x faster than the market | 9th straight monthly increase",
       "data": {
         "margin_yoy_pct": 36.5,
         "debt_gdp_pct": 4.06,
@@ -95,24 +95,24 @@
       }
     },
     "l3": {
-      "score": 0.5,
+      "score": 1.0,
       "max": 2,
       "label": "Financing",
-      "details": "NFCI -0.5236 (tightening from -0.5629 on 2/20) | HY OAS 2.97% (widening from 2.65% trough in Jan) | CCC OAS 9.15% (widened from 8.38 trough) | MOVE 74.53 (+6.43%) | SOFR 3.66 (stable) | Conditions still overall loose BUT credit spreads widening and NFCI tightening at margin",
+      "details": "NFCI -0.5236 (tightening 8 straight weeks from -0.5670 low) | HY OAS 2.96% (widening from 2.65% Jan trough) | MOVE 81.26 (+9.03% today, MTD +10.7%) | SOFR 3.66 | USD/JPY 158.48 (carry unwind risk) | CONFIRMED: GS PB reports Mar 7-10 = worst 2-day HF stretch in years, momentum 4\u03c3 drawdown \u2192 FORCED DELEVERAGING REALIZED",
       "data": {
         "nfci": -0.5236,
         "nfci_prev": -0.5629,
         "nfci_direction": "TIGHTENING",
-        "hy_oas": 2.97,
+        "hy_oas": 2.96,
         "hy_oas_trough": 2.65,
         "ccc_oas": 9.15,
         "bbb_oas": 1.02,
-        "move": 74.53,
-        "move_chg_pct": 6.43,
+        "move": 81.26,
+        "move_chg_pct": 9.03,
         "sofr": 3.66,
-        "usdjpy": 157.77,
-        "signal": "EARLY_TIGHTENING",
-        "notes": "Key shift: NFCI has tightened 3.9bps over past month (from -0.5670 to -0.5236). HY OAS has widened 32bp from Jan trough. CCC widening even more (+67bp from Jan trough). Not yet red but direction has changed \u2014 scoring 0.5 for early tightening signal.",
+        "usdjpy": 158.48,
+        "signal": "EARLY_TIGHTENING_CONFIRMED",
+        "notes": "CRITICAL: GS PB data confirms Mar 7/10 as worst 2-day HF stretch in years. Momentum factor 4\u03c3 drawdown triggered forced derisking across strategies. NFCI tightening 8 consecutive weeks. MOVE +27% YTD signals rate vol feeding into equity vol.",
         "hy_oas_prev": 2.81,
         "nfci_3mo_ago": -0.51,
         "nfci_as_of": "2026-03-06",
@@ -227,48 +227,48 @@
       "score": 1.0,
       "max": 1.0,
       "label": "Vol Structure",
-      "details": "VIX 26.77 (+12.72% today, +79% YTD) WELL above 22 threshold | VVIX 125.68 (+8.41%) above 110 threshold | IV 21.45% vs HV 11.81% \u2014 implied nearly 2x realized | IV Rank 33.81%, IV Percentile 92% | VIX term structure flattening",
+      "details": "VIX 31.86 (+8.04% today, +113.11% YTD, +60.42% MTD) \u2014 WELL above 22 threshold | VVIX 140.44 (+21.14%, MTD +26.65%) EXTREME above 110 threshold | IV 22.44% vs HV 11.98% \u2014 implied nearly 2x realized | IV Rank 36.92%, IV Percentile 93% | VIX term structure in BACKWARDATION",
       "data": {
-        "vix": 26.77,
-        "vix_chg": 3.02,
-        "vix_chg_pct": 12.72,
-        "vix_ytd_pct": 79.06,
-        "vix_mtd_pct": 34.79,
-        "vvix": 125.68,
-        "vvix_chg": 9.75,
-        "vvix_chg_pct": 8.41,
-        "vvix_wtd_pct": 13.33,
-        "iv": 21.45,
-        "hv": 11.81,
-        "iv_rank": 33.81,
-        "iv_percentile": 92,
-        "notes": "CRITICAL: VIX has surged from 16.15 on 1/26 to 26.77 today \u2014 a 66% move in ~6 weeks. VVIX above 110 signals vol-of-vol regime shift. IV/HV ratio near 2x means the market is pricing far more risk than has been realized \u2014 protective demand is extreme."
+        "vix": 31.86,
+        "vix_chg": 2.37,
+        "vix_chg_pct": 8.04,
+        "vix_ytd_pct": 113.11,
+        "vix_mtd_pct": 60.42,
+        "vvix": 140.44,
+        "vvix_chg": 24.51,
+        "vvix_chg_pct": 21.14,
+        "vvix_wtd_pct": 26.65,
+        "iv": 22.44,
+        "hv": 11.98,
+        "iv_rank": 36.92,
+        "iv_percentile": 93.0,
+        "notes": "VIX 31.86 \u2014 highest since Apr 2025 tariff shock. VVIX 140.44 = vol-of-vol explosion signals dealers scrambling. IV/HV ratio ~1.87x = market pricing far more risk than realized. VIX term structure flipped to BACKWARDATION \u2014 front-month fear exceeding deferred."
       }
     },
     "l5b": {
       "score": 1.0,
       "max": 1.0,
       "label": "Options Sentiment",
-      "details": "Equity P/C 1.187 (EXTREME FEAR, well above 0.85) | 25-delta risk reversal -8.01 (at -8 threshold) | GEX: SPX 6747 BELOW flip 6894 = NEGATIVE GAMMA | Put wall 7000 / Call wall 7000 \u2014 both far above spot",
+      "details": "Equity P/C 1.187 (EXTREME FEAR, well above 0.85) | 25-delta risk reversal -8.01 (at -8 threshold) | GEX: SPX 6740 is 623pts BELOW flip 7363 = DEEP NEGATIVE GAMMA | Put wall 6900 / Call wall 6900 \u2014 both above spot | CBOE SKEW 146.05",
       "data": {
         "pc_ratio": 1.187,
         "pc_signal": "EXTREME_FEAR",
         "risk_reversal": -8.01,
         "cboe_skew": 146.05,
-        "gex_flip_point": 6894.32,
-        "gex_put_wall": 7000,
-        "gex_call_wall": 7000,
-        "spx_last": 6746.77,
+        "gex_flip_point": 7363.35,
+        "gex_put_wall": 6900.0,
+        "gex_call_wall": 6900.0,
+        "spx_last": 6740.02,
         "spx_below_flip": true,
-        "gamma_regime": "NEGATIVE",
-        "notes": "SPX is 147 pts below the gamma flip point \u2014 deep in negative gamma territory. Dealers are SHORT gamma, meaning they must SELL INTO WEAKNESS and BUY INTO STRENGTH, amplifying moves in both directions. With P/C at 1.19 and risk reversal at -8.01, protection demand is extreme. The 7000 put/call wall is 253 pts above spot \u2014 no nearby support from options positioning."
+        "gamma_regime": "DEEP_NEGATIVE",
+        "notes": "CRITICAL: GEX flip point jumped to 7363.35 \u2014 SPX now 623pts below (was 147pts below on 3/6). This is EXTREME negative gamma territory. Every down move triggers dealer selling that amplifies the decline. Put wall and call wall both at 6900, 160pts above spot \u2014 no dealer support below."
       }
     },
     "l6": {
       "score": 1,
       "max": 1,
       "label": "Calendar",
-      "details": "FOMC + Dot Plot 3/18 (12 days) | Quad Witching OPEX 3/20 (14 days) | Quarter-End Rebalancing 3/31 (25 days) | THREE HIGH-severity events clustered in 25-day window",
+      "details": "FOMC + Dot Plot 3/18 (9 days) | Quad Witching OPEX 3/20 (11 days) | Quarter-End Rebalancing 3/31 (22 days) | CONFIRMED: GS reports Mar 7/10 multistrat-mageddon already forced derisking \u2014 calendar events NOW overlapping active deleveraging",
       "data": {
         "events": [
           {
@@ -308,7 +308,7 @@
             "days_away": 56
           }
         ],
-        "notes": "FOMC + Quad Witching back-to-back is the highest-risk calendar cluster of the year. In negative gamma with elevated leverage, the forced delta hedging around OPEX could amplify any directional move from the Fed's dot plot.",
+        "notes": "Calendar cluster now overlapping ACTIVE forced deleveraging. FOMC 9 days out with VIX at 31.86 and confirmed HF margin calls. Quad witching 11 days = massive gamma unwind. Quarter-end rebalancing will add pension selling pressure to already stressed market.",
         "all_events": [
           {
             "date": "2026-03-18",
@@ -351,33 +351,33 @@
     }
   },
   "real_time_pulse": {
-    "turbulence": "ELEVATED",
-    "regime": "STRESS_ONSET",
+    "turbulence": "HIGH",
+    "regime": "ACTIVE_DELEVERAGING",
     "synthesis": "TAPE CONFIRMING",
-    "synthesis_note": "Stress accelerating \u2014 defensive positioning warranted",
+    "synthesis_note": "Structural leverage at all-time highs, tape confirming active deleveraging \u2014 CONFIRMED by GS PB forced selling data. Defensive positioning critical.",
     "turbulence_detail": {
-      "level": "ELEVATED",
-      "vix": 26.77,
-      "vix_term_structure": "flattening_toward_backwardation",
+      "level": "HIGH",
+      "vix": 31.86,
+      "vix_term_structure": "backwardation",
       "spx_vs_50dma": "BELOW",
-      "spx_50dma": 6863,
-      "spx_200dma": 6897,
-      "spx_current": 6753,
-      "cross_asset": "Gold +1.21%, Treasuries bid (10Y -0.56%), USD -0.33%, RTY -2.42% \u2014 classic risk-off rotation"
+      "spx_50dma": 6838,
+      "spx_200dma": 6890,
+      "spx_current": 6740.02,
+      "cross_asset": "VIX +113% YTD, VVIX +51.55% YTD, MOVE +27% YTD, RTY -2.33%, Gold -1.67% (liquidation selling), Oil +12.62% \u2014 stress across all channels. Only 43.7% of SPX stocks above 50d MA."
     },
     "regime_detail": {
-      "s1_calm": 5,
-      "s2_fragile": 15,
-      "s3_stress_onset": 60,
-      "s4_active_deleveraging": 20,
-      "dominant": "S3_STRESS_ONSET",
-      "transition_alert": "S3\u2192S4 probability rising. VIX acceleration + negative gamma + calendar cluster = elevated transition risk."
+      "s1_calm": 0,
+      "s2_fragile": 5,
+      "s3_stress_onset": 25,
+      "s4_active_deleveraging": 70,
+      "dominant": "S4_ACTIVE_DELEVERAGING",
+      "transition_alert": "S4 NOW DOMINANT at 70%. GS PB confirms Mar 7/10 forced deleveraging. Momentum 4\u03c3 drawdown = classic cascade trigger. VIX backwardation + VVIX explosion = dealers in crisis hedging mode."
     }
   },
   "divergence_alert": {
     "active": false,
     "type": null,
-    "notes": "No divergence \u2014 Layer 5 options fear (2.0/2.0) is now CONFIRMED by Layer 3 early tightening (0.5) and real-time tape stress. This is alignment, not divergence. The prior 'Options Leading' divergence from 2/26-3/2 has resolved: structural data is catching up to what options were signaling."
+    "notes": "No divergence \u2014 FULL ALIGNMENT across all layers. Options fear (L5 2.0/2.0) confirmed by forced deleveraging (GS PB data), financing tightening (NFCI 8wk trend, MOVE explosion), and extreme structural leverage (L1 2.0/2.0). The leverage cascade transmission mechanism is ACTIVE: margin calls \u2192 forced selling \u2192 dealer gamma hedging \u2192 leveraged ETF rebalancing \u2192 further forced selling."
   },
   "score_history": [
     {
@@ -445,47 +445,79 @@
       "score": 8.5,
       "regime": "Active Deterioration",
       "note": "VIX 26.77 (+12.7%), VVIX 125.68, SPX 6753 below 50d/200d MA, deep negative gamma"
+    },
+    {
+      "date": "2026-03-09",
+      "score": 9.0,
+      "regime": "Cascade Imminent",
+      "note": "VIX 31.86, VVIX 140.44, GEX flip 7363 (623pts above spot), GS confirms multistrat-mageddon forced deleveraging Mar 7/10, FOMC in 9 days"
     }
   ],
   "cross_asset": {
-    "source": "Bloomberg Terminal + Pipeline",
-    "spx": 6753.0,
-    "vix": 26.77,
-    "dxy": 98.991,
-    "ust10y": 4.1131,
-    "ust2y": 3.5274,
-    "gold": 5143.55,
-    "oil_wti": 92.21,
-    "rty": 2523.094,
-    "hyg": "HY OAS 2.97%"
+    "source": "Bloomberg Terminal (03/09/2026)",
+    "spx": 6740.02,
+    "spx_chg_pct": -1.33,
+    "vix": 31.86,
+    "vix_chg_pct": 8.04,
+    "dxy": 99.269,
+    "ust10y": 4.1693,
+    "ust2y": 3.5939,
+    "ust5y": 3.7586,
+    "ust30y": 4.7844,
+    "usyc2y10": 57.122,
+    "gold": 5085.32,
+    "oil_wti": 102.37,
+    "rty": 2525.301,
+    "rty_chg_pct": -2.33,
+    "ccmp": 22387.68,
+    "ccmp_chg_pct": -1.59,
+    "move": 81.26,
+    "vvix": 140.44,
+    "nfci": -0.5236,
+    "sofr": 3.66,
+    "hyg": "LF980AS 2.96y (+4.59%)",
+    "silver": 83.061,
+    "natgas": 3.342,
+    "usdjpy": 158.48
   },
   "cascade": {
     "multiplier_effects": [
-      "L1 (max leverage) + L3 (early tightening) = Minsky moment risk RISING",
-      "L4 (Mag7 crowded) + L5 (negative gamma) = Amplified unwind if one name breaks",
-      "L5 (VIX surging) + L6 (FOMC+OPEX in 12 days) = Timing convergence"
+      "L1 (ALL-TIME HIGH leverage) + L3 (CONFIRMED forced selling) = Minsky moment ACTIVE",
+      "L4 (Mag7 42.1% concentration) + L5 (GEX 623pts below flip) = Amplified unwind ON \u2014 one Mag7 miss triggers cascade",
+      "L5 (VIX 31.86 + backwardation + VVIX 140.44) + L6 (FOMC 9 days + quad witching 11 days) = Timing convergence IMMINENT",
+      "NEW: GS PB confirms momentum 4\u03c3 drawdown Mar 7/10 \u2014 FORCED DELEVERAGING IS NO LONGER HYPOTHETICAL, IT IS HAPPENING"
     ]
   },
   "commentary": null,
   "alerts": [
     {
       "type": "SCORE_UPGRADE",
-      "message": "Composite upgraded 7.5 \u2192 8.5 \u2014 VIX acceleration + VVIX breakout",
+      "message": "Composite upgraded 8.5 \u2192 9.0 \u2014 CASCADE IMMINENT. VIX 31.86, forced deleveraging confirmed.",
       "severity": "critical"
     },
     {
-      "type": "NEGATIVE_GAMMA",
-      "message": "SPX 147pts below gamma flip \u2014 dealer hedging AMPLIFYING moves",
+      "type": "FORCED_DELEVERAGING",
+      "message": "GS PB: Mar 7/10 = worst 2-day HF stretch in years. Momentum 4\u03c3 drawdown triggered forced derisking.",
       "severity": "critical"
     },
     {
-      "type": "CALENDAR_CLUSTER",
-      "message": "FOMC + Quad Witching in 12-14 days \u2014 highest risk window of Q1",
-      "severity": "warning"
+      "type": "EXTREME_NEGATIVE_GAMMA",
+      "message": "SPX 623pts below GEX flip (7363) \u2014 deepest negative gamma territory of cycle",
+      "severity": "critical"
+    },
+    {
+      "type": "VIX_BACKWARDATION",
+      "message": "VIX term structure in backwardation + VVIX 140.44 = vol regime break",
+      "severity": "critical"
     },
     {
       "type": "BELOW_KEY_MA",
-      "message": "SPX below BOTH 50d (6863) and 200d (6897) moving averages",
+      "message": "SPX below BOTH 50d (6838) and 200d (6890) moving averages",
+      "severity": "warning"
+    },
+    {
+      "type": "CALENDAR_CLUSTER",
+      "message": "FOMC + Quad Witching in 9-11 days \u2014 overlapping active deleveraging event",
       "severity": "warning"
     }
   ],
@@ -556,6 +588,10 @@
       {
         "date": "2026-03-06",
         "value": 2.97
+      },
+      {
+        "date": "2026-03-09",
+        "value": 2.96
       }
     ]
   }

@@ -6,17 +6,18 @@
 <title>22V Midday Recap | March 11, 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0d0f12;--card:#161a20;--card-alt:#1a1f27;--border:#2a2f38;--text:#e8e6e1;--text-dim:#8a8d93;--text-muted:#5a5d63;--orange:#E4762D;--red:#e74c3c;--green:#2ecc71;--blue:#5dade2;--cream:#FAF7F2;--warm-red:#c0392b}
+:root{--bg:#FAF7F2;--card:#FFFFFF;--card-alt:#F5F0EA;--border:#E0D8CC;--text:#1A1A1A;--text-dim:#666666;--text-muted:#999999;--orange:#E4762D;--red:#C0392B;--green:#27AE60;--blue:#2980B9;--warm-red:#8B0000;--header-bar:#3D3D3D;--light-bg:#F5F5F5}
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--text);font-family:'Source Sans 3',system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--text);font-family:'Source Sans 3',Georgia,system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
 .container{max-width:900px;margin:0 auto;padding:24px 20px}
 .header-brand{font-family:'JetBrains Mono';font-size:10px;color:var(--text-muted);letter-spacing:3px;text-transform:uppercase;margin-bottom:4px}
 .header-title{font-family:'Playfair Display';font-size:28px;font-weight:900;color:var(--text);margin-bottom:8px}
-.date-bar{display:flex;justify-content:space-between;align-items:center;background:var(--card);border:1px solid var(--border);border-radius:6px;padding:8px 16px;font-family:'JetBrains Mono';font-size:11px;color:var(--text-dim);margin-bottom:20px;flex-wrap:wrap;gap:4px}
+.header-title span{color:var(--orange);font-weight:400}
+.date-bar{display:flex;justify-content:space-between;align-items:center;background:var(--header-bar);border-radius:4px;padding:8px 16px;font-family:'JetBrains Mono';font-size:11px;color:#CCCCCC;margin-bottom:20px;flex-wrap:wrap;gap:4px}
 .headline{font-family:'Playfair Display';font-size:26px;font-weight:700;line-height:1.25;color:var(--text);margin-bottom:10px}
 .subhead{font-family:'Source Sans 3';font-size:15px;font-weight:300;color:var(--text-dim);line-height:1.55;margin-bottom:20px;font-style:italic}
 .subhead b{color:var(--text);font-weight:600}
-.idx-bar{display:grid;grid-template-columns:repeat(6,1fr);gap:0;background:var(--card);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:20px}
+.idx-bar{display:grid;grid-template-columns:repeat(6,1fr);gap:0;background:var(--card);border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,0.06)}
 .idx-item{text-align:center;padding:12px 8px;border-right:1px solid var(--border)}
 .idx-item:last-child{border-right:none}
 .idx-label{font-family:'JetBrains Mono';font-size:9px;color:var(--text-muted);letter-spacing:1px;text-transform:uppercase}
@@ -26,79 +27,61 @@ body{background:var(--bg);color:var(--text);font-family:'Source Sans 3',system-u
 .section-hdr{font-family:'JetBrains Mono';font-size:10px;letter-spacing:3px;color:var(--text-muted);text-transform:uppercase;margin:20px 0 8px;padding-bottom:4px;border-bottom:1px solid var(--border)}
 .body-text{font-size:14.5px;line-height:1.65;color:var(--text);margin-bottom:12px}
 .body-text b{color:var(--orange);font-weight:600}
-.callout{background:var(--card);border-left:3px solid var(--warm-red);border-radius:0 6px 6px 0;padding:14px 18px;margin:12px 0;font-size:13.5px;line-height:1.6}
-.callout-hdr{font-family:'JetBrains Mono';font-size:10px;letter-spacing:2px;color:var(--warm-red);margin-bottom:6px}
-.callout.dark-border{border-left-color:var(--text-muted)}
-.callout.orange-border{border-left-color:var(--orange)}
-.pull-quote{font-family:'Playfair Display';font-size:18px;font-style:italic;color:var(--orange);text-align:center;padding:16px 24px;margin:16px 0;line-height:1.4}
+.callout{background:#FFF8F6;border-left:3px solid var(--red);border-radius:0 4px 4px 0;padding:14px 18px;margin:12px 0;font-size:13.5px;line-height:1.6;color:var(--text)}
+.callout-hdr{font-family:'JetBrains Mono';font-size:10px;letter-spacing:2px;color:var(--warm-red);margin-bottom:6px;font-weight:700}
+.callout.dark-border{border-left-color:var(--header-bar);background:#F5F5F5}
+.callout.orange-border{border-left-color:var(--orange);background:#FEF6F0}
+.callout b{color:var(--text);font-weight:700}
+.pull-quote{font-family:'Playfair Display';font-size:18px;font-style:italic;color:var(--warm-red);text-align:center;padding:16px 28px;margin:16px 0;line-height:1.4;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
 .sector-table{width:100%;border-collapse:collapse;margin:8px 0 16px;font-size:13px}
-.sector-table th{font-family:'JetBrains Mono';font-size:9px;letter-spacing:1.5px;color:var(--text-muted);text-align:left;padding:6px 8px;border-bottom:1px solid var(--border);text-transform:uppercase}
-.sector-table td{padding:7px 8px;border-bottom:1px solid rgba(42,47,56,0.5)}
-.sector-table tr:nth-child(even){background:rgba(22,26,32,0.5)}
+.sector-table th{font-family:'JetBrains Mono';font-size:9px;letter-spacing:1.5px;color:var(--text-muted);text-align:left;padding:6px 8px;border-bottom:1px solid var(--text-muted);text-transform:uppercase}
+.sector-table td{padding:7px 8px;border-bottom:1px solid var(--border)}
+.sector-table tr:nth-child(even){background:var(--light-bg)}
 .sector-table .avg{text-align:right;font-weight:700;font-family:'JetBrains Mono';font-size:12px}
 .sector-table .advdec{text-align:center;font-family:'JetBrains Mono';font-size:11px;color:var(--text-dim)}
 .sector-table .notable{font-size:12px;color:var(--text-dim)}
 .movers-section{margin:12px 0}
-.movers-hdr{font-family:'JetBrains Mono';font-size:10px;letter-spacing:2px;margin-bottom:6px}
+.movers-hdr{font-family:'JetBrains Mono';font-size:10px;letter-spacing:2px;margin-bottom:6px;font-weight:700}
 .movers-hdr.win{color:var(--green)}.movers-hdr.lose{color:var(--red)}
-.mover-row{display:flex;justify-content:space-between;align-items:center;padding:5px 8px;font-size:13px;border-radius:4px}
-.mover-row:nth-child(even){background:var(--card)}
-.mover-ticker{font-family:'JetBrains Mono';font-weight:700;min-width:50px}
+.mover-row{display:flex;justify-content:space-between;align-items:center;padding:5px 8px;font-size:13px;border-radius:3px}
+.mover-row:nth-child(even){background:var(--light-bg)}
+.mover-ticker{font-family:'JetBrains Mono';font-weight:700;min-width:50px;color:var(--text)}
 .mover-cat{flex:1;color:var(--text-dim);padding:0 12px;font-size:12px}
 .mover-pct{font-weight:700;font-family:'JetBrains Mono';font-size:13px;min-width:60px;text-align:right}
-.cards-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;background:var(--card);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:8px 0 12px}
+.cards-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;background:var(--card);border:1px solid var(--border);border-radius:6px;overflow:hidden;margin:8px 0 12px;box-shadow:0 1px 3px rgba(0,0,0,0.06)}
 .card{text-align:center;padding:10px 8px;border-right:1px solid var(--border)}
 .card:last-child{border-right:none}
 .card-label{font-family:'JetBrains Mono';font-size:8px;letter-spacing:1px;color:var(--text-muted);text-transform:uppercase}
-.card-val{font-size:18px;font-weight:700;margin:2px 0}
+.card-val{font-size:18px;font-weight:700;margin:2px 0;color:var(--text)}
 .card-chg{font-size:11px;font-weight:600}
 .card-note{font-size:9px;color:var(--text-muted)}
-.bottom-line{background:var(--card);border-left:3px solid var(--orange);border-radius:0 6px 6px 0;padding:18px 22px;margin:16px 0}
-.bl-hdr{font-family:'Playfair Display';font-size:20px;font-weight:700;margin-bottom:8px}
+.bottom-line{background:#FEF6F0;border-left:3px solid var(--orange);border-radius:0 4px 4px 0;padding:18px 22px;margin:16px 0}
+.bl-hdr{font-family:'Playfair Display';font-size:20px;font-weight:700;margin-bottom:8px;color:var(--text)}
 .footer{text-align:center;font-family:'JetBrains Mono';font-size:9px;color:var(--text-muted);letter-spacing:2px;padding:20px 0;border-top:1px solid var(--border);margin-top:24px}
-.callout b{color:var(--text);font-weight:600}
 @media(max-width:680px){.idx-bar{grid-template-columns:repeat(3,1fr)}.cards-row{grid-template-columns:repeat(2,1fr)}.date-bar{flex-direction:column;text-align:center}}
 </style>
 </head>
 <body>
 <div class="container">
-
 <div class="header-brand">INSTITUTIONAL TRADING INTELLIGENCE</div>
-<div class="header-title">22V Research <span style="color:var(--text-muted);font-weight:400">|</span> Midday Trading Recap</div>
-
-<div class="date-bar">
-    <span>WEDNESDAY, MARCH 11, 2026</span>
-    <span>12:45 PM ET &bull; CPI IN-LINE &bull; IRAN OIL SHOCK WEEK 2</span>
-    <span>IEA 400M BBL RELEASE &bull; FED 3/18</span>
-</div>
-
+<div class="header-title">22V Research <span>|</span> Midday Trading Recap</div>
+<div class="date-bar"><span>WEDNESDAY, MARCH 11, 2026</span><span>12:45 PM ET &bull; CPI IN-LINE &bull; IRAN OIL SHOCK WEEK 2</span><span>IEA 400M BBL RELEASE &bull; FED 3/18</span></div>
 <div class="headline">Oil Shock Week 2 Caps Gains; Oracle Surges on AI Backlog as Staples Crater, Financials Bleed</div>
-
 <div class="subhead"><b>ORCL</b> +9.7% on a monster Q3 beat ($553B RPO backlog, +325% y/y) keeps AI infra alive. <b>CPB</b> -6.7% after slashing FY26 guide on Snacks collapse. <b>ARES</b> -6.0% and <b>APO</b> -4.1% lead alt manager sell-off. Energy the lone winner as crude retakes $85 despite IEA releasing a record 400M barrels. CPI in-line at 2.4% y/y but markets looking through it to the oil-driven inflation shock ahead.</div>
-
 <div class="idx-bar">
-    <div class="idx-item"><div class="idx-label">S&P 500</div><div class="idx-val red">6,763</div><div class="idx-chg red">-0.27%</div></div>
-    <div class="idx-item"><div class="idx-label">NASDAQ</div><div class="idx-val red">22,687</div><div class="idx-chg red">-0.04%</div></div>
-    <div class="idx-item"><div class="idx-label">DOW</div><div class="idx-val red">47,274</div><div class="idx-chg red">-0.91%</div></div>
-    <div class="idx-item"><div class="idx-label">RUSSELL</div><div class="idx-val red">2,527</div><div class="idx-chg red">-0.84%</div></div>
-    <div class="idx-item"><div class="idx-label">VIX</div><div class="idx-val red">25.49</div><div class="idx-chg red">+2.25</div></div>
-    <div class="idx-item"><div class="idx-label">10Y</div><div class="idx-val red">4.210</div><div class="idx-chg red">+5bp</div></div>
+<div class="idx-item"><div class="idx-label">S&P 500</div><div class="idx-val red">6,763</div><div class="idx-chg red">-0.27%</div></div>
+<div class="idx-item"><div class="idx-label">NASDAQ</div><div class="idx-val red">22,687</div><div class="idx-chg red">-0.04%</div></div>
+<div class="idx-item"><div class="idx-label">DOW</div><div class="idx-val red">47,274</div><div class="idx-chg red">-0.91%</div></div>
+<div class="idx-item"><div class="idx-label">RUSSELL</div><div class="idx-val red">2,527</div><div class="idx-chg red">-0.84%</div></div>
+<div class="idx-item"><div class="idx-label">VIX</div><div class="idx-val red">25.49</div><div class="idx-chg red">+2.25</div></div>
+<div class="idx-item"><div class="idx-label">10Y</div><div class="idx-val red">4.210</div><div class="idx-chg red">+5bp</div></div>
 </div>
-
 <div class="section-hdr">MARKET OVERVIEW</div>
-
 <p class="body-text"><b>SPX</b> opened lower and has spent the session grinding between 6,750 and 6,780, unable to reclaim yesterday's close near 6,781. The index is testing its 5-day MA (~6,773) as resistance and sitting 1.7% below the MTD open. The tape is bifurcated: <b>ORCL</b>'s 10% post-earnings gap is single-handedly keeping the Nasdaq afloat, while the Dow (-0.91%) absorbs the hit from <b>PG</b>, <b>CAT</b>, and <b>SHW</b> weakness. Breadth is decisively negative at roughly 150 advancers vs 350 decliners, a 1:2.3 ratio that signals broad-based selling pressure underneath the index-level calm.</p>
-
 <p class="body-text"><b>RTY</b> -0.84% continues to underperform, now -4.0% MTD and closing in on the February lows. Small caps are pricing in a growth scare from the oil shock, and the Russell is acting as the canary for credit stress. The colliding forces today: Iran's Strait of Hormuz mine-laying vs the IEA's record 400M-barrel reserve release, an in-line CPI print that nobody cares about because March data will capture the energy shock, and Oracle's AI backlog monster keeping the megacap tech bid alive.</p>
-
-<div class="callout">
-    <div class="callout-hdr">BREADTH CHECK</div>
-    ~150 advancers vs ~350 decliners in the S&P 500 — a 1:2.3 ratio. Volume running 0.8-0.9x the 20-day average. Selling is broad but not panicky; financials and consumer staples doing the heavy lifting on the decline side. Energy is the only sector with a positive adv/dec ratio (19 up vs 4 down). <b>44 names in RSI oversold territory (&lt;30)</b>, up from 31 yesterday.
-</div>
-
+<div class="callout"><div class="callout-hdr">BREADTH CHECK</div>~150 advancers vs ~350 decliners in the S&P 500 — a 1:2.3 ratio. Volume running 0.8-0.9x the 20-day average. Selling is broad but not panicky; financials and consumer staples doing the heavy lifting on the decline side. Energy is the only sector with a positive adv/dec ratio (19 up vs 4 down). <b>44 names in RSI oversold territory (&lt;30)</b>, up from 31 yesterday.</div>
 <div class="section-hdr">VIX COMMENTARY</div>
 <p class="body-text"><b>VIX</b> 25.49, +2.25 on the session (+9.7%), reflecting the persistent geopolitical risk premium. Vol is elevated but not spiking; the term structure remains in contango suggesting the market is pricing sustained uncertainty rather than imminent panic. VIX is +70.5% YTD and +28.4% MTD. Vol sellers are staying away until the Iran situation resolves.</p>
-
 <div class="section-hdr">SECTOR PERFORMANCE</div>
 <table class="sector-table">
 <tr><th>Sector</th><th style="text-align:right">Avg</th><th style="text-align:center">Adv/Dec</th><th>Notable</th></tr>
@@ -112,17 +95,11 @@ body{background:var(--bg);color:var(--text);font-family:'Source Sans 3',system-u
 <tr><td>Cons. Cyclical</td><td class="avg red">-0.99%</td><td class="advdec">6 / 50</td><td class="notable">BBY -2.9%, CCL -2.1%</td></tr>
 <tr><td>Financial</td><td class="avg red">-1.40%</td><td class="advdec">3 / 92</td><td class="notable">ARES -6.0%, APO -4.1%, BXP -3.7%</td></tr>
 </table>
-
 <div class="pull-quote">"Oil shock overhangs everything; Oracle keeps the AI dream alive but 3-out-of-92 financials green tells you where the stress is building."</div>
-
 <div class="section-hdr">SECTOR NARRATIVES</div>
-
 <p class="body-text"><b>Financials</b> are the day's worst sector by a wide margin, with only 3 of 92 names advancing. The alternative asset managers are getting hammered: <b>ARES</b> -6.0%, <b>APO</b> -4.1%, <b>BX</b> -2.6%, <b>BLK</b> -2.2%. Rising rates and geopolitical uncertainty are compressing risk appetite for credit-sensitive names. Real estate-adjacent financials like <b>BXP</b> (-3.7%), <b>ARE</b> (-2.2%), and <b>AVB</b> (-1.5%) are under pressure as the 10Y pushes above 4.21%. Regional banks <b>FITB</b> (-3.1%), <b>TFC</b> (-2.4%), and <b>WFC</b> (-2.0%) are also weak with RSIs deep in oversold territory.</p>
-
 <p class="body-text"><b>Energy</b> is the lone green sector, up 1.75% on average as crude retakes $85 despite the IEA's record 400M-barrel reserve drawdown. Refiners are outperforming: <b>MPC</b> +4.5%, <b>VLO</b> +4.4%, <b>PSX</b> +3.1% on widening crack spreads. E&Ps <b>OXY</b> +3.0%, <b>EOG</b> +3.0%, <b>APA</b> +2.6% are bid on higher realized prices. <b>CF</b> +7.6% leads the fertilizer trade on Iran disruption to global natural gas supply chains, with <b>MOS</b> +7.1% following.</p>
-
 <p class="body-text"><b>Consumer Staples</b> are under pressure from the <b>CPB</b> (-6.7%) guide-down after Q2 earnings missed on both lines. Snacks revenue fell 6% and the company cut FY26 EPS guidance to $2.15-$2.25 from $2.40-$2.55, citing consumer trade-down to private label. <b>CAG</b> -5.6% is trading in sympathy. <b>CL</b> -2.8%, <b>CLX</b> -2.8%, and <b>GIS</b> -2.8% are all weak as the tariff-driven margin compression story weighs on the group.</p>
-
 <div class="movers-section">
 <div class="movers-hdr win">TOP WINNERS</div>
 <div class="mover-row"><span class="mover-ticker">ORCL</span><span class="mover-cat">Q3 beat, $553B RPO, AI backlog +325%, raised FY27 rev to $90B</span><span class="mover-pct green">+9.7%</span></div>
@@ -134,7 +111,6 @@ body{background:var(--bg);color:var(--text);font-family:'Source Sans 3',system-u
 <div class="mover-row"><span class="mover-ticker">MRNA</span><span class="mover-cat">Biotech bounce</span><span class="mover-pct green">+3.9%</span></div>
 <div class="mover-row"><span class="mover-ticker">BAX</span><span class="mover-cat">Medtech bounce off lows</span><span class="mover-pct green">+3.6%</span></div>
 </div>
-
 <div class="movers-section">
 <div class="movers-hdr lose">TOP LOSERS</div>
 <div class="mover-row"><span class="mover-ticker">FICO</span><span class="mover-cat">$1B notes offering + risk-off, 1.4x vol, 52-wk low</span><span class="mover-pct red">-10.0%</span></div>
@@ -146,48 +122,24 @@ body{background:var(--bg);color:var(--text);font-family:'Source Sans 3',system-u
 <div class="mover-row"><span class="mover-ticker">APO</span><span class="mover-cat">Alt manager liquidation, RSI 29.3</span><span class="mover-pct red">-4.1%</span></div>
 <div class="mover-row"><span class="mover-ticker">GDDY</span><span class="mover-cat">Tech sell-off, growth concern</span><span class="mover-pct red">-4.0%</span></div>
 </div>
-
 <div class="section-hdr">KEY SINGLE-STOCK NARRATIVES</div>
-
 <p class="body-text"><b>ORCL +9.7% ($166 area)</b> — Oracle delivered a blowout fiscal Q3: revenue $17.2B (+22% y/y) vs $16.9B est, non-GAAP EPS $1.79 vs $1.74 est. The headline number is the RPO (remaining performance obligations) at $553B, up 325% y/y, driven by massive AI infrastructure contracts including the OpenAI partnership. Cloud revenue surged 44% to $8.9B with IaaS up 84%. The company raised FY27 revenue guidance to $90B and confirmed it won't need additional capital raises to fund AI contracts. JPMorgan upgraded to overweight with a $210 PT. The stock also owns 15% of TikTok US. Volume running 1.9x avg.</p>
-
 <p class="body-text"><b>CPB -6.7% ($23.20)</b> — Campbell's reported Q2 that missed on both lines: adj EPS $0.51 vs $0.57 est (-31% y/y), revenue $2.56B vs $2.61B est (-5% y/y). The Snacks segment was the primary drag with organic sales -6% as consumers trade down to private label (now 21.2% market share). January storms cost ~$0.04 in EPS. Management slashed FY26 guidance: adj EPS now $2.15-$2.25 (was $2.40-$2.55), organic sales -2% to -1% (was -1% to +1%). Tariffs adding 230bp of margin compression. Volume 2.3x avg at 52-week low.</p>
-
 <p class="body-text"><b>ARES -6.0%, APO -4.1%, BX -2.6%</b> — The alternative asset manager complex is under broad pressure as rising rates and geopolitical uncertainty compress risk appetite for credit-sensitive strategies. ARES is trading at RSI 26.3, the most oversold of the group. This isn't a single-name story; it's a sector-wide de-rating as the market re-prices credit risk in a higher-rate, war-premium environment. Watch for any signs of fund gating or redemption stress.</p>
-
 <p class="body-text"><b>CF +7.6%, MOS +7.1%</b> — Fertilizer names are surging on Iran conflict read-throughs. Iran's Strait of Hormuz disruption threatens global natural gas supply chains, and nat gas is a key input for fertilizer production. CF Industries RSI is 73.2 and approaching overbought territory. This is a pure geopolitical trade that unwinds fast if the conflict resolves.</p>
-
 <p class="body-text"><b>FICO -10.0% ($1,292)</b> — Fair Isaac hit a fresh 52-week low after announcing a $1B senior notes offering, layered on top of the broad risk-off environment. The stock is now down 25% over the past year and 42% off its 52-week high of $2,218. RSI at 29.1 is firmly oversold. Insider selling has been persistent: 65 trades in 6 months, all sales, zero purchases. Volume 1.4x avg.</p>
-
-<div class="callout">
-    <div class="callout-hdr">CPI IN-LINE BUT MARKETS LOOKING THROUGH IT</div>
-    February CPI: headline +0.3% m/m, 2.4% y/y; core +0.2% m/m, 2.5% y/y — all in-line with consensus. But this is pre-conflict data. March CPI will capture the energy shock. Strategists warn headline could hit 3.5% by year-end if oil stays elevated. The Fed is boxed: can't cut with inflation re-accelerating, can't hike with the economy absorbing a geopolitical shock. Next Fed meeting March 18 — expect a hold with hawkish language on energy pass-through.
-</div>
-
+<div class="callout"><div class="callout-hdr">CPI IN-LINE BUT MARKETS LOOKING THROUGH IT</div>February CPI: headline +0.3% m/m, 2.4% y/y; core +0.2% m/m, 2.5% y/y — all in-line with consensus. But this is pre-conflict data. March CPI will capture the energy shock. Strategists warn headline could hit 3.5% by year-end if oil stays elevated. The Fed is boxed: can't cut with inflation re-accelerating, can't hike with the economy absorbing a geopolitical shock. Next Fed meeting March 18 — expect a hold with hawkish language on energy pass-through.</div>
 <div class="section-hdr">RATES / FX / COMMODITIES</div>
 <div class="cards-row">
-    <div class="card"><div class="card-label">2Y / 10Y</div><div class="card-val">3.64 / 4.21</div><div class="card-chg red">+5bp / +5bp</div><div class="card-note">Curve 57bp, steepening</div></div>
-    <div class="card"><div class="card-label">DXY</div><div class="card-val">99.22</div><div class="card-chg green">+0.40%</div><div class="card-note">Safe haven bid</div></div>
-    <div class="card"><div class="card-label">GOLD</div><div class="card-val">$5,168</div><div class="card-chg red">-0.46%</div><div class="card-note">Profit-taking off ATH</div></div>
-    <div class="card"><div class="card-label">WTI CRUDE</div><div class="card-val">$88.11</div><div class="card-chg green">+5.58%</div><div class="card-note">IEA 400M bbl release</div></div>
+<div class="card"><div class="card-label">2Y / 10Y</div><div class="card-val">3.64 / 4.21</div><div class="card-chg red">+5bp / +5bp</div><div class="card-note">Curve 57bp, steepening</div></div>
+<div class="card"><div class="card-label">DXY</div><div class="card-val">99.22</div><div class="card-chg green">+0.40%</div><div class="card-note">Safe haven bid</div></div>
+<div class="card"><div class="card-label">GOLD</div><div class="card-val">$5,168</div><div class="card-chg red">-0.46%</div><div class="card-note">Profit-taking off ATH</div></div>
+<div class="card"><div class="card-label">WTI CRUDE</div><div class="card-val">$88.11</div><div class="card-chg green">+5.58%</div><div class="card-note">IEA 400M bbl release</div></div>
 </div>
-
 <p class="body-text">The 10Y yield pushing above 4.21% despite in-line CPI tells you the bond market is pricing the oil shock forward, not backward. The 2s/10s curve is steepening at +57bp as front-end rates stay pinned on Fed hold expectations while the long end reprices inflation risk. <b>DXY</b> +0.40% at 99.22 is catching a safe-haven bid. <b>Gold</b> -0.46% is a modest pullback from recent all-time highs near $5,200; the YTD gain is still +19.7%. <b>WTI crude</b> at $88.11 (+5.6%) is the story of the day: the IEA's record 400M-barrel reserve release was supposed to cap prices, but the market is telling you it's not enough if the Strait of Hormuz remains choked. <b>Nat gas</b> +4.5% at $3.16 as Iran disruptions threaten LNG supply chains, directly benefiting the CF/MOS fertilizer trade.</p>
-
-<div class="callout dark-border">
-    <div class="callout-hdr" style="color:var(--text-dim)">WATCHING INTO THE CLOSE</div>
-    <p style="margin-bottom:8px"><b>KEY LEVELS:</b> SPX support 6,740 (March low), resistance 6,781 (yesterday close), then 6,800. RTY holding 2,520, a break below opens 2,480. VIX 25 is the pivot — above 27 signals escalation.</p>
-    <p style="margin-bottom:8px"><b>CATALYSTS:</b> IEA reserve release details throughout the afternoon. Iran/Strait of Hormuz headlines overnight. Fed meeting March 18. No major after-hours earnings tonight.</p>
-    <p><b>SETUPS:</b> 44 S&P 500 names with RSI &lt;30 including STE (23.5), COO (23.7), CRH (24.3), LEN (25.2), MDT (25.8), CPB (26.0), ARES (26.3). Overbought: CF (73.2), MPC (69.4), VLO (68.6). Energy names vulnerable to snap-back if ceasefire headlines emerge.</p>
-</div>
-
-<div class="bottom-line">
-    <div class="bl-hdr">Bottom Line</div>
-    <p class="body-text" style="margin-bottom:0">This is an oil-shock tape masquerading as a flat market. The S&P is down 0.3% but the internals are ugly: 3 of 92 financials green, 44 names in oversold territory, breadth running 1:2.3 against. Oracle's AI monster-quarter is the one thing keeping the tech bid alive, but it's a single-name story, not a sector story. The real development is the IEA's 400M-barrel reserve release failing to cap crude — if the Strait of Hormuz stays shut, we're looking at $100 oil and a CPI re-acceleration that boxes the Fed into a corner at next week's meeting. The CPI print was clean but backward-looking; the forward picture is stagflationary if this conflict drags into April. Stay defensive, trim energy longs into strength, and don't bottom-fish financials until the rate picture stabilizes.</p>
-</div>
-
+<div class="callout dark-border"><div class="callout-hdr" style="color:var(--text-dim)">WATCHING INTO THE CLOSE</div><p style="margin-bottom:8px"><b>KEY LEVELS:</b> SPX support 6,740 (March low), resistance 6,781 (yesterday close), then 6,800. RTY holding 2,520, a break below opens 2,480. VIX 25 is the pivot — above 27 signals escalation.</p><p style="margin-bottom:8px"><b>CATALYSTS:</b> IEA reserve release details throughout the afternoon. Iran/Strait of Hormuz headlines overnight. Fed meeting March 18. No major after-hours earnings tonight.</p><p><b>SETUPS:</b> 44 S&P 500 names with RSI &lt;30 including STE (23.5), COO (23.7), CRH (24.3), LEN (25.2), MDT (25.8), CPB (26.0), ARES (26.3). Overbought: CF (73.2), MPC (69.4), VLO (68.6). Energy names vulnerable to snap-back if ceasefire headlines emerge.</p></div>
+<div class="bottom-line"><div class="bl-hdr">Bottom Line</div><p class="body-text" style="margin-bottom:0">This is an oil-shock tape masquerading as a flat market. The S&P is down 0.3% but the internals are ugly: 3 of 92 financials green, 44 names in oversold territory, breadth running 1:2.3 against. Oracle's AI monster-quarter is the one thing keeping the tech bid alive, but it's a single-name story, not a sector story. The real development is the IEA's 400M-barrel reserve release failing to cap crude — if the Strait of Hormuz stays shut, we're looking at $100 oil and a CPI re-acceleration that boxes the Fed into a corner at next week's meeting. The CPI print was clean but backward-looking; the forward picture is stagflationary if this conflict drags into April. Stay defensive, trim energy longs into strength, and don't bottom-fish financials until the rate picture stabilizes.</p></div>
 <div class="footer">CONFIDENTIAL — FOR INSTITUTIONAL USE ONLY &nbsp;&nbsp;&nbsp;&nbsp; 22V RESEARCH TRADING DESK</div>
-
 </div>
 </body>
 </html>

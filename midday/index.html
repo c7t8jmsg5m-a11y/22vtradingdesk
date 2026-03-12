@@ -25,8 +25,14 @@ body {
   background: var(--cream);
   color: var(--dark-text);
   line-height: 1.5;
+  overflow-x: hidden;
 }
-.container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+.page-wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+  background: var(--cream);
+}
+.container { max-width: 860px; margin: 0 auto; padding: 0 40px; }
 
 /* Header */
 .header {
@@ -65,13 +71,15 @@ body {
 .headline-section { padding: 28px 0 6px; }
 .headline {
   font-family: 'Playfair Display', serif;
-  font-size: 30px; font-weight: 900; line-height: 1.2;
+  font-size: 28px; font-weight: 900; line-height: 1.2;
   color: var(--dark-navy);
+  max-width: 720px;
 }
 .lede {
   font-family: 'Playfair Display', serif;
   font-style: italic; font-size: 15px; color: var(--gray-text);
   line-height: 1.55; margin-top: 12px;
+  max-width: 720px;
 }
 .lede strong { color: var(--dark-text); font-style: normal; }
 
@@ -81,6 +89,7 @@ body {
   background: #fff; border-radius: 6px; margin: 20px 0;
   box-shadow: 0 1px 4px rgba(0,0,0,0.08);
   overflow: hidden;
+  max-width: 100%;
 }
 .index-card {
   padding: 14px 10px; text-align: center;
@@ -112,6 +121,7 @@ body {
 }
 .section p {
   font-size: 14.5px; line-height: 1.65; margin-bottom: 10px;
+  max-width: 100%;
 }
 .section p strong { font-weight: 700; }
 
@@ -122,6 +132,7 @@ body {
   padding: 14px 18px;
   margin: 16px 0;
   font-size: 13.5px; line-height: 1.6;
+  border-radius: 0 4px 4px 0;
 }
 .callout-title {
   font-family: 'JetBrains Mono', monospace;
@@ -152,6 +163,7 @@ body {
 .sector-table {
   width: 100%; border-collapse: collapse; margin: 12px 0;
   font-size: 13px;
+  table-layout: fixed;
 }
 .sector-table th {
   font-family: 'JetBrains Mono', monospace;
@@ -249,6 +261,7 @@ body {
 </style>
 </head>
 <body>
+<div class="page-wrapper">
 
 <!-- HEADER -->
 <div class="header">
@@ -483,5 +496,6 @@ body {
   CONFIDENTIAL &mdash; FOR INSTITUTIONAL USE ONLY &nbsp;&nbsp;&nbsp; 22V RESEARCH TRADING DESK
 </div>
 
+</div><!-- end page-wrapper -->
 </body>
 </html>

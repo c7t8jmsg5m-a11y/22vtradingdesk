@@ -81,6 +81,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
     <div class="mono" style="font-size:48px;font-weight:900;color:var(--red);line-height:1">7<span style="font-size:24px;color:var(--muted)">/10</span></div>
     <div>
       <span class="pill p-r">ACTIVE DETERIORATION</span>
+      <span class="chg chg-d">&#9650; from 7</span>
       <div style="font-size:11px;color:var(--muted);margin-top:6px">2026-03-13 <span style="color:var(--red)">2026-03-13</span></div>
     </div>
   </div>
@@ -162,13 +163,13 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
     </div>
     <div class="lr">
       <div style="flex:1">
-        <div class="ln">L5A: Vol Structure <span style="font-size:10px;color:var(--amber);font-weight:800">0.5/1</span>
+        <div class="ln">L5A: Vol Structure <span style="font-size:10px;color:var(--red);font-weight:800">1.0/1</span>
         </div>
-        <div class="ld">VIX 27.19 above 22</div>
+        <div class="ld">VIX 27.19 above 22 | IV/HV divergence: 23.0/12.8</div>
       </div>
       <div class="dots">
-        <div class="dot" style="background:var(--amber)"></div>
-        <div class="dot" style="background:var(--dim)"></div>
+        <div class="dot" style="background:var(--red)"></div>
+        <div class="dot" style="background:var(--red)"></div>
       </div>
     </div>
     <div class="lr">
@@ -194,13 +195,25 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
       </div>
     </div>
   </div>
+  <div class="card glow-a">
+    <div style="font-size:13px;font-weight:700;color:var(--amber);margin-bottom:8px">&#9889; Score Update — 7 &rarr; 7 (2026-03-13)</div>
+    <div style="font-size:12px;line-height:1.7">
+      <strong>L1:</strong> Margin $1279.0B above $1T record (Jun 2025) | HF gross: GS 285%, JPM 298%<br>
+      <strong>L2:</strong> Margin YoY +36.5% (>20% threshold) | Debt/GDP 4.07% above 3.5% threshold<br>
+      <strong>L3:</strong> NFCI -0.514 — loose (tightening) | HY OAS 317bp (wider) | SOFR 3.65%<br>
+      <strong>L4:</strong> High concentration: AI Infra Concentration, Mag 7 % of HF Net, Semis Net Exposure, Multistrat Leverage | AI infra cluster + Mag7 rotation confirmed by Q4 13Fs<br>
+      <strong>L5A:</strong> VIX 27.19 above 22 | IV/HV divergence: 23.0/12.8<br>
+      <strong>L5B:</strong> P/C 1.02 — elevated fear | VIX 30d RoC +34%<br>
+      <strong>L6:</strong> HIGH events within 30d: FOMC Meeting + Dot Plot (5d), Quad Witching OPEX (7d), Quarter-End Rebalancing (18d)<br>
+    </div>
+  </div>
   <div class="card" style="border-color:rgba(245,158,11,.3)">
     <div style="font-size:14px;font-weight:700;margin-bottom:12px;color:var(--amber)">Real-Time Pulse</div>
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:14px">
       <div style="text-align:center;padding:14px 10px;background:rgba(239,68,68,.06);border-radius:8px;border:1px solid rgba(239,68,68,.15)">
         <div style="font-size:9px;color:var(--muted);letter-spacing:1px;text-transform:uppercase">Turbulence</div>
         <div class="mono" style="font-size:18px;font-weight:800;color:var(--red);margin-top:6px">ELEVATED</div>
-        <div style="font-size:9px;color:var(--dim);margin-top:4px">VIX 27.19 &bull; SPX 6946.13</div>
+        <div style="font-size:9px;color:var(--dim);margin-top:4px">VIX 27.19 &bull; SPX 6632.19</div>
       </div>
       <div style="text-align:center;padding:14px 10px;background:rgba(239,68,68,.06);border-radius:8px;border:1px solid rgba(239,68,68,.15)">
         <div style="font-size:9px;color:var(--muted);letter-spacing:1px;text-transform:uppercase">Regime</div>
@@ -226,18 +239,18 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
       </div>
       <div class="st">
         <div class="st-l">GEX (Barchart)</div>
-        <div class="st-v" style="color:var(--green)">LONG
+        <div class="st-v" style="color:var(--green)">SHORT
         </div>
-        <div class="st-s">Flip 6865 &bull; Walls 7000</div>
+        <div class="st-s">Flip 6804 &bull; Walls 6800</div>
       </div>
       <div class="st">
         <div class="st-l">VIX</div>
         <div class="st-v" style="color:var(--red)">27.19</div>
-        <div class="st-s">IV 14.33%</div>
+        <div class="st-s">IV 22.98%</div>
       </div>
       <div class="st">
         <div class="st-l">CBOE SKEW</div>
-        <div class="st-v">139.94</div>
+        <div class="st-v">137.76</div>
         <div class="st-s">MODERATE</div>
       </div>
       <div class="st">
@@ -267,8 +280,8 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
       </div>
       <div class="st">
         <div class="st-l">IV / HV</div>
-        <div class="st-v">14.33% / 12.83%</div>
-        <div class="st-s">IV Rank 11.52%</div>
+        <div class="st-v">22.98% / 12.79%</div>
+        <div class="st-s">IV Rank 38.62%</div>
       </div>
     </div>
   </div>
@@ -433,10 +446,10 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
       </div>
       <div class="mc" style="border-color:rgba(34,197,94,.25)">
         <div class="mc-l">GEX</div>
-        <div class="mc-v" style="color:var(--green)">LONG
+        <div class="mc-v" style="color:var(--muted)">SHORT
         </div>
         <div class="mc-s" style="color:var(--muted);font-weight:700">0 pts</div>
-        <div class="mc-s">Flip 6865 &bull; SPX above</div>
+        <div class="mc-s">Flip 6804 &bull; SPX below</div>
       </div>
       <div class="mc" style="border-color:rgba(239,68,68,.25)">
         <div class="mc-l">VIX 30d RoC</div>
@@ -446,7 +459,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
       </div>
       <div class="mc" style="border-color:rgba(100,116,139,.25)">
         <div class="mc-l">CBOE SKEW</div>
-        <div class="mc-v" style="color:var(--muted)">139.94</div>
+        <div class="mc-v" style="color:var(--muted)">137.76</div>
         <div class="mc-s" style="color:var(--muted);font-weight:700">MODERATE</div>
         <div class="mc-s">Threshold: &gt; 145</div>
       </div>
@@ -456,19 +469,19 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
   <div class="card">
     <div style="font-size:14px;font-weight:700;margin-bottom:10px">Vol Surface</div>
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px">
-      <div class="mc"><div class="mc-l">IV</div><div class="mc-v" style="font-size:20px">14.33%</div></div>
-      <div class="mc"><div class="mc-l">HV (30d)</div><div class="mc-v" style="font-size:20px">12.83%</div></div>
-      <div class="mc"><div class="mc-l">IV Rank</div><div class="mc-v" style="font-size:20px">11.52%</div></div>
-      <div class="mc"><div class="mc-l">IV Pctl</div><div class="mc-v" style="font-size:20px">54.0%</div></div>
+      <div class="mc"><div class="mc-l">IV</div><div class="mc-v" style="font-size:20px">22.98%</div></div>
+      <div class="mc"><div class="mc-l">HV (30d)</div><div class="mc-v" style="font-size:20px">12.79%</div></div>
+      <div class="mc"><div class="mc-l">IV Rank</div><div class="mc-v" style="font-size:20px">38.62%</div></div>
+      <div class="mc"><div class="mc-l">IV Pctl</div><div class="mc-v" style="font-size:20px">94.0%</div></div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:10px">
-      <div class="mc" style="border-color:rgba(34,197,94,.2)">
+      <div class="mc" style="border-color:rgba(239,68,68,.2)">
         <div class="mc-l">GEX Flip</div>
-        <div class="mc-v" style="color:var(--green);font-size:20px">6865</div>
-        <div class="mc-s">SPX above &rarr; long &gamma;</div>
+        <div class="mc-v" style="color:var(--red);font-size:20px">6804</div>
+        <div class="mc-s">SPX below &rarr; short &gamma;</div>
       </div>
-      <div class="mc"><div class="mc-l">Put Wall</div><div class="mc-v" style="font-size:20px">7000</div></div>
-      <div class="mc"><div class="mc-l">Call Wall</div><div class="mc-v" style="font-size:20px">7000</div></div>
+      <div class="mc"><div class="mc-l">Put Wall</div><div class="mc-v" style="font-size:20px">6800</div></div>
+      <div class="mc"><div class="mc-l">Call Wall</div><div class="mc-v" style="font-size:20px">6800</div></div>
     </div>
     <div style="font-size:10px;color:var(--muted);margin-top:6px;text-align:right">Source: Barchart &mdash; 2026-03-13</div>
   </div>

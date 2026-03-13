@@ -2,18 +2,23 @@
   "timestamp": "2026-03-12T16:00:00.000000",
   "source_tier": "manual_bloomberg",
   "pc_ratio": {
-    "equity": 1.187,
+    "equity": 0.68,
     "index": null,
     "total": null,
     "equity_5d_ma": null,
     "equity_20d_ma": null,
-    "signal": "EXTREME_FEAR",
+    "signal": "NEUTRAL",
     "history_30d": [
       {
         "date": "2026-02-25",
         "value": 1.187
+      },
+      {
+        "date": "2026-03-12",
+        "value": 0.68
       }
-    ]
+    ],
+    "_note": "Updated from Bloomberg PCUSEQTR 3/12. Prior pipeline value 1.187 was stale/incorrect from 3/9."
   },
   "gex": {
     "estimate_bn": null,
@@ -29,12 +34,12 @@
     "iv_percentile": 93.0
   },
   "skew": {
-    "cboe_skew": 146.05,
+    "cboe_skew": 139.94,
     "put_25d_vol": 18.87,
     "call_25d_vol": 10.86,
     "risk_reversal": -8.01,
     "atm_iv": 15.51,
-    "signal": "ELEVATED",
+    "signal": "MODERATE",
     "history_monthly": [
       {
         "date": "2025-08-26",
@@ -539,6 +544,10 @@
       {
         "date": "2026-02-25",
         "value": 146.05
+      },
+      {
+        "date": "2026-03-12",
+        "value": 139.94
       }
     ]
   },
@@ -605,7 +614,8 @@
         "oi": 38937
       }
     ],
-    "_note": "Volume data stale since 3/9 \u2014 cron job not firing. P/C ratio may not reflect current."
+    "_note": "SPX total volume 939.9M on 3/12. 0DTE breakdown and DIX require specialized sources.",
+    "spx_total_volume": 939898459
   },
   "vix": {
     "current": 25.66,
@@ -2135,14 +2145,14 @@
   ],
   "alerts": [
     {
-      "type": "PC_EXTREME_FEAR",
-      "message": "Equity P/C at 1.19 \u2014 extreme fear. (Pipeline data from 3/9, may have shifted)",
-      "severity": "critical"
+      "type": "PC_NEUTRAL",
+      "message": "Equity P/C at 0.68 \u2014 neutral/slightly bullish. Prior pipeline reading of 1.187 was stale.",
+      "severity": "info"
     },
     {
-      "type": "SKEW_ELEVATED",
-      "message": "CBOE SKEW at 146 \u2014 above average tail demand",
-      "severity": "warning"
+      "type": "SKEW_MODERATE",
+      "message": "CBOE SKEW at 139.94 \u2014 moderate tail demand, down from 146.05 prior read.",
+      "severity": "info"
     },
     {
       "type": "GEX_DEEP_NEGATIVE",
@@ -2161,7 +2171,7 @@
     },
     {
       "type": "VIX_ELEVATED",
-      "message": "VIX 25.66, VVIX 130.18, IV Pctile 93rd. Vol regime stressed.",
+      "message": "VIX 25.66, VVIX 130.18, IV Pctile 93rd.",
       "severity": "warning"
     }
   ],

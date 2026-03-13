@@ -125,7 +125,19 @@
       "score": 2.0,
       "max": 2,
       "label": "Vol & Options Regime",
-      "details": "VIX 25.66, VVIX 130.18, P/C 1.187 EXTREME FEAR, GEX 776pts below flip, risk reversal -8.01, VIX 30d RoC +60%. All metrics at max."
+      "details": "VIX 25.66, VVIX 130.18, GEX 776pts below flip, VIX 30d RoC +60%. P/C corrected to 0.68 (NEUTRAL) \u2014 protection demand LOW despite stress. SKEW 139.94 (down from 146). Complacency-within-stress pattern: market not hedging despite deep negative gamma.",
+      "sub_scores": {
+        "l5a_vol_structure": {
+          "score": 1.0,
+          "max": 1.0,
+          "details": "VIX 25.66 (>22) +0.5. VVIX 130.18 (>110) +0.5. IV 22.13% vs HV 12.72%. IV Percentile 93%."
+        },
+        "l5b_options_sentiment": {
+          "score": 1.0,
+          "max": 1.0,
+          "details": "P/C 0.68 NEUTRAL (<0.85, no points). GEX DEEP NEGATIVE 776pts below flip (+0.5). VIX 30d RoC +60% >>25% (+0.5). SKEW 139.94. NOTE: Low P/C + deep negative gamma = complacency-within-stress. Less hedging cushion amplifies cascade risk."
+        }
+      }
     },
     "l6": {
       "score": 1,
@@ -280,7 +292,7 @@
       "L1 (ALL-TIME HIGH) + L3 (7wk tightening) = Minsky risk ELEVATED and ACCELERATING",
       "L4 (Mag7 42.1%) + L5 (GEX 776pts below flip) = MAXIMUM amplification risk",
       "L2 (margin 2.4x market) + L6 (FOMC 5d + OPEX 7d + PCE today) = TIMING CONVERGENCE",
-      "L5 EXTREME FEAR + L1-L3 elevated = OPTIONS AND STRUCTURE ALIGNED",
+      "L5 options (P/C 0.68 NEUTRAL + GEX 776pts below flip) + L1-L3 elevated = COMPLACENCY-WITHIN-STRESS. Market NOT hedging despite deep negative gamma and structural fragility. Less put cushion = less dealer support on downticks.",
       "MOVE +21% to 95.30 = bond vol propagating. Cross-asset contagion channel active."
     ],
     "narrative": "RELIEF RALLY FAILED. March 10 bounce fully reversed. SPX -1.52% to 6672, below 50d and 200d MAs. MOVE explosion (+21%) signals bond market stress. GEX gap widened to 776pts. NFCI tightened 7 straight weeks. FOMC + OPEX in 5-7 days = max catalyst density against max structural fragility. All six layers contributing for first time this cycle.",
@@ -289,14 +301,14 @@
   },
   "commentary": {
     "headline_type": "CASCADE_IMMINENT",
-    "key_tension": "All six layers firing. Relief rally failed, MOVE +21%, GEX 776pts below flip, NFCI 7wk tightening, FOMC/OPEX in 5-7 days.",
+    "key_tension": "All six layers firing. P/C corrected to 0.68 \u2014 market NOT hedging despite deep negative gamma (776pts below flip) and structural fragility. Complacency-within-stress is MORE dangerous than fear: less put buying = less dealer hedging support = amplified downside.",
     "l3_direction": "tightening_accelerating",
     "bottom_line": "CASCADE IMMINENT (9.5/10). Up from 7.0 on 3/10. SPX 6672 below 50d/200d. MOVE +21%. GEX 776pts below flip. NFCI 7wk tightening. Margin $1.28T ALL-TIME HIGH. FOMC + OPEX in 5-7 days. De-risk materially."
   },
   "alerts": [
     {
-      "type": "SCORE_UPGRADE",
-      "message": "7.0 \u2192 9.5. CASCADE IMMINENT. All six layers firing.",
+      "type": "SCORE_CONFIRMED",
+      "message": "9.5/10 CASCADE IMMINENT confirmed after P/C correction. Score unchanged \u2014 GEX + VIX RoC path still scores full L5B. But narrative shifts: complacency-within-stress, not fear.",
       "severity": "critical"
     },
     {

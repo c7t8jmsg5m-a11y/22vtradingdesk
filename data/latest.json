@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-03-09T09:45:00.000000",
-  "source_tier": "free",
+  "timestamp": "2026-03-12T16:00:00.000000",
+  "source_tier": "manual_bloomberg",
   "pc_ratio": {
     "equity": 1.187,
     "index": null,
@@ -18,11 +18,15 @@
   "gex": {
     "estimate_bn": null,
     "level": "DEEP_NEGATIVE",
-    "flip_point": 7363.35,
+    "flip_point": 7448.42,
     "call_wall": 6900.0,
-    "put_wall": 6900.0,
-    "last_price": 6740.02,
-    "history_5d": []
+    "put_wall": 6700.0,
+    "last_price": 6672.62,
+    "history_5d": [],
+    "iv": 22.13,
+    "hv": 12.72,
+    "iv_rank": 35.94,
+    "iv_percentile": 93.0
   },
   "skew": {
     "cboe_skew": 146.05,
@@ -600,11 +604,12 @@
         "volume": 53742,
         "oi": 38937
       }
-    ]
+    ],
+    "_note": "Volume data stale since 3/9 \u2014 cron job not firing. P/C ratio may not reflect current."
   },
   "vix": {
-    "current": 31.86,
-    "change": 2.37,
+    "current": 25.66,
+    "change": -1.63,
     "history_30d": [
       {
         "date": "2026-01-26",
@@ -701,6 +706,38 @@
       {
         "date": "2026-03-02",
         "value": 21.54
+      },
+      {
+        "date": "2026-03-03",
+        "value": 23.81
+      },
+      {
+        "date": "2026-03-04",
+        "value": 21.11
+      },
+      {
+        "date": "2026-03-05",
+        "value": 23.78
+      },
+      {
+        "date": "2026-03-06",
+        "value": 26.77
+      },
+      {
+        "date": "2026-03-09",
+        "value": 31.86
+      },
+      {
+        "date": "2026-03-10",
+        "value": 24.85
+      },
+      {
+        "date": "2026-03-11",
+        "value": 27.29
+      },
+      {
+        "date": "2026-03-12",
+        "value": 25.66
       }
     ]
   },
@@ -711,10 +748,10 @@
   },
   "financing": {
     "nfci": {
-      "current": -0.5236,
+      "current": -0.5137,
       "prev": -0.5654,
       "change": 0.0024,
-      "as_of": "2026-02-20",
+      "as_of": "2026-03-12",
       "history_90d": [
         {
           "date": "2025-11-28",
@@ -767,12 +804,20 @@
         {
           "date": "2026-02-20",
           "value": -0.56294
+        },
+        {
+          "date": "2026-03-06",
+          "value": -0.5236
+        },
+        {
+          "date": "2026-03-12",
+          "value": -0.5137
         }
       ]
     },
     "nfci_leverage": {
       "current": -0.0754,
-      "as_of": "2026-02-20",
+      "as_of": "2026-03-12",
       "history_90d": [
         {
           "date": "2025-11-28",
@@ -829,10 +874,10 @@
       ]
     },
     "hy_oas": {
-      "current": 2.97,
-      "prev": 2.95,
-      "change": 0.02,
-      "as_of": "2026-02-24",
+      "current": 2.98,
+      "prev": 2.97,
+      "change": 0.01,
+      "as_of": "2026-03-12",
       "history_90d": [
         {
           "date": "2025-11-27",
@@ -1089,12 +1134,32 @@
         {
           "date": "2026-02-24",
           "value": 2.97
+        },
+        {
+          "date": "2026-03-02",
+          "value": 2.97
+        },
+        {
+          "date": "2026-03-06",
+          "value": 3.01
+        },
+        {
+          "date": "2026-03-09",
+          "value": 3.05
+        },
+        {
+          "date": "2026-03-10",
+          "value": 3.01
+        },
+        {
+          "date": "2026-03-12",
+          "value": 2.98
         }
       ]
     },
     "ccc_oas": {
       "current": 9.15,
-      "as_of": "2026-02-24",
+      "as_of": "2026-03-12",
       "history_90d": [
         {
           "date": "2025-11-27",
@@ -1355,10 +1420,10 @@
       ]
     },
     "sofr": {
-      "current": 3.68,
-      "prev": 3.67,
+      "current": 3.65,
+      "prev": 3.64,
       "change": 0.01,
-      "as_of": "2026-02-24",
+      "as_of": "2026-03-12",
       "history_90d": [
         {
           "date": "2025-11-28",
@@ -1595,12 +1660,28 @@
         {
           "date": "2026-02-24",
           "value": 3.67
+        },
+        {
+          "date": "2026-03-02",
+          "value": 3.65
+        },
+        {
+          "date": "2026-03-06",
+          "value": 3.65
+        },
+        {
+          "date": "2026-03-10",
+          "value": 3.65
+        },
+        {
+          "date": "2026-03-12",
+          "value": 3.65
         }
       ]
     },
     "bbb_oas": {
       "current": 1.02,
-      "as_of": "2026-02-24",
+      "as_of": "2026-03-12",
       "history_90d": [
         {
           "date": "2025-11-27",
@@ -1860,7 +1941,7 @@
         }
       ]
     },
-    "signal": "LOOSE"
+    "signal": "TIGHTENING"
   },
   "margin_debt": {
     "current_bn": 1279.0,
@@ -2055,13 +2136,79 @@
   "alerts": [
     {
       "type": "PC_EXTREME_FEAR",
-      "message": "Equity P/C at 1.19 \u2014 extreme fear, contrarian buy zone",
+      "message": "Equity P/C at 1.19 \u2014 extreme fear. (Pipeline data from 3/9, may have shifted)",
       "severity": "critical"
     },
     {
       "type": "SKEW_ELEVATED",
       "message": "CBOE SKEW at 146 \u2014 above average tail demand",
       "severity": "warning"
+    },
+    {
+      "type": "GEX_DEEP_NEGATIVE",
+      "message": "GEX flip 7448, SPX 6672 = 776pts below. Dealers massively short gamma.",
+      "severity": "critical"
+    },
+    {
+      "type": "MOVE_EXPLOSION",
+      "message": "MOVE +21% to 95.30. Bond vol propagating cross-asset.",
+      "severity": "critical"
+    },
+    {
+      "type": "NFCI_TIGHTENING",
+      "message": "NFCI -0.5137. 7th consecutive week of tightening.",
+      "severity": "warning"
+    },
+    {
+      "type": "VIX_ELEVATED",
+      "message": "VIX 25.66, VVIX 130.18, IV Pctile 93rd. Vol regime stressed.",
+      "severity": "warning"
     }
-  ]
+  ],
+  "cross_asset": {
+    "source": "Bloomberg Terminal 03/12/2026 close",
+    "spx": 6672.62,
+    "spx_chg_pct": -1.52,
+    "esa": 6707.75,
+    "esa_chg_pct": 0.45,
+    "vix": 25.66,
+    "vix_chg_pct": -5.97,
+    "vix_mtd_pct": 29.2,
+    "vix_ytd_pct": 71.64,
+    "vvix": 130.18,
+    "vvix_chg_pct": 6.28,
+    "vvix_wtd_pct": -7.31,
+    "vvix_mtd_pct": 17.4,
+    "move": 95.3,
+    "move_chg_pct": 21.26,
+    "move_wtd_pct": 17.28,
+    "move_mtd_pct": 29.87,
+    "dxy": 100.07,
+    "dxy_chg_pct": 0.33,
+    "ust2y": 3.7085,
+    "ust5y": 3.8419,
+    "ust10y": 4.2512,
+    "ust30y": 4.8846,
+    "usyc2y10": 54.062,
+    "gold": 5115.34,
+    "gold_chg_pct": 0.71,
+    "silver": 83.849,
+    "oil_wti": 93.6,
+    "oil_chg_pct": -2.22,
+    "oil_mtd_pct": 39.66,
+    "natgas": 3.281,
+    "copper": 572.9,
+    "rty": 2488.99,
+    "rty_chg_pct": -2.12,
+    "ccmp": 22311.98,
+    "ccmp_chg_pct": -1.78,
+    "indu": 46677.85,
+    "indu_chg_pct": -1.56,
+    "usdjpy": 159.32,
+    "nfci": -0.5137,
+    "sofr": 3.65,
+    "hy_oas": 2.98,
+    "spx_50d_ma": 6789.76,
+    "spx_200d_ma": 6869.38
+  }
 }

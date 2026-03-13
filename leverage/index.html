@@ -67,7 +67,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
 .mc-l{font-size:9px;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
 .mc-v{font-size:26px;font-weight:800;font-family:'JetBrains Mono',monospace;margin:6px 0}
 .mc-s{font-size:9px}
-@media(max-width:600px){.stats{gap:12px}.st{min-width:110px}.st-v{font-size:16px}.g4{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.stats{gap:12px}.st{min-width:110px}.st-v{font-size:16px}.g4{grid-template-columns:1fr 1fr}.g3{grid-template-columns:1fr 1fr}.mc-v{font-size:16px !important}}
 </style>
 </head>
 <body><div class="wrap">
@@ -97,6 +97,9 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
     <div class="m-s"></div>
     <span class="mono" style="margin-left:8px;font-size:14px;font-weight:800;color:var(--red)">7.8/10</span>
   </div>
+</div>
+<div class="al al-o" style="margin-bottom:12px">
+  <strong style="color:var(--amber)">&#9888; STALE DATA:</strong> L1 HF Leverage (2026-02-25) &bull; L4 Crowding (2026-02-25) — manual inputs need refresh
 </div>
 
 
@@ -270,6 +273,16 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
         <div class="st-v">22.98% / 12.79%</div>
         <div class="st-s">IV Rank 38.62%</div>
       </div>
+      <div class="st">
+        <div class="st-l">HYG</div>
+        <div class="st-v" style="color:var(--amber)">$79.20</div>
+        <div class="st-s" style="color:var(--muted)">-0.19%d / -0.61%w</div>
+      </div>
+      <div class="st">
+        <div class="st-l">CCC OAS</div>
+        <div class="st-v" style="color:var(--amber)">961bp</div>
+        <div class="st-s">Elevated</div>
+      </div>
     </div>
   </div>
 </div>
@@ -380,17 +393,32 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
         <div class="st-s">Wider from 309</div>
       </div>
       <div class="st">
-        <div class="st-l">GS FCI</div>
-        <div class="st-v" style="color:var(--green)">Loose</div>
-        <div class="st-s">Rate cuts + end of QT</div>
+        <div class="st-l">HYG (RT)</div>
+        <div class="st-v" style="color:var(--amber)">$79.20</div>
+        <div class="st-s" style="color:var(--muted)">-0.19%d / -0.61%w</div>
       </div>
       <div class="st">
         <div class="st-l">SOFR</div>
         <div class="st-v">3.65%</div>
         <div class="st-s">Stable</div>
       </div>
+      <div class="st">
+        <div class="st-l">CCC OAS</div>
+        <div class="st-v" style="color:var(--amber)">961bp</div>
+        <div class="st-s">Elevated</div>
+      </div>
+      <div class="st">
+        <div class="st-l">BBB OAS</div>
+        <div class="st-v" style="color:var(--green)">112bp</div>
+        <div class="st-s">Normal</div>
+      </div>
+      <div class="st">
+        <div class="st-l">LQD (RT)</div>
+        <div class="st-v" style="color:var(--red)">$108.17</div>
+        <div class="st-s">-0.37%d / -1.81%w</div>
+      </div>
     </div>
-    <div class="al al-o" style="margin-top:12px">TRIP WIRES: HY OAS &gt; 350bp &bull; NFCI &gt; -0.30 &bull; SOFR &gt; 4.50% &bull; PB margin hikes &bull; GS FCI &rarr; &ldquo;tightening&rdquo;</div>
+    <div class="al al-o" style="margin-top:12px">TRIP WIRES: HY OAS &gt; 350bp &bull; NFCI &gt; -0.30 &bull; CCC OAS &gt; 1000bp &bull; HYG &lt; -1%d &bull; SOFR &gt; 4.50% &bull; PB margin hikes</div>
   </div>
 </div>
 
@@ -461,7 +489,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
       <div class="mc"><div class="mc-l">IV Rank</div><div class="mc-v" style="font-size:20px">38.62%</div></div>
       <div class="mc"><div class="mc-l">IV Pctl</div><div class="mc-v" style="font-size:20px">94.0%</div></div>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:10px">
+    <div class="g3" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:10px">
       <div class="mc" style="border-color:rgba(239,68,68,.2)">
         <div class="mc-l">GEX Flip</div>
         <div class="mc-v" style="color:var(--red);font-size:20px">6804</div>
@@ -641,8 +669,8 @@ T.forEach(function(t,i){var b=document.createElement("button");b.className="tab"
     {q:"Q3 24",gs:268,jpm:278},{q:"Q4 24",gs:273,jpm:284},
     {q:"Q1 25",gs:275,jpm:288},{q:"Q2 25",gs:278,jpm:290},
     {q:"Q3 25",gs:280,jpm:294},
-    {q:"Q4 25",gs:285,jpm:298}
-  ],mn=240,mx=310,r=mx-mn,c=document.getElementById("hfc");
+    {q:"Latest",gs:285,jpm:298}
+  ],mn=240,mx=Math.max(310,298+12),r=mx-mn,c=document.getElementById("hfc");
   if(!c)return;
   var h="";
   d.forEach(function(x){
@@ -653,15 +681,16 @@ T.forEach(function(t,i){var b=document.createElement("button");b.className="tab"
 })();
 (function(){
   var d=[
-    {m:"Jul 25",g:18},{m:"Aug",g:20},{m:"Sep",g:22},{m:"Oct",g:25},{m:"Nov",g:28},{m:"Dec",g:30},
-    {m:"Current",g:28}
+    {m:"Feb 25",g:-2},{m:"Mar 25",g:-4},{m:"Apr 25",g:-3},{m:"May 25",g:8},{m:"Jun 25",g:9},{m:"Jul 25",g:1},{m:"Aug 25",g:4},{m:"Sep 25",g:6},{m:"Oct 25",g:5},{m:"Nov 25",g:3},{m:"Dec 25",g:1},{m:"Jan 26",g:4},
+    {m:"Gap",g:28}
   ],c=document.getElementById("gc");
   if(!c)return;
   var h="";
   d.forEach(function(x){
-    var p=Math.round((Math.abs(x.g)/40)*160),
-        k=x.g>25?"var(--red)":x.g>15?"var(--amber)":"var(--green)";
-    h+='<div class="bg"><div class="bs"><div class="b" style="height:'+p+'px;background:'+k+'"><div class="bt">+'+x.g+'pp</div></div></div><div class="bl">'+x.m+'</div></div>';
+    var p=Math.round((Math.abs(x.g)/40)*160);
+    if(p<8)p=8;
+    var k=Math.abs(x.g)>25?"var(--red)":Math.abs(x.g)>15?"var(--amber)":"var(--green)";
+    h+='<div class="bg"><div class="bs"><div class="b" style="height:'+p+'px;background:'+k+'"><div class="bt">'+(x.g>0?'+':'')+x.g+(x.m==="Gap"?"pp":"%")+'</div></div></div><div class="bl">'+x.m+'</div></div>';
   });
   c.innerHTML=h;
 })();
@@ -684,4 +713,4 @@ T.forEach(function(t,i){var b=document.createElement("button");b.className="tab"
 })();
 </script>
 </body>
-</html><!-- deployed 2026-03-13T22:38:43Z -->
+</html>

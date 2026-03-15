@@ -26,6 +26,7 @@ dix:
 zero_dte:
   warning_pct: 50            # 0DTE as % of total
   critical_pct: 60           # Structural fragility
+  oi_skew_warning: 2.0       # 0DTE put OI / call OI ratio — directional crowding
 
 risk_reversal:
   warning: -6.0              # Heavy put premium
@@ -35,6 +36,9 @@ vix:
   elevated: 20               # Above average fear
   spike: 25                  # Stress event
   extreme: 35                # Crisis level
+
+vix_term_structure:
+  critical: backwardation    # VIX spot > front month future = near-term stress
 
 # --- Leverage Monitor Scoring Thresholds ---
 

@@ -127,7 +127,11 @@ get(px_last) for('GDP CUR$ Index')
 # margin_debt_to_gdp = margin_debt / gdp
 
 
-# --- 2B. Layer 3: Financing Conditions ---
+# --- 2B. Layer 2: Flow of Funds / Fund Positioning ---
+# (Not yet implemented in BQL — EPFR, CFTC COT, or 13F data sources needed.
+#  Placeholder for when fund flow data is integrated into the pipeline.)
+
+# --- 2C. Layer 3: Financing Conditions ---
 
 # Goldman Sachs Financial Conditions Index
 get(px_last) for('GSUSFCI Index') with(dates=range(-90d,0d), fill=prev)
@@ -152,7 +156,7 @@ get(px_last, chg_pct_1d) for('HYG US Equity')
 get(px_last) for('USYC2Y10 Index') with(dates=range(-90d,0d), fill=prev)
 
 
-# --- 2C. Layer 4: Positioning / Crowding Proxies ---
+# --- 2D. Layer 4: Positioning / Crowding Proxies ---
 
 # Hedge Fund VIP proxy — GSTHHVIP basket performance
 get(px_last, chg_pct_1d, chg_pct_5d) for('GSTHHVIP Index')
@@ -167,12 +171,12 @@ get(px_last, chg_pct_1d) for('GSTHSMS Index')
 # If VIP basket underperforming SPX by >2% over 5d → de-grossing signal
 
 
-# --- 2D. Layer 5: Vol Regime (shared with Options Monitor) ---
+# --- 2E. Layer 5: Vol Regime (shared with Options Monitor) ---
 # Already covered in Section 1B above — VIX, VVIX, term structure, skew
 # Cross-reference with GEX from Section 1E
 
 
-# --- 2E. Layer 6: Calendar / Liquidity Events ---
+# --- 2F. Layer 6: Calendar / Liquidity Events ---
 
 # Fed Funds Futures (implied rate path)
 get(px_last) for('FF1 Comdty', 'FF2 Comdty', 'FF3 Comdty')
@@ -182,7 +186,7 @@ get(px_last) for('FF1 Comdty', 'FF2 Comdty', 'FF3 Comdty')
 get(px_last) for('USGG2YR Index', 'USGG10YR Index', 'USGG30YR Index')
 
 
-# --- 2F. Cross-Asset Context (bonus, useful for both systems) ---
+# --- 2G. Cross-Asset Context (bonus, useful for both systems) ---
 
 # Dollar index
 get(px_last, chg_pct_1d) for('DXY Curncy')

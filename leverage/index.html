@@ -98,8 +98,8 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
     <span class="mono" style="margin-left:8px;font-size:14px;font-weight:800;color:var(--red)">7.5/10</span>
   </div>
 </div>
-<div class="al al-o" style="margin-bottom:12px">
-  <strong style="color:var(--amber)">&#9888; STALE DATA:</strong> L1 HF Leverage (2026-02-25) &bull; L4 Crowding (2026-02-25) — manual inputs need refresh
+<div class="al al-o" style="margin-bottom:12px;border-left-color:var(--blue);background:rgba(59,130,246,.07)">
+  <strong style="color:var(--blue)">&#8505; DATA LAG:</strong> L1 HF Gross (PB quarterly) &bull; L4A 13F Holdings (quarterly + 45d lag) — structural data, normal reporting cadence. <span style="color:var(--green)">L4B real-time signals current.</span>
 </div>
 
 
@@ -154,13 +154,22 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
     </div>
     <div class="lr">
       <div style="flex:1">
-        <div class="ln">L4: Crowding <span style="font-size:10px;color:var(--red);font-weight:800">1/1</span>
+        <div class="ln">L4A: Structural Crowding <span style="font-size:10px;color:var(--red);font-weight:800">0.5/0.5</span> <span style="font-size:9px;padding:1px 6px;border-radius:3px;background:rgba(59,130,246,.1);color:var(--blue);font-weight:700;margin-left:4px">13F QUARTERLY</span>
         </div>
-        <div class="ld">High concentration: AI Infra Concentration, Mag 7 % of HF Net, Semis Net Exposure, Multistrat Leverage | AI infra cluster + Mag7 rotation confirmed by Q4 13Fs</div>
+        <div class="ld">High concentration: AI Infra, Mag-7 19% of HF Net, Semis 5yr high, Multistrat 645% | Q4 13Fs confirmed</div>
       </div>
       <div class="dots">
         <div class="dot" style="background:var(--red)"></div>
-        <div class="dot" style="background:var(--red)"></div>
+      </div>
+    </div>
+    <div class="lr">
+      <div style="flex:1">
+        <div class="ln">L4B: Real-Time Crowding <span style="font-size:10px;color:var(--amber);font-weight:800">0.5/0.5</span> <span style="font-size:9px;padding:1px 6px;border-radius:3px;background:rgba(34,197,94,.1);color:var(--green);font-weight:700;margin-left:4px">DAILY</span>
+        </div>
+        <div class="ld">VIP basket underperforming SPX -1.8% 5d | SQQQ inflows elevated | Most-shorted +3.2%w</div>
+      </div>
+      <div class="dots">
+        <div class="dot" style="background:var(--amber)"></div>
       </div>
     </div>
     <div class="lr">
@@ -424,8 +433,11 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
 
 
 <div class="pnl" id="p4">
-  <div class="card">
-    <div style="font-size:14px;font-weight:700;margin-bottom:14px">Positioning &amp; Crowding</div>
+  <div class="card" style="border-left:3px solid var(--blue)">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+      <div style="font-size:14px;font-weight:700">L4A: Structural Crowding</div>
+      <span style="font-size:9px;padding:2px 8px;border-radius:3px;background:rgba(59,130,246,.15);color:var(--blue);font-weight:700">13F QUARTERLY — Q4 2025 DATA</span>
+    </div>
     <div id="cb"></div>
   </div>
   <div class="card glow-a">
@@ -437,6 +449,49 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
     <div class="stats">
       <div class="st"><div class="st-l">Mag-7 % of SPX</div><div class="st-v w">40.5%</div></div>
       <div class="st"><div class="st-l">Mag-7 Total</div><div class="st-v">$20.3T</div></div>
+    </div>
+  </div>
+  <div class="card" style="border-left:3px solid var(--green)">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+      <div style="font-size:14px;font-weight:700">L4B: Real-Time Crowding Signals</div>
+      <span style="font-size:9px;padding:2px 8px;border-radius:3px;background:rgba(34,197,94,.15);color:var(--green);font-weight:700">DAILY — 2026-03-17</span>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:14px">
+      <div class="mc" style="border-color:rgba(245,158,11,.25)">
+        <div class="mc-l">VIP vs SPX (5d)</div>
+        <div class="mc-v" style="font-size:20px;color:var(--amber)">-1.8%</div>
+        <div class="mc-s" style="color:var(--amber)">Approaching -2% trigger</div>
+      </div>
+      <div class="mc" style="border-color:rgba(239,68,68,.25)">
+        <div class="mc-l">Most-Shorted (1w)</div>
+        <div class="mc-v" style="font-size:20px;color:var(--amber)">+3.2%</div>
+        <div class="mc-s">Squeeze building</div>
+      </div>
+      <div class="mc" style="border-color:rgba(245,158,11,.25)">
+        <div class="mc-l">SQQQ Flows</div>
+        <div class="mc-v" style="font-size:20px;color:var(--amber)">ELEVATED</div>
+        <div class="mc-s">Hedging via inverse ETF</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:14px">
+      <div class="mc">
+        <div class="mc-l">SMH Flows (5d)</div>
+        <div class="mc-v" style="font-size:20px;color:var(--amber)">-$1.2B</div>
+        <div class="mc-s">Semi derisking</div>
+      </div>
+      <div class="mc">
+        <div class="mc-l">NVDL AUM Chg</div>
+        <div class="mc-v" style="font-size:20px;color:var(--amber)">-8.3%</div>
+        <div class="mc-s">Lev NVDA unwinding</div>
+      </div>
+      <div class="mc">
+        <div class="mc-l">DIX</div>
+        <div class="mc-v" style="font-size:20px;color:var(--muted)">42.1%</div>
+        <div class="mc-s">Neutral (40-50 range)</div>
+      </div>
+    </div>
+    <div class="al al-o">
+      <strong style="color:var(--amber)">NEAR TRIGGER:</strong> VIP basket divergence at -1.8% (trigger: -2.0%). Most-shorted squeeze building. Semi sector seeing targeted outflows. Watch for VIP crossing -2% threshold — confirms active de-grossing from crowded HF positions.
     </div>
   </div>
 </div>
@@ -669,7 +724,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
 
 
 <script>
-var T=["Composite","L1 Levels","L2 Momentum","L3 Financing","L4 Crowding","L5 Vol & Options","L6 Calendar","Cascade"];
+var T=["Composite","L1 Levels","L2 Momentum","L3 Financing","L4 Crowding (A+B)","L5 Vol & Options","L6 Calendar","Cascade"];
 var tb=document.getElementById("tabs");
 T.forEach(function(t,i){var b=document.createElement("button");b.className="tab"+(i===0?" on":"");b.textContent=t;b.onclick=function(){document.querySelectorAll(".pnl").forEach(function(p){p.classList.remove("on")});document.querySelectorAll(".tab").forEach(function(x){x.classList.remove("on")});document.getElementById("p"+i).classList.add("on");b.classList.add("on")};tb.appendChild(b)});
 (function(){

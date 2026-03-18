@@ -67,7 +67,19 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
 .mc-l{font-size:9px;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
 .mc-v{font-size:26px;font-weight:800;font-family:'JetBrains Mono',monospace;margin:6px 0}
 .mc-s{font-size:9px}
-@media(max-width:600px){.stats{gap:12px}.st{min-width:110px}.st-v{font-size:16px}.g4{grid-template-columns:1fr 1fr}.g3{grid-template-columns:1fr 1fr}.mc-v{font-size:16px !important}}
+.tw{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.twc{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px 16px}
+.twc.warn{border-color:rgba(245,158,11,.25)}.twc.ok{border-color:rgba(34,197,94,.25)}
+.tw-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.tw-n{font-size:11px;font-weight:700;color:var(--muted)}
+.tw-val{font-size:22px;font-weight:800;font-family:'JetBrains Mono',monospace}
+.tw-bar{height:8px;background:var(--dim);border-radius:4px;position:relative;margin:8px 0 6px}
+.tw-fill{height:100%;border-radius:4px;transition:width .5s}
+.tw-mark{position:absolute;top:-3px;width:2px;height:14px;background:var(--red);border-radius:1px}
+.tw-mark-label{position:absolute;top:-14px;font-size:8px;color:var(--red);font-family:'JetBrains Mono',monospace;transform:translateX(-50%)}
+.tw-foot{display:flex;justify-content:space-between;font-size:10px}
+.tw-ctx{color:var(--muted)}.tw-dist{font-weight:700}
+@media(max-width:600px){.stats{gap:12px}.st{min-width:110px}.st-v{font-size:16px}.g4{grid-template-columns:1fr 1fr}.g3{grid-template-columns:1fr 1fr}.mc-v{font-size:16px !important}.tw{grid-template-columns:1fr}}
 </style>
 </head>
 <body><div class="wrap">
@@ -294,6 +306,57 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
       </div>
     </div>
   </div>
+  <div class="card">
+    <div style="font-size:14px;font-weight:700;margin-bottom:4px">Composite Score History</div>
+    <div style="font-size:11px;color:var(--muted);margin-bottom:14px">12 observations &middot; Regime thresholds: <span style="color:var(--amber)">5 (Fragile)</span>, <span style="color:var(--red)">7 (Active Det.)</span>, <span style="color:var(--crit)">9 (Cascade)</span></div>
+    <svg viewBox="0 0 620 220" style="width:100%;height:220px" id="csh">
+      <defs>
+        <linearGradient id="csg" x1="0" y1="0" x2="0" y2="1"><stop offset="5%" stop-color="#ef4444" stop-opacity=".15"/><stop offset="95%" stop-color="#ef4444" stop-opacity="0"/></linearGradient>
+      </defs>
+      <line x1="50" y1="10" x2="50" y2="190" stroke="#1e293b" stroke-width=".5"/>
+      <line x1="50" y1="190" x2="610" y2="190" stroke="#1e293b" stroke-width=".5"/>
+      <!-- Y-axis labels -->
+      <text x="45" y="14" fill="#64748b" font-size="9" text-anchor="end" font-family="JetBrains Mono">10</text>
+      <text x="45" y="50" fill="#64748b" font-size="9" text-anchor="end" font-family="JetBrains Mono">8</text>
+      <text x="45" y="86" fill="#64748b" font-size="9" text-anchor="end" font-family="JetBrains Mono">6</text>
+      <text x="45" y="122" fill="#64748b" font-size="9" text-anchor="end" font-family="JetBrains Mono">4</text>
+      <text x="45" y="158" fill="#64748b" font-size="9" text-anchor="end" font-family="JetBrains Mono">2</text>
+      <text x="45" y="193" fill="#64748b" font-size="9" text-anchor="end" font-family="JetBrains Mono">0</text>
+      <!-- Regime threshold lines -->
+      <line x1="50" y1="100" x2="610" y2="100" stroke="#f59e0b" stroke-dasharray="4 4" stroke-width=".7"/>
+      <text x="55" y="97" fill="#f59e0b" font-size="8" font-family="JetBrains Mono">Fragile</text>
+      <line x1="50" y1="64" x2="610" y2="64" stroke="#ef4444" stroke-dasharray="4 4" stroke-width=".7"/>
+      <text x="55" y="61" fill="#ef4444" font-size="8" font-family="JetBrains Mono">Active Det.</text>
+      <line x1="50" y1="28" x2="610" y2="28" stroke="#ff0040" stroke-dasharray="4 4" stroke-width=".7"/>
+      <text x="55" y="25" fill="#ff0040" font-size="8" font-family="JetBrains Mono">Cascade</text>
+      <!-- Score line: 3.5, 4.0, 5.5, 5.5, 5.5, 5.5, 6.0, 7.5, 8.0, 8.0, 9.0, 7.5 -->
+      <!-- Y mapping: score S → y = 190 - (S/10)*180 -->
+      <polygon points="66,127 117,118 168,91 219,91 270,91 321,91 372,82 423,55 474,46 525,46 576,28 610,55 610,190 66,190" fill="url(#csg)"/>
+      <polyline points="66,127 117,118 168,91 219,91 270,91 321,91 372,82 423,55 474,46 525,46 576,28 610,55" fill="none" stroke-width="2.5" stroke="#22c55e" id="csl"/>
+      <!-- Dots with color based on regime -->
+      <circle cx="66" cy="127" r="4" fill="#22c55e"/><circle cx="117" cy="118" r="4" fill="#22c55e"/>
+      <circle cx="168" cy="91" r="4" fill="#f59e0b"/><circle cx="219" cy="91" r="4" fill="#f59e0b"/>
+      <circle cx="270" cy="91" r="4" fill="#f59e0b"/><circle cx="321" cy="91" r="4" fill="#f59e0b"/>
+      <circle cx="372" cy="82" r="4" fill="#f59e0b"/>
+      <circle cx="423" cy="55" r="4" fill="#ef4444"/><circle cx="474" cy="46" r="4" fill="#ef4444"/>
+      <circle cx="525" cy="46" r="4" fill="#ef4444"/>
+      <circle cx="576" cy="28" r="4" fill="#ff0040"/>
+      <circle cx="610" cy="55" r="5" fill="#ef4444" stroke="#fff" stroke-width="1.5"/>
+      <!-- X-axis labels -->
+      <text x="66" y="205" fill="#64748b" font-size="7" text-anchor="middle">01-24</text>
+      <text x="117" y="205" fill="#64748b" font-size="7" text-anchor="middle">01-31</text>
+      <text x="168" y="205" fill="#64748b" font-size="7" text-anchor="middle">02-05</text>
+      <text x="219" y="205" fill="#64748b" font-size="7" text-anchor="middle">02-07</text>
+      <text x="270" y="205" fill="#64748b" font-size="7" text-anchor="middle">02-14</text>
+      <text x="321" y="205" fill="#64748b" font-size="7" text-anchor="middle">02-21</text>
+      <text x="372" y="205" fill="#64748b" font-size="7" text-anchor="middle">02-26</text>
+      <text x="423" y="205" fill="#64748b" font-size="7" text-anchor="middle">03-02</text>
+      <text x="474" y="205" fill="#64748b" font-size="7" text-anchor="middle">03-05</text>
+      <text x="525" y="205" fill="#64748b" font-size="7" text-anchor="middle">03-07</text>
+      <text x="576" y="205" fill="#ff0040" font-size="7" text-anchor="middle" font-weight="700">03-09</text>
+      <text x="610" y="205" fill="#ef4444" font-size="7" text-anchor="middle" font-weight="700">03-13</text>
+    </svg>
+  </div>
 </div>
 
 
@@ -427,7 +490,96 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;-we
         <div class="st-s">0.56%d / -0.69%w</div>
       </div>
     </div>
-    <div class="al al-o" style="margin-top:12px">TRIP WIRES: HY OAS &gt; 350bp &bull; NFCI &gt; -0.30 &bull; CCC OAS &gt; 1000bp &bull; HYG &lt; -1%d &bull; SOFR &gt; 4.50% &bull; PB margin hikes</div>
+  </div>
+  <div class="card" style="border-color:rgba(245,158,11,.25)">
+    <div style="font-size:14px;font-weight:700;margin-bottom:4px">Financing Trip Wires</div>
+    <div style="font-size:11px;color:var(--muted);margin-bottom:14px">THE KEY LAYER &mdash; Distance to thresholds that escalate composite to 8-10</div>
+    <div class="tw">
+      <div class="twc warn">
+        <div class="tw-h">
+          <span class="tw-n">HY OAS</span>
+          <span class="tw-val" style="color:var(--amber)">327bp</span>
+        </div>
+        <div class="tw-bar">
+          <div class="tw-fill" style="width:93%;background:linear-gradient(90deg,var(--green),var(--amber))"></div>
+          <div class="tw-mark" style="left:100%"><div class="tw-mark-label" style="left:0">350bp</div></div>
+        </div>
+        <div class="tw-foot">
+          <span class="tw-ctx">Tighter from 328</span>
+          <span class="tw-dist" style="color:var(--amber)">23bp to trip</span>
+        </div>
+      </div>
+      <div class="twc warn">
+        <div class="tw-h">
+          <span class="tw-n">NFCI</span>
+          <span class="tw-val" style="color:var(--amber)">-0.514</span>
+        </div>
+        <div class="tw-bar">
+          <div class="tw-fill" style="width:71%;background:linear-gradient(90deg,var(--green),var(--amber))"></div>
+          <div class="tw-mark" style="left:100%"><div class="tw-mark-label" style="left:0">&gt; -0.30</div></div>
+        </div>
+        <div class="tw-foot">
+          <span class="tw-ctx">Tightening from -0.526</span>
+          <span class="tw-dist" style="color:var(--amber)">21.4bp to trip</span>
+        </div>
+      </div>
+      <div class="twc warn">
+        <div class="tw-h">
+          <span class="tw-n">CCC OAS</span>
+          <span class="tw-val" style="color:var(--amber)">973bp</span>
+        </div>
+        <div class="tw-bar">
+          <div class="tw-fill" style="width:97%;background:linear-gradient(90deg,var(--amber),var(--red))"></div>
+          <div class="tw-mark" style="left:100%"><div class="tw-mark-label" style="left:0">1000bp</div></div>
+        </div>
+        <div class="tw-foot">
+          <span class="tw-ctx">Elevated</span>
+          <span class="tw-dist" style="color:var(--red)">27bp to trip</span>
+        </div>
+      </div>
+      <div class="twc ok">
+        <div class="tw-h">
+          <span class="tw-n">SOFR</span>
+          <span class="tw-val" style="color:var(--green)">3.70%</span>
+        </div>
+        <div class="tw-bar">
+          <div class="tw-fill" style="width:82%;background:linear-gradient(90deg,var(--green),var(--green))"></div>
+          <div class="tw-mark" style="left:100%"><div class="tw-mark-label" style="left:0">4.50%</div></div>
+        </div>
+        <div class="tw-foot">
+          <span class="tw-ctx">Stable</span>
+          <span class="tw-dist" style="color:var(--green)">80bp to trip</span>
+        </div>
+      </div>
+      <div class="twc ok">
+        <div class="tw-h">
+          <span class="tw-n">HYG Daily</span>
+          <span class="tw-val" style="color:var(--green)">$79.81</span>
+        </div>
+        <div class="tw-bar">
+          <div class="tw-fill" style="width:19%;background:var(--green)"></div>
+          <div class="tw-mark" style="left:100%"><div class="tw-mark-label" style="left:0">&lt; -1%d</div></div>
+        </div>
+        <div class="tw-foot">
+          <span class="tw-ctx">0.45%d / -0.29%w</span>
+          <span class="tw-dist" style="color:var(--green)">Not tripped</span>
+        </div>
+      </div>
+      <div class="twc ok">
+        <div class="tw-h">
+          <span class="tw-n">PB Margin Hikes</span>
+          <span class="tw-val" style="color:var(--green)">NONE</span>
+        </div>
+        <div class="tw-bar">
+          <div class="tw-fill" style="width:0%;background:var(--green)"></div>
+          <div class="tw-mark" style="left:100%"><div class="tw-mark-label" style="left:0">Any hike</div></div>
+        </div>
+        <div class="tw-foot">
+          <span class="tw-ctx">No PB actions</span>
+          <span class="tw-dist" style="color:var(--green)">Clear</span>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 

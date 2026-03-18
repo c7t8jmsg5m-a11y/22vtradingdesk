@@ -3,186 +3,175 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>22V Midday Recap | March 18, 2026</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>22V Midday Recap — March 18, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#FAF7F2;--dark:#1A1A1A;--gray:#666;--lgray:#F5F5F5;--red:#C0392B;--green:#27AE60;--warm-red:#8B0000;--orange:#E4762D;--hdr:#2D2D2D}
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--dark);font-family:'Source Sans 3',sans-serif;line-height:1.5;max-width:900px;margin:0 auto;padding:20px}
-.header{text-align:center;margin-bottom:8px}
-.header .inst{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gray);letter-spacing:2px}
-.header h1{font-family:'Playfair Display',serif;font-size:28px;margin:4px 0 2px}
-.header .sub{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gray);letter-spacing:1px}
-.datebar{background:var(--hdr);color:#ccc;font-family:'JetBrains Mono',monospace;font-size:10px;padding:6px 12px;display:flex;justify-content:space-between;margin:8px 0}
-.headline{font-family:'Playfair Display',serif;font-size:26px;line-height:1.2;margin:12px 0 6px;color:var(--dark)}
-.lede{font-family:'Playfair Display',serif;font-style:italic;font-size:14px;color:var(--gray);margin-bottom:12px;line-height:1.5}
-.lede b{color:var(--dark)}
-.sec-hdr{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gray);letter-spacing:1px;margin:16px 0 6px;border-bottom:1px solid #ddd;padding-bottom:3px}
-.idx-bar{display:grid;grid-template-columns:repeat(6,1fr);background:var(--lgray);border:1px solid #ddd;margin-bottom:12px}
-.idx-item{text-align:center;padding:8px 4px;border-right:1px solid #eee}
-.idx-item:last-child{border-right:none}
-.idx-label{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--gray)}
-.idx-val{font-size:20px;font-weight:700}
-.idx-chg{font-size:12px}
-.red{color:var(--red)}.green{color:var(--green)}
-.body-text{font-size:14px;line-height:1.6;margin-bottom:10px}
-.body-text b{color:var(--dark)}
-.callout{background:#FFF8F6;border-left:3px solid var(--red);padding:10px 14px;margin:10px 0}
-.callout-hdr{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--warm-red);margin-bottom:4px}
-.callout p{font-size:13px;line-height:1.5}
-.pull-quote{font-family:'Playfair Display',serif;font-style:italic;font-size:20px;color:var(--warm-red);padding:8px 16px;margin:12px 0;line-height:1.4}
-table.sectors{width:100%;border-collapse:collapse;margin-bottom:12px;font-size:13px}
-table.sectors th{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gray);text-align:left;border-bottom:1px solid #ccc;padding:4px 6px}
-table.sectors td{padding:4px 6px;border-bottom:1px solid #eee}
-table.sectors tr:nth-child(even){background:var(--lgray)}
-table.sectors .r{text-align:right}table.sectors .c{text-align:center}
-.movers{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:12px 0}
-.movers-box h3{font-family:'JetBrains Mono',monospace;font-size:11px;margin-bottom:4px}
-.movers-box.win h3{color:var(--green)}.movers-box.lose h3{color:var(--red)}
-.movers-box table{width:100%;font-size:12px;border-collapse:collapse}
-.movers-box td{padding:2px 4px}
-.movers-box .tk{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12px}
-.movers-box .cat{color:var(--gray);font-size:11px}
-.cards{display:grid;grid-template-columns:repeat(4,1fr);background:var(--lgray);border:1px solid #ddd;margin:8px 0}
-.card{text-align:center;padding:8px;border-right:1px solid #eee}
-.card:last-child{border-right:none}
-.card-lbl{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--gray)}
-.card-val{font-size:18px;font-weight:700}
-.card-chg{font-size:11px}
-.card-drv{font-size:10px;color:var(--gray)}
-.bl{background:var(--lgray);padding:14px 18px;margin:14px 0;border-left:3px solid var(--orange)}
-.bl h3{font-size:14px;margin-bottom:6px}
-.bl p{font-size:13px;line-height:1.6}
-.footer{text-align:center;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--gray);border-top:1px solid #ddd;padding-top:6px;margin-top:20px}
-@media(max-width:600px){.idx-bar{grid-template-columns:repeat(3,1fr)}.movers{grid-template-columns:1fr}.cards{grid-template-columns:repeat(2,1fr)}}
+:root{--brand-orange:#E4762D;--dark-navy:#1A1A2E;--cream:#FAF7F2;--warm-red:#8B0000;--accent-red:#C0392B;--green:#27AE60;--red:#C0392B;--dark-text:#1A1A1A;--gray-text:#666;--light-gray:#F5F5F5;--border-red:#C0392B;--header-bar:#2D2D2D}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--dark-text);line-height:1.5;-webkit-font-smoothing:antialiased}.page{max-width:900px;margin:0 auto;padding:0 24px}.header{background:var(--dark-navy);padding:18px 0 14px;border-bottom:3px solid var(--brand-orange)}.header-inner{max-width:900px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center}.header-brand{font-family:'JetBrains Mono',monospace;color:rgba(255,255,255,0.5);font-size:10px;letter-spacing:3px;text-transform:uppercase}.header-title{font-family:'Playfair Display',serif;color:#fff;font-size:20px;font-weight:700;letter-spacing:1px}.header-title span{color:var(--brand-orange)}.date-bar{background:var(--header-bar);padding:8px 0;font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(255,255,255,0.7)}.date-bar-inner{max-width:900px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}.date-bar-inner span{white-space:nowrap}.date-bar-inner .catalyst{color:var(--brand-orange);font-weight:700}.headline-section{padding:32px 0 12px}.headline{font-family:'Playfair Display',serif;font-size:32px;font-weight:900;line-height:1.15;color:var(--dark-text);letter-spacing:-0.5px}.lede{font-family:'Playfair Display',serif;font-style:italic;font-size:15px;line-height:1.55;color:var(--gray-text);margin-top:14px;border-left:3px solid var(--brand-orange);padding-left:16px}.lede strong{color:var(--dark-text);font-style:normal}.index-bar{display:grid;grid-template-columns:repeat(6,1fr);gap:0;margin:24px 0;background:#fff;border-radius:6px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.08)}.index-card{padding:16px 12px;text-align:center;border-right:1px solid #eee}.index-card:last-child{border-right:none}.index-label{font-family:'JetBrains Mono',monospace;font-size:9px;text-transform:uppercase;color:var(--gray-text);letter-spacing:1.5px;margin-bottom:4px}.index-value{font-family:'Source Sans 3',sans-serif;font-size:22px;font-weight:700}.index-change{font-family:'JetBrains Mono',monospace;font-size:11px;margin-top:2px}.pos{color:var(--green)}.neg{color:var(--red)}.section-header{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--brand-orange);margin:32px 0 14px;padding-bottom:6px;border-bottom:1px solid #ddd}.prose{font-size:14.5px;line-height:1.65;color:var(--dark-text);margin-bottom:16px}.prose strong{font-weight:700}.callout{background:#FFF8F6;border-left:4px solid var(--border-red);padding:16px 20px;margin:20px 0;border-radius:0 4px 4px 0}.callout-title{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--warm-red);margin-bottom:6px;font-weight:700}.callout p{font-size:13.5px;line-height:1.55;color:var(--dark-text)}.vix-box{background:#fff;border:1px solid #e0e0e0;padding:14px 18px;border-radius:4px;margin:16px 0;font-size:13.5px;line-height:1.55}.pull-quote{font-family:'Playfair Display',serif;font-style:italic;font-size:20px;line-height:1.45;color:var(--warm-red);padding:20px 0 20px 24px;border-left:4px solid var(--brand-orange);margin:28px 0}.sector-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px}.sector-table th{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-text);text-align:left;padding:8px 10px;border-bottom:1px solid #ccc}.sector-table th:nth-child(2),.sector-table th:nth-child(3){text-align:right}.sector-table td{padding:8px 10px;border-bottom:1px solid #eee;vertical-align:middle}.sector-table td:nth-child(2),.sector-table td:nth-child(3){text-align:right;font-family:'JetBrains Mono',monospace;font-size:12px}.sector-table td:nth-child(4){font-size:12px;color:var(--gray-text)}.sector-table tr:nth-child(even){background:var(--light-gray)}.movers-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:20px 0}.movers-box{background:#fff;border-radius:6px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.08)}.movers-header{padding:10px 14px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:#fff}.movers-header.winners{background:var(--green)}.movers-header.losers{background:var(--red)}.mover-row{display:flex;justify-content:space-between;align-items:baseline;padding:7px 14px;font-size:12.5px;border-bottom:1px solid #f0f0f0}.mover-row:last-child{border-bottom:none}.mover-ticker{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12px;width:50px}.mover-catalyst{flex:1;color:var(--gray-text);font-size:11.5px;margin:0 8px}.mover-pct{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12px;white-space:nowrap}.cross-asset-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0}.ca-card{background:#fff;border-radius:4px;padding:14px;box-shadow:0 1px 3px rgba(0,0,0,0.06);text-align:center}.ca-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1.5px;color:var(--gray-text);text-transform:uppercase}.ca-value{font-size:20px;font-weight:700;margin:4px 0 2px}.ca-change{font-family:'JetBrains Mono',monospace;font-size:11px}.ca-driver{font-size:11px;color:var(--gray-text);margin-top:4px;line-height:1.3}.watch-box{background:var(--dark-navy);color:#fff;border-radius:6px;padding:24px;margin:24px 0}.watch-box h3{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--brand-orange);margin:18px 0 10px}.watch-box h3:first-child{margin-top:0}.watch-box p,.watch-box li{font-size:13px;line-height:1.55;color:rgba(255,255,255,0.85)}.watch-box ul{list-style:none;padding:0}.watch-box li{padding:3px 0;padding-left:14px;position:relative}.watch-box li::before{content:'›';position:absolute;left:0;color:var(--brand-orange);font-weight:700}.bottom-line{background:linear-gradient(135deg,var(--dark-navy),#16213E);color:#fff;padding:28px;border-radius:6px;margin:24px 0;border-left:5px solid var(--brand-orange)}.bottom-line-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;margin-bottom:12px;color:var(--brand-orange)}.bottom-line p{font-size:14.5px;line-height:1.65;color:rgba(255,255,255,0.9)}.footer{text-align:center;padding:20px 0 32px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--gray-text);text-transform:uppercase;border-top:1px solid #ddd;margin-top:32px}.narrative-section{margin-bottom:16px}.narrative-section .prose strong:first-child{color:var(--brand-orange)}@media(max-width:768px){.index-bar{grid-template-columns:repeat(3,1fr)}.movers-grid{grid-template-columns:1fr}.cross-asset-grid{grid-template-columns:repeat(2,1fr)}.headline{font-size:24px}.date-bar-inner{flex-direction:column;gap:4px}}
 </style>
 </head>
 <body>
 
 <div class="header">
-<div class="inst">INSTITUTIONAL TRADING INTELLIGENCE</div>
-<h1>22V Research</h1>
-<div class="sub">MIDDAY TRADING RECAP</div>
+  <div class="header-inner">
+    <div>
+      <div class="header-brand">Institutional Trading Intelligence</div>
+      <div class="header-title"><span>22V</span> Research</div>
+    </div>
+    <div style="text-align:right;">
+      <div class="header-brand">Midday Trading Recap</div>
+    </div>
+  </div>
 </div>
 
-<div class="datebar">
-<span>WEDNESDAY, MARCH 18, 2026</span>
-<span>12:45 PM ET &bull; FOMC 2:00 PM &bull; POWELL 2:30 PM</span>
-<span>MU AFTER CLOSE &bull; WSM REPORTED</span>
+<div class="date-bar">
+  <div class="date-bar-inner">
+    <span>WEDNESDAY, MARCH 18, 2026</span>
+    <span class="catalyst">12:45 PM ET &bull; FOMC DECISION 2:00 PM &bull; POWELL PRESSER 2:30 PM</span>
+    <span>MU AFTER CLOSE &bull; WSM REPORTED PRE-MKT</span>
+  </div>
 </div>
 
-<h2 class="headline">Hot PPI Meets Fed Day; Gold Miners Crushed as Crude Surges on Gulf Escalation</h2>
+<div class="page">
 
-<p class="lede">Stagflation fears intensify as PPI prints +0.7% m/m (est +0.3%), hottest in a year, ahead of FOMC hold at 3.50-3.75%. <b>CIEN</b> +6.7% AI optical momentum. <b>WSM</b> +6.2% Q4 EPS beat. <b>TTD</b> -5.8% Publicis audit fallout. <b>ABBV</b> -3.9% biosimilar drag. Gold -2.5% breaks $5K. Energy lone green sector, crude near $98.</p>
-
-<div class="sec-hdr">INDEX SNAPSHOT</div>
-<div class="idx-bar">
-<div class="idx-item"><div class="idx-label">S&P 500</div><div class="idx-val red">6,676</div><div class="idx-chg red">-0.60%</div></div>
-<div class="idx-item"><div class="idx-label">NASDAQ</div><div class="idx-val red">22,323</div><div class="idx-chg red">-0.70%</div></div>
-<div class="idx-item"><div class="idx-label">DOW</div><div class="idx-val red">46,586</div><div class="idx-chg red">-0.87%</div></div>
-<div class="idx-item"><div class="idx-label">RUSSELL</div><div class="idx-val red">2,500</div><div class="idx-chg red">-0.80%</div></div>
-<div class="idx-item"><div class="idx-label">VIX</div><div class="idx-val red">23.44</div><div class="idx-chg red">+1.07</div></div>
-<div class="idx-item"><div class="idx-label">10Y</div><div class="idx-val red">4.224</div><div class="idx-chg red">+3bp</div></div>
+<div class="headline-section">
+  <h1 class="headline">Hot PPI Meets Fed Day; Gold Miners Crushed as Crude Surges on Gulf Escalation</h1>
+  <div class="lede">
+    Stagflation fears intensify as PPI prints +0.7% m/m (est +0.3%), the hottest read in a year, hours before the FOMC holds rates at 3.50&ndash;3.75%. <strong>CIEN</strong> +6.7% on AI optical momentum at OFC 2026. <strong>WSM</strong> +6.2% on Q4 EPS beat ($3.04 vs $2.89 est). <strong>TTD</strong> &minus;5.8% extending Publicis audit fallout. <strong>ABBV</strong> &minus;3.9% on biosimilar/aesthetics pressure. Gold &minus;2.5% breaks below $5,000. Energy the lone green sector as crude holds near $98.
+  </div>
 </div>
 
-<div class="sec-hdr">MARKET OVERVIEW</div>
-<p class="body-text"><b>SPX</b> 6,676 testing 50-day MA from below after gapping down on the PPI shock. February producer prices surged 0.7% m/m vs 0.3% est, the hottest read in a year. Headline and core PPI running 3.4% and 3.9% y/y -- and this predates the full Gulf energy shock. Rate-cut expectations slashed to barely one cut for 2026. <b>NDX</b> -0.70% with <b>ADBE</b> -2.5%, <b>AMZN</b> -2.0%, <b>AAPL</b> -1.3% offsetting strength in <b>AMD</b> +1.7% on GTC spillover. <b>DJIA</b> weakest at -0.87%, dragged by <b>AMGN</b> -2.0% and <b>BA</b> -1.8% (737 MAX wiring defects). <b>RTY</b> -0.80%, back below 2,500 as small caps buckle under 4.22% 10Y.</p>
+<div class="index-bar">
+  <div class="index-card"><div class="index-label">S&P 500</div><div class="index-value neg">6,676</div><div class="index-change neg">&minus;0.60%</div></div>
+  <div class="index-card"><div class="index-label">Nasdaq</div><div class="index-value neg">22,323</div><div class="index-change neg">&minus;0.70%</div></div>
+  <div class="index-card"><div class="index-label">Dow</div><div class="index-value neg">46,586</div><div class="index-change neg">&minus;0.87%</div></div>
+  <div class="index-card"><div class="index-label">Russell</div><div class="index-value neg">2,500</div><div class="index-change neg">&minus;0.80%</div></div>
+  <div class="index-card"><div class="index-label">VIX</div><div class="index-value neg">23.44</div><div class="index-change neg">+1.07</div></div>
+  <div class="index-card"><div class="index-label">10Y</div><div class="index-value neg">4.224%</div><div class="index-change neg">+3bp</div></div>
+</div>
+
+<div class="section-header">Market Overview</div>
+<p class="prose"><strong>SPX</strong> 6,676 is testing the 50-day MA from below after gapping down on the PPI shock. February producer prices surged 0.7% m/m vs 0.3% est, the biggest jump in a year and another unexpected acceleration. Headline and core PPI are now running 3.4% and 3.9% y/y respectively &mdash; and this data predates the full Persian Gulf energy shock that has sent crude above $98. Traders have slashed rate-cut expectations, now pricing barely one cut for all of 2026. The S&amp;P halted a two-day winning streak as Treasury yields rose and pressed the credit outlook.</p>
+<p class="prose"><strong>NDX</strong> underperforming at &minus;0.70%, weighed by <strong>ADBE</strong> &minus;2.5%, <strong>AMZN</strong> &minus;2.0%, and <strong>AAPL</strong> &minus;1.3%. Bright spots in AI-optical and select semis &mdash; <strong>AMD</strong> +1.7% and <strong>AMAT</strong> +0.7% on NVIDIA GTC spillover. <strong>DJIA</strong> weakest at &minus;0.87%, dragged by <strong>AMGN</strong> &minus;2.0%, <strong>BA</strong> &minus;1.8% (737 MAX wiring defects), and <strong>SHW</strong> &minus;2.1%. <strong>RTY</strong> &minus;0.80% and back below 2,500 &mdash; small caps buckling under 4.22% 10Y and stagflation concerns.</p>
 
 <div class="callout">
-<div class="callout-hdr">BREADTH CHECK</div>
-<p>~125 advancers vs ~377 decliners in the S&P 500 -- a 1:3 ratio. Selling broad and methodical, not panicky. Volume below average, cautious de-risking ahead of Fed. Energy the only net-positive sector.</p>
+  <div class="callout-title">Breadth Check</div>
+  <p>~125 advancers vs ~377 decliners in the S&amp;P 500 &mdash; a 1:3 ratio. Selling is broad and methodical, not panicky. Volume running below the 20-day average, suggesting cautious de-risking ahead of the Fed rather than forced liquidation. Energy the only net-positive sector. Defensive rotation into power/utility pockets but even staples are underwater.</p>
 </div>
 
-<p class="body-text"><b>VIX</b> 23.44 (+1.07), +57% YTD. Vol sellers sidelined ahead of FOMC + MU. Term structure in mild backwardation on Gulf tail risk.</p>
+<div class="vix-box"><strong>VIX</strong> 23.44, up 1.07 on the session and now +57% YTD, +18% MTD. Vol sellers remain sidelined ahead of FOMC and MU earnings tonight. Term structure in mild backwardation with the front month elevated on Persian Gulf tail risk. 20-day realized vol on SPX catching up to implied, narrowing the risk premium.</div>
 
-<div class="sec-hdr">SECTOR PERFORMANCE</div>
-<table class="sectors">
-<tr><th>SECTOR</th><th class="r">AVG</th><th class="c">ADV/DEC</th><th class="r">NOTABLE</th></tr>
-<tr><td>Energy</td><td class="r green">+0.44%</td><td class="c">15/8</td><td class="r">MPC +1.8%</td></tr>
-<tr><td>Utilities</td><td class="r red">-0.24%</td><td class="c">6/25</td><td class="r">NRG +4.1%, CEG +3.7%</td></tr>
-<tr><td>Technology</td><td class="r red">-0.31%</td><td class="c">23/38</td><td class="r">AKAM +4.2%, AMD +1.7%</td></tr>
-<tr><td>Industrials</td><td class="r red">-0.32%</td><td class="c">28/46</td><td class="r">GEV +3.5%, HUBB +3.1%</td></tr>
-<tr><td>Basic Materials</td><td class="r red">-0.52%</td><td class="c">7/11</td><td class="r">LYB +4.2%</td></tr>
-<tr><td>Financials</td><td class="r red">-0.54%</td><td class="c">26/69</td><td class="r">APO +2.9%, BX +2.2%</td></tr>
-<tr><td>Consumer Cyclical</td><td class="r red">-0.72%</td><td class="c">13/43</td><td class="r">WSM +6.2%, LULU +4.2%</td></tr>
-<tr><td>Communications</td><td class="r red">-0.75%</td><td class="c">9/31</td><td class="r">CIEN +6.7%</td></tr>
-<tr><td>Consumer Non-cyclical</td><td class="r red">-1.04%</td><td class="c">13/92</td><td class="r">CNC +2.5%</td></tr>
+<div class="pull-quote">"Hot inflation, $98 crude, and a Fed that can't cut &mdash; this is the stagflation tape everyone feared. Energy longs and AI optical are the only shelters."</div>
+
+<div class="section-header">Sector Performance</div>
+<table class="sector-table">
+  <thead><tr><th>Sector</th><th>Avg Chg</th><th>Adv / Dec</th><th>Notable</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Energy</strong></td><td class="pos">+0.44%</td><td>15 / 8</td><td>MPC +1.8%, BKR +1.6% &mdash; refiner/OFS bid</td></tr>
+    <tr><td><strong>Utilities</strong></td><td class="neg">&minus;0.24%</td><td>6 / 25</td><td>NRG +4.1%, CEG +3.7% &mdash; power/nuclear AI</td></tr>
+    <tr><td><strong>Technology</strong></td><td class="neg">&minus;0.31%</td><td>23 / 38</td><td>AKAM +4.2%, AMD +1.7% &mdash; GTC spillover</td></tr>
+    <tr><td><strong>Industrials</strong></td><td class="neg">&minus;0.32%</td><td>28 / 46</td><td>GEV +3.5%, HUBB +3.1% &mdash; power infra</td></tr>
+    <tr><td><strong>Basic Materials</strong></td><td class="neg">&minus;0.52%</td><td>7 / 11</td><td>LYB +4.2%, CF +1.4% &mdash; chem recovery</td></tr>
+    <tr><td><strong>Financials</strong></td><td class="neg">&minus;0.54%</td><td>26 / 69</td><td>APO +2.9%, BX +2.2% &mdash; alt mgr rotation</td></tr>
+    <tr><td><strong>Cons. Cyclical</strong></td><td class="neg">&minus;0.72%</td><td>13 / 43</td><td>WSM +6.2%, LULU +4.2% &mdash; earnings beats</td></tr>
+    <tr><td><strong>Communications</strong></td><td class="neg">&minus;0.75%</td><td>9 / 31</td><td>CIEN +6.7% AI optical; TTD &minus;5.8%</td></tr>
+    <tr><td><strong>Cons. Non-Cyc</strong></td><td class="neg">&minus;1.04%</td><td>13 / 92</td><td>ABBV &minus;3.9%, AMGN &minus;2.0% &mdash; pharma drag</td></tr>
+  </tbody>
 </table>
 
-<div class="pull-quote">"Hot inflation, $98 crude, and a Fed that can't cut -- this is the stagflation tape. Energy longs and AI optical are the only shelters."</div>
+<div class="section-header">Sector Narratives</div>
 
-<div class="sec-hdr">SECTOR NARRATIVES</div>
-<p class="body-text"><b>Energy</b> stands alone green at +0.44%. Crude holding $98 on Gulf war premium; Trump signed a 60-day Jones Act waiver to ease domestic oil transport. <b>MPC</b> +1.8% leads refiners, <b>BKR</b> +1.6%. <b>Communications</b> bifurcated: <b>CIEN</b> +6.7% on AI optical at OFC 2026 (1.6T networking, quantum demos, up ~450% LTM) vs <b>TTD</b> -5.8% extending Publicis audit fallout (-13% in 2 sessions). <b>CMCSA</b> and <b>CHTR</b> both -4% on broadband sub losses. <b>Consumer Non-cyclical</b> weakest at -1.04%: <b>ABBV</b> -3.9% breaking 200-day MA on Humira biosimilar drag (RSI 32), <b>AMGN</b> -2.0%, <b>CAG</b> -2.9%.</p>
+<div class="narrative-section"><p class="prose"><strong>Energy</strong> stands alone as the session's only green sector, averaging +0.44% with 15 of 23 names advancing. Crude holding near $98 after Iraq signaled a deal to resume exports via Turkey, but the broader Gulf war premium remains embedded. <strong>MPC</strong> +1.8% leads refiners, <strong>BKR</strong> +1.6% on elevated drilling activity. Trump signed a 60-day Jones Act waiver to ease domestic oil transport &mdash; a tacit admission that energy logistics are strained. <strong>APA</strong> +1.2% with RSI at 78, the most overbought name in the index.</p></div>
 
-<div class="movers">
-<div class="movers-box win">
-<h3>TOP WINNERS</h3>
-<table>
-<tr><td class="tk">CIEN</td><td class="cat">AI optical, OFC 2026</td><td class="r green">+6.7%</td></tr>
-<tr><td class="tk">WSM</td><td class="cat">Q4 EPS beat $3.04 vs $2.89</td><td class="r green">+6.2%</td></tr>
-<tr><td class="tk">LYB</td><td class="cat">Chemical cycle recovery</td><td class="r green">+4.2%</td></tr>
-<tr><td class="tk">LULU</td><td class="cat">Q4 beat, weak FY guide</td><td class="r green">+4.2%</td></tr>
-<tr><td class="tk">AKAM</td><td class="cat">CDN/security demand</td><td class="r green">+4.2%</td></tr>
-<tr><td class="tk">NRG</td><td class="cat">Power/AI data center</td><td class="r green">+4.1%</td></tr>
-<tr><td class="tk">CEG</td><td class="cat">Nuclear renaissance</td><td class="r green">+3.7%</td></tr>
-</table>
+<div class="narrative-section"><p class="prose"><strong>Communications / Ad Tech</strong> is bifurcated. <strong>CIEN</strong> +6.7% continues its AI-optical tear at OFC 2026, showcasing 1.6T networking and quantum-secured comms; up ~450% LTM, hitting 25-year highs this week. On the other side, <strong>TTD</strong> &minus;5.8% extending the Publicis audit fallout &mdash; now down 13% in two sessions on fee transparency concerns. CEO Jeff Green's $148M insider buy hasn't stemmed the bleeding. <strong>CMCSA</strong> &minus;4.0% and <strong>CHTR</strong> &minus;4.0% on broadband sub losses and cord-cutting acceleration.</p></div>
+
+<div class="narrative-section"><p class="prose"><strong>Consumer Non-cyclical</strong> is the day's weakest at &minus;1.04%, dragged by pharma. <strong>ABBV</strong> &minus;3.9% breaking below its 200-day MA as Humira biosimilar competition intensifies and aesthetics stays soft. RSI 32, deeply oversold. <strong>AMGN</strong> &minus;2.0% and <strong>CAG</strong> &minus;2.9% add weight. Even managed care names bid early (<strong>CNC</strong> +2.5%, <strong>CI</strong> +1.6%) can't offset the drag.</p></div>
+
+<div class="movers-grid">
+  <div class="movers-box">
+    <div class="movers-header winners">Top Winners</div>
+    <div class="mover-row"><span class="mover-ticker">CIEN</span><span class="mover-catalyst">AI optical infra, OFC 2026 demos</span><span class="mover-pct pos">+6.7%</span></div>
+    <div class="mover-row"><span class="mover-ticker">WSM</span><span class="mover-catalyst">Q4 EPS beat $3.04 vs $2.89 est</span><span class="mover-pct pos">+6.2%</span></div>
+    <div class="mover-row"><span class="mover-ticker">LYB</span><span class="mover-catalyst">Chemical cycle recovery, inst buying</span><span class="mover-pct pos">+4.2%</span></div>
+    <div class="mover-row"><span class="mover-ticker">LULU</span><span class="mover-catalyst">Q4 beat, premium pricing pivot</span><span class="mover-pct pos">+4.2%</span></div>
+    <div class="mover-row"><span class="mover-ticker">AKAM</span><span class="mover-catalyst">CDN/security demand, AI traffic</span><span class="mover-pct pos">+4.2%</span></div>
+    <div class="mover-row"><span class="mover-ticker">NRG</span><span class="mover-catalyst">Power/AI data center demand</span><span class="mover-pct pos">+4.1%</span></div>
+    <div class="mover-row"><span class="mover-ticker">CEG</span><span class="mover-catalyst">Nuclear renaissance, AI power theme</span><span class="mover-pct pos">+3.7%</span></div>
+  </div>
+  <div class="movers-box">
+    <div class="movers-header losers">Top Losers</div>
+    <div class="mover-row"><span class="mover-ticker">TTD</span><span class="mover-catalyst">Publicis audit fallout, &minus;13% 2-day</span><span class="mover-pct neg">&minus;5.8%</span></div>
+    <div class="mover-row"><span class="mover-ticker">CVNA</span><span class="mover-catalyst">Used auto softness, valuation unwind</span><span class="mover-pct neg">&minus;4.9%</span></div>
+    <div class="mover-row"><span class="mover-ticker">GPN</span><span class="mover-catalyst">Payments weakness, fintech pressure</span><span class="mover-pct neg">&minus;4.2%</span></div>
+    <div class="mover-row"><span class="mover-ticker">CMCSA</span><span class="mover-catalyst">Broadband sub losses, cord-cutting</span><span class="mover-pct neg">&minus;4.0%</span></div>
+    <div class="mover-row"><span class="mover-ticker">CHTR</span><span class="mover-catalyst">Cable under pressure, same theme</span><span class="mover-pct neg">&minus;4.0%</span></div>
+    <div class="mover-row"><span class="mover-ticker">ABBV</span><span class="mover-catalyst">Humira biosimilar drag, RSI 32</span><span class="mover-pct neg">&minus;3.9%</span></div>
+    <div class="mover-row"><span class="mover-ticker">COIN</span><span class="mover-catalyst">BTC &minus;4%, crypto risk-off sweep</span><span class="mover-pct neg">&minus;3.8%</span></div>
+  </div>
 </div>
-<div class="movers-box lose">
-<h3>TOP LOSERS</h3>
-<table>
-<tr><td class="tk">TTD</td><td class="cat">Publicis audit, -13% 2d</td><td class="r red">-5.8%</td></tr>
-<tr><td class="tk">CVNA</td><td class="cat">Used auto softness</td><td class="r red">-4.9%</td></tr>
-<tr><td class="tk">GPN</td><td class="cat">Payments weakness</td><td class="r red">-4.2%</td></tr>
-<tr><td class="tk">CMCSA</td><td class="cat">Broadband sub loss</td><td class="r red">-4.0%</td></tr>
-<tr><td class="tk">CHTR</td><td class="cat">Cable pressure</td><td class="r red">-4.0%</td></tr>
-<tr><td class="tk">ABBV</td><td class="cat">Humira biosim, RSI 32</td><td class="r red">-3.9%</td></tr>
-<tr><td class="tk">COIN</td><td class="cat">BTC -4%, risk-off</td><td class="r red">-3.8%</td></tr>
-</table>
-</div>
-</div>
 
-<div class="sec-hdr">KEY SINGLE-STOCK NARRATIVES</div>
+<div class="section-header">Key Single-Stock Narratives</div>
 
-<p class="body-text"><b>CIEN +6.7% ($395, RSI 71)</b> -- AI infrastructure darling extending at OFC 2026. 1.6T optical networking and quantum-secured comms demos. Up ~450% LTM. Q1 beat: $1.35 EPS vs $1.17 est, $1.43B rev (+33% y/y). Raised FY guidance to $5.9-6.3B. Hyperscaler demand outpacing manufacturing capacity. Multiple PT raises (Needham $370, TD Cowen $425). Notable insider selling by CEO in March.</p>
+<p class="prose"><strong>CIEN +6.7% ($394.88)</strong> &mdash; The AI infrastructure darling extending at OFC 2026 in Los Angeles, showcasing 1.6-terabit optical networking and quantum-secured communication technologies. Hit fresh 25-year highs this week, up ~450% LTM. Q1 FY2026 beat: $1.35 EPS vs $1.17 est on $1.43B revenue (+33% y/y). Raised FY guidance to $5.9&ndash;6.3B. Hyperscaler demand running ahead of manufacturing capacity. Needham raised PT to $370, TD Cowen initiated Buy/$425. Notable insider selling by CEO Smith in March. RSI 71 &mdash; momentum strong but extended.</p>
 
-<p class="body-text"><b>WSM +6.2% ($194, RSI 48)</b> -- Q4 EPS $3.04 vs $2.89 est. Revenue $2.36B (slight miss vs $2.40B). Full-year op margin 18.2% vs 9% industry avg. $1.2B cash, zero LT debt. Announced 15% div increase and $500M buyback. Stock down 14% into print -- shorts covering on margin resilience. Annual rev $8.15B (+3.2% y/y).</p>
+<p class="prose"><strong>WSM +6.2% ($193.53)</strong> &mdash; Williams-Sonoma reported Q4 EPS of $3.04 vs $2.89 est, on revenue of $2.36B (slight miss vs $2.40B). Full-year op margin 18.2% &mdash; far above the 9% industry avg &mdash; with $1.2B cash and zero LT debt. Announced 15% div increase and $500M buyback. Annual revenue $8.15B (+3.2% y/y), beating $7.95B consensus. Stock down ~14% into the print, so shorts covering hard on margin resilience. RSI 48, room to run.</p>
 
-<p class="body-text"><b>TTD -5.8% ($23.61, RSI 35)</b> -- Day two of Publicis selloff. World's largest ad holding co advised clients to avoid TTD after failed audit alleging improper fees and hidden markups. Follows Dentsu/WPP OpenPath departures. CEO Green bought $148M in stock Mar 2-4 -- hasn't stemmed bleeding. Down 33% YTD, 72% from 52-wk high. Approaching 52-wk low of $21.08.</p>
+<p class="prose"><strong>TTD &minus;5.8% ($23.61)</strong> &mdash; Day two of the Publicis selloff. The world's largest ad holding company advised clients to avoid TTD after a failed third-party audit alleging improper fee application and hidden markups. TTD denied findings, citing confidentiality. Follows Dentsu/WPP OpenPath departures. CEO Green bought $148M in stock Mar 2&ndash;4 &mdash; massive insider buying that hasn't slowed the damage. Down 33% YTD, 72% from 52-wk high. Approaching 52-wk low of $21.08. RSI 35.</p>
 
-<p class="body-text"><b>ABBV -3.9% ($211, RSI 32)</b> -- Breaking below 200-day MA on no headline. Humira biosimilar competition intensifying, aesthetics segment soft. Williams %R at -98, deeply oversold. FY26 guide $14.37-14.57 EPS intact but insider sales in Feb/Mar adding negative sentiment.</p>
+<p class="prose"><strong>ABBV &minus;3.9% ($211.08)</strong> &mdash; Breaking below its 200-day MA on no headline. Humira biosimilar competition intensifying, aesthetics soft. Williams %R at &minus;98, deeply oversold. FY26 guide $14.37&ndash;$14.57 EPS intact but insider sales in Feb/Mar adding negative sentiment. Broader pharma weak with sector down over 1%. RSI 32.</p>
 
-<p class="body-text"><b>LULU +4.2% ($166, 1.7x vol)</b> -- Beat Q4 ($5.01 EPS, $3.64B rev) but guided FY26 below: $11.35-11.50B rev (est $11.52B), $12.10-12.30 EPS (est $12.58). Opened down on guide miss, reversed sharply as market credited pivot from discounting to premium pricing.</p>
+<p class="prose"><strong>LULU +4.2% ($165.98)</strong> &mdash; Beat Q4 ($5.01 EPS, $3.64B rev) but guided FY26 below consensus: $11.35&ndash;11.50B rev (est $11.52B), $12.10&ndash;12.30 EPS (est $12.58). Opened down ~1% on guide miss, reversed sharply higher on 1.7x avg volume as market credited pivot from discounting to premium pricing. RSI 43.</p>
 
-<p class="body-text"><b>APO +2.9% ($112, RSI 47)</b> -- Alt managers seeing rotational inflows as private credit narrative shifts from contagion to opportunity. <b>BX</b> +2.2%, <b>ARES</b> +1.8% following same playbook. Institutional allocators redeploying into higher-yielding credit.</p>
+<p class="prose"><strong>APO +2.9% ($112.01)</strong> &mdash; Apollo bucking the broader financials selloff as alt managers see rotational inflows. Private credit narrative shifting from contagion fear to opportunity. <strong>BX</strong> +2.2%, <strong>ARES</strong> +1.8% following same playbook. Institutional allocators redeploying into higher-yielding credit amid the rising rate backdrop. RSI 47.</p>
 
 <div class="callout">
-<div class="callout-hdr">PERSIAN GULF ENERGY RISK</div>
-<p>Brent near $110, WTI $98 as Iran strikes Gulf facilities. Trump signed 60-day Jones Act waiver for oil transport. IEA released record 400M bbl from strategic reserves. Today's PPI predates full energy shock -- worst of inflation passthrough still ahead. Key: Powell's characterization of energy inflation as "transitory" vs "embedded" at 2:30 PM.</p>
+  <div class="callout-title">Persian Gulf Energy Risk</div>
+  <p>Brent hovering near $110 with WTI at $98 as Iran continues strikes on Gulf facilities. Trump issued a 60-day Jones Act waiver to ease domestic oil transport &mdash; an emergency measure signaling the administration views the energy crunch as acute. The IEA approved a record 400M barrel strategic reserve release earlier this month. Today's PPI data partially reflects pre-shock cost pressures, meaning the worst of the energy-driven inflation passthrough is still ahead. The key question at 2:30 PM: does Powell characterize energy inflation as "transitory" or "embedded"? That single word choice could move the 10Y 10+ basis points.</p>
 </div>
 
-<div class="sec-hdr">RATES / FX / COMMODITIES</div>
-<div class="cards">
-<div class="card"><div class="card-lbl">2Y / 10Y</div><div class="card-val">3.71 / 4.22</div><div class="card-chg red">+4 / +3bp</div><div class="card-drv">Curve flat 51bp</div></div>
-<div class="card"><div class="card-lbl">DXY</div><div class="card-val">99.79</div><div class="card-chg green">+0.22%</div><div class="card-drv">Dollar bid on PPI</div></div>
-<div class="card"><div class="card-lbl">GOLD</div><div class="card-val">$4,881</div><div class="card-chg red">-2.48%</div><div class="card-drv">Below $5K</div></div>
-<div class="card"><div class="card-lbl">WTI CRUDE</div><div class="card-val">$98.06</div><div class="card-chg green">+1.92%</div><div class="card-drv">Gulf premium</div></div>
+<div class="section-header">Rates / FX / Commodities</div>
+
+<div class="cross-asset-grid">
+  <div class="ca-card"><div class="ca-label">2Y / 10Y</div><div class="ca-value">3.71 / 4.22</div><div class="ca-change neg">+4bp / +3bp</div><div class="ca-driver">Curve 51bp, flattening on stagflation</div></div>
+  <div class="ca-card"><div class="ca-label">DXY</div><div class="ca-value">99.79</div><div class="ca-change pos">+0.22%</div><div class="ca-driver">Dollar bid on hot PPI</div></div>
+  <div class="ca-card"><div class="ca-label">Gold</div><div class="ca-value">$4,881</div><div class="ca-change neg">&minus;2.48%</div><div class="ca-driver">Breaks below $5K, real rate hit</div></div>
+  <div class="ca-card"><div class="ca-label">WTI Crude</div><div class="ca-value">$98.06</div><div class="ca-change pos">+1.92%</div><div class="ca-driver">Gulf war premium, Hormuz disruption</div></div>
 </div>
 
-<p class="body-text">Curve flattening: 2s10s at 51bp (from 61bp last week) as front end reprices higher on PPI while long end sees mixed safe-haven/inflation breakeven flows. <b>Gold</b> breaking $5K notable -- real rates rising faster than geopolitical premia, profit-taking into FOMC. <b>DXY</b> supported at 99.8; BofA FMS shows investors still underweight USD -- hawkish Powell could trigger squeeze. Crude above $98 is the macro variable: sustain $100 and stagflation becomes consensus, equity multiples compress further.</p>
+<p class="prose">The Treasury curve is flattening as the front end reprices higher on hot PPI while the long end sees mixed safe-haven/inflation breakeven flows. The 2s10s at 51bp is compressing from 61bp a week ago &mdash; the market is telling you rate cuts are off the table and growth is decelerating simultaneously. <strong>Gold</strong> breaking below $5,000 is notable &mdash; real rates rising faster than geopolitical premia, profit-taking into FOMC overwhelming flows. <strong>DXY</strong> finding support at 99.8; BofA's March FMS shows investors still underweight the dollar &mdash; a hawkish Powell surprise could trigger a sharp squeeze. Crude above $98 is the macro variable that matters most: sustain $100 and stagflation becomes consensus, equity multiples compress further.</p>
 
-<div class="callout">
-<div class="callout-hdr">WATCHING INTO THE CLOSE</div>
-<p><b>KEY LEVELS:</b> SPX 6,650 support / 6,716 resistance / 50-day at 6,700 | NDX 22,200 / 22,480 | RTY 2,480 pivot<br>
-<b>CATALYSTS:</b> 2:00 PM FOMC + dot plot | 2:30 PM Powell presser | After close: MU earnings (HBM), WSM call<br>
-<b>SETUPS:</b> Oversold: ABBV (32), BLDR (31), ALLE (28), AOS (22) | Overbought: APA (78), LYB (75), CIEN (71) | MU +300% LTM, priced for perfection</p>
+<div class="watch-box">
+  <h3>Key Levels</h3>
+  <ul>
+    <li>SPX: 6,650 support (March low) / 6,716 resistance (yesterday close) / 50-day MA ~6,700</li>
+    <li>NDX: 22,200 support / 22,480 resistance &mdash; megacap reaction to Powell is key</li>
+    <li>RTY: 2,480 pivot &mdash; break below targets 2,450 and small cap capitulation</li>
+    <li>VIX: Close above 25 signals panic building; below 22 signals relief</li>
+  </ul>
+  <h3>Catalysts</h3>
+  <ul>
+    <li>2:00 PM &mdash; FOMC rate decision (hold expected) + economic projections + dot plot</li>
+    <li>2:30 PM &mdash; Powell press conference (energy inflation characterization is THE question)</li>
+    <li>After close &mdash; Micron (MU) earnings: HBM demand, margin trajectory. +300% LTM, priced for perfection.</li>
+    <li>After close &mdash; Williams-Sonoma (WSM) full earnings call details</li>
+    <li>Ongoing &mdash; Persian Gulf developments, Strait of Hormuz naval coalition</li>
+  </ul>
+  <h3>Setups</h3>
+  <ul>
+    <li>Oversold: ABBV RSI 32, BLDR 31, ALLE 28, AVY 25, AOS 22 &mdash; deep value if pharma/industrial sentiment turns</li>
+    <li>Overbought: APA RSI 78, LYB 75, CIEN 71, CF 66 &mdash; extended on momentum, crowding risk</li>
+    <li>Pre-earnings: MU surged from ~$295 to $460+ YTD. High bar for beat-and-raise. Watch HBM guidance.</li>
+    <li>Alt manager continuation: APO, BX, ARES &mdash; watching for follow-through above 5-day MAs</li>
+  </ul>
 </div>
 
-<div class="bl">
-<h3>BOTTOM LINE</h3>
-<p>Cautious, conviction-light tape ahead of two binary catalysts. Hot PPI confirmed what crude above $98 was already screaming: inflation is reaccelerating and the Fed's hands are tied. Powell's 2:30 PM presser is the event -- if he flags energy inflation as potentially persistent, expect 10Y to test 4.30% and multiples to compress another turn. The dot plot is the second landmine: any hawkish revision kills remaining cut hopes. MU reports after the bell into a stock up 300% LTM. <b>Stay defensive, sell rips into the FOMC, don't chase energy at these levels. The only thing worth adding is quality duration -- names with pricing power and clean balance sheets that survive a stagflationary quarter.</b></p>
+<div class="bottom-line">
+  <div class="bottom-line-title">Bottom Line</div>
+  <p>Cautious, conviction-light tape ahead of two binary catalysts in the next four hours. The hot PPI print confirmed what crude above $98 was already screaming &mdash; inflation is reaccelerating and the Fed's hands are tied. Powell's press conference at 2:30 PM is the event: if he acknowledges energy inflation as potentially persistent rather than transitory, expect the 10Y to test 4.30% and equity multiples to compress another turn. The dot plot update is the second landmine &mdash; any hawkish revision to the 2026 median dot kills what remains of rate-cut hopes. After the bell, MU reports into a stock up 300% LTM, and the bar is sky-high on HBM guidance. <strong>Stay defensive, sell rips into the FOMC, and don't chase the energy trade at these levels. The only thing worth adding here is quality duration &mdash; names with pricing power and clean balance sheets that can weather a stagflationary quarter.</strong></p>
 </div>
 
-<div class="footer">CONFIDENTIAL -- FOR INSTITUTIONAL USE ONLY &nbsp;&nbsp;&nbsp;&nbsp; 22V RESEARCH TRADING DESK</div>
+</div>
+
+<div class="footer">Confidential &mdash; For Institutional Use Only &nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp; 22V Research Trading Desk</div>
 
 </body>
 </html>
